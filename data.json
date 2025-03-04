@@ -9,35 +9,30 @@
     "projects": [
       {
         "name": "Text-to-Image using Diffusion",
-        "year": "2024",
         "description": "Trained a text-to-image diffusion model using UNet with cross-attention, VAE for latent space representation, and CLIP text embeddings for high-quality image generation. Implemented distributed training with PyTorch DDP on AWS SageMaker Training Jobs scaling to multiple GPUs with spot training for 68% cost reduction, used DagsHub server for MLflow logging and DVC for end-to-end pipeline automation.",
         "image": "images/p1.jpg",
         "link": "https://github.com/aniketpoojari/Text-To-Image-Diffusion"
       },
       {
-        "name": "Text Summarization Generative Pretrained Transformer",
-        "year": "2023",
+        "name": "Text Summarization GPT",
         "description": "Pretrained a 125M-parameter, 128-token decoder-only transformer model on a large text corpus using AWS Sagemaker, forming a GPT. Fine-tuned GPT on the XSum dataset for summarization task using teacher forcing, achieving a 5.4 ROUGE score.",
         "image": "images/p2.png",
         "link": "https://github.com/aniketpoojari/Text-Summarization-GPT"
       },
       {
         "name": "Image Depth Map Prediction",
-        "year": "2023",
         "description": "Designed a depth estimation model with a pre-trained Vision Transformer, achieving 19 cm RMSE for depth prediction. Refined depth maps with decoding convolution layers, increasing precision by 15% for complex environments.",
         "image": "images/p3.jpg",
         "link": "https://github.com/aniketpoojari/Monocular-Depth-Estimation"
       },
       {
         "name": "Automated Stock Price Prediction System",
-        "year": "2023",
         "description": "Developed a CNN-based stock price prediction model, enhanced with XGBoost for feature selection, increasing accuracy. Implemented DVC for pipeline management and MLFlow for performance tracking, enhancing reproducibility by 60%.",
         "image": "images/p4.png",
         "link": "https://github.com/aniketpoojari/Stock-Price-Prediction"
       },
       {
         "name": "Lane Segmentation",
-        "year": "2023",
         "description": "Created a U-Net model for lane segmentation, achieving 80% IoU for accurate lane detection in autonomous vehicles. Integrated the model into a Flask app for real-time lane detection, enhancing user experience.",
         "image": "images/p5.jpeg",
         "link": "https://github.com/aniketpoojari/Lane-Segmentation"

@@ -45,7 +45,7 @@ function loadProjects(projects) {
     const cardBack = document.createElement('div');
     cardBack.classList.add('card-back');
     cardBack.innerHTML = `
-      <h3>${project.name} (${project.year})</h3>
+      <h3>${project.name}</h3>
       <p>${project.description}</p>
       <a href="${project.link}" target="_blank">View Project</a>
     `;
