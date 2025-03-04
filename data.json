@@ -60,7 +60,7 @@
         "role": "Artificial Intelligence Intern",
         "company": "COCO by DHFL",
         "duration": "Jun 2019 - Aug 2019",
-        "image": "images/dhfl.jpg",
+        "image": "images/dhfl.jpeg",
         "description": [
           "Achieved 90% IoU in car damage detection by implementing a Mask R-CNN model in TensorFlow and OpenCV, significantly reducing manual effort in damage assessment.",
           "Increased claim approval efficiency by 60% through a Django web platform, reducing approval time and labor costs."
