@@ -245,7 +245,7 @@ body {
 }
 
 .card-back {
-  background-color: red;
+  background-color: orange;
   color: white;
   transform: rotateY(180deg);
   padding: 20px;
