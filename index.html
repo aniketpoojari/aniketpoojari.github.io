@@ -1,81 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Machine Learning Engineer Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aniket Poojari | Machine Learning Engineer</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Hero Section -->
-  <header>
-    <div class="hero-content">
-      <h1>Aniket Poojari</h1>
-      <p>Machine Learning Engineer</p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/aniketpoojari/" target="_blank">
-          <img src="images/linkedin.png" alt="LinkedIn" />
-        </a>
-        <a href="https://github.com/aniketpoojari" target="_blank">
-          <img src="images/github.png" alt="GitHub" />
-        </a>
-        <a href="https://medium.com/@aniketp2009" target="_blank">
-            <img src="images/medium.png" alt="Medium" />
-        </a>
-        <a href="https://public.tableau.com/app/profile/aniket2319/vizzes" target="_blank">
-            <img src="images/tableau.png" alt="Tableau" />
-        </a>
-        <a href="aniket.c.poojari@gmail.com" target="_blank">
-            <img src="images/gmail.png" alt="Email" />
-        </a>
-      </div>
-    </div>
-  </header>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Aniket Poojari</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+        </ul>
+    </nav>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <img src="https://avatars.githubusercontent.com/u/37501997?s=400&u=62c0987c5b263fc749db2cb8f401e1f8c8288e46&v=4" alt="Profile Picture" class="profile-pic">
-    <p>
-        I'm Aniket Poojari, a Machine Learning Engineer with a Master's in Computer Science specializing in AI, passionate about transforming data into impactful solutions. With expertise in Machine Learning, Generative AI, and MLOps, I thrive in collaborative environments, solving real-world challenges with advanced technologies. I have experience leading teams and driving innovation. I’m always eager to connect with fellow tech enthusiasts and explore new opportunities in AI and ML—let’s collaborate and build something extraordinary together!
-    </p>
-  </section>
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Aniket Poojari</h1>
+                <p class="typed-text"></p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-social">
+                <a href="https://www.linkedin.com/in/aniketpoojari/" target="_blank"><i class="ri-linkedin-box-fill"></i></a>
+                <a href="https://github.com/aniketpoojari" target="_blank"><i class="ri-github-fill"></i></a>
+                <a href="https://medium.com/@aniketp2009" target="_blank"><i class="ri-medium-fill"></i></a>
+                <a href="https://public.tableau.com/app/profile/aniket2319/vizzes" target="_blank"><i class="ri-bar-chart-fill"></i></a>
+                <a href="mailto:aniket.c.poojari@gmail.com"><i class="ri-mail-line"></i></a>
+            </div>
+        </div>
+    </header>
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul id="skills-list"></ul>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <img src="https://avatars.githubusercontent.com/u/37501997?s=400&u=62c0987c5b263fc749db2cb8f401e1f8c8288e46&v=4" alt="Profile Picture" class="profile-pic">
+            <p>
+                I'm Aniket Poojari, a Machine Learning Engineer with a Master's in Computer Science specializing in AI, passionate about transforming data into impactful solutions. With expertise in Machine Learning, Generative AI, and MLOps, I thrive in collaborative environments, solving real-world challenges with advanced technologies. I have experience leading teams and driving innovation. I'm always eager to connect with fellow tech enthusiasts and explore new opportunities in AI and ML—let's collaborate and build something extraordinary together!
+            </p>
+        </div>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div id="projects-list" class="projects-list"></div>
-  </section>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <ul id="skills-list"></ul>
+    </section>
 
-  <!-- Experience Section -->
-  <section id="experience">
-    <h2>Experience</h2>
-    <div id="experience-list" class="experience-list"></div>
-  </section>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div id="projects-list" class="projects-list"></div>
+    </section>
 
-  <!-- Education Section -->
-  <section id="education">
-    <h2>Education</h2>
-    <div id="education-list" class="education-list"></div>
-  </section>
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2>Experience</h2>
+        <div id="experience-list" class="experience-list"></div>
+    </section>
 
-  <!-- Achievements Section -->
-  <section id="achievements">
-    <h2>Achievements</h2>
-    <div id="achievements-list" class="achievements-list"></div>
-  </section>
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <h2>Education</h2>
+        <div id="education-list" class="education-list"></div>
+    </section>
 
-  <!-- Footer Section -->
-  <footer>
-    <p>&copy; 2025 Your Name. All rights reserved.</p>
-  </footer>
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
+        <h2>Achievements</h2>
+        <div id="achievements-list" class="achievements-list"></div>
+    </section>
 
-  <script src="script.js"></script>
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Details</h3>
+                <p><i class="ri-map-pin-line"></i> Oregon State University</p>
+                <p><i class="ri-mail-line"></i> aniket.c.poojari@gmail.com</p>
+                <p><i class="ri-phone-line"></i> (Available upon request)</p>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Aniket Poojari. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.linkedin.com/in/aniketpoojari/" target="_blank"><i class="ri-linkedin-box-fill"></i></a>
+            <a href="https://github.com/aniketpoojari" target="_blank"><i class="ri-github-fill"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

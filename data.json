@@ -1,97 +1,96 @@
 {
-    "skills": [
-      "Machine Learning", "LLM", "Generative AI", "Transformers", "NLP", "Computer Vision", "MLOps", "A/B Testing",
-      "Hypothesis Testing", "Dimensionality Reduction", "Data Visualization", "Pytorch", "TensorFlow", "Scikit-learn",
-      "NumPy", "Pandas", "Dask", "Seaborn", "Hugging Face", "DVC", "MLflow", "Streamlit", "AWS", "S3", "Sagemaker",
-      "IAM", "ECR", "Docker", "PySpark", "Git", "Dagshub", "Tableau", "Python", "C++", "Java", "SQL", "PostgreSQL",
-      "MongoDB", "Linux", "Bash", "Vim", "HTML", "CSS", "Javascript", "Node.js", "Django", "Flask", "REST"
-    ],
-    "projects": [
-      {
-        "name": "Text-to-Image using Diffusion",
-        "description": "Trained a text-to-image diffusion model using UNet with cross-attention, VAE for latent space representation, and CLIP text embeddings for high-quality image generation. Implemented distributed training with PyTorch DDP on AWS SageMaker Training Jobs scaling to multiple GPUs with spot training for 68% cost reduction, used DagsHub server for MLflow logging and DVC for end-to-end pipeline automation.",
-        "image": "images/p1.jpg",
-        "link": "https://github.com/aniketpoojari/Text-To-Image-Diffusion"
-      },
-      {
-        "name": "Text Summarization GPT",
-        "description": "Pretrained a 125M-parameter, 128-token decoder-only transformer model on a large text corpus using AWS Sagemaker, forming a GPT. Fine-tuned GPT on the XSum dataset for summarization task using teacher forcing, achieving a 5.4 ROUGE score.",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe6D3EXfDPSieTCRVAWNPtg8myhh12LdB2kQ&s",
-        "link": "https://github.com/aniketpoojari/Text-Summarization-GPT"
-      },
-      {
-        "name": "Image Depth Map Prediction",
-        "description": "Designed a depth estimation model with a pre-trained Vision Transformer, achieving 19 cm RMSE for depth prediction. Refined depth maps with decoding convolution layers, increasing precision by 15% for complex environments.",
-        "image": "https://pub.mdpi-res.com/sensors/sensors-22-01914/article_deploy/html/images/sensors-22-01914-g001.png?1646128485",
-        "link": "https://github.com/aniketpoojari/Monocular-Depth-Estimation"
-      },
-      {
-        "name": "Automated Stock Price Prediction System",
-        "description": "Developed a CNN-based stock price prediction model, enhanced with XGBoost for feature selection, increasing accuracy. Implemented DVC for pipeline management and MLFlow for performance tracking, enhancing reproducibility by 60%.",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbE7D1sxzKhCm0k1APOnjyhckKlV6LnK_QMA&s",
-        "link": "https://github.com/aniketpoojari/Stock-Price-Prediction"
-      },
-      {
-        "name": "Lane Segmentation",
-        "description": "Created a U-Net model for lane segmentation, achieving 80% IoU for accurate lane detection in autonomous vehicles. Integrated the model into a Flask app for real-time lane detection, enhancing user experience.",
-        "image": "https://media.licdn.com/dms/image/v2/C4E12AQEeCIfBxLjuxQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1594706436406?e=2147483647&v=beta&t=MKjLp5nGx-27bc3Yg0mSEc4knH6VIX_f6SU6rNxoi64",
-        "link": "https://github.com/aniketpoojari/Lane-Segmentation"
-      }
-    ],
-    "experience": [
-      {
-        "role": "Software Developer",
-        "company": "Dolat Capital",
-        "duration": "Aug 2020 - Apr 2022",
-        "image": "https://media.licdn.com/dms/image/v2/D560BAQGnZJhgL74AaQ/company-logo_100_100/company-logo_100_100/0/1728905810134/dolat_capital_market_private_ltd_logo?e=1749081600&v=beta&t=jVtBfopLwmQaHlCIjmXWbXjcHuKY5z-4banDN-pMUcQ",
-        "description": [
-          "Developed ML pipelines for block trade allocation and time series forecasting, improving operational efficiency by 15%, reducing risk, and enhancing cash flow. Validated model optimizations through A/B testing.",
-          "Automated post-trade data cleaning and matching with XGBoost, reducing manual workload by 30%, improving accuracy, and speeding up execution.",
-          "Enhanced alignment between live and simulated trading environments by 50%, analyzing gigabytes of stock data with Matplotlib and pandas to refine testing and strategies.",
-          "Optimized trading model data access by 75% using PostgreSQL, SQL, and Python to automate workflows and accelerate the ML lifecycle."
-        ]
-      },
-      {
-        "role": "Artificial Intelligence Intern",
-        "company": "COCO by DHFL",
-        "duration": "Jun 2019 - Aug 2019",
-        "image": "https://media.licdn.com/dms/image/v2/C560BAQE-UVyPs32cRg/company-logo_100_100/company-logo_100_100/0/1636448423327/dhfl_logo?e=1749081600&v=beta&t=gYmQWbRyY5H_rB84tlYiwwfQikq-M9afTLnp4UhBE8U",
-        "description": [
-          "Achieved 90% IoU in car damage detection by implementing a Mask R-CNN model in TensorFlow and OpenCV, significantly reducing manual effort in damage assessment.",
-          "Increased claim approval efficiency by 60% through a Django web platform, reducing approval time and labor costs."
-        ]
-      }
-    ],
-    "education": [
-      {
-        "degree": "Master of Science in Computer Science, Artificial Intelligence",
-        "institution": "Oregon State University",
-        "year": "Dec 2024",
-        "image": "https://media.licdn.com/dms/image/v2/C4E0BAQEtLpPkfugtXg/company-logo_100_100/company-logo_100_100/0/1631354574889?e=1749081600&v=beta&t=lg0-pfWu27SnYe5u3647TG7qfeIqbXJlpi0r_wwqd2k",
-        "description": [
-          "GTA for Applied Machine Learning, Cloud Application Development, Web Development and Open-Source Software",
-          "Graduated with a GPA of 3.77/4.0"
-        ]
-      },
-      {
-        "degree": "Bachelor in Information Technology",
-        "institution": "University of Mumbai",
-        "year": "Nov 2020",
-        "image": "https://media.licdn.com/dms/image/v2/C4E0BAQFfYevcaYPy6A/company-logo_100_100/company-logo_100_100/0/1630612004940/fr_conceicao_rodrigues_college_of_engineering_logo?e=1749081600&v=beta&t=WlrXSBblGBqM1-9yiVmTa9C3Amc1clgw4YZKGR8L-8I",
-        "description": [
-          "Completed undergraduate studies in Information Technology."
-        ]
-      }
-    ],
-    "achievements": [
-      {
-        "title": "Runner-up at Smart India Hackathon 2019",
-        "description": "Led a 5-member team to develop a smart research content management platform for PD Hinduja Hospital, reducing research proposal-to-approval time by 60% and enhancing process efficiency."
-      },
-      {
-        "title": "IEEE Paper Publication",
-        "description": "Led the development of a computer vision interface enabling control via hand gestures and voice using TensorFlow and OpenCV, improving user interaction by 40%, resulting in an IEEE paper publication in March 2019."
-      }
-    ]
-  }
-  
+  "skills": [
+    "Machine Learning", "LLM", "Generative AI", "Transformers", "NLP", "Computer Vision", "MLOps", "A/B Testing",
+    "Hypothesis Testing", "Dimensionality Reduction", "Data Visualization", "Pytorch", "TensorFlow", "Scikit-learn",
+    "NumPy", "Pandas", "Dask", "Seaborn", "Hugging Face", "DVC", "MLflow", "Streamlit", "AWS", "S3", "Sagemaker",
+    "IAM", "ECR", "Docker", "PySpark", "Git", "Dagshub", "Tableau", "Python", "C++", "Java", "SQL", "PostgreSQL",
+    "MongoDB", "Linux", "Bash", "Vim", "HTML", "CSS", "Javascript", "Node.js", "Django", "Flask", "REST"
+  ],
+  "projects": [
+    {
+      "name": "Text-to-Image using Diffusion",
+      "description": "Trained a text-to-image diffusion model using UNet with cross-attention, VAE for latent space representation, and CLIP text embeddings for high-quality image generation. Implemented distributed training with PyTorch DDP on AWS SageMaker Training Jobs scaling to multiple GPUs with spot training for 68% cost reduction, used DagsHub server for MLflow logging and DVC for end-to-end pipeline automation.",
+      "image": "https://example.com/p1.jpg",
+      "link": "https://github.com/aniketpoojari/Text-To-Image-Diffusion"
+    },
+    {
+      "name": "Text Summarization GPT",
+      "description": "Pretrained a 125M-parameter, 128-token decoder-only transformer model on a large text corpus using AWS Sagemaker, forming a GPT. Fine-tuned GPT on the XSum dataset for summarization task using teacher forcing, achieving a 5.4 ROUGE score.",
+      "image": "https://example.com/p2.jpg",
+      "link": "https://github.com/aniketpoojari/Text-Summarization-GPT"
+    },
+    {
+      "name": "Image Depth Map Prediction",
+      "description": "Designed a depth estimation model with a pre-trained Vision Transformer, achieving 19 cm RMSE for depth prediction. Refined depth maps with decoding convolution layers, increasing precision by 15% for complex environments.",
+      "image": "https://example.com/p3.jpg",
+      "link": "https://github.com/aniketpoojari/Monocular-Depth-Estimation"
+    },
+    {
+      "name": "Automated Stock Price Prediction System",
+      "description": "Developed a CNN-based stock price prediction model, enhanced with XGBoost for feature selection, increasing accuracy. Implemented DVC for pipeline management and MLFlow for performance tracking, enhancing reproducibility by 60%.",
+      "image": "https://example.com/p4.jpg",
+      "link": "https://github.com/aniketpoojari/Stock-Price-Prediction"
+    },
+    {
+      "name": "Lane Segmentation",
+      "description": "Created a U-Net model for lane segmentation, achieving 80% IoU for accurate lane detection in autonomous vehicles. Integrated the model into a Flask app for real-time lane detection, enhancing user experience.",
+      "image": "https://example.com/p5.jpg",
+      "link": "https://github.com/aniketpoojari/Lane-Segmentation"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Software Developer",
+      "company": "Dolat Capital",
+      "duration": "Aug 2020 - Apr 2022",
+      "image": "https://example.com/dolat.jpg",
+      "description": [
+        "Developed ML pipelines for block trade allocation and time series forecasting, improving operational efficiency by 15%, reducing risk, and enhancing cash flow. Validated model optimizations through A/B testing.",
+        "Automated post-trade data cleaning and matching with XGBoost, reducing manual workload by 30%, improving accuracy, and speeding up execution.",
+        "Enhanced alignment between live and simulated trading environments by 50%, analyzing gigabytes of stock data with Matplotlib and pandas to refine testing and strategies.",
+        "Optimized trading model data access by 75% using PostgreSQL, SQL, and Python to automate workflows and accelerate the ML lifecycle."
+      ]
+    },
+    {
+      "role": "Artificial Intelligence Intern",
+      "company": "COCO by DHFL",
+      "duration": "Jun 2019 - Aug 2019",
+      "image": "https://example.com/dhfl.jpg",
+      "description": [
+        "Achieved 90% IoU in car damage detection by implementing a Mask R-CNN model in TensorFlow and OpenCV, significantly reducing manual effort in damage assessment.",
+        "Increased claim approval efficiency by 60% through a Django web platform, reducing approval time and labor costs."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Science in Computer Science, Artificial Intelligence",
+      "institution": "Oregon State University",
+      "year": "Dec 2024",
+      "image": "https://example.com/osu.jpg",
+      "description": [
+        "GTA for Applied Machine Learning, Cloud Application Development, Web Development and Open-Source Software",
+        "Graduated with a GPA of 3.77/4.0"
+      ]
+    },
+    {
+      "degree": "Bachelor in Information Technology",
+      "institution": "University of Mumbai",
+      "year": "Nov 2020",
+      "image": "https://example.com/mumbai.jpg",
+      "description": [
+        "Relevant Courses: Data Structures and Algorithms, Database Management, Big Data Analytics, Computer Organization and Architecture, Operating System, Advanced Data Management Technology, Data Mining and Business Intelligence."
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "title": "Runner-up at Smart India Hackathon 2019",
+      "description": "Led a 5-member team to develop a smart research content management platform for PD Hinduja Hospital, reducing research proposal-to-approval time by 60% and enhancing process efficiency."
+    },
+    {
+      "title": "IEEE Paper Publication",
+      "description": "Led the development of a computer vision interface enabling control via hand gestures and voice using TensorFlow and OpenCV, improving user interaction by 40%, resulting in an IEEE paper publication in March 2019."
+    }
+  ]
+}
