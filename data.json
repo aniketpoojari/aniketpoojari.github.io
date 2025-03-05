@@ -43,7 +43,7 @@
       "role": "Software Developer",
       "company": "Dolat Capital",
       "duration": "Aug 2020 - Apr 2022",
-      "image": "https://example.com/dolat.jpg",
+      "image": "https://media.licdn.com/dms/image/v2/D560BAQGnZJhgL74AaQ/company-logo_200_200/company-logo_200_200/0/1728905810134/dolat_capital_market_private_ltd_logo?e=1749081600&v=beta&t=fZo2drJ9P1S89Sa_nZ7ZisfwzsSsmPwsyYIrQ8Z5S3o",
       "description": [
         "Developed ML pipelines for block trade allocation and time series forecasting, improving operational efficiency by 15%, reducing risk, and enhancing cash flow. Validated model optimizations through A/B testing.",
         "Automated post-trade data cleaning and matching with XGBoost, reducing manual workload by 30%, improving accuracy, and speeding up execution.",
@@ -55,7 +55,7 @@
       "role": "Artificial Intelligence Intern",
       "company": "COCO by DHFL",
       "duration": "Jun 2019 - Aug 2019",
-      "image": "https://example.com/dhfl.jpg",
+      "image": "https://media.licdn.com/dms/image/v2/C560BAQE-UVyPs32cRg/company-logo_200_200/company-logo_200_200/0/1636448423327/dhfl_logo?e=1749081600&v=beta&t=3oZ2r-_KuCr9ELOs-i-UPPHZcYu4pArIuw79Xu4sFmo",
       "description": [
         "Achieved 90% IoU in car damage detection by implementing a Mask R-CNN model in TensorFlow and OpenCV, significantly reducing manual effort in damage assessment.",
         "Increased claim approval efficiency by 60% through a Django web platform, reducing approval time and labor costs."
@@ -67,7 +67,7 @@
       "degree": "Master of Science in Computer Science, Artificial Intelligence",
       "institution": "Oregon State University",
       "year": "Dec 2024",
-      "image": "https://example.com/osu.jpg",
+      "image": "https://media.licdn.com/dms/image/v2/C4E0BAQEtLpPkfugtXg/company-logo_200_200/company-logo_200_200/0/1631354574889?e=1749081600&v=beta&t=MM0iWcVy1TrMUQsXDr4sF_t3OyuteLWprSNOZr7TWjs",
       "description": [
         "GTA for Applied Machine Learning, Cloud Application Development, Web Development and Open-Source Software",
         "Graduated with a GPA of 3.77/4.0"
@@ -77,7 +77,7 @@
       "degree": "Bachelor in Information Technology",
       "institution": "University of Mumbai",
       "year": "Nov 2020",
-      "image": "https://example.com/mumbai.jpg",
+      "image": "https://media.licdn.com/dms/image/v2/C4E0BAQFfYevcaYPy6A/company-logo_200_200/company-logo_200_200/0/1630612004940/fr_conceicao_rodrigues_college_of_engineering_logo?e=1749081600&v=beta&t=Qh-yY7iGzfz0EGbqalxuY1LXhsvtts4afhGNaqh3zzQ",
       "description": [
         "Relevant Courses: Data Structures and Algorithms, Database Management, Big Data Analytics, Computer Organization and Architecture, Operating System, Advanced Data Management Technology, Data Mining and Business Intelligence."
       ]
