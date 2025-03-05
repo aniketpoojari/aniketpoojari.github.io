@@ -10,31 +10,31 @@
     {
       "name": "Text-to-Image using Diffusion",
       "description": "Trained a text-to-image diffusion model using UNet with cross-attention, VAE for latent space representation, and CLIP text embeddings for high-quality image generation. Implemented distributed training with PyTorch DDP on AWS SageMaker Training Jobs scaling to multiple GPUs with spot training for 68% cost reduction, used DagsHub server for MLflow logging and DVC for end-to-end pipeline automation.",
-      "image": "https://example.com/p1.jpg",
+      "image": "images/p1.jpg",
       "link": "https://github.com/aniketpoojari/Text-To-Image-Diffusion"
     },
     {
       "name": "Text Summarization GPT",
       "description": "Pretrained a 125M-parameter, 128-token decoder-only transformer model on a large text corpus using AWS Sagemaker, forming a GPT. Fine-tuned GPT on the XSum dataset for summarization task using teacher forcing, achieving a 5.4 ROUGE score.",
-      "image": "https://example.com/p2.jpg",
+      "image": "https://cse.engin.umich.edu/wp-content/uploads/sites/2/2021/03/summarization-featured.jpg",
       "link": "https://github.com/aniketpoojari/Text-Summarization-GPT"
     },
     {
       "name": "Image Depth Map Prediction",
       "description": "Designed a depth estimation model with a pre-trained Vision Transformer, achieving 19 cm RMSE for depth prediction. Refined depth maps with decoding convolution layers, increasing precision by 15% for complex environments.",
-      "image": "https://example.com/p3.jpg",
+      "image": "https://production-media.paperswithcode.com/thumbnails/task/task-0000000603-3510e464.jpg",
       "link": "https://github.com/aniketpoojari/Monocular-Depth-Estimation"
     },
     {
       "name": "Automated Stock Price Prediction System",
       "description": "Developed a CNN-based stock price prediction model, enhanced with XGBoost for feature selection, increasing accuracy. Implemented DVC for pipeline management and MLFlow for performance tracking, enhancing reproducibility by 60%.",
-      "image": "https://example.com/p4.jpg",
+      "image": "https://5.imimg.com/data5/SELLER/Default/2023/8/338921287/JB/ZV/BY/2684188/ai-powered-trading-software-500x500.jpg",
       "link": "https://github.com/aniketpoojari/Stock-Price-Prediction"
     },
     {
       "name": "Lane Segmentation",
       "description": "Created a U-Net model for lane segmentation, achieving 80% IoU for accurate lane detection in autonomous vehicles. Integrated the model into a Flask app for real-time lane detection, enhancing user experience.",
-      "image": "https://example.com/p5.jpg",
+      "image": "https://miro.medium.com/v2/resize:fit:1200/1*no84Hvsekd6fSXeIKxAU2A.png",
       "link": "https://github.com/aniketpoojari/Lane-Segmentation"
     }
   ],
