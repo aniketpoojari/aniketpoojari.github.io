@@ -197,7 +197,7 @@ function initContactForm() {
       }
 
       try {
-          // Integrate with a real form submission service like Formspree
+          // Replace with your Formspree endpoint
           const response = await fetch('https://formspree.io/f/your-form-endpoint', {
               method: 'POST',
               headers: {
