@@ -197,33 +197,28 @@ function initContactForm() {
       }
 
       try {
-          // Replace with your actual form submission logic
-          const response = await submitForm({
-              name: nameInput.value,
-              email: emailInput.value,
-              message: messageInput.value
+          // Integrate with a real form submission service like Formspree
+          const response = await fetch('https://formspree.io/f/your-form-endpoint', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  name: nameInput.value,
+                  email: emailInput.value,
+                  message: messageInput.value
+              })
           });
 
-          // Handle successful submission
-          alert('Message sent successfully!');
-          form.reset();
+          if (response.ok) {
+              alert('Message sent successfully!');
+              form.reset();
+          } else {
+              throw new Error('Form submission failed');
+          }
       } catch (error) {
           console.error('Form submission error:', error);
           alert('Failed to send message. Please try again.');
       }
-  });
-}
-
-// Placeholder Form Submission Function
-async function submitForm(formData) {
-  // In a real-world scenario, you would:
-  // 1. Use fetch to send data to a backend API
-  // 2. Use a service like Formspree
-  // 3. Use serverless functions
-  
-  // This is a simulated async operation
-  return new Promise((resolve) => {
-      console.log('Form data:', formData);
-      setTimeout(resolve, 1000);
   });
 }

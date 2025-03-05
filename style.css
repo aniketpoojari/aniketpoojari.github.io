@@ -199,7 +199,149 @@ body {
   justify-items: center;
 }
 
-/* Rest of the CSS remains similar to previous implementation */
+/* Projects Card Styles */
+.project-card {
+  perspective: 1000px;
+  width: 300px;
+  height: 400px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.project-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card-front {
+  background-color: white;
+}
+
+.card-front img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-back {
+  background-color: var(--primary-color);
+  color: white;
+  transform: rotateY(180deg);
+  padding: 20px;
+}
+
+.card-back a {
+  margin-top: 15px;
+  color: white;
+  text-decoration: none;
+  border: 2px solid white;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+/* Experience and Education Sections */
+.experience-list, .education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.company, .institution {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.company img, .institution img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.achievements-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.achievement {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Contact Section */
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.contact-info, .contact-form {
+  flex: 1;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.contact-form textarea {
+  height: 150px;
+}
+
+/* Footer */
+footer {
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-social a {
+  color: var(--text-light);
+  margin: 0 10px;
+  font-size: 1.5rem;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -229,6 +371,10 @@ body {
   }
 
   #about .about-content {
+      flex-direction: column;
+  }
+
+  .contact-container {
       flex-direction: column;
   }
 }
