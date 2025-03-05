@@ -9,43 +9,43 @@
   "projects": [
     {
       "name": "Text-to-Image using Diffusion",
-      "description": "Trained a text-to-image diffusion model using UNet with cross-attention, VAE for latent space representation, and CLIP text embeddings for high-quality image generation. Implemented distributed training with PyTorch DDP on AWS SageMaker Training Jobs scaling to multiple GPUs with spot training for 68% cost reduction, used DagsHub server for MLflow logging and DVC for end-to-end pipeline automation.",
+      "description": "Trained a diffusion model with UNet, VAE, and CLIP embeddings for high-quality image generation. Optimized training on AWS SageMaker with spot instances, reducing costs by 68%.",
       "image": "images/p1.jpg",
       "link": "https://github.com/aniketpoojari/Text-To-Image-Diffusion"
     },
     {
       "name": "Text Summarization GPT",
-      "description": "Pretrained a 125M-parameter, 128-token decoder-only transformer model on a large text corpus using AWS Sagemaker, forming a GPT. Fine-tuned GPT on the XSum dataset for summarization task using teacher forcing, achieving a 5.4 ROUGE score.",
+      "description": "Pretrained a 125M-parameter transformer for summarization. Fine-tuned on XSum dataset, achieving a 5.4 ROUGE score.",
       "image": "https://cse.engin.umich.edu/wp-content/uploads/sites/2/2021/03/summarization-featured.jpg",
       "link": "https://github.com/aniketpoojari/Text-Summarization-GPT"
     },
     {
       "name": "Image Depth Map Prediction",
-      "description": "Designed a depth estimation model with a pre-trained Vision Transformer, achieving 19 cm RMSE for depth prediction. Refined depth maps with decoding convolution layers, increasing precision by 15% for complex environments.",
+      "description": "Developed a depth estimation model using Vision Transformer, achieving 19 cm RMSE and 15% improvement in complex environments.",
       "image": "https://production-media.paperswithcode.com/thumbnails/task/task-0000000603-3510e464.jpg",
       "link": "https://github.com/aniketpoojari/Monocular-Depth-Estimation"
     },
     {
       "name": "Automated Stock Price Prediction System",
-      "description": "Developed a CNN-based stock price prediction model, enhanced with XGBoost for feature selection, increasing accuracy. Implemented DVC for pipeline management and MLFlow for performance tracking, enhancing reproducibility by 60%.",
+      "description": "Built a CNN-based stock price prediction model with XGBoost for feature selection, improving accuracy and reproducibility.",
       "image": "https://5.imimg.com/data5/SELLER/Default/2023/8/338921287/JB/ZV/BY/2684188/ai-powered-trading-software-500x500.jpg",
       "link": "https://github.com/aniketpoojari/Stock-Price-Prediction"
     },
     {
       "name": "Lane Segmentation",
-      "description": "Created a U-Net model for lane segmentation, achieving 80% IoU for accurate lane detection in autonomous vehicles. Integrated the model into a Flask app for real-time lane detection, enhancing user experience.",
+      "description": "Developed a U-Net model for lane detection in autonomous vehicles, achieving 80% IoU and integrated into a Flask app for real-time use.",
       "image": "https://miro.medium.com/v2/resize:fit:1200/1*no84Hvsekd6fSXeIKxAU2A.png",
       "link": "https://github.com/aniketpoojari/Lane-Segmentation"
     },
     {
       "name": "Motor Self Inspection",
-      "description": "A webapp detects damages in a vehicle to streamline claim approval process",
+      "description": "A web app that detects vehicle damages for faster insurance claim approvals.",
       "image": "https://raw.githubusercontent.com/aniketpoojari/Motor-Self-Inspection/master/3.JPG",
       "link": "https://github.com/aniketpoojari/Motor-Self-Inspection"
     },
     {
       "name": "Image Denoising",
-      "description": "In this project, we will explore the use of an autoencoder neural network for image denoising.",
+      "description": "Used an autoencoder neural network for effective image denoising.",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbTM261Wj76-LBTcVQxi7nDcbq2KAp0Jksyw&s",
       "link": "https://github.com/aniketpoojari/Image-Denoising"
     }
