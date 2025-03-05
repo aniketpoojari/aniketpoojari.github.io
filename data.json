@@ -36,6 +36,12 @@
       "description": "Created a U-Net model for lane segmentation, achieving 80% IoU for accurate lane detection in autonomous vehicles. Integrated the model into a Flask app for real-time lane detection, enhancing user experience.",
       "image": "https://miro.medium.com/v2/resize:fit:1200/1*no84Hvsekd6fSXeIKxAU2A.png",
       "link": "https://github.com/aniketpoojari/Lane-Segmentation"
+    },
+    {
+      "name": "Motor Self Inspection",
+      "description": "A webapp detects damages in a vehicle to streamline claim approval process",
+      "image": "https://raw.githubusercontent.com/aniketpoojari/Motor-Self-Inspection/master/3.JPG",
+      "link": "https://github.com/aniketpoojari/Motor-Self-Inspection"
     }
   ],
   "experience": [
