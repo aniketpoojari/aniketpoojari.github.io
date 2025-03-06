@@ -145,7 +145,7 @@ body {
 
 @keyframes pulse {
   0% { transform: scale(1); opacity: 0.7; }
-  100% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 1; }
 }
 
 /* About Section */
