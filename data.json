@@ -54,11 +54,13 @@
     {
       "title": "Understanding Diffusion Models",
       "description": "A deep dive into diffusion models used in generative AI.",
+      "image": "https://miro.medium.com/v2/resize:fit:1200/1*no84Hvsekd6fSXeIKxAU2A.png",
       "link": "https://medium.com/@aniketp2009/diffusion-models"
     },
     {
       "title": "Optimizing LLMs for Performance",
       "description": "Techniques to fine-tune large language models efficiently.",
+      "image": "https://miro.medium.com/v2/resize:fit:1200/1*dfhG6yJsoKX0vP_aQxziKA.png",
       "link": "https://medium.com/@aniketp2009/llm-optimization"
     }
   ],

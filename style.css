@@ -267,15 +267,15 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  justify-items: center;
 }
 
 .blog-card {
+  width: 300px;
   background: white;
-  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  color: var(--text-color);
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -284,14 +284,33 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.blog-content h3 {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
+.blog-card a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
 }
 
-.blog-content p {
+.blog-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-card-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.blog-card-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.blog-card-content p {
   font-size: 1rem;
 }
+
 
 
 /* Experience and Education Sections */

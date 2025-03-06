@@ -66,9 +66,12 @@ function createBlogCard(blog) {
     const card = document.createElement('div');
     card.classList.add('blog-card');
     card.innerHTML = `
-        <a href="${blog.link}" target="_blank" class="blog-card-content">
-            <h3>${blog.title}</h3>
-            <p>${blog.description}</p>
+        <a href="${blog.link}" target="_blank">
+            <img src="${blog.image}" alt="${blog.title}" class="blog-image">
+            <div class="blog-card-content">
+                <h3>${blog.title}</h3>
+                <p>${blog.description}</p>
+            </div>
         </a>
     `;
     return card;
