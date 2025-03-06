@@ -267,7 +267,7 @@ body {
 }
 
 .card-front img {
-  width: 50%;
+  width: 70%;
   height: 150px;
   object-fit: cover;
   border-top-left-radius: 10px;
