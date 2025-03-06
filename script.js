@@ -288,3 +288,168 @@ function initMobileNav() {
         });
     }
 }
+
+// Page Loader
+window.addEventListener('load', () => {
+  document.querySelector('.page-loader').classList.add('loaded');
+});
+
+// Scroll to Top
+const scrollTop = document.createElement('button');
+scrollTop.className = 'scroll-top';
+scrollTop.innerHTML = '<i class="ri-arrow-up-line"></i>';
+document.body.appendChild(scrollTop);
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 200) {
+    scrollTop.classList.add('visible');
+  } else {
+    scrollTop.classList.remove('visible');
+  }
+  updateProgressBar();
+});
+
+scrollTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Progress Bar
+const progressBar = document.createElement('div');
+progressBar.className = 'progress-bar';
+document.body.appendChild(progressBar);
+
+function updateProgressBar() {
+  const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (window.pageYOffset / windowHeight) * 100;
+  progressBar.style.width = `${progress}%`;
+}
+
+// Theme Toggle
+const themeToggle = document.createElement('button');
+themeToggle.className = 'theme-toggle';
+themeToggle.innerHTML = '<i class="ri-sun-line"></i>';
+document.body.appendChild(themeToggle);
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon(savedTheme);
+}
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeIcon(newTheme);
+});
+
+function updateThemeIcon(theme) {
+  themeToggle.innerHTML = theme === 'dark' 
+    ? '<i class="ri-moon-line"></i>' 
+    : '<i class="ri-sun-line"></i>';
+}
+
+// Custom Cursor
+const cursor = document.createElement('div');
+cursor.className = 'custom-cursor';
+document.body.appendChild(cursor);
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+
+document.addEventListener('mousedown', () => cursor.classList.add('hover'));
+document.addEventListener('mouseup', () => cursor.classList.remove('hover'));
+
+// Add hover effect to all interactive elements
+const interactiveElements = document.querySelectorAll('a, button, .card, .project-card, .blog-card');
+interactiveElements.forEach(element => {
+  element.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+// Scroll Reveal Animation
+const observerOptions = {
+  threshold: 0.15,
+  rootMargin: '0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.section, .card, .project-card, .blog-card').forEach(element => {
+  element.classList.add('reveal');
+  observer.observe(element);
+});
+
+// Smooth Scroll for Navigation Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Active Navigation Highlight
+const sections = document.querySelectorAll('section[id]');
+
+function highlightNavigation() {
+  const scrollY = window.pageYOffset;
+  
+  sections.forEach(section => {
+    const sectionHeight = section.offsetHeight;
+    const sectionTop = section.offsetTop - 100;
+    const sectionId = section.getAttribute('id');
+    
+    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      document.querySelector(`.nav-links a[href*=${sectionId}]`)?.classList.add('active');
+    } else {
+      document.querySelector(`.nav-links a[href*=${sectionId}]`)?.classList.remove('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', highlightNavigation);
+
+// Mobile Menu Toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!navToggle?.contains(e.target) && !navLinks?.contains(e.target)) {
+    navToggle?.classList.remove('active');
+    navLinks?.classList.remove('active');
+  }
+});
+
+// Handle keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    navToggle?.classList.remove('active');
+    navLinks?.classList.remove('active');
+  }
+});

@@ -1,11 +1,28 @@
 /* Root Variables */
 :root {
+  /* Light Theme Colors */
   --primary-color: #3498db;
   --secondary-color: #2ecc71;
   --background-dark: #1e1e2c;
   --background-light: #f4f4f6;
   --text-color: #333;
   --text-light: #f4f4f4;
+  --card-bg: white;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Theme Colors */
+[data-theme="dark"] {
+  --primary-color: #64b5f6;
+  --secondary-color: #81c784;
+  --background-dark: #1a1a2e;
+  --background-light: #1e1e2c;
+  --text-color: #f4f4f4;
+  --text-light: #f4f4f4;
+  --card-bg: #2a2a3c;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Reset and Base Styles */
@@ -21,6 +38,139 @@ body {
   background-color: var(--background-light);
   color: var(--text-color);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  cursor: pointer;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--card-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(45deg);
+}
+
+/* Page Loader */
+.page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--primary-color);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.page-loader.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Progress Bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  z-index: 1001;
+  transition: width 0.3s ease;
+}
+
+/* Section Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cursor Effect */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor.hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: rgba(52, 152, 219, 0.1);
 }
 
 /* Utility Classes */
@@ -28,12 +178,125 @@ body {
   padding: 80px 10%;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: all 0.6s ease;
+  background-color: var(--background-light);
 }
 
 .section.reveal {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Card Styles Update */
+.card {
+  background-color: var(--card-bg);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px var(--shadow-color);
+}
+
+/* Text Gradient */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px var(--primary-color);
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.5s ease forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design Updates */
+@media (max-width: 768px) {
+  .scroll-top, .theme-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .scroll-top {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .theme-toggle {
+    top: 80px;
+    right: 20px;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
 }
 
 /* Navigation */
