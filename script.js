@@ -289,121 +289,103 @@ function initMobileNav() {
     }
 }
 
-// Page Loader
+// Loader
 window.addEventListener('load', () => {
-  document.querySelector('.page-loader').classList.add('loaded');
-});
-
-// Scroll to Top
-const scrollTop = document.createElement('button');
-scrollTop.className = 'scroll-top';
-scrollTop.innerHTML = '<i class="ri-arrow-up-line"></i>';
-document.body.appendChild(scrollTop);
-
-window.addEventListener('scroll', () => {
-  if (window.pageYOffset > 200) {
-    scrollTop.classList.add('visible');
-  } else {
-    scrollTop.classList.remove('visible');
-  }
-  updateProgressBar();
-});
-
-scrollTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+    const loader = document.querySelector('.page-loader');
+    setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    }, 1000);
 });
 
 // Progress Bar
-const progressBar = document.createElement('div');
-progressBar.className = 'progress-bar';
-document.body.appendChild(progressBar);
-
-function updateProgressBar() {
-  const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = (window.pageYOffset / windowHeight) * 100;
-  progressBar.style.width = `${progress}%`;
-}
+window.addEventListener('scroll', () => {
+    const progressBar = document.querySelector('.progress-bar');
+    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (window.scrollY / windowHeight) * 100;
+    progressBar.style.width = `${scrolled}%`;
+});
 
 // Theme Toggle
-const themeToggle = document.createElement('button');
-themeToggle.className = 'theme-toggle';
-themeToggle.innerHTML = '<i class="ri-sun-line"></i>';
-document.body.appendChild(themeToggle);
+const themeToggle = document.querySelector('.theme-toggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-// Check for saved theme preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  updateThemeIcon(savedTheme);
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    updateThemeIcon(currentTheme);
+} else {
+    const theme = prefersDarkScheme.matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    updateThemeIcon(theme);
 }
 
 themeToggle.addEventListener('click', () => {
-  const currentTheme = document.documentElement.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  
-  document.documentElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  updateThemeIcon(newTheme);
+    let theme = document.documentElement.getAttribute('data-theme');
+    let newTheme = theme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
 });
 
 function updateThemeIcon(theme) {
-  themeToggle.innerHTML = theme === 'dark' 
-    ? '<i class="ri-moon-line"></i>' 
-    : '<i class="ri-sun-line"></i>';
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'light' ? 'ri-moon-line' : 'ri-sun-line';
 }
 
-// Custom Cursor
-const cursor = document.createElement('div');
-cursor.className = 'custom-cursor';
-document.body.appendChild(cursor);
+// Scroll to Top
+const scrollTop = document.querySelector('.scroll-top');
 
-document.addEventListener('mousemove', (e) => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-});
-
-document.addEventListener('mousedown', () => cursor.classList.add('hover'));
-document.addEventListener('mouseup', () => cursor.classList.remove('hover'));
-
-// Add hover effect to all interactive elements
-const interactiveElements = document.querySelectorAll('a, button, .card, .project-card, .blog-card');
-interactiveElements.forEach(element => {
-  element.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-  element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-});
-
-// Scroll Reveal Animation
-const observerOptions = {
-  threshold: 0.15,
-  rootMargin: '0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-      observer.unobserve(entry.target);
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        scrollTop.classList.add('show');
+    } else {
+        scrollTop.classList.remove('show');
     }
-  });
-}, observerOptions);
-
-document.querySelectorAll('.section, .card, .project-card, .blog-card').forEach(element => {
-  element.classList.add('reveal');
-  observer.observe(element);
 });
+
+scrollTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Custom Cursor
+const cursor = document.querySelector('.custom-cursor');
+const links = document.querySelectorAll('a, button');
+
+if (window.innerWidth >= 1024) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+    });
+
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            cursor.classList.add('link-hover');
+        });
+        
+        link.addEventListener('mouseleave', () => {
+            cursor.classList.remove('link-hover');
+        });
+    });
+}
 
 // Smooth Scroll for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
 });
 
 // Active Navigation Highlight
