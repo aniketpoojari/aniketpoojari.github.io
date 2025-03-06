@@ -58,10 +58,22 @@
       "link": "https://medium.com/@aniketp2009/lets-build-a-text-summarization-gpt-from-scratch-with-local-aws-sagemaker-training-jobs-training-41f87af9b299"
     },
     {
-      "title": "Optimizing LLMs for Performance",
-      "description": "Techniques to fine-tune large language models efficiently.",
-      "image": "https://miro.medium.com/v2/resize:fit:1200/1*dfhG6yJsoKX0vP_aQxziKA.png",
-      "link": "https://medium.com/@aniketp2009/llm-optimization"
+      "title": "Single-Camera Depth Estimation Using Vision Transformers: A Closer Look",
+      "description": "",
+      "image": "https://miro.medium.com/v2/resize:fit:2000/format:webp/1*iptNVqkd7YsSrCNk4nb22w.jpeg",
+      "link": "https://medium.com/@aniketp2009/monocular-depth-estimation-with-vision-transformers-a-deep-dive-13babe0f9df1"
+    },
+    {
+      "title": "Image Denoising using Variational Autoencoders",
+      "description": "",
+      "image": "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*JP7_fkV2smzCPkuEXBkazg.png",
+      "link": "https://medium.com/@aniketp2009/image-denoising-using-variational-autoencoders-e2cda0c336d2"
+    },
+    {
+      "title": "Data Shift in Machine Learning: Understanding, Detecting, and Addressing Challenges",
+      "description": "",
+      "image": "https://miro.medium.com/v2/resize:fit:2000/format:webp/1*SL_Mb5vTQjs0MTfrz_DFCg.jpeg",
+      "link": "https://medium.com/@aniketp2009/data-shift-in-machine-learning-understanding-detecting-and-addressing-challenges-41069eef4a21"
     }
   ],
   "experience": [
