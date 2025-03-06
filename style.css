@@ -148,6 +148,35 @@ body {
   100% { transform: scale(1.5); opacity: 1; }
 }
 
+.hero-contact {
+  margin-top: 15px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.hero-contact p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-light);
+}
+
+.hero-contact i {
+  font-size: 1.2rem;
+  color: var(--text-light);
+}
+
+.hero-contact a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hero-contact a:hover {
+  text-decoration: underline;
+}
+
+
 /* About Section */
 #about {
   text-align: center;
