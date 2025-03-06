@@ -381,18 +381,21 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
 }
 
 .skills-category {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   text-align: left;
 }
 
 .skills-category h3 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--primary-color);
-  margin-bottom: 20px;
-  padding-left: 20px;
+  margin-bottom: 15px;
+  padding-left: 15px;
   position: relative;
 }
 
@@ -402,8 +405,8 @@ body {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 4px;
-  height: 20px;
+  width: 3px;
+  height: 16px;
   background: var(--primary-color);
   border-radius: 2px;
 }
@@ -411,8 +414,8 @@ body {
 #skills ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 20px;
+  gap: 10px;
+  margin-top: 10px;
   list-style-type: none;
   padding: 0;
 }
@@ -420,20 +423,20 @@ body {
 #skills li {
   background: white;
   color: var(--text-color);
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 0.95rem;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 #skills li i {
   color: var(--primary-color);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 #skills li:hover {
@@ -448,13 +451,18 @@ body {
 }
 
 @media (max-width: 768px) {
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
   .skills-category {
     text-align: center;
   }
 
   .skills-category h3 {
     padding-left: 0;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
   }
 
   .skills-category h3::before {
@@ -462,7 +470,7 @@ body {
     top: auto;
     bottom: 0;
     transform: translateX(-50%);
-    width: 30px;
+    width: 25px;
     height: 3px;
   }
 
