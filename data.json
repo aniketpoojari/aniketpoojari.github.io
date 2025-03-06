@@ -50,6 +50,18 @@
       "link": "https://github.com/aniketpoojari/Image-Denoising"
     }
   ],
+  "blogs": [
+    {
+      "title": "Understanding Diffusion Models",
+      "description": "A deep dive into diffusion models used in generative AI.",
+      "link": "https://medium.com/@aniketp2009/diffusion-models"
+    },
+    {
+      "title": "Optimizing LLMs for Performance",
+      "description": "Techniques to fine-tune large language models efficiently.",
+      "link": "https://medium.com/@aniketp2009/llm-optimization"
+    }
+  ],
   "experience": [
     {
       "role": "Software Developer",
