@@ -44,10 +44,17 @@ function createProjectCard(project) {
     const card = document.createElement('div');
     card.classList.add('project-card');
     card.innerHTML = `
-        <a href="${project.link}" target="_blank" class="card-front">
-            <img src="${project.image}" alt="${project.name}">
-            <h3 class="project-name">${project.name}</h3>
-        </a>
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="${project.image}" alt="${project.name}">
+                <h3 class="project-name">${project.name}</h3>
+            </div>
+            <div class="card-back">
+                <h3>${project.name}</h3>
+                <p>${project.description}</p>
+                <a href="${project.link}" target="_blank">View Project</a>
+            </div>
+        </div>
     `;
     return card;
 }
