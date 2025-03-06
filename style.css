@@ -351,26 +351,124 @@ body {
 }
 
 /* Skills Section */
+#skills {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.05), rgba(46, 204, 113, 0.05));
+  border-radius: 20px;
+}
+
+#skills h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: var(--text-color);
+  position: relative;
+  display: inline-block;
+}
+
+#skills h2::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background: var(--primary-color);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.skills-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.skills-category {
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.skills-category h3 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.skills-category h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
 #skills ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  gap: 15px;
   margin-top: 20px;
   list-style-type: none;
+  padding: 0;
 }
 
 #skills li {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  transition: transform 0.3s ease;
+  background: white;
+  color: var(--text-color);
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#skills li i {
+  color: var(--primary-color);
+  font-size: 1.2rem;
 }
 
 #skills li:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: var(--primary-color);
+  color: white;
+}
+
+#skills li:hover i {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .skills-category {
+    text-align: center;
+  }
+
+  .skills-category h3 {
+    padding-left: 0;
+    padding-bottom: 10px;
+  }
+
+  .skills-category h3::before {
+    left: 50%;
+    top: auto;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 3px;
+  }
+
+  #skills ul {
+    justify-content: center;
+  }
 }
 
 /* Projects Section */

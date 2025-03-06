@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('data.json')
         .then(response => response.json())
         .then(data => {
-            loadSkills(data.skills);
+            loadSkills(data.skillCategories);
             loadProjects(data.projects);
             loadBlogs(data.blogs);
             loadExperience(data.experience);
@@ -24,12 +24,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Skills Rendering Function
-function loadSkills(skills) {
-    const skillsList = document.getElementById('skills-list');
-    skills.forEach(skill => {
-        const li = document.createElement('li');
-        li.textContent = skill;
-        skillsList.appendChild(li);
+function loadSkills(categories) {
+    const skillsContainer = document.getElementById('skills-container');
+    
+    categories.forEach(category => {
+        const categoryDiv = document.createElement('div');
+        categoryDiv.classList.add('skills-category');
+        
+        categoryDiv.innerHTML = `
+            <h3>${category.title}</h3>
+            <ul>
+                ${category.skills.map(skill => `
+                    <li><i class="${skill.icon}"></i>${skill.name}</li>
+                `).join('')}
+            </ul>
+        `;
+        
+        skillsContainer.appendChild(categoryDiv);
     });
 }
 

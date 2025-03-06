@@ -1,10 +1,79 @@
 {
-  "skills": [
-    "Machine Learning", "LLM", "Generative AI", "Transformers", "NLP", "Computer Vision", "MLOps", "A/B Testing",
-    "Hypothesis Testing", "Dimensionality Reduction", "Data Visualization", "Pytorch", "TensorFlow", "Scikit-learn",
-    "NumPy", "Pandas", "Dask", "Seaborn", "Hugging Face", "DVC", "MLflow", "Streamlit", "AWS", "S3", "Sagemaker",
-    "IAM", "ECR", "Docker", "PySpark", "Git", "Dagshub", "Tableau", "Python", "C++", "Java", "SQL", "PostgreSQL",
-    "MongoDB", "Linux", "Bash", "Vim", "HTML", "CSS", "Javascript", "Node.js", "Django", "Flask", "REST"
+  "skillCategories": [
+    {
+      "title": "Machine Learning & AI",
+      "skills": [
+        { "name": "Machine Learning", "icon": "ri-brain-line" },
+        { "name": "LLM", "icon": "ri-robot-line" },
+        { "name": "Generative AI", "icon": "ri-ai-generate" },
+        { "name": "Transformers", "icon": "ri-code-box-line" },
+        { "name": "NLP", "icon": "ri-chat-voice-line" },
+        { "name": "Computer Vision", "icon": "ri-eye-line" },
+        { "name": "MLOps", "icon": "ri-database-2-line" },
+        { "name": "A/B Testing", "icon": "ri-test-tube-line" }
+      ]
+    },
+    {
+      "title": "ML Frameworks & Libraries",
+      "skills": [
+        { "name": "PyTorch", "icon": "ri-fire-line" },
+        { "name": "TensorFlow", "icon": "ri-tensorflow-line" },
+        { "name": "Scikit-learn", "icon": "ri-database-line" },
+        { "name": "NumPy", "icon": "ri-numbers-line" },
+        { "name": "Pandas", "icon": "ri-table-line" },
+        { "name": "Dask", "icon": "ri-dashboard-3-line" },
+        { "name": "Seaborn", "icon": "ri-bar-chart-box-line" },
+        { "name": "Hugging Face", "icon": "ri-emotion-line" }
+      ]
+    },
+    {
+      "title": "MLOps & Cloud",
+      "skills": [
+        { "name": "DVC", "icon": "ri-git-branch-line" },
+        { "name": "MLflow", "icon": "ri-flow-chart" },
+        { "name": "Streamlit", "icon": "ri-window-line" },
+        { "name": "AWS", "icon": "ri-cloud-line" },
+        { "name": "S3", "icon": "ri-database-2-line" },
+        { "name": "Sagemaker", "icon": "ri-cloud-fill" },
+        { "name": "IAM", "icon": "ri-shield-keyhole-line" },
+        { "name": "Docker", "icon": "ri-docker-line" }
+      ]
+    },
+    {
+      "title": "Programming & Databases",
+      "skills": [
+        { "name": "Python", "icon": "ri-python-line" },
+        { "name": "C++", "icon": "ri-code-s-slash-line" },
+        { "name": "Java", "icon": "ri-code-box-line" },
+        { "name": "SQL", "icon": "ri-database-line" },
+        { "name": "PostgreSQL", "icon": "ri-database-2-line" },
+        { "name": "MongoDB", "icon": "ri-database-fill" }
+      ]
+    },
+    {
+      "title": "Web Development",
+      "skills": [
+        { "name": "HTML", "icon": "ri-html5-line" },
+        { "name": "CSS", "icon": "ri-css3-line" },
+        { "name": "Javascript", "icon": "ri-javascript-line" },
+        { "name": "Node.js", "icon": "ri-reactjs-line" },
+        { "name": "Django", "icon": "ri-django-line" },
+        { "name": "Flask", "icon": "ri-flask-line" },
+        { "name": "REST", "icon": "ri-server-line" }
+      ]
+    },
+    {
+      "title": "Tools & Others",
+      "skills": [
+        { "name": "Linux", "icon": "ri-terminal-box-line" },
+        { "name": "Bash", "icon": "ri-terminal-line" },
+        { "name": "Vim", "icon": "ri-code-line" },
+        { "name": "Git", "icon": "ri-git-merge-line" },
+        { "name": "Dagshub", "icon": "ri-git-repository-line" },
+        { "name": "Tableau", "icon": "ri-bar-chart-2-line" },
+        { "name": "PySpark", "icon": "ri-spark-line" }
+      ]
+    }
   ],
   "projects": [
     {
