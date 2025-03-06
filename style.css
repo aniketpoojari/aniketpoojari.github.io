@@ -367,6 +367,31 @@ body {
   object-fit: cover;
 }
 
+/* Adding styles for role/degree and company/institution text */
+.role, .degree {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.company strong, .institution strong {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.company ul, .institution ul {
+  margin-top: 10px;
+  list-style-position: inside;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.company ul li, .institution ul li {
+  margin-top: 5px;
+}
+
 .achievements-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
