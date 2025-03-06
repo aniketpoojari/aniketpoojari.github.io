@@ -10,6 +10,7 @@
   --card-bg: white;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --border-color: rgba(0, 0, 0, 0.1);
+  --text-muted: #666;
 }
 
 /* Dark Theme Colors */
@@ -23,6 +24,7 @@
   --card-bg: #2a2a3c;
   --shadow-color: rgba(0, 0, 0, 0.3);
   --border-color: rgba(255, 255, 255, 0.1);
+  --text-muted: #b0b0b0;
 }
 
 /* Reset and Base Styles */
@@ -338,7 +340,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 10%;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--card-bg);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -347,7 +349,7 @@ body {
 
 .navbar.scrolled {
   padding: 15px 10%;
-  background-color: rgba(255, 255, 255, 0.98);
+  background-color: var(--card-bg);
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
 }
 
@@ -535,7 +537,7 @@ body {
     left: 0;
     width: 100%;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--card-bg);
     padding: 1rem 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -906,7 +908,7 @@ body {
 #about p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #555;
+  color: var(--text-color);
   margin-bottom: 20px;
 }
 
@@ -1331,7 +1333,7 @@ body {
 
 .blog-card-content p {
   font-size: 0.95rem;
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 20px;
 }
@@ -1492,7 +1494,7 @@ body {
 }
 
 .duration {
-  color: #666;
+  color: var(--text-muted);
   font-size: 0.95rem;
   display: flex;
   align-items: center;
@@ -1515,7 +1517,7 @@ body {
   margin-bottom: 12px;
   padding-left: 25px;
   position: relative;
-  color: #555;
+  color: var(--text-color);
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -1610,7 +1612,7 @@ body {
 }
 
 .achievement p {
-  color: #555;
+  color: var(--text-color);
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -1693,4 +1695,48 @@ footer {
   color: var(--text-light);
   margin: 0 10px;
   font-size: 1.5rem;
+}
+
+/* Update text colors in various components */
+.company ul li, .institution ul li {
+  color: var(--text-color);
+}
+
+.blog-card-content p {
+  color: var(--text-muted);
+}
+
+.duration {
+  color: var(--text-muted);
+}
+
+.achievement p {
+  color: var(--text-color);
+}
+
+#about p {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .nav-links {
+  background-color: var(--card-bg);
+}
+
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+  background: var(--text-color);
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+  background: var(--background-light);
+}
+
+[data-theme="dark"] .nav-links a:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
