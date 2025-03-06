@@ -1006,14 +1006,14 @@ body {
 }
 
 #skills li {
-  background: white;
+  background: var(--card-bg);
   color: var(--text-color);
   padding: 8px 15px;
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px var(--shadow-color);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -1131,7 +1131,7 @@ body {
 }
 
 .card-front {
-  background-color: white;
+  background-color: var(--card-bg);
   display: flex;
   flex-direction: column;
 }
@@ -1147,7 +1147,7 @@ body {
   padding: 20px;
   font-size: 1.4rem;
   color: var(--text-color);
-  background: white;
+  background: var(--card-bg);
   margin: 0;
   flex-grow: 1;
   display: flex;
@@ -1265,9 +1265,9 @@ body {
 
 .blog-card {
   width: 340px;
-  background: white;
+  background: var(--card-bg);
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px var(--shadow-color);
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -1343,7 +1343,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding-top: 15px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--border-color);
 }
 
 .read-more {
@@ -1427,10 +1427,10 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 30px;
-  background-color: white;
+  background-color: var(--card-bg);
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px var(--shadow-color);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -1578,10 +1578,10 @@ body {
 }
 
 .achievement {
-  background-color: white;
+  background-color: var(--card-bg);
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px var(--shadow-color);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -1739,4 +1739,9 @@ footer {
 
 [data-theme="dark"] .nav-toggle:hover {
   background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .company img, 
+[data-theme="dark"] .institution img {
+  border-color: var(--card-bg);
 }
