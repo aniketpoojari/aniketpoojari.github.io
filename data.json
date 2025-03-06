@@ -52,10 +52,10 @@
   ],
   "blogs": [
     {
-      "title": "Understanding Diffusion Models",
-      "description": "A deep dive into diffusion models used in generative AI.",
-      "image": "https://miro.medium.com/v2/resize:fit:1200/1*no84Hvsekd6fSXeIKxAU2A.png",
-      "link": "https://medium.com/@aniketp2009/diffusion-models"
+      "title": "Let's build a Text Summarization GPT from Scratch with local + AWS Sagemaker Training Jobs Training and Deployment",
+      "description": "",
+      "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*4ZHxuTM30A8XNOrfLI2Dug.png",
+      "link": "https://medium.com/@aniketp2009/lets-build-a-text-summarization-gpt-from-scratch-with-local-aws-sagemaker-training-jobs-training-41f87af9b299"
     },
     {
       "title": "Optimizing LLMs for Performance",
