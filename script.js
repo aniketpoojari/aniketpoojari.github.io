@@ -23,13 +23,25 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(data => {
-            loadSkills(data.skillCategories);
-            loadProjects(data.projects);
-            loadBlogs(data.blogs);
-            loadExperience(data.experiences);
-            loadEducation(data.education);
-            loadAchievements(data.achievements);
-            loadTestimonials(data.testimonials);
+            console.log('Data loaded successfully:', data);
+            try {
+                loadSkills(data.skillCategories);
+                console.log('Skills loaded');
+                loadProjects(data.projects);
+                console.log('Projects loaded');
+                loadBlogs(data.blogs);
+                console.log('Blogs loaded');
+                loadExperience(data.experience);
+                console.log('Experience loaded');
+                loadEducation(data.education);
+                console.log('Education loaded');
+                loadAchievements(data.achievements);
+                console.log('Achievements loaded');
+                loadTestimonials(data.testimonials);
+                console.log('Testimonials loaded');
+            } catch (error) {
+                console.error('Error loading section:', error);
+            }
         })
         .catch(error => {
             console.error('Error loading data:', error);
