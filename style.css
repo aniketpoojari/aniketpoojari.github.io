@@ -266,28 +266,28 @@ body {
     position: relative;
   }
 
-  .hamburger,
-  .hamburger::before,
-  .hamburger::after {
+  .hamburger {
     width: 24px;
     height: 2px;
     background-color: var(--text-color);
-    transition: transform 0.3s ease;
-  }
-
-  .hamburger {
     position: relative;
+    transition: background-color 0.3s ease;
   }
 
   .hamburger::before,
   .hamburger::after {
     content: '';
     position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: transform 0.3s ease;
   }
 
   .hamburger::before { top: -8px; }
   .hamburger::after { bottom: -8px; }
 
+  /* Hamburger Animation */
   [aria-expanded="true"] .hamburger {
     background-color: transparent;
   }
@@ -302,28 +302,25 @@ body {
     bottom: 0;
   }
 
+  /* Mobile Menu Styles */
   .nav-links {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: var(--background);
+    background-color: var(--card-bg);
     padding: 80px 20px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.3s ease;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
     z-index: 1000;
-    pointer-events: none;
   }
 
   .nav-links.active {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
+    transform: translateX(0);
   }
 
   .nav-links li {
@@ -340,6 +337,24 @@ body {
     transform: translateY(0);
   }
 
+  /* Backdrop when menu is open */
+  body.menu-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  body.menu-open.active::before {
+    opacity: 1;
+  }
+
   .nav-links a {
     font-size: 1.2rem;
     padding: 10px 20px;
@@ -350,17 +365,6 @@ body {
 
   body.menu-open {
     overflow: hidden;
-  }
-
-  body.menu-open::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
   }
 }
 
