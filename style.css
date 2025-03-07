@@ -115,27 +115,18 @@ body {
   position: relative;
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0;
-  height: 2px;
-  background-color: var(--primary-color);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: var(--primary-color) !important;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
+.nav-links a:hover:not(.active) {
+  color: var(--primary-color);
 }
 
 .nav-links a.active {
-  color: var(--text-color);
+  color: var(--text-light);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.nav-links a.active:hover {
+  color: var(--text-light);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
 }
 
 @media (max-width: 768px) {
