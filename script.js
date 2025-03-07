@@ -229,7 +229,9 @@ function initMobileNav() {
     let isOpen = false;
 
     if (navToggle && navLinks) {
-        navToggle.addEventListener('click', () => {
+        // Toggle menu
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             isOpen = !isOpen;
             navLinks.classList.toggle('active');
             navToggle.setAttribute('aria-expanded', isOpen);
@@ -244,24 +246,39 @@ function initMobileNav() {
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (isOpen && !navbar.contains(e.target)) {
-                isOpen = false;
-                navLinks.classList.remove('active');
-                navToggle.setAttribute('aria-expanded', 'false');
-                navToggle.innerHTML = '<i class="ri-menu-line" aria-hidden="true"></i>';
-                document.body.style.overflow = '';
+                closeMenu();
             }
         });
 
         // Close menu when clicking on a link
         navLinks.addEventListener('click', (e) => {
             if (e.target.tagName === 'A') {
-                isOpen = false;
-                navLinks.classList.remove('active');
-                navToggle.setAttribute('aria-expanded', 'false');
-                navToggle.innerHTML = '<i class="ri-menu-line" aria-hidden="true"></i>';
-                document.body.style.overflow = '';
+                e.preventDefault();
+                const targetId = e.target.getAttribute('href');
+                closeMenu();
+                setTimeout(() => {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }, 300);
             }
         });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isOpen) {
+                closeMenu();
+            }
+        });
+
+        // Helper function to close menu
+        function closeMenu() {
+            isOpen = false;
+            navLinks.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.innerHTML = '<i class="ri-menu-line" aria-hidden="true"></i>';
+            document.body.style.overflow = '';
+        }
     }
 }
 
