@@ -128,12 +128,8 @@ body {
   transform: translateX(-50%);
 }
 
-.nav-links a:hover:not(.active) {
-  color: var(--primary-color);
-}
-
 .nav-links a:hover:not(.active)::after {
-  width: 100%;
+  width: 80%;
 }
 
 .nav-links a.active {
@@ -141,12 +137,12 @@ body {
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
 }
 
-.nav-links a.active:hover {
-  color: var(--text-light);
+.nav-links a.active::after {
+  background: var(--text-light);
 }
 
-.nav-links a.active::after {
-  display: none;
+.nav-links a.active:hover::after {
+  width: 80%;
 }
 
 @media (max-width: 768px) {
