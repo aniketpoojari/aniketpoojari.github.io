@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
 
     // Initialize theme from localStorage or system preference
-    initializeTheme();
+    initTheme();
 });
 
 // Skills Rendering Function
@@ -383,32 +383,32 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Theme Toggle with announcement
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    
+    document.documentElement.setAttribute('data-theme', theme);
+    updateThemeIcon(theme);
+}
+
+function updateThemeIcon(theme) {
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'light' ? 'ri-moon-line' : 'ri-sun-line';
+}
+
 themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
-    
-    // Update icon
-    const icon = themeToggle.querySelector('i');
-    icon.className = newTheme === 'light' ? 'ri-moon-line' : 'ri-sun-line';
+    updateThemeIcon(newTheme);
     
     // Announce theme change
     const message = `Theme switched to ${newTheme} mode`;
     announceToScreenReader(message);
 });
-
-// Initialize theme from localStorage or system preference
-function initializeTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-    
-    document.documentElement.setAttribute('data-theme', theme);
-    const icon = themeToggle.querySelector('i');
-    icon.className = theme === 'light' ? 'ri-moon-line' : 'ri-sun-line';
-}
 
 // Scroll to Top with announcement
 scrollTopButton.addEventListener('click', () => {
