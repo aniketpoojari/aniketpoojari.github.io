@@ -199,5 +199,28 @@
       "title": "IEEE Paper Publication",
       "description": "Led the development of a computer vision interface enabling control via hand gestures and voice using TensorFlow and OpenCV, improving user interaction by 40%, resulting in an IEEE paper publication in March 2019."
     }
+  ],
+  "testimonials": [
+    {
+      "name": "Dr. Jane Smith",
+      "role": "Professor, Computer Science",
+      "company": "Oregon State University",
+      "image": "https://randomuser.me/api/portraits/women/42.jpg",
+      "text": "Aniket demonstrates exceptional skill in machine learning implementation. His ability to translate complex algorithms into practical applications is remarkable. He was one of my top students and continues to impress with his innovative approaches to AI challenges."
+    },
+    {
+      "name": "Michael Torres",
+      "role": "Senior Data Scientist",
+      "company": "Dolat Capital",
+      "image": "https://randomuser.me/api/portraits/men/32.jpg",
+      "text": "Working with Aniket was a true pleasure. His deep understanding of machine learning pipelines and attention to detail significantly improved our trading models. He's not only technically proficient but also a great team player who communicates complex ideas clearly."
+    },
+    {
+      "name": "Priya Mehta",
+      "role": "Lead Developer",
+      "company": "COCO by DHFL",
+      "image": "https://randomuser.me/api/portraits/women/65.jpg",
+      "text": "During his internship, Aniket demonstrated an impressive grasp of AI concepts and their practical applications. His car damage detection model was a game-changer for our insurance verification process. His work ethic and innovative thinking set him apart."
+    }
   ]
 }
