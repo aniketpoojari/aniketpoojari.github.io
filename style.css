@@ -327,16 +327,18 @@ body {
     transform: translateX(100%);
     opacity: 0;
     visibility: hidden;
-    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
     z-index: 1000;
     overflow-y: auto;
     box-shadow: -5px 0 20px var(--shadow-color);
+    border-left: 1px solid var(--border-color);
   }
 
   .nav-links.active {
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0s;
   }
 
   .nav-links li {
@@ -361,11 +363,6 @@ body {
 
 /* Mobile Navigation Enhancements */
 @supports (backdrop-filter: blur(10px)) {
-  .nav-links {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-  
   @media (max-width: 768px) {
     .nav-links {
       backdrop-filter: blur(10px);
