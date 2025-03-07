@@ -146,7 +146,7 @@ body {
   padding: 0.5rem;
   border-radius: 8px;
   position: relative;
-  z-index: 1001;
+  z-index: 1002;
 }
 
 .logo:hover {
@@ -269,8 +269,9 @@ body {
     border: none;
     padding: 0.5rem;
     cursor: pointer;
-    z-index: 1001;
+    z-index: 1002;
     position: relative;
+    margin-left: auto;
   }
 
   .hamburger {
@@ -307,21 +308,22 @@ body {
   .nav-links {
     position: fixed;
     top: var(--header-height);
-    left: 0;
-    width: 100%;
+    right: 0;
+    width: 80%;
     height: calc(100vh - var(--header-height));
     background-color: var(--card-bg);
     padding: 20px;
     flex-direction: column;
     align-items: center;
-    transform: translateX(-100%);
+    transform: translateX(100%);
     opacity: 0;
     visibility: hidden;
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
     z-index: 1000;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    border-left: 1px solid rgba(var(--border-color-rgb), 0.1);
   }
 
   .nav-links.active {
@@ -389,8 +391,13 @@ body {
   }
 }
 
-/* Make sure backdrop-filter works properly in mobile */
+/* Mobile Navigation Enhancements */
 @supports (backdrop-filter: blur(10px)) {
+  .nav-links {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
   @media (max-width: 768px) {
     .nav-links {
       backdrop-filter: blur(10px);
@@ -644,15 +651,6 @@ select:focus {
 [role="button"],
 button {
   cursor: pointer;
-}
-
-/* Mobile Navigation Enhancements */
-@supports (backdrop-filter: blur(10px)) {
-  .nav-links {
-    position: absolute;
-    backdrop-filter: none;
-    background-color: transparent;
-  }
 }
 
 /* Hero Section */
