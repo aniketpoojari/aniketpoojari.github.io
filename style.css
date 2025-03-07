@@ -111,7 +111,7 @@ body {
   font-weight: 500;
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
 }
 
@@ -119,7 +119,7 @@ body {
   content: '';
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -2px;
   width: 0;
   height: 2px;
   background-color: var(--primary-color);
@@ -127,7 +127,7 @@ body {
 }
 
 .nav-links a:hover {
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
 }
 
 .nav-links a:hover::after {
@@ -135,24 +135,21 @@ body {
 }
 
 .nav-links a.active {
-  color: var(--text-light);
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-}
-
-.nav-links a.active:hover {
-  color: var(--text-light);
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-color);
 }
 
 @media (max-width: 768px) {
-  .nav-links a:hover {
-    color: var(--primary-color);
+  .nav-links a {
+    width: 100%;
+    text-align: center;
   }
 
-  .nav-links a.active,
-  .nav-links a.active:hover {
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    color: var(--text-light);
+  .nav-links a::after {
+    bottom: 0;
+  }
+
+  .nav-links a:hover {
+    color: var(--primary-color) !important;
   }
 }
 
