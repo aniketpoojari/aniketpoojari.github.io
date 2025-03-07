@@ -490,52 +490,52 @@ function initMobileNav() {
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     let isOpen = false;
-
+  
     if (!navToggle || !navLinks) return;
-
+  
     // Function to toggle the menu
     function toggleMenu(shouldOpen) {
-        isOpen = shouldOpen;
-        navToggle.setAttribute('aria-expanded', String(isOpen));
-        navLinks.classList.toggle('active', isOpen);
-        document.body.classList.toggle('menu-open', isOpen);
-        
-        // Delay the focus management to ensure the menu is visible
-        if (isOpen) {
-            setTimeout(() => {
-                const firstLink = navLinks.querySelector('a');
-                if (firstLink) firstLink.focus();
-            }, 300);
-        }
+      isOpen = shouldOpen;
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navLinks.classList.toggle('active', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
+      
+      // Delay the focus management to ensure the menu is visible
+      if (isOpen) {
+        setTimeout(() => {
+          const firstLink = navLinks.querySelector('a');
+          if (firstLink) firstLink.focus();
+        }, 300);
+      }
     }
-
+  
     // Toggle menu on button click
     navToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        toggleMenu(!isOpen);
+      e.preventDefault();
+      toggleMenu(!isOpen);
     });
-
+  
     // Close menu when clicking outside of the navigation
     document.addEventListener('click', (e) => {
-        if (isOpen && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
-            toggleMenu(false);
-        }
+      if (isOpen && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+        toggleMenu(false);
+      }
     });
-
+  
     // Close menu when a link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            toggleMenu(false);
-        });
+      link.addEventListener('click', () => {
+        toggleMenu(false);
+      });
     });
-
+  
     // Close menu when the Escape key is pressed
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isOpen) {
-            toggleMenu(false);
-        }
+      if (e.key === 'Escape' && isOpen) {
+        toggleMenu(false);
+      }
     });
-}
+  }
 
 // Initialize mobile navigation when DOM is loaded
 document.addEventListener('DOMContentLoaded', initMobileNav);
