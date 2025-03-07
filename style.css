@@ -298,7 +298,8 @@ body {
     padding: 80px 20px 20px;
     flex-direction: column;
     align-items: center;
-    transform: translateX(-100%);
+    /* transform: translateX(-100%); */
+    transform: translateX(0);
     opacity: 0;
     visibility: visible;
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
