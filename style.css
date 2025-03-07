@@ -243,7 +243,7 @@ body {
     flex-direction: column;
     background-color: var(--card-bg);
     padding: 2rem;
-    transition: all 0.3s ease;
+    transition: right 0.3s ease;
     z-index: 1000;
     box-shadow: -5px 0 15px var(--shadow-color);
     overflow-y: auto;
@@ -261,6 +261,14 @@ body {
   
   .nav-links li {
     margin: 1rem 0;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .nav-links a {
@@ -268,7 +276,7 @@ body {
     justify-content: center;
     padding: 1rem 2rem;
     width: 100%;
-    border-radius: 0;
+    border-radius: 8px;
     font-size: 1.1rem;
   }
 
@@ -277,7 +285,7 @@ body {
   }
 
   .nav-links a.active {
-    border-radius: 0;
+    border-radius: 8px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   }
 
@@ -2244,7 +2252,7 @@ footer {
     flex-direction: column;
     background-color: var(--card-bg);
     padding: 2rem;
-    transition: all 0.3s ease;
+    transition: right 0.3s ease;
     z-index: 1000;
     box-shadow: -5px 0 15px var(--shadow-color);
     overflow-y: auto;
@@ -2256,6 +2264,14 @@ footer {
   
   .nav-links li {
     margin: 1rem 0;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 

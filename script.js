@@ -547,69 +547,69 @@ function initMobileNav() {
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     const navbar = document.querySelector('.navbar');
+    
+    if (!navToggle || !navLinks) {
+        console.error('Navigation elements not found');
+        return;
+    }
+    
     let isOpen = false;
 
-    if (!navToggle || !navLinks || !navbar) return;
-
-    // Add scroll effect for navbar
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
     // Toggle menu
-    navToggle.addEventListener('click', (e) => {
+    navToggle.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
+        
         isOpen = !isOpen;
         navLinks.classList.toggle('active');
         navToggle.setAttribute('aria-expanded', isOpen);
+        
+        // Update icon
         navToggle.innerHTML = isOpen ? 
             '<i class="ri-close-line" aria-hidden="true"></i>' : 
             '<i class="ri-menu-line" aria-hidden="true"></i>';
         
         // Prevent body scroll when menu is open
         document.body.style.overflow = isOpen ? 'hidden' : '';
+        
+        console.log('Menu toggled:', isOpen ? 'open' : 'closed');
     });
 
     // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', function(e) {
         if (isOpen && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
             closeMenu();
         }
     });
 
     // Close menu when clicking on a link
-    navLinks.addEventListener('click', (e) => {
+    navLinks.addEventListener('click', function(e) {
         if (e.target.tagName === 'A') {
-            e.preventDefault();
-            const targetId = e.target.getAttribute('href');
             closeMenu();
             
-            // Smooth scroll to target
-            if (targetId && targetId !== '#') {
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    setTimeout(() => {
-                        const headerOffset = navbar.offsetHeight;
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
+            // Handle smooth scrolling separately
+            const targetId = e.target.getAttribute('href');
+            if (targetId && targetId.startsWith('#') && targetId !== '#') {
+                e.preventDefault();
+                
+                setTimeout(() => {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = navbar ? navbar.offsetHeight : 0;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
                         window.scrollTo({
-                            top: offsetPosition,
+                            top: targetPosition,
                             behavior: 'smooth'
                         });
-                    }, 300);
-                }
+                    }
+                }, 300);
             }
         }
     });
 
     // Close menu on escape key
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && isOpen) {
             closeMenu();
         }
@@ -661,20 +661,6 @@ function trapFocus(element) {
     });
 }
 
-// Navigation Toggle
-navToggle.addEventListener('click', () => {
-    const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', !isExpanded);
-    navLinks.classList.toggle('active');
-});
-
-// Apply focus trap to navigation when active
-navLinks.addEventListener('transitionend', () => {
-    if (navLinks.classList.contains('active')) {
-        trapFocus(navLinks);
-    }
-});
-
 // Keyboard Navigation
 document.addEventListener('keydown', (e) => {
     // Escape key closes navigation menu
@@ -714,6 +700,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             announceToScreenReader(`Navigated to ${targetId} section`);
             target.setAttribute('tabindex', '-1');
             target.focus({ preventScroll: true });
+        }
+    });
+});
+
+// Make sure to initialize the mobile navigation when the DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Initializing mobile navigation');
+    initMobileNav();
+    
+    // Apply focus trap to navigation when active
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.addEventListener('transitionend', () => {
+        if (navLinks.classList.contains('active')) {
+            trapFocus(navLinks);
         }
     });
 });
