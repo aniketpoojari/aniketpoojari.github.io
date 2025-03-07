@@ -511,8 +511,44 @@ button {
 /* Mobile Navigation Enhancements */
 @supports (backdrop-filter: blur(10px)) {
   .nav-links {
-    backdrop-filter: blur(10px);
-    background-color: rgba(var(--card-bg-rgb), 0.8);
+    backdrop-filter: none;
+    background-color: transparent;
+  }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: var(--header-height);
+    right: -100%;
+    width: 80%;
+    height: calc(100vh - var(--header-height));
+    flex-direction: column;
+    background-color: rgba(var(--card-bg-rgb), 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 2rem;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    box-shadow: -5px 0 15px var(--shadow-color);
+    overflow-y: auto;
+  }
+  
+  .nav-links.active {
+    right: 0;
+  }
+  
+  .nav-links li {
+    margin: 1rem 0;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -1799,8 +1835,7 @@ footer {
                        calc(var(--cursor-y, 0) - var(--cursor-size)/2));
   transition: width var(--cursor-transition), 
               height var(--cursor-transition), 
-              background-color var(--cursor-transition),
-              opacity var(--cursor-transition);
+              background-color var(--cursor-transition);
   backdrop-filter: blur(2px);
 }
 
