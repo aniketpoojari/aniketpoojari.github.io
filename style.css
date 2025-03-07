@@ -112,17 +112,13 @@ body {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 1000;
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   border-bottom: 1px solid rgba(var(--border-color-rgb), 0.1);
 }
 
 .navbar.scrolled {
   background-color: rgba(var(--card-bg-rgb), 0.95);
   box-shadow: 0 4px 20px rgba(var(--shadow-color-rgb), 0.15);
-}
-
-.navbar.hidden {
-  transform: translateY(-100%);
 }
 
 .navbar-container {
