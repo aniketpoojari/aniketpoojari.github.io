@@ -189,6 +189,7 @@ body {
 }
 
 [data-theme="dark"] .nav-links {
+  background-color: rgba(42, 42, 60, 0.9);
   background-color: transparent;
 }
 
@@ -245,6 +246,7 @@ body {
   }
 
   [data-theme="dark"] .nav-links {
+    background-color: rgba(42, 42, 60, 0.9);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
