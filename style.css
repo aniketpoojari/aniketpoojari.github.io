@@ -223,13 +223,14 @@ body {
   z-index: 1001;
 }
 
+/* Base Hamburger Styles */
 .hamburger {
   width: 24px;
   height: 2px;
   background-color: var(--text-color);
   position: relative;
   transition: background-color 0.3s ease;
-  display: block;
+  display: none; /* Hidden by default */
 }
 
 .hamburger::before,
@@ -267,25 +268,8 @@ body {
   }
 
   .hamburger {
-    width: 24px;
-    height: 2px;
-    background-color: var(--text-color);
-    position: relative;
-    transition: background-color 0.3s ease;
+    display: block; /* Show on mobile */
   }
-
-  .hamburger::before,
-  .hamburger::after {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 2px;
-    background-color: var(--text-color);
-    transition: transform 0.3s ease;
-  }
-
-  .hamburger::before { top: -8px; }
-  .hamburger::after { bottom: -8px; }
 
   /* Hamburger Animation */
   [aria-expanded="true"] .hamburger {
@@ -373,12 +357,26 @@ body {
   .navbar {
     background-color: var(--card-bg);
     box-shadow: 0 2px 10px var(--shadow-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
   }
 
   /* Adjust logo visibility */
   .logo {
     z-index: 1001;
     position: relative;
+  }
+
+  /* Hide desktop nav items */
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
   }
 }
 
