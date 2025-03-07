@@ -213,6 +213,60 @@ body {
 
 /* Mobile Navigation */
 @media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color);
+    position: relative;
+    transition: background-color 0.3s ease;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: transform 0.3s ease;
+  }
+
+  .hamburger::before {
+    top: -8px;
+  }
+
+  .hamburger::after {
+    bottom: -8px;
+  }
+
+  [aria-expanded="true"] .hamburger {
+    background-color: transparent;
+  }
+
+  [aria-expanded="true"] .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  [aria-expanded="true"] .hamburger::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+  }
+
   .nav-links {
     position: fixed;
     top: 0;
@@ -260,17 +314,6 @@ body {
   .nav-links a.active {
     background-color: rgba(var(--primary-color-rgb), 0.1);
     color: var(--primary-color);
-  }
-
-  .nav-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    padding: 0.5rem;
-    margin-left: 0.5rem;
-    z-index: 1000;
   }
 
   /* Add backdrop overlay when menu is open */
@@ -2173,75 +2216,6 @@ footer {
   }
 }
 
-/* Hamburger Button */
-.nav-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  z-index: 1001;
-}
-
-.hamburger {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: var(--text-color);
-  position: relative;
-  transition: background-color 0.3s ease;
-}
-
-.hamburger::before,
-.hamburger::after {
-  content: '';
-  position: absolute;
-  width: 24px;
-  height: 2px;
-  background-color: var(--text-color);
-  transition: transform 0.3s ease;
-}
-
-.hamburger::before {
-  top: -8px;
-}
-
-.hamburger::after {
-  bottom: -8px;
-}
-
-[aria-expanded="true"] .hamburger {
-  background-color: transparent;
-}
-
-[aria-expanded="true"] .hamburger::before {
-  transform: rotate(45deg);
-  top: 0;
-}
-
-[aria-expanded="true"] .hamburger::after {
-  transform: rotate(-45deg);
-  bottom: 0;
-}
-
-/* Pull to Refresh Animation */
-@keyframes pullToRefresh {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(50px); }
-}
-
-/* Enhanced Link Styles */
-a {
-  text-decoration: none;
-  color: var(--primary-color);
-  transition: color 0.3s ease;
-  position: relative;
-}
-
-a:hover {
-  color: var(--link-hover-color);
-}
-
 /* Scroll to Top Button */
 .scroll-top {
   position: fixed;
@@ -2284,4 +2258,32 @@ a:hover {
   font-size: 1.2rem;
   color: var(--text-color);
   transition: all 0.3s ease;
+}
+
+/* Pull to Refresh Animation */
+@keyframes pullToRefresh {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(50px); }
+}
+
+/* Enhanced Link Styles */
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+/* Default Navigation Toggle State */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 1001;
 }
