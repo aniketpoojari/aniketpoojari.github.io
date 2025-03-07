@@ -494,12 +494,21 @@ function initMobileNav() {
     if (!navToggle || !navLinks) {
         console.error('Navigation elements not found');
         return;
+    } else {
+        console.log('Navigation elements found:', navToggle, navLinks);
     }
 
     function toggleMenu(shouldOpen) {
         isOpen = shouldOpen;
-        navLinks.classList.toggle('active', isOpen);
-        navToggle.setAttribute('aria-expanded', isOpen);
+        if (isOpen) {
+            navLinks.classList.add('active');
+            document.body.classList.add('menu-open');
+        } else {
+            navLinks.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+        console.log('Menu state changed:', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         document.body.classList.toggle('menu-open', isOpen);
     }
 
