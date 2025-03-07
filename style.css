@@ -112,24 +112,11 @@ body {
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  transition: all 0.3s ease;
-  position: relative;
+  transition: color 0.3s ease;
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--primary-color);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-
-.nav-links a:hover:not(.active)::after {
-  width: 80%;
+.nav-links a:hover:not(.active) {
+  color: var(--primary-color);
 }
 
 .nav-links a.active {
@@ -137,17 +124,14 @@ body {
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
 }
 
-.nav-links a.active::after {
-  background: var(--text-light);
-}
-
-.nav-links a.active:hover::after {
-  width: 80%;
+.nav-links a.active:hover {
+  color: var(--text-light);
 }
 
 @media (max-width: 768px) {
   .nav-links a:hover:not(.active) {
-    background: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+    background: none;
   }
 
   .nav-links a.active,
