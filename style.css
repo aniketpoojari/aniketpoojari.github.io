@@ -66,16 +66,33 @@ body {
 
 /* Navigation */
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: var(--card-bg);
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 10px var(--shadow-color);
   transition: background-color 0.3s ease;
 }
 
 .nav-links {
-  background-color: var(--card-bg);
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 }
 
 .nav-links a {
   color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
 }
 
 /* Text Colors */
@@ -89,13 +106,37 @@ p {
 
 /* Theme Toggle Button */
 .theme-toggle {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
   background: var(--card-bg);
-  color: var(--text-color);
   border: 1px solid var(--border-color);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px var(--shadow-color);
 }
 
 .theme-toggle i {
+  font-size: 1.2rem;
   color: var(--text-color);
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover i {
+  transform: rotate(360deg);
 }
 
 /* Enhanced Base Styles */
@@ -468,7 +509,7 @@ a:hover {
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 15px 5%;
+    padding: 1rem 5%;
   }
 
   .navbar .logo {
@@ -480,26 +521,20 @@ a:hover {
   }
 
   .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 70px;
     left: 0;
     width: 100%;
-    flex-direction: column;
     background-color: var(--card-bg);
     padding: 1rem 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    flex-direction: column;
     gap: 0;
-    transform: translateY(-10px);
-    opacity: 0;
-    transition: all 0.3s ease;
+    display: none;
+    box-shadow: 0 4px 10px var(--shadow-color);
   }
 
   .nav-links.active {
     display: flex;
-    transform: translateY(0);
-    opacity: 1;
   }
 
   .nav-links li {
@@ -537,6 +572,11 @@ a:hover {
   .nav-links a i {
     opacity: 1;
     transform: translateX(0);
+  }
+
+  .theme-toggle {
+    bottom: 20px;
+    right: 20px;
   }
 }
 

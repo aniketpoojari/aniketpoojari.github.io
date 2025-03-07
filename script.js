@@ -384,6 +384,15 @@ document.addEventListener('keydown', (e) => {
 
 // Theme initialization and toggle
 function initTheme() {
+    // Create theme toggle button if it doesn't exist
+    if (!document.querySelector('.theme-toggle')) {
+        const themeToggle = document.createElement('button');
+        themeToggle.className = 'theme-toggle';
+        themeToggle.setAttribute('aria-label', 'Toggle theme');
+        themeToggle.innerHTML = '<i class="ri-moon-line"></i>';
+        document.body.appendChild(themeToggle);
+    }
+
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const theme = savedTheme || (prefersDark ? 'dark' : 'light');
@@ -399,17 +408,22 @@ function initTheme() {
             updateThemeIcon(newTheme);
         }
     });
+
+    // Add click event listener to theme toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
 }
 
 function updateThemeIcon(theme) {
-    const icon = themeToggle.querySelector('i');
+    const icon = document.querySelector('.theme-toggle i');
     if (icon) {
         icon.className = theme === 'light' ? 'ri-moon-line' : 'ri-sun-line';
     }
 }
 
-// Theme toggle with improved handling
-themeToggle.addEventListener('click', () => {
+function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     
@@ -418,14 +432,9 @@ themeToggle.addEventListener('click', () => {
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme);
     
-    // Force a repaint to ensure all styles are updated
-    document.body.style.display = 'none';
-    document.body.offsetHeight; // Trigger a reflow
-    document.body.style.display = '';
-    
     // Announce theme change
     announceToScreenReader(`Theme switched to ${newTheme} mode`);
-});
+}
 
 // Scroll to Top with announcement
 scrollTopButton.addEventListener('click', () => {
