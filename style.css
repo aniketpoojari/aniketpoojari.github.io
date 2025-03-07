@@ -525,13 +525,13 @@ button {
     width: 80%;
     height: calc(100vh - var(--header-height));
     flex-direction: column;
-    background-color: rgba(var(--card-bg-rgb), 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     padding: 2rem;
     transition: right 0.3s ease;
     z-index: 1000;
-    box-shadow: -5px 0 15px var(--shadow-color);
+    box-shadow: none;
     overflow-y: auto;
   }
   
@@ -550,6 +550,15 @@ button {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+  background: transparent;
+}
+
+[data-theme="dark"] .nav-links a:hover {
+  background: transparent;
 }
 
 /* Pull to Refresh Animation */
@@ -1794,7 +1803,7 @@ footer {
 }
 
 [data-theme="dark"] .nav-links {
-  background-color: var(--card-bg);
+  background-color: transparent;
 }
 
 .nav-toggle span,
@@ -1805,11 +1814,11 @@ footer {
 
 .nav-links a:hover {
   color: var(--primary-color);
-  background: var(--background-light);
+  background: transparent;
 }
 
 [data-theme="dark"] .nav-links a:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: transparent;
 }
 
 [data-theme="dark"] .nav-toggle:hover {
@@ -2170,11 +2179,13 @@ footer {
     width: 80%;
     height: calc(100vh - var(--header-height));
     flex-direction: column;
-    background-color: var(--card-bg);
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     padding: 2rem;
     transition: right 0.3s ease;
     z-index: 1000;
-    box-shadow: -5px 0 15px var(--shadow-color);
+    box-shadow: none;
     overflow-y: auto;
   }
   
