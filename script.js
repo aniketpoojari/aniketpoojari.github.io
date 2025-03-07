@@ -1,8 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Initializing site...');
+    
+    // Initial loading
     initPageLoader();
+    
+    // Initialize navigation
     initMobileNav();
+    
+    // Initialize theme and animations
+    initTheme();
+    initCustomCursor();
+    initScrollAnimations();
+    initSmoothScroll();
+    initLazyLoading();
+    
+    // Initialize typing effect
+    initTypeWriter();
+    
+    // Load data content
     fetch('data.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok: ' + response.statusText);
+            }
+            return response.json();
+        })
         .then(data => {
             loadSkills(data.skillCategories);
             loadProjects(data.projects);
@@ -11,14 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
             loadEducation(data.education);
             loadAchievements(data.achievements);
             loadTestimonials(data.testimonials);
+            console.log('All data loaded successfully');
         })
-        .catch(error => console.error('Error loading data:', error));
-    initTypeWriter();
-    initScrollAnimations();
-    initSmoothScroll();
-    initCustomCursor();
-    initLazyLoading();
-    initTheme();
+        .catch(error => {
+            console.error('Error loading data:', error);
+            announceToScreenReader('Failed to load some content. Please try refreshing the page.');
+        });
 });
 
 function initPageLoader() {
@@ -447,6 +467,62 @@ function initMobileNav() {
     }
     
     let isOpen = false;
+    const navItems = document.querySelectorAll('.nav-item');
+    let lastScrollTop = 0;
+    
+    // Set active nav item based on current section
+    function setActiveNavItem() {
+        const sections = document.querySelectorAll('section[id], header[id]');
+        const scrollPosition = window.scrollY;
+        
+        // Get the height of the navbar for offset calculation
+        const navbarHeight = navbar.offsetHeight;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - navbarHeight - 20;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                // Remove active class from all nav items
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Add active class to the corresponding nav item
+                const activeNavItem = document.querySelector(`.nav-item[href="#${sectionId}"]`);
+                if (activeNavItem) {
+                    activeNavItem.classList.add('active');
+                }
+            }
+        });
+    }
+    
+    // Hide/show navbar based on scroll direction
+    function handleNavbarVisibility() {
+        const currentScrollTop = window.scrollY;
+        
+        // If we've scrolled down more than navbar height
+        if (currentScrollTop > navbar.offsetHeight) {
+            // Add scrolled class for styling
+            navbar.classList.add('scrolled');
+            
+            // Hide navbar when scrolling down, show when scrolling up
+            if (currentScrollTop > lastScrollTop && currentScrollTop > navbar.offsetHeight) {
+                // Scrolling down
+                navbar.classList.add('hidden');
+            } else {
+                // Scrolling up
+                navbar.classList.remove('hidden');
+            }
+        } else {
+            // At the top of the page
+            navbar.classList.remove('scrolled');
+            navbar.classList.remove('hidden');
+        }
+        
+        lastScrollTop = currentScrollTop;
+    }
 
     // Toggle menu
     navToggle.addEventListener('click', function(e) {
@@ -457,15 +533,19 @@ function initMobileNav() {
         navLinks.classList.toggle('active');
         navToggle.setAttribute('aria-expanded', isOpen);
         
-        // Update icon
-        navToggle.innerHTML = isOpen ? 
-            '<i class="ri-close-line" aria-hidden="true"></i>' : 
-            '<i class="ri-menu-line" aria-hidden="true"></i>';
-        
         // Prevent body scroll when menu is open
-        document.body.style.overflow = isOpen ? 'hidden' : '';
+        document.body.classList.toggle('menu-open', isOpen);
+        
+        // Announce to screen readers
+        const message = isOpen ? 'Menu opened' : 'Menu closed';
+        announceToScreenReader(message);
         
         console.log('Menu toggled:', isOpen ? 'open' : 'closed');
+        
+        // Apply focus trap if menu is open
+        if (isOpen) {
+            trapFocus(navLinks);
+        }
     });
 
     // Close menu when clicking outside
@@ -495,6 +575,13 @@ function initMobileNav() {
                             top: targetPosition,
                             behavior: 'smooth'
                         });
+                        
+                        // Update URL without page jump
+                        history.pushState(null, null, targetId);
+                        
+                        // Set focus to the target element
+                        targetElement.setAttribute('tabindex', '-1');
+                        targetElement.focus({ preventScroll: true });
                     }
                 }, 300);
             }
@@ -513,9 +600,25 @@ function initMobileNav() {
         isOpen = false;
         navLinks.classList.remove('active');
         navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.innerHTML = '<i class="ri-menu-line" aria-hidden="true"></i>';
-        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
     }
+    
+    // Add event listeners for scroll effects
+    window.addEventListener('scroll', function() {
+        handleNavbarVisibility();
+        setActiveNavItem();
+    });
+    
+    // Initialize active nav item on page load
+    setActiveNavItem();
+    
+    // Set nav links to active when clicked
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            navItems.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
 }
 
 // Screen reader announcements
@@ -534,20 +637,43 @@ function trapFocus(element) {
     const focusableElements = element.querySelectorAll(
         'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
     );
+    
+    if (focusableElements.length === 0) return;
+    
     const firstFocusableElement = focusableElements[0];
     const lastFocusableElement = focusableElements[focusableElements.length - 1];
+    
+    // Store the element that had focus before the menu was opened
+    const previouslyFocused = document.activeElement;
 
-    element.addEventListener('keydown', (e) => {
+    // Set focus to the first focusable element within the trap
+    setTimeout(() => {
+        firstFocusableElement.focus();
+    }, 100);
+
+    element.addEventListener('keydown', function(e) {
         if (e.key === 'Tab') {
-            if (e.shiftKey) {
-                if (document.activeElement === firstFocusableElement) {
-                    lastFocusableElement.focus();
-                    e.preventDefault();
-                }
-            } else {
-                if (document.activeElement === lastFocusableElement) {
-                    firstFocusableElement.focus();
-                    e.preventDefault();
+            // If shift + tab and focus is on first element, move to last element
+            if (e.shiftKey && document.activeElement === firstFocusableElement) {
+                e.preventDefault();
+                lastFocusableElement.focus();
+            }
+            // If tab and focus is on last element, move to first element
+            else if (!e.shiftKey && document.activeElement === lastFocusableElement) {
+                e.preventDefault();
+                firstFocusableElement.focus();
+            }
+        } else if (e.key === 'Escape') {
+            // Close the menu and restore focus
+            const navToggle = document.querySelector('.nav-toggle');
+            if (navToggle) {
+                navToggle.click();
+                
+                // Restore focus to the element that was focused before the menu was opened
+                if (previouslyFocused) {
+                    setTimeout(() => {
+                        previouslyFocused.focus();
+                    }, 100);
                 }
             }
         }
@@ -555,19 +681,30 @@ function trapFocus(element) {
 }
 
 // Keyboard Navigation
-document.addEventListener('keydown', (e) => {
+document.addEventListener('keydown', function(e) {
     // Escape key closes navigation menu
-    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
-    }
-    
-    // Skip to main content with Ctrl + /
-    if (e.key === '/' && e.ctrlKey) {
-        e.preventDefault();
-        document.querySelector('main').focus();
+    if (e.key === 'Escape') {
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            const navToggle = document.querySelector('.nav-toggle');
+            if (navToggle) {
+                navToggle.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('menu-open');
+            }
+        }
     }
 });
+
+// Add focus trap to the navigation when active
+const navLinks = document.querySelector('.nav-links');
+if (navLinks) {
+    navLinks.addEventListener('transitionend', () => {
+        if (navLinks.classList.contains('active')) {
+            trapFocus(navLinks);
+        }
+    });
+}
 
 // Scroll to Top with announcement
 scrollTopButton.addEventListener('click', () => {
@@ -593,20 +730,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             announceToScreenReader(`Navigated to ${targetId} section`);
             target.setAttribute('tabindex', '-1');
             target.focus({ preventScroll: true });
-        }
-    });
-});
-
-// Make sure to initialize the mobile navigation when the DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Initializing mobile navigation');
-    initMobileNav();
-    
-    // Apply focus trap to navigation when active
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.addEventListener('transitionend', () => {
-        if (navLinks.classList.contains('active')) {
-            trapFocus(navLinks);
         }
     });
 });
