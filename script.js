@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initSmoothScroll();
     initContactForm();
+
+    // Initialize theme from localStorage or system preference
+    initializeTheme();
 });
 
 // Skills Rendering Function
@@ -381,12 +384,31 @@ document.addEventListener('keydown', (e) => {
 
 // Theme Toggle with announcement
 themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-    const isDark = document.body.classList.contains('dark-theme');
-    const message = `Theme switched to ${isDark ? 'dark' : 'light'} mode`;
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Update icon
+    const icon = themeToggle.querySelector('i');
+    icon.className = newTheme === 'light' ? 'ri-moon-line' : 'ri-sun-line';
+    
+    // Announce theme change
+    const message = `Theme switched to ${newTheme} mode`;
     announceToScreenReader(message);
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
+
+// Initialize theme from localStorage or system preference
+function initializeTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    
+    document.documentElement.setAttribute('data-theme', theme);
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'light' ? 'ri-moon-line' : 'ri-sun-line';
+}
 
 // Scroll to Top with announcement
 scrollTopButton.addEventListener('click', () => {

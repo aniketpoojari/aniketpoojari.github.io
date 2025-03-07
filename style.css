@@ -309,21 +309,28 @@ a:hover {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(20px);
+  box-shadow: 0 4px 15px var(--shadow-color);
   transition: all 0.3s ease;
 }
 
 .scroll-top.show {
   opacity: 1;
   visibility: visible;
+  transform: translateY(0);
 }
 
 .scroll-top:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px var(--shadow-color);
+  background: var(--primary-color);
+}
+
+.scroll-top:hover i {
+  color: white;
 }
 
 .scroll-top i {
@@ -332,7 +339,7 @@ a:hover {
   transition: all 0.3s ease;
 }
 
-/* Theme Toggle */
+/* Theme Toggle Button */
 .theme-toggle {
   position: fixed;
   bottom: 80px;
@@ -346,20 +353,49 @@ a:hover {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 100;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  box-shadow: 0 4px 15px var(--shadow-color);
   transition: all 0.3s ease;
 }
 
 .theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px var(--shadow-color);
+  background: var(--primary-color);
+}
+
+.theme-toggle:hover i {
+  color: white;
 }
 
 .theme-toggle i {
   font-size: 1.2rem;
   color: var(--text-color);
   transition: all 0.3s ease;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .scroll-top,
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .scroll-top {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .theme-toggle {
+    bottom: 80px;
+    right: 20px;
+  }
+
+  .scroll-top i,
+  .theme-toggle i {
+    font-size: 1rem;
+  }
 }
 
 /* Page Loader */
@@ -543,28 +579,6 @@ a:hover {
   to {
     opacity: 1;
     transform: translateX(0);
-  }
-}
-
-/* Responsive Design Updates */
-@media (max-width: 768px) {
-  .scroll-top, .theme-toggle {
-    width: 40px;
-    height: 40px;
-  }
-
-  .scroll-top {
-    bottom: 20px;
-    right: 20px;
-  }
-
-  .theme-toggle {
-    top: 80px;
-    right: 20px;
-  }
-
-  .custom-cursor {
-    display: none;
   }
 }
 
