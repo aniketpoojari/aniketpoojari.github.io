@@ -2,13 +2,17 @@
 :root {
   /* Light Theme Colors */
   --primary-color: #3498db;
+  --primary-color-rgb: 52, 152, 219;
   --secondary-color: #2ecc71;
   --background: #f4f4f6;
   --text-color: #333;
   --text-light: #f4f4f4;
   --card-bg: white;
+  --card-bg-rgb: 255, 255, 255;
   --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-color-rgb: 0, 0, 0;
   --border-color: rgba(0, 0, 0, 0.1);
+  --border-color-rgb: 0, 0, 0;
   --text-muted: #666;
   --background-gradient: linear-gradient(135deg, rgba(52, 152, 219, 0.05), rgba(46, 204, 113, 0.05));
   --header-height: 60px;
@@ -46,6 +50,7 @@
 /* Dark Theme Colors */
 [data-theme="dark"] {
   --primary-color: #64b5f6;
+  --primary-color-rgb: 100, 181, 246;
   --secondary-color: #81c784;
   --background: #1a1a2e;
   --text-color: #f4f4f4;
@@ -140,6 +145,8 @@ body {
   transition: color 0.3s ease, transform 0.3s ease;
   padding: 0.5rem;
   border-radius: 8px;
+  position: relative;
+  z-index: 1001;
 }
 
 .logo:hover {
@@ -291,32 +298,34 @@ body {
   }
 
   .navbar {
-    position: relative;
+    position: fixed;
     background-color: var(--card-bg);
     box-shadow: 0 2px 10px var(--shadow-color);
   }
 
   /* Mobile Menu Styles */
   .nav-links {
-    position: absolute;
+    position: fixed;
     top: var(--header-height);
     left: 0;
     width: 100%;
     height: calc(100vh - var(--header-height));
     background-color: var(--card-bg);
+    padding: 20px;
     flex-direction: column;
     align-items: center;
     transform: translateX(-100%);
     opacity: 0;
     visibility: hidden;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);    
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
   .nav-links.active {
-    position: absolute;
+    position: fixed;
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
@@ -350,10 +359,12 @@ body {
     transition: opacity 0.3s ease;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    pointer-events: none;
   }
 
   body.menu-open.active::before {
     opacity: 1;
+    pointer-events: auto;
   }
 
   .nav-links a {
@@ -373,6 +384,8 @@ body {
 
   body.menu-open {
     overflow: hidden;
+    position: fixed;
+    width: 100%;
   }
 }
 
@@ -1799,20 +1812,19 @@ footer {
 }
 
 [data-theme="dark"] .nav-links {
-  background-color: transparent;
+  background-color: var(--card-bg);
 }
 
 .nav-links a:hover {
   color: var(--primary-color);
-  background: transparent;
 }
 
 [data-theme="dark"] .nav-links a:hover {
-  background: transparent;
+  color: var(--primary-color);
 }
 
 [data-theme="dark"] .nav-toggle:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 [data-theme="dark"] .company img, 

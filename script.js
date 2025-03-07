@@ -489,7 +489,9 @@ function initTypeWriter() {
 function initMobileNav() {
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
     let isOpen = false;
+    let scrollPosition = 0;
   
     if (!navToggle || !navLinks) return;
   
@@ -497,15 +499,49 @@ function initMobileNav() {
     function toggleMenu(shouldOpen) {
       isOpen = shouldOpen;
       navToggle.setAttribute('aria-expanded', String(isOpen));
-      navLinks.classList.toggle('active', isOpen);
-      document.body.classList.toggle('menu-open', isOpen);
       
-      // Delay the focus management to ensure the menu is visible
       if (isOpen) {
+        // Store current scroll position before locking
+        scrollPosition = window.pageYOffset;
+        
+        // Add active class to show menu
+        navLinks.classList.add('active');
+        document.body.classList.add('menu-open');
+        
+        // Add active class to body for backdrop
+        setTimeout(() => {
+          document.body.classList.add('active');
+        }, 10);
+        
+        // Delay the focus management to ensure the menu is visible
         setTimeout(() => {
           const firstLink = navLinks.querySelector('a');
           if (firstLink) firstLink.focus();
+          
+          // Enable focus trap
+          trapFocus(navLinks);
         }, 300);
+        
+        // Announce to screen readers
+        announceToScreenReader('Mobile menu opened');
+      } else {
+        // Remove active classes
+        navLinks.classList.remove('active');
+        document.body.classList.remove('active');
+        
+        // Delay removing menu-open class to allow for transition
+        setTimeout(() => {
+          document.body.classList.remove('menu-open');
+          
+          // Restore scroll position
+          window.scrollTo(0, scrollPosition);
+        }, 300);
+        
+        // Return focus to toggle button
+        navToggle.focus();
+        
+        // Announce to screen readers
+        announceToScreenReader('Mobile menu closed');
       }
     }
   
@@ -523,7 +559,7 @@ function initMobileNav() {
     });
   
     // Close menu when a link is clicked
-    navLinks.querySelectorAll('a').forEach(link => {
+    navItems.forEach(link => {
       link.addEventListener('click', () => {
         toggleMenu(false);
       });
@@ -535,7 +571,14 @@ function initMobileNav() {
         toggleMenu(false);
       }
     });
-  }
+    
+    // Handle resize events
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && isOpen) {
+        toggleMenu(false);
+      }
+    });
+}
 
 // Initialize mobile navigation when DOM is loaded
 document.addEventListener('DOMContentLoaded', initMobileNav);
