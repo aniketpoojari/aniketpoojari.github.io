@@ -493,48 +493,51 @@ function initMobileNav() {
 
     if (!navToggle || !navLinks) return;
 
+    // Function to toggle the menu
     function toggleMenu(shouldOpen) {
         isOpen = shouldOpen;
         navToggle.setAttribute('aria-expanded', String(isOpen));
-        navLinks.classList.toggle('active', isOpen);
-        document.body.classList.toggle('menu-open', isOpen);
-        document.body.classList.toggle('active', isOpen);
+        navLinks.classList.toggle('active', isOpen); // Toggles visibility of nav links
+        document.body.classList.toggle('menu-open', isOpen); // Toggles the backdrop and body scroll lock
+        document.body.classList.toggle('active', isOpen); // Optional - If you want additional styling on body
         
         // Delay the focus management to ensure the menu is visible
         if (isOpen) {
             setTimeout(() => {
                 const firstLink = navLinks.querySelector('a');
-                if (firstLink) firstLink.focus();
-            }, 300);
+                if (firstLink) firstLink.focus(); // Focus the first link when the menu is open
+            }, 300); // Adjust timing as necessary for smooth appearance
         }
     }
 
+    // Toggle menu on button click
     navToggle.addEventListener('click', (e) => {
         e.preventDefault();
-        toggleMenu(!isOpen);
+        toggleMenu(!isOpen); // Toggle the menu on each click
     });
 
-    // Close menu when clicking outside
+    // Close menu when clicking outside of the navigation
     document.addEventListener('click', (e) => {
         if (isOpen && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
-            toggleMenu(false);
+            toggleMenu(false); // Close the menu if clicked outside
         }
     });
 
-    // Close menu when clicking a link
+    // Close menu when a link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            toggleMenu(false);
+            toggleMenu(false); // Close the menu on link click
         });
     });
 
-    // Close menu on escape key
+    // Close menu when the Escape key is pressed
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && isOpen) {
-            toggleMenu(false);
+            toggleMenu(false); // Close the menu when Escape is pressed
         }
     });
 }
+
 
 // Initialize mobile navigation when DOM is loaded
 document.addEventListener('DOMContentLoaded', initMobileNav);
