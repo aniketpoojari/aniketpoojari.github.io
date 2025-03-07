@@ -549,6 +549,8 @@ function initMobileNav() {
     const navbar = document.querySelector('.navbar');
     let isOpen = false;
 
+    if (!navToggle || !navLinks || !navbar) return;
+
     // Add scroll effect for navbar
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
@@ -558,79 +560,68 @@ function initMobileNav() {
         }
     });
 
-    // Add active link highlighting
-    const sections = document.querySelectorAll('section');
-    const navItems = document.querySelectorAll('.nav-links a');
-
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - sectionHeight / 3)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href').slice(1) === current) {
-                item.classList.add('active');
-            }
-        });
+    // Toggle menu
+    navToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        isOpen = !isOpen;
+        navLinks.classList.toggle('active');
+        navToggle.setAttribute('aria-expanded', isOpen);
+        navToggle.innerHTML = isOpen ? 
+            '<i class="ri-close-line" aria-hidden="true"></i>' : 
+            '<i class="ri-menu-line" aria-hidden="true"></i>';
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    if (navToggle && navLinks) {
-        // Toggle menu
-        navToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            isOpen = !isOpen;
-            navLinks.classList.toggle('active');
-            navToggle.setAttribute('aria-expanded', isOpen);
-            navToggle.innerHTML = isOpen ? 
-                '<i class="ri-close-line" aria-hidden="true"></i>' : 
-                '<i class="ri-menu-line" aria-hidden="true"></i>';
-            
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (isOpen && !navbar.contains(e.target)) {
-                closeMenu();
-            }
-        });
-
-        // Close menu when clicking on a link
-        navLinks.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') {
-                e.preventDefault();
-                const targetId = e.target.getAttribute('href');
-                closeMenu();
-                setTimeout(() => {
-                    document.querySelector(targetId).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }, 300);
-            }
-        });
-
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && isOpen) {
-                closeMenu();
-            }
-        });
-
-        // Helper function to close menu
-        function closeMenu() {
-            isOpen = false;
-            navLinks.classList.remove('active');
-            navToggle.setAttribute('aria-expanded', 'false');
-            navToggle.innerHTML = '<i class="ri-menu-line" aria-hidden="true"></i>';
-            document.body.style.overflow = '';
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (isOpen && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+            closeMenu();
         }
+    });
+
+    // Close menu when clicking on a link
+    navLinks.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            e.preventDefault();
+            const targetId = e.target.getAttribute('href');
+            closeMenu();
+            
+            // Smooth scroll to target
+            if (targetId && targetId !== '#') {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    setTimeout(() => {
+                        const headerOffset = navbar.offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 300);
+                }
+            }
+        }
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen) {
+            closeMenu();
+        }
+    });
+
+    // Helper function to close menu
+    function closeMenu() {
+        isOpen = false;
+        navLinks.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.innerHTML = '<i class="ri-menu-line" aria-hidden="true"></i>';
+        document.body.style.overflow = '';
     }
 }
 

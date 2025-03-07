@@ -11,6 +11,7 @@
   --border-color: rgba(0, 0, 0, 0.1);
   --text-muted: #666;
   --background-gradient: linear-gradient(135deg, rgba(52, 152, 219, 0.05), rgba(46, 204, 113, 0.05));
+  --header-height: 60px;
   
   /* New Variables */
   --card-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
@@ -223,26 +224,29 @@ body {
 @media (max-width: 768px) {
   .navbar {
     padding: 0.8rem 1.2rem;
+    height: var(--header-height);
   }
 
   .nav-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1001;
   }
 
   .nav-links {
     position: fixed;
-    top: var(--header-height, 60px);
+    top: var(--header-height);
     right: -100%;
     width: 80%;
-    height: calc(100vh - var(--header-height, 60px));
+    height: calc(100vh - var(--header-height));
     flex-direction: column;
     background-color: var(--card-bg);
     padding: 2rem;
-    transition: right 0.3s ease;
+    transition: all 0.3s ease;
     z-index: 1000;
     box-shadow: -5px 0 15px var(--shadow-color);
+    overflow-y: auto;
   }
 
   [data-theme="dark"] .nav-links {
@@ -2233,16 +2237,17 @@ footer {
   
   .nav-links {
     position: fixed;
-    top: var(--header-height, 60px);
+    top: var(--header-height);
     right: -100%;
     width: 80%;
-    height: calc(100vh - var(--header-height, 60px));
+    height: calc(100vh - var(--header-height));
     flex-direction: column;
     background-color: var(--card-bg);
     padding: 2rem;
-    transition: right 0.3s ease;
+    transition: all 0.3s ease;
     z-index: 1000;
     box-shadow: -5px 0 15px var(--shadow-color);
+    overflow-y: auto;
   }
   
   .nav-links.active {
