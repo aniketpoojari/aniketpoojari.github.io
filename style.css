@@ -1995,11 +1995,41 @@ footer {
 .project-card:nth-child(4), .blog-card:nth-child(4) { transition-delay: 0.4s; }
 
 /* Testimonials Section */
+#testimonials {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.05), rgba(46, 204, 113, 0.05));
+  border-radius: 20px;
+}
+
+#testimonials h2 {
+  font-size: 2.5rem;
+  margin: 0 auto 60px;
+  color: var(--text-color);
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+#testimonials h2::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background: var(--primary-color);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
 .testimonials-slider {
   position: relative;
   width: 100%;
   overflow: hidden;
   min-height: 300px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .testimonial-slide {
