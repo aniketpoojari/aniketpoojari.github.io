@@ -4,9 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial loading
     initPageLoader();
     
-    // Initialize navigation
-    initMobileNav();
-    
     // Initialize theme and animations
     initTheme();
     initCustomCursor();
@@ -29,15 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
             loadSkills(data.skillCategories);
             loadProjects(data.projects);
             loadBlogs(data.blogs);
-            loadExperience(data.experience);
+            loadExperience(data.experiences);
             loadEducation(data.education);
             loadAchievements(data.achievements);
             loadTestimonials(data.testimonials);
-            console.log('All data loaded successfully');
         })
         .catch(error => {
             console.error('Error loading data:', error);
-            announceToScreenReader('Failed to load some content. Please try refreshing the page.');
         });
 });
 
@@ -338,42 +333,62 @@ function initCustomCursor() {
 }
 
 function initScrollAnimations() {
-    const animateElements = document.querySelectorAll('.section, .hero, .hero-text, .about-content, .skills-category, .project-card, .blog-card, .company, .institution, .achievement, .testimonial-slide');
+    // Observer for fade-in animations
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.15
+        threshold: 0.1
     };
-    const observer = new IntersectionObserver((entries) => {
+    
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
-            } else {
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
-    animateElements.forEach(el => {
-        el.classList.add('animate-ready');
+    
+    // Observe elements with animate-ready class
+    document.querySelectorAll('.animate-ready').forEach(el => {
         observer.observe(el);
     });
+    
+    // Update progress bar on scroll
+    const progressBar = document.querySelector('.progress-bar');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+    }
 }
 
 function initSmoothScroll() {
+    // Smooth scroll for internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
+            
             const targetElement = document.querySelector(targetId);
             if (!targetElement) return;
-            const header = document.querySelector('.navbar');
-            const headerHeight = header ? header.offsetHeight : 0;
-            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            
+            e.preventDefault();
+            
+            // Calculate position with offset
+            const offset = 20; // Offset in pixels
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
             
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
             });
+            
+            // Update URL hash without scrolling
+            history.pushState(null, null, targetId);
         });
     });
 }
@@ -480,172 +495,10 @@ function initTypeWriter() {
     type();
 }
 
-// Mobile Navigation Toggle
-function initMobileNav() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const navItems = document.querySelectorAll('.nav-links a');
-    let isOpen = false;
-  
-    if (!navToggle || !navLinks) return;
-  
-    // Function to toggle the menu
-    function toggleMenu(shouldOpen) {
-      isOpen = shouldOpen;
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-      
-      if (isOpen) {
-        // Add active class to show menu
-        navLinks.classList.add('active');
-        document.body.classList.add('menu-open');
-        
-        // Add active class to body for backdrop
-        setTimeout(() => {
-          document.body.classList.add('active');
-        }, 10);
-        
-        // Delay the focus management to ensure the menu is visible
-        setTimeout(() => {
-          const firstLink = navLinks.querySelector('a');
-          if (firstLink) firstLink.focus();
-          
-          // Enable focus trap
-          trapFocus(navLinks);
-        }, 300);
-        
-        // Announce to screen readers
-        announceToScreenReader('Mobile menu opened');
-      } else {
-        // Remove active classes
-        navLinks.classList.remove('active');
-        document.body.classList.remove('active');
-        document.body.classList.remove('menu-open');
-        
-        // Return focus to toggle button
-        navToggle.focus();
-        
-        // Announce to screen readers
-        announceToScreenReader('Mobile menu closed');
-      }
-    }
-  
-    // Toggle menu on button click
-    navToggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      toggleMenu(!isOpen);
-    });
-  
-    // Close menu when clicking outside of the navigation
-    document.addEventListener('click', (e) => {
-      if (isOpen && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
-        toggleMenu(false);
-      }
-    });
-  
-    // Close menu when a link is clicked
-    navItems.forEach(link => {
-      link.addEventListener('click', () => {
-        toggleMenu(false);
-      });
-    });
-  
-    // Close menu when the Escape key is pressed
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isOpen) {
-        toggleMenu(false);
-      }
-    });
-    
-    // Handle resize events
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768 && isOpen) {
-        toggleMenu(false);
-      }
-    });
-}
-
-// Initialize mobile navigation when DOM is loaded
-document.addEventListener('DOMContentLoaded', initMobileNav);
-
-// Focus trap helper
-function trapFocus(element) {
-    const focusableElements = element.querySelectorAll(
-        'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    
-    if (focusableElements.length === 0) return;
-    
-    const firstFocusable = focusableElements[0];
-    const lastFocusable = focusableElements[focusableElements.length - 1];
-    const previousFocus = document.activeElement;
-
-    // Focus first element
-    requestAnimationFrame(() => firstFocusable.focus());
-
-    function handleFocusTrap(e) {
-        const isTabPressed = e.key === 'Tab';
-        
-        if (!isTabPressed) return;
-
-        if (e.shiftKey) {
-            if (document.activeElement === firstFocusable) {
-                e.preventDefault();
-                lastFocusable.focus();
-            }
-        } else {
-            if (document.activeElement === lastFocusable) {
-                e.preventDefault();
-                firstFocusable.focus();
-            }
-        }
-    }
-
-    element.addEventListener('keydown', handleFocusTrap);
-
-    return () => {
-        element.removeEventListener('keydown', handleFocusTrap);
-        previousFocus?.focus();
-    };
-}
-
-// Screen reader announcements
-function announceToScreenReader(message) {
-    const announcement = document.createElement('div');
-    announcement.setAttribute('aria-live', 'polite');
-    announcement.setAttribute('aria-atomic', 'true');
-    announcement.classList.add('sr-only');
-    announcement.textContent = message;
-    document.body.appendChild(announcement);
-    setTimeout(() => announcement.remove(), 1000);
-}
-
-// Keyboard Navigation
-document.addEventListener('keydown', function(e) {
-    // Escape key closes navigation menu
+// Keyboard event handling
+document.addEventListener('keydown', e => {
+    // Escape key actions
     if (e.key === 'Escape') {
-        const navLinks = document.querySelector('.nav-links');
-        if (navLinks && navLinks.classList.contains('active')) {
-            const navToggle = document.querySelector('.nav-toggle');
-            if (navToggle) {
-                navToggle.click();
-            }
-        }
+        // Close any open modals or overlays
     }
 });
-
-// Scroll to Top Button
-const scrollTopButton = document.querySelector('.scroll-top');
-if (scrollTopButton) {
-    // Show/hide scroll to top button
-    window.addEventListener('scroll', () => {
-        const shouldShow = window.scrollY > 500;
-        scrollTopButton.classList.toggle('show', shouldShow);
-        scrollTopButton.setAttribute('aria-hidden', !shouldShow);
-    });
-
-    // Handle scroll to top click
-    scrollTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        announceToScreenReader('Scrolled to top of page');
-    });
-}
