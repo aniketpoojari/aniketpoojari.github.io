@@ -379,6 +379,7 @@ body {
 @supports (backdrop-filter: blur(10px)) {
   @media (max-width: 768px) {
     .nav-links {
+      position: absolute;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       background-color: rgba(var(--card-bg-rgb), 0.95);
