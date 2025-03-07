@@ -212,54 +212,82 @@ body {
 }
 
 /* Mobile Navigation */
-.nav-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  z-index: 1001;
-}
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    flex-direction: column;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: calc(var(--header-height) + 1rem) 2rem 2rem 2rem;
+    transition: right 0.3s ease;
+    z-index: 999;
+    box-shadow: -5px 0 20px rgba(var(--shadow-color-rgb), 0.1);
+    overflow-y: auto;
+  }
+  
+  .nav-links.active {
+    right: 0;
+  }
+  
+  .nav-links li {
+    margin: 0.5rem 0;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
-.hamburger {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: var(--text-color);
-  position: relative;
-  transition: background-color 0.3s ease;
-}
+  .nav-links a {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
 
-.hamburger::before,
-.hamburger::after {
-  content: '';
-  position: absolute;
-  width: 24px;
-  height: 2px;
-  background-color: var(--text-color);
-  transition: transform 0.3s ease;
-}
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+  }
 
-.hamburger::before {
-  top: -8px;
-}
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    z-index: 1000;
+  }
 
-.hamburger::after {
-  bottom: -8px;
-}
-
-[aria-expanded="true"] .hamburger {
-  background-color: transparent;
-}
-
-[aria-expanded="true"] .hamburger::before {
-  transform: rotate(45deg);
-  top: 0;
-}
-
-[aria-expanded="true"] .hamburger::after {
-  transform: rotate(-45deg);
-  bottom: 0;
+  /* Add backdrop overlay when menu is open */
+  body.menu-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 998;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
 }
 
 /* Accessibility */
@@ -514,173 +542,6 @@ button {
     backdrop-filter: none;
     background-color: transparent;
   }
-}
-
-/* Mobile Navigation */
-@media (max-width: 768px) {
-  .nav-links {
-    position: fixed;
-    top: var(--header-height);
-    right: -100%;
-    width: 80%;
-    height: calc(100vh - var(--header-height));
-    flex-direction: column;
-    background-color: var(--card-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 2rem;
-    transition: right 0.3s ease;
-    z-index: 1000;
-    box-shadow: -5px 0 20px rgba(var(--shadow-color-rgb), 0.1);
-    overflow-y: auto;
-  }
-  
-  .nav-links.active {
-    right: 0;
-  }
-  
-  .nav-links li {
-    margin: 1rem 0;
-    opacity: 0;
-    transform: translateX(20px);
-    transition: all 0.3s ease;
-  }
-  
-  .nav-links.active li {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .nav-links a {
-    color: var(--text-color);
-    font-size: 1.1rem;
-    padding: 0.8rem 1.5rem;
-    display: block;
-    width: 100%;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-
-  .nav-links a:hover,
-  .nav-links a.active {
-    background-color: rgba(var(--primary-color-rgb), 0.1);
-    color: var(--primary-color);
-  }
-}
-
-/* Ensure the hamburger button is visible */
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: flex;
-  }
-}
-
-/* Add backdrop overlay when menu is open */
-.menu-open::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  z-index: 999;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.menu-open.active::before {
-  opacity: 1;
-}
-
-/* Pull to Refresh Animation */
-@keyframes pullToRefresh {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(50px); }
-}
-
-/* Enhanced Link Styles */
-a {
-  text-decoration: none;
-  color: var(--primary-color);
-  transition: color 0.3s ease;
-  position: relative;
-}
-
-a:hover {
-  color: var(--link-hover-color);
-}
-
-/* Micro-interactions */
-.btn, .card {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn::after,
-.card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.btn:hover::after,
-.card:hover::after {
-  opacity: 1;
-}
-
-/* Scroll to Top Button */
-.scroll-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--card-bg);
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  box-shadow: 0 4px 15px var(--shadow-color);
-  transition: all 0.3s ease;
-}
-
-.scroll-top.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.scroll-top:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px var(--shadow-color);
-  background: var(--primary-color);
-}
-
-.scroll-top:hover i {
-  color: white;
-}
-
-.scroll-top i {
-  font-size: 1.2rem;
-  color: var(--text-color);
-  transition: all 0.3s ease;
 }
 
 /* Hero Section */
@@ -2310,4 +2171,117 @@ footer {
     box-shadow: none;
     border: 1px solid #ddd;
   }
+}
+
+/* Hamburger Button */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-color);
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-color);
+  transition: transform 0.3s ease;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+[aria-expanded="true"] .hamburger {
+  background-color: transparent;
+}
+
+[aria-expanded="true"] .hamburger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+[aria-expanded="true"] .hamburger::after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+/* Pull to Refresh Animation */
+@keyframes pullToRefresh {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(50px); }
+}
+
+/* Enhanced Link Styles */
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--card-bg);
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  box-shadow: 0 4px 15px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.scroll-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px var(--shadow-color);
+  background: var(--primary-color);
+}
+
+.scroll-top:hover i {
+  color: white;
+}
+
+.scroll-top i {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  transition: all 0.3s ease;
 }
