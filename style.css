@@ -296,7 +296,7 @@ body {
     height: 100vh;
     background-color: var(--card-bg);
     padding: 80px 20px 20px;
-    display: flex;  /* Keep it flexible but hidden */
+    /* display: flex;  Keep it flexible but hidden */
     flex-direction: column;
     align-items: center;
     transform: translateX(-100%);
