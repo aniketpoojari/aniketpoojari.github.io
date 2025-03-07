@@ -48,6 +48,9 @@ body {
 
 /* Section Backgrounds */
 .section {
+  padding: 80px 20px;
+  margin: 40px auto;
+  max-width: var(--content-width);
   background: var(--background-gradient);
   color: var(--text-color);
 }
@@ -809,10 +812,11 @@ a:hover {
 
 #about h2 {
   font-size: 2.5rem;
-  margin-bottom: 40px;
+  margin: 0 auto 60px;
   color: var(--text-color);
   position: relative;
   display: inline-block;
+  padding: 0 20px;
 }
 
 #about h2::after {
@@ -821,7 +825,7 @@ a:hover {
   width: 60px;
   height: 3px;
   background: var(--primary-color);
-  bottom: -10px;
+  bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 2px;
@@ -871,6 +875,16 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 60px 15px;
+    margin: 20px auto;
+  }
+
+  #about h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
   #about .about-content {
     flex-direction: column;
     gap: 30px;
@@ -897,10 +911,11 @@ a:hover {
 
 #skills h2 {
   font-size: 2.5rem;
-  margin-bottom: 40px;
+  margin: 0 auto 60px;
   color: var(--text-color);
   position: relative;
   display: inline-block;
+  padding: 0 20px;
 }
 
 #skills h2::after {
@@ -909,7 +924,7 @@ a:hover {
   width: 60px;
   height: 3px;
   background: var(--primary-color);
-  bottom: -10px;
+  bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 2px;
@@ -1026,10 +1041,11 @@ a:hover {
 
 #projects h2 {
   font-size: 2.5rem;
-  margin-bottom: 40px;
+  margin: 0 auto 60px;
   color: var(--text-color);
   position: relative;
   display: inline-block;
+  padding: 0 20px;
 }
 
 #projects h2::after {
@@ -1038,7 +1054,7 @@ a:hover {
   width: 60px;
   height: 3px;
   background: var(--primary-color);
-  bottom: -10px;
+  bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 2px;
@@ -1188,10 +1204,11 @@ a:hover {
 
 #blogs h2 {
   font-size: 2.5rem;
-  margin-bottom: 40px;
+  margin: 0 auto 60px;
   color: var(--text-color);
   position: relative;
   display: inline-block;
+  padding: 0 20px;
 }
 
 #blogs h2::after {
@@ -1200,7 +1217,7 @@ a:hover {
   width: 60px;
   height: 3px;
   background: var(--primary-color);
-  bottom: -10px;
+  bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 2px;
@@ -1346,10 +1363,11 @@ a:hover {
 
 #experience h2, #education h2, #achievements h2 {
   font-size: 2.5rem;
-  margin-bottom: 40px;
+  margin: 0 auto 60px;
   color: var(--text-color);
   position: relative;
   display: inline-block;
+  padding: 0 20px;
   text-align: center;
   width: 100%;
 }
@@ -1360,7 +1378,7 @@ a:hover {
   width: 60px;
   height: 3px;
   background: var(--primary-color);
-  bottom: -10px;
+  bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 2px;
