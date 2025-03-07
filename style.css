@@ -303,7 +303,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
-    z-index: 1000;
+    z-index: 1005;
     overflow-y: auto;
 }
 
