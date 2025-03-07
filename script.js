@@ -370,23 +370,10 @@ function initSmoothScroll() {
             const headerHeight = header ? header.offsetHeight : 0;
             const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
             
-            // Close mobile menu if open
-            const navToggle = document.querySelector('.nav-toggle');
-            const navLinks = document.querySelector('.nav-links');
-            if (navToggle && navLinks && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                navToggle.setAttribute('aria-expanded', 'false');
-                document.body.classList.remove('menu-open');
-                document.body.classList.remove('active');
-            }
-            
-            // Scroll to target after a small delay to allow menu to close
-            setTimeout(() => {
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }, 10);
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         });
     });
 }
@@ -499,7 +486,6 @@ function initMobileNav() {
     const navLinks = document.querySelector('.nav-links');
     const navItems = document.querySelectorAll('.nav-links a');
     let isOpen = false;
-    let scrollPosition = 0;
   
     if (!navToggle || !navLinks) return;
   
@@ -509,9 +495,6 @@ function initMobileNav() {
       navToggle.setAttribute('aria-expanded', String(isOpen));
       
       if (isOpen) {
-        // Store current scroll position before locking
-        scrollPosition = window.pageYOffset;
-        
         // Add active class to show menu
         navLinks.classList.add('active');
         document.body.classList.add('menu-open');
@@ -536,14 +519,7 @@ function initMobileNav() {
         // Remove active classes
         navLinks.classList.remove('active');
         document.body.classList.remove('active');
-        
-        // Delay removing menu-open class to allow for transition
-        setTimeout(() => {
-          document.body.classList.remove('menu-open');
-          
-          // Restore scroll position
-          window.scrollTo(0, scrollPosition);
-        }, 300);
+        document.body.classList.remove('menu-open');
         
         // Return focus to toggle button
         navToggle.focus();
