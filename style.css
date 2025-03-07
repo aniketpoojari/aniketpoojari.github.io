@@ -230,7 +230,6 @@ body {
   background-color: var(--text-color);
   position: relative;
   transition: background-color 0.3s ease;
-  display: none; /* Hidden by default */
 }
 
 .hamburger::before,
@@ -315,6 +314,24 @@ body {
     display: block;
     color: var(--text-color);
     border-radius: 8px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-toggle.active .hamburger {
+    background-color: transparent;
+  }
+
+  .nav-toggle.active .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  .nav-toggle.active .hamburger::after {
+    transform: rotate(-45deg);
+    bottom: 0;
   }
 }
 
