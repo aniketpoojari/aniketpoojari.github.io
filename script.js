@@ -494,21 +494,12 @@ function initMobileNav() {
     if (!navToggle || !navLinks) {
         console.error('Navigation elements not found');
         return;
-    } else {
-        console.log('Navigation elements found:', navToggle, navLinks);
     }
 
     function toggleMenu(shouldOpen) {
         isOpen = shouldOpen;
-        if (isOpen) {
-            navLinks.classList.add('active');
-            document.body.classList.add('menu-open');
-        } else {
-            navLinks.classList.remove('active');
-            document.body.classList.remove('menu-open');
-        }
-        console.log('Menu state changed:', isOpen);
-        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        navLinks.classList.toggle('active', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen);
         document.body.classList.toggle('menu-open', isOpen);
     }
 
@@ -517,19 +508,31 @@ function initMobileNav() {
         toggleMenu(!isOpen);
     });
 
+    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (isOpen && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
             toggleMenu(false);
         }
     });
 
+    // Close menu on escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && isOpen) {
             toggleMenu(false);
         }
     });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (isOpen) {
+                toggleMenu(false);
+            }
+        });
+    });
 }
 
+// Initialize mobile navigation when DOM is loaded
 document.addEventListener('DOMContentLoaded', initMobileNav);
 
 // Focus trap helper
