@@ -43,11 +43,13 @@
 body {
   background-color: var(--background);
   color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Section Backgrounds */
 .section {
   background: var(--background-gradient);
+  color: var(--text-color);
 }
 
 /* Card Styles */
@@ -59,10 +61,16 @@ body {
 .achievement {
   background-color: var(--card-bg);
   color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Navigation */
 .navbar {
+  background-color: var(--card-bg);
+  transition: background-color 0.3s ease;
+}
+
+.nav-links {
   background-color: var(--card-bg);
 }
 
@@ -83,6 +91,7 @@ p {
 .theme-toggle {
   background: var(--card-bg);
   color: var(--text-color);
+  border: 1px solid var(--border-color);
 }
 
 .theme-toggle i {

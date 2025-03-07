@@ -382,7 +382,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Theme Toggle with announcement
+// Theme initialization and toggle
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -390,24 +390,41 @@ function initTheme() {
     
     document.documentElement.setAttribute('data-theme', theme);
     updateThemeIcon(theme);
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+    });
 }
 
 function updateThemeIcon(theme) {
     const icon = themeToggle.querySelector('i');
-    icon.className = theme === 'light' ? 'ri-moon-line' : 'ri-sun-line';
+    if (icon) {
+        icon.className = theme === 'light' ? 'ri-moon-line' : 'ri-sun-line';
+    }
 }
 
+// Theme toggle with improved handling
 themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     
+    // Update theme
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme);
     
+    // Force a repaint to ensure all styles are updated
+    document.body.style.display = 'none';
+    document.body.offsetHeight; // Trigger a reflow
+    document.body.style.display = '';
+    
     // Announce theme change
-    const message = `Theme switched to ${newTheme} mode`;
-    announceToScreenReader(message);
+    announceToScreenReader(`Theme switched to ${newTheme} mode`);
 });
 
 // Scroll to Top with announcement
