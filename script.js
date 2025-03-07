@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initTypeWriter();
     initScrollAnimations();
     initSmoothScroll();
-    initContactForm();
 
     // Initialize theme from localStorage or system preference
     initTheme();
@@ -222,72 +221,46 @@ function initSmoothScroll() {
     });
 }
 
-// Contact Form Handling
-function initContactForm() {
-    const form = document.querySelector('.contact-form');
-    
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const nameInput = form.querySelector('input[type="text"]');
-        const emailInput = form.querySelector('input[type="email"]');
-        const messageInput = form.querySelector('textarea');
-        
-        // Basic client-side validation
-        if (!nameInput.value || !emailInput.value || !messageInput.value) {
-            alert('Please fill in all fields');
-            return;
-        }
-
-        try {
-            // Replace with your Formspree endpoint
-            const response = await fetch('https://formspree.io/f/your-form-endpoint', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: nameInput.value,
-                    email: emailInput.value,
-                    message: messageInput.value
-                })
-            });
-
-            if (response.ok) {
-                alert('Message sent successfully!');
-                form.reset();
-            } else {
-                throw new Error('Form submission failed');
-            }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            alert('Failed to send message. Please try again.');
-        }
-    });
-}
-
 // Mobile Navigation Toggle
 function initMobileNav() {
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
-    if (navToggle) {
+    const navbar = document.querySelector('.navbar');
+    let isOpen = false;
+
+    if (navToggle && navLinks) {
         navToggle.addEventListener('click', () => {
+            isOpen = !isOpen;
             navLinks.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', isOpen);
+            navToggle.innerHTML = isOpen ? 
+                '<i class="ri-close-line" aria-hidden="true"></i>' : 
+                '<i class="ri-menu-line" aria-hidden="true"></i>';
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         });
 
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+            if (isOpen && !navbar.contains(e.target)) {
+                isOpen = false;
                 navLinks.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.innerHTML = '<i class="ri-menu-line" aria-hidden="true"></i>';
+                document.body.style.overflow = '';
             }
         });
 
-        // Close menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+        // Close menu when clicking on a link
+        navLinks.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                isOpen = false;
                 navLinks.classList.remove('active');
-            });
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.innerHTML = '<i class="ri-menu-line" aria-hidden="true"></i>';
+                document.body.style.overflow = '';
+            }
         });
     }
 }
@@ -384,21 +357,16 @@ document.addEventListener('keydown', (e) => {
 
 // Theme initialization and toggle
 function initTheme() {
-    // Create theme toggle button if it doesn't exist
-    if (!document.querySelector('.theme-toggle')) {
-        const themeToggle = document.createElement('button');
-        themeToggle.className = 'theme-toggle';
-        themeToggle.setAttribute('aria-label', 'Toggle theme');
-        themeToggle.innerHTML = '<i class="ri-moon-line"></i>';
-        document.body.appendChild(themeToggle);
-    }
-
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    const savedTheme = localStorage.getItem('theme') || 
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    document.documentElement.setAttribute('data-theme', theme);
-    updateThemeIcon(theme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+    
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
     
     // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
@@ -408,32 +376,22 @@ function initTheme() {
             updateThemeIcon(newTheme);
         }
     });
-
-    // Add click event listener to theme toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-    }
 }
 
 function updateThemeIcon(theme) {
-    const icon = document.querySelector('.theme-toggle i');
-    if (icon) {
-        icon.className = theme === 'light' ? 'ri-moon-line' : 'ri-sun-line';
+    const themeToggle = document.querySelector('.theme-toggle i');
+    if (themeToggle) {
+        themeToggle.className = theme === 'dark' ? 'ri-moon-line' : 'ri-sun-line';
     }
 }
 
 function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     
-    // Update theme
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme);
-    
-    // Announce theme change
-    announceToScreenReader(`Theme switched to ${newTheme} mode`);
 }
 
 // Scroll to Top with announcement

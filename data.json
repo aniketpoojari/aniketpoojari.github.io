@@ -5,7 +5,7 @@
       "skills": [
         { "name": "Machine Learning", "icon": "ri-brain-line" },
         { "name": "LLM", "icon": "ri-robot-line" },
-        { "name": "Generative AI", "icon": "ri-ai-generate" },
+        { "name": "Generative AI", "icon": "ri-magic-line" },
         { "name": "Transformers", "icon": "ri-code-box-line" },
         { "name": "NLP", "icon": "ri-chat-voice-line" },
         { "name": "Computer Vision", "icon": "ri-eye-line" },
@@ -30,7 +30,7 @@
       "title": "MLOps & Cloud",
       "skills": [
         { "name": "DVC", "icon": "ri-git-branch-line" },
-        { "name": "MLflow", "icon": "ri-flow-chart" },
+        { "name": "MLflow", "icon": "ri-flow-line" },
         { "name": "Streamlit", "icon": "ri-window-line" },
         { "name": "AWS", "icon": "ri-cloud-line" },
         { "name": "S3", "icon": "ri-database-2-line" },
