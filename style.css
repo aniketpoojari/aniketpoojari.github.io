@@ -111,7 +111,7 @@ body {
   background-color: rgba(var(--card-bg-rgb), 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  z-index: 1000;
+  z-index: 998;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   border-bottom: 1px solid rgba(var(--border-color-rgb), 0.1);
   height: var(--header-height);
@@ -385,7 +385,7 @@ body {
     -webkit-backdrop-filter: blur(10px);
     padding: calc(var(--header-height) + 1rem) 2rem 2rem 2rem;
     transition: right 0.3s ease;
-    z-index: 999;
+    z-index: 1000;
     box-shadow: -5px 0 20px rgba(var(--shadow-color-rgb), 0.1);
     overflow-y: auto;
     display: flex;
