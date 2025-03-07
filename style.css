@@ -1979,7 +1979,7 @@ footer {
 
 .testimonial-slide.active {
   opacity: 1;
-  z-index: 2;
+  z-index: 3;
 }
 
 .testimonial-card {
@@ -1996,6 +1996,7 @@ footer {
   display: flex;
   flex-direction: column;
   min-height: 250px;
+  z-index: 3;
 }
 
 .testimonial-card:hover {
@@ -2081,7 +2082,7 @@ footer {
   align-items: center;
   gap: 1rem;
   position: relative;
-  z-index: 3;
+  z-index: 2;
   margin-top: -40px;
   padding: 0 20px;
 }
@@ -2100,7 +2101,7 @@ footer {
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px var(--shadow-color);
   position: relative;
-  z-index: 3;
+  z-index: 2;
 }
 
 /* Mobile adjustments for testimonials section */
