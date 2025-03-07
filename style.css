@@ -525,13 +525,13 @@ button {
     width: 80%;
     height: calc(100vh - var(--header-height));
     flex-direction: column;
-    background-color: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 2rem;
     transition: right 0.3s ease;
     z-index: 1000;
-    box-shadow: none;
+    box-shadow: -5px 0 20px rgba(var(--shadow-color-rgb), 0.1);
     overflow-y: auto;
   }
   
@@ -550,15 +550,50 @@ button {
     opacity: 1;
     transform: translateX(0);
   }
+
+  .nav-links a {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+  }
 }
 
-.nav-links a:hover {
-  color: var(--primary-color);
-  background: transparent;
+/* Ensure the hamburger button is visible */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
 }
 
-[data-theme="dark"] .nav-links a:hover {
-  background: transparent;
+/* Add backdrop overlay when menu is open */
+.menu-open::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.menu-open.active::before {
+  opacity: 1;
 }
 
 /* Pull to Refresh Animation */
@@ -2179,13 +2214,13 @@ footer {
     width: 80%;
     height: calc(100vh - var(--header-height));
     flex-direction: column;
-    background-color: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 2rem;
     transition: right 0.3s ease;
     z-index: 1000;
-    box-shadow: none;
+    box-shadow: -5px 0 20px rgba(var(--shadow-color-rgb), 0.1);
     overflow-y: auto;
   }
   
@@ -2203,6 +2238,22 @@ footer {
   .nav-links.active li {
     opacity: 1;
     transform: translateX(0);
+  }
+
+  .nav-links a {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
   }
 }
 

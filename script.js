@@ -476,13 +476,29 @@ function initMobileNav() {
         navToggle.setAttribute('aria-expanded', isOpen);
         document.body.classList.toggle('menu-open', isOpen);
         
+        // Add staggered animation to menu items
+        const menuItems = navLinks.querySelectorAll('li');
+        menuItems.forEach((item, index) => {
+            if (shouldOpen) {
+                item.style.transitionDelay = `${index * 0.1}s`;
+            } else {
+                item.style.transitionDelay = '0s';
+            }
+        });
+        
         if (isOpen) {
             trapFocus(navLinks);
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
         }
     }
 
     // Handle scroll behavior
     function handleScroll() {
+        if (isOpen) return; // Don't handle scroll when menu is open
+        
         const currentScrollTop = window.scrollY;
         
         // Add scrolled class when not at top
@@ -574,6 +590,13 @@ function initMobileNav() {
 
     // Handle scroll events
     window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Handle resize events
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && isOpen) {
+            toggleMenu(false);
+        }
+    });
 
     // Initialize active section
     updateActiveSection();
