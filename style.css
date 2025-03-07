@@ -125,6 +125,7 @@ body {
 
 .nav-links a.active:hover {
   color: var(--text-light);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
 }
 
 @media (max-width: 768px) {
