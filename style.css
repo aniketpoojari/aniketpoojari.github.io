@@ -259,6 +259,7 @@ body {
 
   .navbar-container {
     padding: 0 1rem;
+    position: relative;
   }
 
   .nav-toggle {
@@ -271,47 +272,7 @@ body {
     border: none;
     cursor: pointer;
     z-index: 1002;
-  }
-
-  .hamburger {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: var(--text-color);
-    position: relative;
-    transition: background-color 0.3s ease;
-  }
-
-  .hamburger::before,
-  .hamburger::after {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 2px;
-    background-color: var(--text-color);
-    transition: transform 0.3s ease;
-  }
-
-  .hamburger::before {
-    top: -8px;
-  }
-
-  .hamburger::after {
-    bottom: -8px;
-  }
-
-  [aria-expanded="true"] .hamburger {
-    background-color: transparent;
-  }
-
-  [aria-expanded="true"] .hamburger::before {
-    transform: rotate(45deg);
-    top: 0;
-  }
-
-  [aria-expanded="true"] .hamburger::after {
-    transform: rotate(-45deg);
-    bottom: 0;
+    margin-left: auto;
   }
 
   .nav-links {
@@ -328,7 +289,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
-    z-index: 1000;
+    z-index: 999;
     overflow-y: auto;
     box-shadow: -5px 0 20px var(--shadow-color);
     border-left: 1px solid var(--border-color);
@@ -354,10 +315,6 @@ body {
     display: block;
     color: var(--text-color);
     border-radius: 8px;
-  }
-
-  .nav-links a:hover {
-    background-color: rgba(var(--primary-color-rgb), 0.1);
   }
 }
 
