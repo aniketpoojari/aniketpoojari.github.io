@@ -216,6 +216,11 @@ body {
 /* Hamburger Button */
 .nav-toggle {
   display: none;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 1001;
 }
 
 .hamburger {
@@ -259,6 +264,39 @@ body {
     cursor: pointer;
     z-index: 1001;
     position: relative;
+  }
+  
+  .hamburger {
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color);
+    position: relative;
+    transition: background-color 0.3s ease;
+    display: block;
+  }
+  
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: transform 0.3s ease;
+  }
+  
+  .hamburger::before {
+    top: -8px;
+  }
+  
+  .hamburger::after {
+    bottom: -8px;
+  }
+  
+  [data-theme="dark"] .hamburger,
+  [data-theme="dark"] .hamburger::before,
+  [data-theme="dark"] .hamburger::after {
+    background-color: var(--text-light);
   }
 
   [aria-expanded="true"] .hamburger {
@@ -1753,12 +1791,6 @@ footer {
   background-color: transparent;
 }
 
-.nav-toggle span,
-.nav-toggle span::before,
-.nav-toggle span::after {
-  background: var(--text-color);
-}
-
 .nav-links a:hover {
   color: var(--primary-color);
   background: transparent;
@@ -2286,12 +2318,9 @@ a:hover {
   color: var(--link-hover-color);
 }
 
-/* Default Navigation Toggle State */
-.nav-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  z-index: 1001;
+/* Adding style to make hamburger visible in dark mode */
+[data-theme="dark"] .hamburger,
+[data-theme="dark"] .hamburger::before,
+[data-theme="dark"] .hamburger::after {
+  background-color: var(--text-light);
 }
