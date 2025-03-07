@@ -133,6 +133,21 @@ body {
   width: 100%;
 }
 
+.nav-links a.active {
+  color: var(--text-light);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.nav-links a.active::before {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .nav-links a.active {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  }
+}
+
 /* Mobile Navigation */
 .nav-toggle {
   display: none;
