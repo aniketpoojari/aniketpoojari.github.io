@@ -138,6 +138,7 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
+  background-color: transparent;
 }
 
 .nav-links a {
@@ -189,7 +190,6 @@ body {
 }
 
 [data-theme="dark"] .nav-links {
-  background-color: rgba(42, 42, 60, 0.9);
   background-color: transparent;
 }
 
@@ -246,7 +246,7 @@ body {
   }
 
   [data-theme="dark"] .nav-links {
-    background-color: rgba(42, 42, 60, 0.9);
+    background-color: rgba(42, 42, 60, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
