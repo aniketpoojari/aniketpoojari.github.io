@@ -302,8 +302,10 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    z-index: 1002;
+    z-index: 1000;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
   .nav-links.active {
@@ -342,6 +344,8 @@ body {
     z-index: 999;
     opacity: 0;
     transition: opacity 0.3s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 
   body.menu-open.active::before {
@@ -350,11 +354,17 @@ body {
 
   .nav-links a {
     font-size: 1.2rem;
-    padding: 10px 20px;
+    padding: 15px 20px;
     width: 100%;
     text-align: center;
     display: block;
     color: var(--text-color);
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  .nav-links a:active {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
   }
 
   body.menu-open {
