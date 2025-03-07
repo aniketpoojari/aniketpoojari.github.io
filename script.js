@@ -489,148 +489,39 @@ function initTypeWriter() {
 function initMobileNav() {
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
-    const navbar = document.querySelector('.navbar');
-    const navItems = document.querySelectorAll('.nav-item');
-    let lastScrollTop = 0;
     let isOpen = false;
-    
-    if (!navToggle || !navLinks || !navbar) {
+
+    if (!navToggle || !navLinks) {
         console.error('Navigation elements not found');
         return;
     }
 
-    // Toggle mobile menu
     function toggleMenu(shouldOpen) {
         isOpen = shouldOpen;
         navLinks.classList.toggle('active', isOpen);
         navToggle.setAttribute('aria-expanded', isOpen);
         document.body.classList.toggle('menu-open', isOpen);
-        
-        // Add staggered animation to menu items
-        const menuItems = navLinks.querySelectorAll('li');
-        menuItems.forEach((item, index) => {
-            if (shouldOpen) {
-                item.style.transitionDelay = `${index * 0.1}s`;
-            } else {
-                item.style.transitionDelay = '0s';
-            }
-        });
-        
-        if (isOpen) {
-            trapFocus(navLinks);
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
     }
 
-    // Handle scroll behavior
-    function handleScroll() {
-        if (isOpen) return; // Don't handle scroll when menu is open
-        
-        const currentScrollTop = window.scrollY;
-        
-        // Add scrolled class when not at top
-        navbar.classList.toggle('scrolled', currentScrollTop > 0);
-        
-        // Hide/show navbar based on scroll direction
-        if (currentScrollTop > navbar.offsetHeight) {
-            if (currentScrollTop > lastScrollTop) {
-                navbar.classList.add('hidden');
-            } else {
-                navbar.classList.remove('hidden');
-            }
-        } else {
-            navbar.classList.remove('hidden');
-        }
-        
-        lastScrollTop = currentScrollTop;
-        
-        // Update active section
-        updateActiveSection();
-    }
-
-    // Update active section based on scroll position
-    function updateActiveSection() {
-        const sections = document.querySelectorAll('section[id], header[id]');
-        const navbarHeight = navbar.offsetHeight;
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - navbarHeight - 20;
-            const sectionBottom = sectionTop + section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
-                navItems.forEach(item => item.classList.remove('active'));
-                const activeItem = document.querySelector(`.nav-item[href="#${sectionId}"]`);
-                if (activeItem) {
-                    activeItem.classList.add('active');
-                }
-            }
-        });
-    }
-
-    // Event Listeners
     navToggle.addEventListener('click', (e) => {
         e.preventDefault();
         toggleMenu(!isOpen);
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (isOpen && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
             toggleMenu(false);
         }
     });
 
-    // Handle navigation clicks
-    navLinks.addEventListener('click', (e) => {
-        const link = e.target.closest('a');
-        if (!link) return;
-
-        const targetId = link.getAttribute('href');
-        if (targetId && targetId.startsWith('#')) {
-            e.preventDefault();
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                toggleMenu(false);
-                
-                const headerHeight = navbar.offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-
-                // Update URL without jump
-                history.pushState(null, null, targetId);
-            }
-        }
-    });
-
-    // Close menu on escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && isOpen) {
             toggleMenu(false);
         }
     });
-
-    // Handle scroll events
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // Handle resize events
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && isOpen) {
-            toggleMenu(false);
-        }
-    });
-
-    // Initialize active section
-    updateActiveSection();
 }
+
+document.addEventListener('DOMContentLoaded', initMobileNav);
 
 // Focus trap helper
 function trapFocus(element) {
