@@ -316,6 +316,7 @@ body {
   }
 
   .nav-links.active {
+    position: absolute;
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
@@ -379,7 +380,6 @@ body {
 @supports (backdrop-filter: blur(10px)) {
   @media (max-width: 768px) {
     .nav-links {
-      position: absolute;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       background-color: rgba(var(--card-bg-rgb), 0.95);
@@ -636,6 +636,7 @@ button {
 /* Mobile Navigation Enhancements */
 @supports (backdrop-filter: blur(10px)) {
   .nav-links {
+    position: absolute;
     backdrop-filter: none;
     background-color: transparent;
   }
