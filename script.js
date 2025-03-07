@@ -224,7 +224,7 @@ function loadTestimonials(testimonials) {
                     >
                     <div class="testimonial-info">
                         <h4>${testimonial.name}</h4>
-                        <p>${testimonial.role}, ${testimonial.company}</p>
+                        <p>${testimonial.role}${testimonial.company ? `, ${testimonial.company}` : ''}</p>
                     </div>
                 </div>
             </div>
