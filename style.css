@@ -5,6 +5,7 @@
   --primary-color-rgb: 52, 152, 219;
   --secondary-color: #2ecc71;
   --background: #f4f4f6;
+  --background-dark: #1a1a2e;
   --text-color: #333;
   --text-light: #f4f4f4;
   --card-bg: white;
@@ -1379,37 +1380,6 @@ button {
   margin-bottom: 20px;
 }
 
-.blog-card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 15px;
-  border-top: 1px solid var(--border-color);
-}
-
-.read-more {
-  color: var(--primary-color);
-  font-weight: 500;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: gap 0.3s ease;
-}
-
-.read-more::after {
-  content: '→';
-  transition: transform 0.3s ease;
-}
-
-.blog-card:hover .read-more {
-  gap: 8px;
-}
-
-.blog-card:hover .read-more::after {
-  transform: translateX(3px);
-}
-
 @media (max-width: 768px) {
   .blogs-list {
     grid-template-columns: 1fr;
@@ -2239,12 +2209,6 @@ footer {
   font-size: 1.2rem;
   color: var(--text-color);
   transition: all 0.3s ease;
-}
-
-/* Pull to Refresh Animation */
-@keyframes pullToRefresh {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(50px); }
 }
 
 /* Enhanced Link Styles */
