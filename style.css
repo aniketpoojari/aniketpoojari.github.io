@@ -2015,13 +2015,20 @@ footer {
 
 .testimonial-card {
   background-color: var(--card-bg);
-  border-radius: 12px;
+  background-image: var(--card-gradient), var(--card-noise);
+  border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 10px 20px var(--shadow-color);
+  box-shadow: 0 10px 30px var(--shadow-color);
   max-width: 800px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
+  transition: var(--card-transition);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .testimonial-content {
@@ -2183,6 +2190,7 @@ footer {
   
   .testimonial-card {
     padding: 1.5rem;
+    margin: 0 1rem;
   }
   
   .testimonial-text {
