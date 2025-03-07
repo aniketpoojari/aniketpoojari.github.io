@@ -460,22 +460,54 @@ function initMobileNav() {
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     const navbar = document.querySelector('.navbar');
+    const navItems = document.querySelectorAll('.nav-item');
+    let lastScrollTop = 0;
+    let isOpen = false;
     
-    if (!navToggle || !navLinks) {
+    if (!navToggle || !navLinks || !navbar) {
         console.error('Navigation elements not found');
         return;
     }
-    
-    let isOpen = false;
-    const navItems = document.querySelectorAll('.nav-item');
-    let lastScrollTop = 0;
-    
-    // Set active nav item based on current section
-    function setActiveNavItem() {
-        const sections = document.querySelectorAll('section[id], header[id]');
-        const scrollPosition = window.scrollY;
+
+    // Toggle mobile menu
+    function toggleMenu(shouldOpen) {
+        isOpen = shouldOpen;
+        navLinks.classList.toggle('active', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen);
+        document.body.classList.toggle('menu-open', isOpen);
         
-        // Get the height of the navbar for offset calculation
+        if (isOpen) {
+            trapFocus(navLinks);
+        }
+    }
+
+    // Handle scroll behavior
+    function handleScroll() {
+        const currentScrollTop = window.scrollY;
+        
+        // Add scrolled class when not at top
+        navbar.classList.toggle('scrolled', currentScrollTop > 0);
+        
+        // Hide/show navbar based on scroll direction
+        if (currentScrollTop > navbar.offsetHeight) {
+            if (currentScrollTop > lastScrollTop) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+        } else {
+            navbar.classList.remove('hidden');
+        }
+        
+        lastScrollTop = currentScrollTop;
+        
+        // Update active section
+        updateActiveSection();
+    }
+
+    // Update active section based on scroll position
+    function updateActiveSection() {
+        const sections = document.querySelectorAll('section[id], header[id]');
         const navbarHeight = navbar.offsetHeight;
         
         sections.forEach(section => {
@@ -483,142 +515,109 @@ function initMobileNav() {
             const sectionBottom = sectionTop + section.offsetHeight;
             const sectionId = section.getAttribute('id');
             
-            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                // Remove active class from all nav items
-                navItems.forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Add active class to the corresponding nav item
-                const activeNavItem = document.querySelector(`.nav-item[href="#${sectionId}"]`);
-                if (activeNavItem) {
-                    activeNavItem.classList.add('active');
+            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                navItems.forEach(item => item.classList.remove('active'));
+                const activeItem = document.querySelector(`.nav-item[href="#${sectionId}"]`);
+                if (activeItem) {
+                    activeItem.classList.add('active');
                 }
             }
         });
     }
-    
-    // Hide/show navbar based on scroll direction
-    function handleNavbarVisibility() {
-        const currentScrollTop = window.scrollY;
-        
-        // If we've scrolled down more than navbar height
-        if (currentScrollTop > navbar.offsetHeight) {
-            // Add scrolled class for styling
-            navbar.classList.add('scrolled');
-            
-            // Hide navbar when scrolling down, show when scrolling up
-            if (currentScrollTop > lastScrollTop && currentScrollTop > navbar.offsetHeight) {
-                // Scrolling down
-                navbar.classList.add('hidden');
-            } else {
-                // Scrolling up
-                navbar.classList.remove('hidden');
-            }
-        } else {
-            // At the top of the page
-            navbar.classList.remove('scrolled');
-            navbar.classList.remove('hidden');
-        }
-        
-        lastScrollTop = currentScrollTop;
-    }
 
-    // Toggle menu
-    navToggle.addEventListener('click', function(e) {
+    // Event Listeners
+    navToggle.addEventListener('click', (e) => {
         e.preventDefault();
-        e.stopPropagation();
-        
-        isOpen = !isOpen;
-        navLinks.classList.toggle('active');
-        navToggle.setAttribute('aria-expanded', isOpen);
-        
-        // Prevent body scroll when menu is open
-        document.body.classList.toggle('menu-open', isOpen);
-        
-        // Announce to screen readers
-        const message = isOpen ? 'Menu opened' : 'Menu closed';
-        announceToScreenReader(message);
-        
-        console.log('Menu toggled:', isOpen ? 'open' : 'closed');
-        
-        // Apply focus trap if menu is open
-        if (isOpen) {
-            trapFocus(navLinks);
-        }
+        toggleMenu(!isOpen);
     });
 
     // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', (e) => {
         if (isOpen && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
-            closeMenu();
+            toggleMenu(false);
         }
     });
 
-    // Close menu when clicking on a link
-    navLinks.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A') {
-            closeMenu();
+    // Handle navigation clicks
+    navLinks.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        const targetId = link.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+            e.preventDefault();
+            const targetElement = document.querySelector(targetId);
             
-            // Handle smooth scrolling separately
-            const targetId = e.target.getAttribute('href');
-            if (targetId && targetId.startsWith('#') && targetId !== '#') {
-                e.preventDefault();
+            if (targetElement) {
+                toggleMenu(false);
                 
-                setTimeout(() => {
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const headerHeight = navbar ? navbar.offsetHeight : 0;
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Update URL without page jump
-                        history.pushState(null, null, targetId);
-                        
-                        // Set focus to the target element
-                        targetElement.setAttribute('tabindex', '-1');
-                        targetElement.focus({ preventScroll: true });
-                    }
-                }, 300);
+                const headerHeight = navbar.offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Update URL without jump
+                history.pushState(null, null, targetId);
             }
         }
     });
 
-    // Close menu on escape key
-    document.addEventListener('keydown', function(e) {
+    // Close menu on escape
+    document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && isOpen) {
-            closeMenu();
+            toggleMenu(false);
         }
     });
 
-    // Helper function to close menu
-    function closeMenu() {
-        isOpen = false;
-        navLinks.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
-        document.body.classList.remove('menu-open');
+    // Handle scroll events
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Initialize active section
+    updateActiveSection();
+}
+
+// Focus trap helper
+function trapFocus(element) {
+    const focusableElements = element.querySelectorAll(
+        'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    
+    if (focusableElements.length === 0) return;
+    
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+    const previousFocus = document.activeElement;
+
+    // Focus first element
+    requestAnimationFrame(() => firstFocusable.focus());
+
+    function handleFocusTrap(e) {
+        const isTabPressed = e.key === 'Tab';
+        
+        if (!isTabPressed) return;
+
+        if (e.shiftKey) {
+            if (document.activeElement === firstFocusable) {
+                e.preventDefault();
+                lastFocusable.focus();
+            }
+        } else {
+            if (document.activeElement === lastFocusable) {
+                e.preventDefault();
+                firstFocusable.focus();
+            }
+        }
     }
-    
-    // Add event listeners for scroll effects
-    window.addEventListener('scroll', function() {
-        handleNavbarVisibility();
-        setActiveNavItem();
-    });
-    
-    // Initialize active nav item on page load
-    setActiveNavItem();
-    
-    // Set nav links to active when clicked
-    navItems.forEach(item => {
-        item.addEventListener('click', function() {
-            navItems.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
+
+    element.addEventListener('keydown', handleFocusTrap);
+
+    return () => {
+        element.removeEventListener('keydown', handleFocusTrap);
+        previousFocus?.focus();
+    };
 }
 
 // Screen reader announcements
@@ -632,92 +631,36 @@ function announceToScreenReader(message) {
     setTimeout(() => announcement.remove(), 1000);
 }
 
-// Focus trap for mobile menu
-function trapFocus(element) {
-    const focusableElements = element.querySelectorAll(
-        'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
-    );
-    
-    if (focusableElements.length === 0) return;
-    
-    const firstFocusableElement = focusableElements[0];
-    const lastFocusableElement = focusableElements[focusableElements.length - 1];
-    
-    // Store the element that had focus before the menu was opened
-    const previouslyFocused = document.activeElement;
-
-    // Set focus to the first focusable element within the trap
-    setTimeout(() => {
-        firstFocusableElement.focus();
-    }, 100);
-
-    element.addEventListener('keydown', function(e) {
-        if (e.key === 'Tab') {
-            // If shift + tab and focus is on first element, move to last element
-            if (e.shiftKey && document.activeElement === firstFocusableElement) {
-                e.preventDefault();
-                lastFocusableElement.focus();
-            }
-            // If tab and focus is on last element, move to first element
-            else if (!e.shiftKey && document.activeElement === lastFocusableElement) {
-                e.preventDefault();
-                firstFocusableElement.focus();
-            }
-        } else if (e.key === 'Escape') {
-            // Close the menu and restore focus
-            const navToggle = document.querySelector('.nav-toggle');
-            if (navToggle) {
-                navToggle.click();
-                
-                // Restore focus to the element that was focused before the menu was opened
-                if (previouslyFocused) {
-                    setTimeout(() => {
-                        previouslyFocused.focus();
-                    }, 100);
-                }
-            }
-        }
-    });
-}
-
 // Keyboard Navigation
 document.addEventListener('keydown', function(e) {
     // Escape key closes navigation menu
     if (e.key === 'Escape') {
         const navLinks = document.querySelector('.nav-links');
         if (navLinks && navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
             const navToggle = document.querySelector('.nav-toggle');
             if (navToggle) {
-                navToggle.setAttribute('aria-expanded', 'false');
-                document.body.classList.remove('menu-open');
+                navToggle.click();
             }
         }
     }
 });
 
-// Add focus trap to the navigation when active
-const navLinks = document.querySelector('.nav-links');
-if (navLinks) {
-    navLinks.addEventListener('transitionend', () => {
-        if (navLinks.classList.contains('active')) {
-            trapFocus(navLinks);
-        }
+// Scroll to Top Button
+const scrollTopButton = document.querySelector('.scroll-top');
+if (scrollTopButton) {
+    // Show/hide scroll to top button
+    window.addEventListener('scroll', () => {
+        const shouldShow = window.scrollY > 500;
+        scrollTopButton.classList.toggle('show', shouldShow);
+        scrollTopButton.setAttribute('aria-hidden', !shouldShow);
+    });
+
+    // Handle scroll to top click
+    scrollTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        announceToScreenReader('Scrolled to top of page');
     });
 }
-
-// Scroll to Top with announcement
-scrollTopButton.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    announceToScreenReader('Scrolled to top of page');
-});
-
-// Show/hide scroll to top button with ARIA
-window.addEventListener('scroll', () => {
-    const shouldShow = window.scrollY > 500;
-    scrollTopButton.classList.toggle('visible', shouldShow);
-    scrollTopButton.setAttribute('aria-hidden', !shouldShow);
-});
 
 // Smooth scroll with announcements
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
