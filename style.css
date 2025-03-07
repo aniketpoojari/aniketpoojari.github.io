@@ -112,10 +112,26 @@ body {
   font-size: 1rem;
   padding: 0.5rem 1rem;
   transition: color 0.3s ease;
+  position: relative;
 }
 
-.nav-links a:hover:not(.active) {
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
   color: var(--primary-color);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .nav-links a.active {
@@ -129,9 +145,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  .nav-links a:hover:not(.active) {
+  .nav-links a:hover {
     color: var(--primary-color);
-    background: none;
   }
 
   .nav-links a.active,
