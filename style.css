@@ -245,7 +245,6 @@ body {
   }
 
   [data-theme="dark"] .nav-links {
-    background-color: rgba(42, 42, 60, 0.98);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
