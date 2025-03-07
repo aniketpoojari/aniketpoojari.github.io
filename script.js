@@ -1,12 +1,6 @@
-// Data Loading and Initialization
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize page loader with progress
     initPageLoader();
-    
-    // Initialize mobile navigation
     initMobileNav();
-    
-    // Fetch and load data from JSON
     fetch('data.json')
         .then(response => response.json())
         .then(data => {
@@ -19,32 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
             loadTestimonials(data.testimonials);
         })
         .catch(error => console.error('Error loading data:', error));
-
-    // Initialize page functions
     initTypeWriter();
     initScrollAnimations();
     initSmoothScroll();
     initCustomCursor();
     initLazyLoading();
-
-    // Initialize theme from localStorage or system preference
     initTheme();
 });
 
-// Page Loader with Progress
 function initPageLoader() {
     const loader = document.querySelector('.page-loader');
     const progressBar = document.querySelector('.progress-bar');
-    
-    // Check if elements exist
     if (!loader || !progressBar) return;
-    
-    // Set initial progress
     let progress = 0;
     const interval = setInterval(() => {
         progress += 5;
         progressBar.style.width = `${progress}%`;
-        
         if (progress >= 100) {
             clearInterval(interval);
             loader.classList.add('loaded');
@@ -53,8 +37,6 @@ function initPageLoader() {
             }, 500);
         }
     }, 50);
-    
-    // Also hide loader when all content is loaded
     window.addEventListener('load', () => {
         progressBar.style.width = '100%';
         clearInterval(interval);
@@ -65,14 +47,11 @@ function initPageLoader() {
     });
 }
 
-// Skills Rendering Function
 function loadSkills(categories) {
     const skillsContainer = document.getElementById('skills-container');
-    
     categories.forEach(category => {
         const categoryDiv = document.createElement('div');
         categoryDiv.classList.add('skills-category');
-        
         categoryDiv.innerHTML = `
             <h3>${category.title}</h3>
             <ul>
@@ -81,12 +60,10 @@ function loadSkills(categories) {
                 `).join('')}
             </ul>
         `;
-        
         skillsContainer.appendChild(categoryDiv);
     });
 }
 
-// Projects Rendering Function
 function loadProjects(projects) {
     const projectsList = document.getElementById('projects-list');
     projects.forEach(project => {
@@ -95,7 +72,6 @@ function loadProjects(projects) {
     });
 }
 
-// Create Individual Project Card
 function createProjectCard(project) {
     const card = document.createElement('div');
     card.classList.add('project-card');
@@ -115,7 +91,6 @@ function createProjectCard(project) {
     return card;
 }
 
-// Blogs Rendering Function
 function loadBlogs(blogs) {
     const blogsList = document.getElementById('blogs-list');
     blogs.forEach(blog => {
@@ -124,7 +99,6 @@ function loadBlogs(blogs) {
     });
 }
 
-// Create Individual Blog Card
 function createBlogCard(blog) {
     const card = document.createElement('div');
     card.classList.add('blog-card');
@@ -140,7 +114,6 @@ function createBlogCard(blog) {
     return card;
 }
 
-// Experience Rendering Function
 function loadExperience(experiences) {
     const experienceList = document.getElementById('experience-list');
     experiences.forEach(exp => {
@@ -149,12 +122,10 @@ function loadExperience(experiences) {
     });
 }
 
-// Create Individual Experience Card
 function createExperienceCard(exp) {
     const div = document.createElement('div');
     div.classList.add('company');
     const descriptionList = exp.description.map(item => `<li>${item}</li>`).join('');
-    
     div.innerHTML = `
         <img src="${exp.image}" alt="${exp.company}">
         <div>
@@ -166,7 +137,6 @@ function createExperienceCard(exp) {
     return div;
 }
 
-// Education Rendering Function
 function loadEducation(education) {
     const educationList = document.getElementById('education-list');
     education.forEach(edu => {
@@ -175,12 +145,10 @@ function loadEducation(education) {
     });
 }
 
-// Create Individual Education Card
 function createEducationCard(edu) {
     const div = document.createElement('div');
     div.classList.add('institution');
     const descriptionList = edu.description.map(item => `<li>${item}</li>`).join('');
-    
     div.innerHTML = `
         <img src="${edu.image}" alt="${edu.institution}">
         <div>
@@ -192,7 +160,6 @@ function createEducationCard(edu) {
     return div;
 }
 
-// Achievements Rendering Function
 function loadAchievements(achievements) {
     const achievementsList = document.getElementById('achievements-list');
     achievements.forEach(achievement => {
@@ -201,7 +168,6 @@ function loadAchievements(achievements) {
     });
 }
 
-// Create Individual Achievement Card
 function createAchievementCard(achievement) {
     const div = document.createElement('div');
     div.classList.add('achievement');
@@ -212,24 +178,16 @@ function createAchievementCard(achievement) {
     return div;
 }
 
-// Testimonials Rendering Function
 function loadTestimonials(testimonials) {
     const testimonialsSlider = document.getElementById('testimonials-slider');
     const indicators = document.getElementById('testimonial-indicators');
-    
     if (!testimonialsSlider || !indicators || !testimonials.length) return;
-    
-    // Clear any existing content
     testimonialsSlider.innerHTML = '';
     indicators.innerHTML = '';
-    
-    // Create testimonial slides
     testimonials.forEach((testimonial, index) => {
-        // Create testimonial card
         const slide = document.createElement('div');
         slide.classList.add('testimonial-slide');
         if (index === 0) slide.classList.add('active');
-        
         slide.innerHTML = `
             <div class="testimonial-card">
                 <div class="testimonial-content">
@@ -251,20 +209,14 @@ function loadTestimonials(testimonials) {
                 </div>
             </div>
         `;
-        
         testimonialsSlider.appendChild(slide);
-        
-        // Create indicator dot
         const dot = document.createElement('button');
         dot.classList.add('indicator-dot');
         if (index === 0) dot.classList.add('active');
         dot.setAttribute('aria-label', `View testimonial ${index + 1}`);
         dot.dataset.index = index;
-        
         indicators.appendChild(dot);
     });
-    
-    // Set up testimonial controls
     setupTestimonialControls(testimonials.length);
 }
 
@@ -273,155 +225,106 @@ function setupTestimonialControls(slideCount) {
     const nextBtn = document.getElementById('next-testimonial');
     const dots = document.querySelectorAll('.indicator-dot');
     const slides = document.querySelectorAll('.testimonial-slide');
-    
     let currentSlide = 0;
-    
     function goToSlide(index) {
         if (index < 0) index = slideCount - 1;
         if (index >= slideCount) index = 0;
-        
-        // Update current slide index
         currentSlide = index;
-        
-        // Update slides
         slides.forEach((slide, i) => {
             slide.classList.toggle('active', i === index);
             slide.style.transform = `translateX(${100 * (i - index)}%)`;
         });
-        
-        // Update indicators
         dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === index);
         });
     }
-    
-    // Initialize slide positions
     slides.forEach((slide, i) => {
         slide.style.transform = `translateX(${100 * (i - currentSlide)}%)`;
     });
-    
-    // Setup event listeners
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
             goToSlide(currentSlide - 1);
         });
     }
-    
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
             goToSlide(currentSlide + 1);
         });
     }
-    
-    // Setup indicator clicks
     dots.forEach(dot => {
         dot.addEventListener('click', () => {
             goToSlide(parseInt(dot.dataset.index));
         });
     });
-    
-    // Auto-rotate testimonials
     setInterval(() => {
         goToSlide(currentSlide + 1);
     }, 8000);
 }
 
-// Custom Cursor Implementation
 function initCustomCursor() {
     const cursor = document.querySelector('.custom-cursor');
     if (!cursor) return;
-    
-    // Set initial position off-screen
     cursor.style.opacity = '0';
-    
     document.addEventListener('mousemove', (e) => {
-        // Smooth follow with CSS variables
         cursor.style.setProperty('--cursor-x', `${e.clientX}px`);
         cursor.style.setProperty('--cursor-y', `${e.clientY}px`);
         cursor.style.opacity = '1';
     });
-    
-    // Enlarge cursor on interactive elements
     const interactiveElements = document.querySelectorAll('a, button, .btn, .card, .project-card, .blog-card');
-    
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
             cursor.classList.add('hover');
         });
-        
         el.addEventListener('mouseleave', () => {
             cursor.classList.remove('hover');
         });
     });
-    
-    // Hide cursor when leaving window
     document.addEventListener('mouseleave', () => {
         cursor.style.opacity = '0';
     });
-    
-    // Hide cursor on mobile/touch devices
     if (window.matchMedia('(max-width: 768px)').matches || 'ontouchstart' in window) {
         cursor.style.display = 'none';
     }
 }
 
-// Scroll Animations
 function initScrollAnimations() {
     const animateElements = document.querySelectorAll('.section, .hero, .hero-text, .about-content, .skills-category, .project-card, .blog-card, .company, .institution, .achievement, .testimonial-slide');
-    
     const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.15
     };
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
-                // Optional: Stop observing after animation
-                // observer.unobserve(entry.target);
             } else {
-                // Optional: Reset animation when out of view for repeat animations
-                // entry.target.classList.remove('animate-in');
             }
         });
     }, observerOptions);
-    
-    // Add initial classes
     animateElements.forEach(el => {
         el.classList.add('animate-ready');
         observer.observe(el);
     });
 }
 
-// Smooth Scrolling
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
             const targetElement = document.querySelector(targetId);
             if (!targetElement) return;
-            
-            // Calculate header height for offset
             const header = document.querySelector('.navbar');
             const headerHeight = header ? header.offsetHeight : 0;
-            
             const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-            
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
             });
-            
-            // Close mobile menu if open
             const navToggle = document.querySelector('.nav-toggle');
             const navLinks = document.querySelector('.nav-links');
-            
             if (navToggle && navLinks && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
@@ -430,18 +333,14 @@ function initSmoothScroll() {
     });
 }
 
-// Lazy Loading Images
 function initLazyLoading() {
     if ('loading' in HTMLImageElement.prototype) {
-        // Browser supports native lazy loading
         const images = document.querySelectorAll('img:not([loading])');
         images.forEach(img => {
             img.setAttribute('loading', 'lazy');
         });
     } else {
-        // Fallback for browsers that don't support lazy loading
         const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-        
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -453,7 +352,6 @@ function initLazyLoading() {
                     }
                 });
             });
-            
             lazyImages.forEach(image => {
                 if (!image.src && image.dataset.src) {
                     image.dataset.src = image.src;
@@ -462,7 +360,6 @@ function initLazyLoading() {
                 imageObserver.observe(image);
             });
         } else {
-            // Fallback for older browsers without IntersectionObserver
             lazyImages.forEach(image => {
                 image.src = image.dataset.src || image.src;
                 image.removeAttribute('data-src');
@@ -471,15 +368,11 @@ function initLazyLoading() {
     }
 }
 
-// Enhanced Dark Mode Toggle
 function initTheme() {
     const themeToggle = document.querySelector('.theme-toggle');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    // Function to set theme
     const setTheme = (theme) => {
         document.body.classList.add('theme-transition');
-        
         if (theme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             if (themeToggle) {
