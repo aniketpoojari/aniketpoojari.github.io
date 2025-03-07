@@ -188,6 +188,10 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+[data-theme="dark"] .nav-links {
+  background-color: transparent;
+}
+
 [data-theme="dark"] .nav-links a:hover {
   background: rgba(255, 255, 255, 0.05);
 }
@@ -228,40 +232,30 @@ body {
 
   .nav-links {
     position: fixed;
-    top: 71px;
-    left: 0;
-    right: 0;
-    background-color: rgba(var(--card-bg), 0.98);
+    top: var(--header-height, 60px);
+    right: -100%;
+    width: 80%;
+    height: calc(100vh - var(--header-height, 60px));
+    flex-direction: column;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    box-shadow: -5px 0 15px var(--shadow-color);
+  }
+
+  [data-theme="dark"] .nav-links {
+    background-color: rgba(42, 42, 60, 0.98);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    flex-direction: column;
-    gap: 0.5rem;
-    height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
-    border-bottom: 1px solid rgba(var(--border-color), 0.1);
   }
-
+  
   .nav-links.active {
-    height: auto;
-    opacity: 1;
-    pointer-events: all;
-    padding: 1rem 0;
-    box-shadow: 0 4px 20px var(--shadow-color);
+    right: 0;
   }
-
+  
   .nav-links li {
-    width: 100%;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .nav-links.active li {
-    opacity: 1;
-    transform: translateY(0);
+    margin: 1rem 0;
   }
 
   .nav-links a {
@@ -280,11 +274,6 @@ body {
   .nav-links a.active {
     border-radius: 0;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  }
-
-  [data-theme="dark"] .nav-links {
-    background-color: rgba(42, 42, 60, 0.98);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   /* Animation delays for menu items */
