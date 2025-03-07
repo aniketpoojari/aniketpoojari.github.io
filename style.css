@@ -114,6 +114,7 @@ body {
   z-index: 1000;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   border-bottom: 1px solid rgba(var(--border-color-rgb), 0.1);
+  height: var(--header-height);
 }
 
 .navbar.scrolled {
@@ -124,7 +125,8 @@ body {
 .navbar-container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 1rem 5%;
+  padding: 0 5%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -211,6 +213,38 @@ body {
   font-weight: 600;
 }
 
+/* Hamburger Button */
+.nav-toggle {
+  display: none;
+}
+
+.hamburger {
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-color);
+  position: relative;
+  transition: background-color 0.3s ease;
+  display: block;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-color);
+  transition: transform 0.3s ease;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
 /* Mobile Navigation */
 @media (max-width: 768px) {
   .nav-toggle {
@@ -224,33 +258,7 @@ body {
     padding: 0.5rem;
     cursor: pointer;
     z-index: 1001;
-  }
-
-  .hamburger {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: var(--text-color);
     position: relative;
-    transition: background-color 0.3s ease;
-  }
-
-  .hamburger::before,
-  .hamburger::after {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 2px;
-    background-color: var(--text-color);
-    transition: transform 0.3s ease;
-  }
-
-  .hamburger::before {
-    top: -8px;
-  }
-
-  .hamburger::after {
-    bottom: -8px;
   }
 
   [aria-expanded="true"] .hamburger {
