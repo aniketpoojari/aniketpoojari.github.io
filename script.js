@@ -29,9 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize theme from localStorage or system preference
     initTheme();
-    
-    // Add navigation items for testimonials
-    addNavItem('testimonials', 'What Others Say');
 });
 
 // Page Loader with Progress
@@ -327,21 +324,6 @@ function setupTestimonialControls(slideCount) {
     setInterval(() => {
         goToSlide(currentSlide + 1);
     }, 8000);
-}
-
-// Add navigation item
-function addNavItem(id, text) {
-    const navLinks = document.querySelector('.nav-links');
-    if (!navLinks) return;
-    
-    // Create new list item
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = `#${id}`;
-    a.textContent = text;
-    
-    li.appendChild(a);
-    navLinks.appendChild(li);
 }
 
 // Custom Cursor Implementation
