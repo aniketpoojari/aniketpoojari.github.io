@@ -208,7 +208,9 @@ body {
 
 .nav-links a.active {
   color: var(--primary-color);
-  font-weight: 600;
+  background: transparent;
+  font-weight: bold;
+  border-bottom: 2px solid var(--primary-color);
 }
 
 /* Hamburger Button */
