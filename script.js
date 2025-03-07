@@ -369,16 +369,24 @@ function initSmoothScroll() {
             const header = document.querySelector('.navbar');
             const headerHeight = header ? header.offsetHeight : 0;
             const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+            
+            // Close mobile menu if open
             const navToggle = document.querySelector('.nav-toggle');
             const navLinks = document.querySelector('.nav-links');
             if (navToggle && navLinks && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('menu-open');
+                document.body.classList.remove('active');
             }
+            
+            // Scroll to target after a small delay to allow menu to close
+            setTimeout(() => {
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }, 10);
         });
     });
 }
@@ -665,18 +673,3 @@ if (scrollTopButton) {
         announceToScreenReader('Scrolled to top of page');
     });
 }
-
-// Smooth scroll with announcements
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').slice(1);
-        const target = document.getElementById(targetId);
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-            announceToScreenReader(`Navigated to ${targetId} section`);
-            target.setAttribute('tabindex', '-1');
-            target.focus({ preventScroll: true });
-        }
-    });
-});
