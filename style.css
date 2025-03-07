@@ -111,7 +111,7 @@ body {
   background-color: rgba(var(--card-bg-rgb), 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  z-index: 998;
+  z-index: 1001;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   border-bottom: 1px solid rgba(var(--border-color-rgb), 0.1);
   height: var(--header-height);
@@ -140,7 +140,6 @@ body {
   transition: color 0.3s ease, transform 0.3s ease;
   padding: 0.5rem;
   border-radius: 8px;
-  z-index: 1001;
 }
 
 .logo:hover {
@@ -221,7 +220,6 @@ body {
   border: none;
   padding: 0.5rem;
   cursor: pointer;
-  z-index: 1001;
 }
 
 /* Base Hamburger Styles */
@@ -295,7 +293,6 @@ body {
   .navbar {
     background-color: var(--card-bg);
     box-shadow: 0 2px 10px var(--shadow-color);
-    z-index: 1001;
   }
 
   /* Mobile Menu Styles */
@@ -312,7 +309,6 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    z-index: 1001;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);    
@@ -322,7 +318,6 @@ body {
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
-    z-index: 1001;
   }
 
   .nav-links li {
