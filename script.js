@@ -246,39 +246,69 @@ function setupTestimonialControls(slideCount) {
     const dots = document.querySelectorAll('.indicator-dot');
     const slides = document.querySelectorAll('.testimonial-slide');
     let currentSlide = 0;
+    
     function goToSlide(index) {
         if (index < 0) index = slideCount - 1;
         if (index >= slideCount) index = 0;
         currentSlide = index;
+        
         slides.forEach((slide, i) => {
+            // Remove active class from all slides
             slide.classList.toggle('active', i === index);
+            
+            // Position slides horizontally and handle z-index
             slide.style.transform = `translateX(${100 * (i - index)}%)`;
+            
+            // Set z-index to ensure proper stacking
+            if (i === index) {
+                slide.style.zIndex = 2; // Active slide on top
+            } else {
+                slide.style.zIndex = 1; // Inactive slides below
+            }
         });
+        
         dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === index);
         });
     }
+    
+    // Initialize slide positions
     slides.forEach((slide, i) => {
         slide.style.transform = `translateX(${100 * (i - currentSlide)}%)`;
+        slide.style.zIndex = i === currentSlide ? 2 : 1;
     });
+    
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
             goToSlide(currentSlide - 1);
         });
     }
+    
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
             goToSlide(currentSlide + 1);
         });
     }
+    
     dots.forEach(dot => {
         dot.addEventListener('click', () => {
             goToSlide(parseInt(dot.dataset.index));
         });
     });
-    setInterval(() => {
+    
+    // Auto-advance slides every 8 seconds
+    const autoAdvance = setInterval(() => {
         goToSlide(currentSlide + 1);
     }, 8000);
+    
+    // Clear interval when user interacts with controls
+    const clearAutoAdvance = () => {
+        clearInterval(autoAdvance);
+    };
+    
+    if (prevBtn) prevBtn.addEventListener('click', clearAutoAdvance);
+    if (nextBtn) nextBtn.addEventListener('click', clearAutoAdvance);
+    dots.forEach(dot => dot.addEventListener('click', clearAutoAdvance));
 }
 
 function initCustomCursor() {
