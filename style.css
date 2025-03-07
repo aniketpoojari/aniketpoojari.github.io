@@ -296,19 +296,23 @@ body {
     height: 100vh;
     background-color: var(--card-bg);
     padding: 80px 20px 20px;
-    display: none;
+    display: flex;  /* Keep it flexible but hidden */
     flex-direction: column;
     align-items: center;
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
     z-index: 1000;
     overflow-y: auto;
-  }
+}
 
-  .nav-links.active {
-    display: flex;
+.nav-links.active {
     transform: translateX(0);
-  }
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
 
   .nav-links li {
     margin: 15px 0;
