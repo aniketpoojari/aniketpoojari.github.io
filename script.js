@@ -525,9 +525,10 @@ function initNavbar() {
     const navbar = document.querySelector('.navbar');
     let lastScrollTop = 0;
 
-    // Toggle mobile menu
+    // Toggle mobile menu - improved with better event handling
     if (navToggle) {
-        navToggle.addEventListener('click', () => {
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event bubbling
             const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
             navToggle.setAttribute('aria-expanded', !isExpanded);
             navLinks.classList.toggle('active');
@@ -543,8 +544,9 @@ function initNavbar() {
 
     // Close mobile menu when clicking on a link
     navItems.forEach(item => {
-        item.addEventListener('click', () => {
+        item.addEventListener('click', (e) => {
             if (window.innerWidth <= 768) {
+                e.stopPropagation(); // Prevent event bubbling
                 navLinks.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
@@ -552,9 +554,9 @@ function initNavbar() {
         });
     });
 
-    // Close mobile menu when clicking outside
+    // Close mobile menu when clicking outside - improved detection
     document.addEventListener('click', (e) => {
-        if (navLinks.classList.contains('active') && 
+        if (navLinks && navLinks.classList.contains('active') && 
             !navLinks.contains(e.target) && 
             !navToggle.contains(e.target)) {
             navLinks.classList.remove('active');
@@ -566,8 +568,8 @@ function initNavbar() {
     // Resize handling
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768) {
-            navLinks.classList.remove('active');
-            navToggle.setAttribute('aria-expanded', 'false');
+            if (navLinks) navLinks.classList.remove('active');
+            if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
         }
     });
