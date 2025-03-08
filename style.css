@@ -1724,25 +1724,60 @@ footer {
 @media (max-width: 768px) {
   .testimonials-container {
     padding: 0 10px 40px;
+    display: flex;
+    flex-direction: column;
   }
   
   .testimonials-slider {
     min-height: 400px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    position: relative;
   }
   
   .testimonial-slide {
     padding: 0 10px;
+    height: auto;
+    position: absolute;
+    width: 100%;
   }
   
   .testimonial-card {
     padding: 1.5rem;
     width: 100%;
+    height: auto;
+    max-height: 400px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .testimonial-content {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+  }
+  
+  .testimonial-text {
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+    align-items: flex-start;
+    display: block;
+  }
+  
+  .testimonial-author {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 15px;
   }
   
   .testimonial-controls {
-    margin-top: -30px;
+    position: relative;
+    margin-top: 10px;
     padding: 0 10px;
+    width: 100%;
+    z-index: 5;
   }
 }
 
