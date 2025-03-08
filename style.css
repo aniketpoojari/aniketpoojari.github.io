@@ -2160,3 +2160,20 @@ a:hover {
 .nav-links a:hover {
   color: var(--primary-color);
 }
+
+/* Desktop-only dark mode nav-links background matching */
+@media (min-width: 769px) {
+  /* Match dark mode navbar background with nav-links in desktop */
+  [data-theme="dark"] .nav-links {
+    background-color: rgba(var(--background-rgb), 0.9);
+  }
+
+  /* When navbar is scrolled, also update nav-links to match */
+  [data-theme="dark"] .navbar.scrolled ~ .nav-links {
+    background-color: var(--background);
+  }
+}
+
+[data-theme="dark"] .navbar.scrolled {
+  background-color: var(--background);
+}
