@@ -388,8 +388,8 @@
       "gpa": "3.77/4.0",
       "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQEtLpPkfugtXg/company-logo_200_200/company-logo_200_200/0/1631354574889?e=1755734400&v=beta&t=KkrBqYlVAUGucQqnZ8N4HkhOCtgVaOBG-CAMzSToxUM",
       "description": [
-        "Graduate Teaching Assistant for Applied Machine Learning, Cloud Application Development, and Web Development",
-        "Relevant Coursework: Deep Learning, Computer Vision, Natural Language Processing, MLOps"
+        "Graduate Teaching Assistant for 300+ students in Applied Machine Learning, Cloud Application Development, Web Development, Mobile Software Development, and Open Source Software courses",
+        "Relevant Coursework: Deep Learning, Computer Vision, Algorithms, Machine Learning"
       ]
     },
     {
@@ -408,7 +408,7 @@
   ],
   "achievements": [
     {
-      "title": "Runner-up at Smart India Hackathon 2019",
+      "title": "Smart India Hackathon 2019",
       "description": "Led a 5-member team to develop a smart research content management platform for PD Hinduja Hospital, reducing research proposal-to-approval time by 60% and enhancing process efficiency."
     },
     {
