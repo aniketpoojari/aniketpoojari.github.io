@@ -1116,6 +1116,48 @@
             transform: translateY(0);
         }
 
+        /* Achievements specific styles (distinct from testimonials) */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-card {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            background: linear-gradient(135deg, rgba(132,112,255,0.06), rgba(74,123,255,0.02));
+            border: 1px solid rgba(132,112,255,0.12);
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 24px rgba(74,93,255,0.06);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .achievement-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            background: rgba(132,112,255,0.12);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        .achievement-content h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.05rem;
+        }
+
         /* Image opacity styles */
     .profile-image {
         opacity: 0.7;  /* Reduced from 0.9 */
@@ -1308,7 +1350,7 @@
         </div>
         <div class="container">
             <h2 class="section-title">Achievements</h2>
-            <div class="blogs-grid" id="achievementsGrid">
+            <div class="achievements-grid" id="achievementsGrid">
                 <!-- Achievements will be loaded dynamically -->
             </div>
         </div>
@@ -1476,9 +1518,10 @@
             // Use the achievements array from data.json
             (portfolioData.achievements || []).forEach(item => {
                 const achDiv = document.createElement('div');
-                achDiv.className = 'blog-card fade-in';
+                achDiv.className = 'achievement-card fade-in';
                 achDiv.innerHTML = `
-                    <div class="blog-content">
+                    <div class="achievement-icon"><i class="fas fa-trophy" aria-hidden="true"></i></div>
+                    <div class="achievement-content">
                         <h3 class="blog-title">${item.title}</h3>
                         <p>${item.description}</p>
                     </div>
