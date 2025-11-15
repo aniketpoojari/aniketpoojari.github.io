@@ -140,130 +140,171 @@
   "projects": [
     {
       "title": "Agentic AI Research Assistant",
-      "description": "LangGraph-powered autonomous research assistant with state-machine architecture, multi-provider LLM support, and intelligent tool orchestration for web search, summarization, fact-checking, and citation management.",
-      "technologies": ["Python", "LangGraph", "LangChain", "Streamlit", "FastAPI"],
+      "description": "An agentic research assistant that uses LangGraph for dynamic tool calling with LLMs to answer research questions.",
+      "image": "https://cdn.hashnode.com/res/hashnode/image/upload/v1727695448677/0e3ce539-1997-43ef-8e3c-648893855349.jpeg?auto=compress,format&format=webp",
       "githubUrl": "https://github.com/aniketpoojari/Agentic-AI-Research-Assistant",
-      "liveUrl": "https://huggingface.co/spaces/aniketpoojari/agentic-ai-research-assistant"
+      "technologies": ["Python", "LangGraph", "LLM", "RAG"],
+      "featured": true
     },
     {
       "title": "BiLoRA: Dual Adapter Fine-Tuning",
-      "description": "Streamlit application implementing dual LoRA adapters for simultaneous code generation and docstring creation using parameter-efficient fine-tuning techniques.",
-      "technologies": ["Python", "PyTorch", "Transformers", "LoRA", "Streamlit"],
-      "githubUrl": "https://github.com/aniketpoojari/Fine-Tuning-LLM"
+      "description": "A Streamlit app that uses two fine tuned LLM adapters for code generation and docstring generation.",
+      "image": "https://a.storyblok.com/f/139616/1200x800/b050784413/thumbnail.webp/m/767x0/filters:quality(100):format(webp)",
+      "githubUrl": "https://github.com/aniketpoojari/Fine-Tuning-LLM",
+      "technologies": ["Python", "LoRA", "LLM", "Streamlit"],
+      "featured": true
     },
     {
       "title": "Multi-Modal RAG QA System",
-      "description": "Production-ready RAG pipeline with Flask backend integrating LangChain and ChromaDB for intelligent extraction and Q&A across PDFs and websites, supporting text, tables, and images.",
-      "technologies": ["Python", "LangChain", "ChromaDB", "Flask", "Groq"],
-      "githubUrl": "https://github.com/aniketpoojari/OmniDoc-QA-LLM-RAG"
+      "description": "An LLM-powered web app that extracts, analyzes, and enables Q&A on text, tables, and images from PDFs and websites using RAG",
+      "image": "https://www.cq-partners.com/images/chat.jpg",
+      "githubUrl": "https://github.com/aniketpoojari/OmniDoc-QA-LLM-RAG",
+      "technologies": ["Python", "RAG", "Multi-modal", "LLM"],
+      "featured": true
     },
     {
       "title": "Text-to-Image using Diffusion from Scratch",
-      "description": "Custom diffusion model with UNet, VAE, and CLIP embeddings trained on 8K image-caption pairs. Optimized on AWS SageMaker with DeepSpeed, achieving 3× speedup and 68% cost reduction via Spot Instances.",
-      "technologies": ["Python", "PyTorch", "AWS SageMaker", "DeepSpeed", "Airflow"],
-      "githubUrl": "https://github.com/aniketpoojari/Text-To-Image-Diffusion"
+      "description": "Trained a diffusion model with UNet, VAE, and CLIP embeddings for high-quality image generation. Optimized training on AWS SageMaker with spot instances, reducing costs by 68%.",
+      "image": "https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/3M5XD62SD5GPRCNHFNQBYLJHWU.jpg",
+      "githubUrl": "https://github.com/aniketpoojari/Text-To-Image-Diffusion",
+      "technologies": ["Python", "Diffusion Models", "AWS SageMaker"],
+      "featured": false
     },
     {
       "title": "Text Summarization GPT from Scratch",
-      "description": "125M-parameter transformer pre-trained from scratch and fine-tuned on XSum dataset for abstractive summarization, achieving 5.4 ROUGE score.",
-      "technologies": ["Python", "PyTorch", "Transformers", "Weights & Biases"],
-      "githubUrl": "https://github.com/aniketpoojari/Text-Summarization-GPT"
+      "description": "Pretrained a 125M-parameter transformer for summarization. Fine-tuned on XSum dataset, achieving a 5.4 ROUGE score.",
+      "image": "https://cse.engin.umich.edu/wp-content/uploads/sites/2/2021/03/summarization-featured.jpg",
+      "githubUrl": "https://github.com/aniketpoojari/Text-Summarization-GPT",
+      "technologies": ["Python", "Transformers", "NLP"],
+      "featured": false
     },
     {
       "title": "Image Depth Map Prediction",
-      "description": "Vision Transformer-based monocular depth estimation achieving 19cm RMSE with 15% accuracy improvement in complex scenes.",
-      "technologies": ["Python", "PyTorch", "Vision Transformer", "Computer Vision"],
-      "githubUrl": "https://github.com/aniketpoojari/Monocular-Depth-Estimation"
+      "description": "Developed a depth estimation model using Vision Transformer, achieving 19 cm RMSE and 15% improvement in complex environments.",
+      "image": "https://production-media.paperswithcode.com/thumbnails/task/task-0000000603-3510e464.jpg",
+      "githubUrl": "https://github.com/aniketpoojari/Monocular-Depth-Estimation",
+      "technologies": ["Python", "Vision Transformers", "Computer Vision"],
+      "featured": false
     },
     {
       "title": "Automated Stock Price Prediction System",
-      "description": "CNN-based temporal prediction model with XGBoost feature selection for reproducible stock price forecasting.",
-      "technologies": ["Python", "TensorFlow", "XGBoost", "Time Series"],
-      "githubUrl": "https://github.com/aniketpoojari/Stock-Price-Prediction"
+      "description": "Built a CNN-based stock price prediction model with XGBoost for feature selection, improving accuracy and reproducibility.",
+      "image": "https://5.imimg.com/data5/SELLER/Default/2023/8/338921287/JB/ZV/BY/2684188/ai-powered-trading-software-500x500.jpg",
+      "githubUrl": "https://github.com/aniketpoojari/Stock-Price-Prediction",
+      "technologies": ["Python", "CNN", "XGBoost", "Time Series Forecasting"],
+      "featured": false
     },
     {
       "title": "Lane Segmentation",
-      "description": "U-Net semantic segmentation model for autonomous vehicle lane detection achieving 80% IoU, deployed as real-time Flask inference API.",
-      "technologies": ["Python", "TensorFlow", "U-Net", "Flask", "Computer Vision"],
-      "githubUrl": "https://github.com/aniketpoojari/Lane-Segmentation"
+      "description": "Developed a U-Net model for lane detection in autonomous vehicles, achieving 80% IoU and integrated into a Flask app for real-time use.",
+      "image": "https://miro.medium.com/v2/resize:fit:1200/1*no84Hvsekd6fSXeIKxAU2A.png",
+      "githubUrl": "https://github.com/aniketpoojari/Lane-Segmentation",
+      "technologies": ["Python", "U-Net", "Flask", "Computer Vision"],
+      "featured": false
     },
     {
       "title": "Motor Self Inspection",
-      "description": "Computer vision web application for automated vehicle damage detection accelerating insurance claim processing.",
-      "technologies": ["Python", "TensorFlow", "Flask", "Computer Vision"],
-      "githubUrl": "https://github.com/aniketpoojari/Motor-Self-Inspection"
+      "description": "A web app that detects vehicle damages for faster insurance claim approvals.",
+      "image": "https://raw.githubusercontent.com/aniketpoojari/Motor-Self-Inspection/master/3.JPG",
+      "githubUrl": "https://github.com/aniketpoojari/Motor-Self-Inspection",
+      "technologies": ["Python", "Computer Vision", "Web Development"],
+      "featured": false
     },
     {
       "title": "Image Denoising",
-      "description": "Convolutional autoencoder for noise reduction in corrupted images using encoder-decoder architecture.",
-      "technologies": ["Python", "TensorFlow", "Autoencoder", "Computer Vision"],
-      "githubUrl": "https://github.com/aniketpoojari/Image-Denoising"
+      "description": "Used an autoencoder neural network for effective image denoising.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbTM261Wj76-LBTcVQxi7nDcbq2KAp0Jksyw&s",
+      "githubUrl": "https://github.com/aniketpoojari/Image-Denoising",
+      "technologies": ["Python", "Autoencoders", "Computer Vision"],
+      "featured": false
     },
     {
       "title": "NYC Taxi Trip duration prediction",
-      "description": "CatBoost gradient boosting model with engineered geospatial and temporal features for NYC taxi trip duration estimation.",
-      "technologies": ["Python", "CatBoost", "XGBoost", "Feature Engineering"],
-      "githubUrl": "https://github.com/aniketpoojari/NYC-Taxi-Trip-Duration-Prediction"
+      "description": "Created a prediction system to estimate taxi trip durations in New York City using CatBoost, with XGBoost assisting in feature selection.",
+      "image": "https://media.licdn.com/dms/image/v2/C4D12AQE9AL2Z0yHhsA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1650520960468?e=2147483647&v=beta&t=kiKxMGf1GzcS0rI2d8Rru8K-RW-nrdzDezpgxtLlKOc",
+      "githubUrl": "https://github.com/aniketpoojari/NYC-Taxi-Trip-Duration-Prediction",
+      "technologies": ["Python", "CatBoost", "XGBoost"],
+      "featured": false
     },
     {
       "title": "Sentiment Analysis of tweets",
-      "description": "PyTorch LSTM network for sentiment classification on airline customer feedback tweets.",
-      "technologies": ["Python", "PyTorch", "LSTM", "NLP"],
-      "githubUrl": "https://github.com/aniketpoojari/Sentiment-Analysis"
+      "description": "Conducted sentiment analysis on airline-related tweets by implementing an LSTM model in PyTorch.",
+      "image": "https://store-images.microsoft.com/image/apps.57874.9007199266244427.12d00104-ac5d-4406-ad7b-66f678d54e19.e9fa7d2a-16a1-437c-bbd5-cf0e4e2d2c70",
+      "githubUrl": "https://github.com/aniketpoojari/Sentiment-Analysis",
+      "technologies": ["Python", "LSTM", "PyTorch", "NLP"],
+      "featured": false
     },
     {
       "title": "Emergency VS Non Emergency Vehicle Sound Classification",
-      "description": "TensorFlow LSTM model trained on mel-spectrogram features for real-time emergency vehicle audio detection.",
-      "technologies": ["Python", "TensorFlow", "LSTM", "Audio Processing"],
-      "githubUrl": "https://github.com/aniketpoojari/Emergency-VS-Non-Emergency-Vehicle-Sound-Classification"
+      "description": "Developed a sound classification system using an LSTM model on spectrogram features with TensorFlow to distinguish between emergency and non-emergency vehicles.",
+      "image": "https://tcsupfitting.com/wp-content/uploads/2021/09/emergency-vehicles-responding-picture-id1081167218-1024x675.jpg",
+      "githubUrl": "https://github.com/aniketpoojari/Emergency-VS-Non-Emergency-Vehicle-Sound-Classification",
+      "technologies": ["Python", "LSTM", "TensorFlow"],
+      "featured": false
     },
     {
       "title": "Movie Recommendation",
-      "description": "Hybrid recommendation engine combining collaborative filtering and content-based approaches for personalized movie suggestions.",
-      "technologies": ["Python", "Scikit-learn", "Pandas", "Recommendation Systems"],
-      "githubUrl": "https://github.com/aniketpoojari/Movie-Recommendation"
+      "description": "Engineered a hybrid recommendation system that combines content-based and collaborative filtering approaches.",
+      "image": "https://miro.medium.com/v2/resize:fit:1200/0*x0ccl7G6JeCCSG07.jpg",
+      "githubUrl": "https://github.com/aniketpoojari/Movie-Recommendation",
+      "technologies": ["Python", "Recommendation Systems"],
+      "featured": false
     },
     {
       "title": "Subway Surfers CNN",
-      "description": "PyTorch CNN for autonomous gameplay using screen capture and real-time decision-making.",
-      "technologies": ["Python", "PyTorch", "CNN", "Computer Vision"],
-      "githubUrl": "https://github.com/aniketpoojari/Subway-Surfers-CNN"
+      "description": "Developed a CNN model in PyTorch to autonomously play the Subway Surfers game.",
+      "image": "https://play-lh.googleusercontent.com/QEoJugUCq1p-vCykwRarLRJlL6a6F2zjYFuT6YCGMvlPSiiJegs8p7_zDsucA-_YtQ=w526-h296-rw",
+      "githubUrl": "https://github.com/aniketpoojari/Subway-Surfers-CNN",
+      "technologies": ["Python", "CNN", "PyTorch"],
+      "featured": false
     },
     {
       "title": "Human Computer Interaction Using Hand Gestures and Voice",
-      "description": "Multimodal computer control system combining MediaPipe hand tracking and speech recognition for touchless interaction.",
-      "technologies": ["Python", "MediaPipe", "OpenCV", "Speech Recognition"],
-      "githubUrl": "https://github.com/aniketpoojari/Human-Computer-Interaction-Using-Hand-Gestures-and-Voice"
+      "description": "Created an interactive system that enables computer control using hand gestures and voice commands.",
+      "image": "https://media.licdn.com/dms/image/v2/D4D12AQEqDr2WmIDKrg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1690389776221?e=2147483647&v=beta&t=rmcw04M_gjDusRH6StfZZiLNDSnl1Wg0mNoTfg04DlE",
+      "githubUrl": "https://github.com/aniketpoojari/Human-Computer-Interaction-Using-Hand-Gestures-and-Voice",
+      "technologies": ["Python", "Computer Vision", "Voice Recognition"],
+      "featured": false
     },
     {
       "title": "Insomnia Chatbot",
-      "description": "Intent-based conversational AI chatbot with command execution capabilities.",
-      "technologies": ["Python", "NLP", "Intent Recognition"],
-      "githubUrl": "https://github.com/aniketpoojari/Insomnia-Chatbot"
+      "description": "Designed an AI-powered chatbot with an intent-based model to interact with users and execute commands.",
+      "image": "https://sleepreviewmag.com/wp-content/uploads/2023/08/chatbots-sleep-1280x640.jpg",
+      "githubUrl": "https://github.com/aniketpoojari/Insomnia-Chatbot",
+      "technologies": ["Python", "Chatbot", "NLP"],
+      "featured": false
     },
     {
       "title": "2048 Using Speech Command Identification",
-      "description": "PyTorch CNN for real-time voice-controlled 2048 game using audio command classification.",
-      "technologies": ["Python", "PyTorch", "CNN", "Audio Processing"],
-      "githubUrl": "https://github.com/aniketpoojari/2048-Using-Speech-Command-Identification"
+      "description": "Created a CNN model in PyTorch to interpret live voice inputs as commands for controlling the 2048 game.",
+      "image": "https://imgs.crazygames.com/games/2048/cover_16x9-1707828856995.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+      "githubUrl": "https://github.com/aniketpoojari/2048-Using-Speech-Command-Identification",
+      "technologies": ["Python", "CNN", "PyTorch", "Speech Recognition"],
+      "featured": false
     },
     {
       "title": "Cricket Shot Classification",
-      "description": "Keypoint R-CNN with COCO-pretrained weights for cricket shot pose classification via skeletal keypoint analysis.",
-      "technologies": ["Python", "PyTorch", "Keypoint R-CNN", "Computer Vision"],
-      "githubUrl": "https://github.com/aniketpoojari/Cricket-Shot-Classification"
+      "description": "Utilized Keypoint R-CNN pretrained on the COCO keypoint dataset to extract keypoints from images, which were then used to train a Neural Network for classifying cricket shot poses.",
+      "image": "https://editor.analyticsvidhya.com/uploads/28415download5.png",
+      "githubUrl": "https://github.com/aniketpoojari/Cricket-Shot-Classification",
+      "technologies": ["Python", "Keypoint R-CNN", "Computer Vision"],
+      "featured": false
     },
     {
       "title": "Texture Generation",
-      "description": "DC-GAN architecture for procedural texture synthesis generating realistic material patterns.",
-      "technologies": ["Python", "TensorFlow", "GAN", "Computer Vision"],
-      "githubUrl": "https://github.com/aniketpoojari/Texture-Generation"
+      "description": "Designed and implemented a DC-GAN to generate realistic textures from scratch.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/3/33/Tiling_procedural_textures.jpg",
+      "githubUrl": "https://github.com/aniketpoojari/Texture-Generation",
+      "technologies": ["Python", "DC-GAN"],
+      "featured": false
     },
     {
       "title": "Translating Text From Russian To English With Attention",
-      "description": "Sequence-to-sequence encoder-decoder model with attention mechanism for Russian-English neural machine translation.",
-      "technologies": ["Python", "PyTorch", "Seq2Seq", "Attention", "NLP"],
-      "githubUrl": "https://github.com/aniketpoojari/Translating-Text-From-Russian-To-English-With-Attention"
+      "description": "Developed an encoder-decoder model with an attention mechanism to translate Russian text to English.",
+      "image": "https://www.pdfgear.com/chat-pdf/img/translate-pdf-russian-to-english-1.png",
+      "githubUrl": "https://github.com/aniketpoojari/Translating-Text-From-Russian-To-English-With-Attention",
+      "technologies": ["Python", "Encoder-Decoder", "Attention Mechanism", "NLP"],
+      "featured": false
     }
   ],
   "blogs": [
