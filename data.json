@@ -352,7 +352,7 @@
       "startDate": "Mar 2025",
       "endDate": "Present",
       "startYear": "2025",
-      "endYear": "Present",
+      "endYear": "2026",
       "logo": "https://media.licdn.com/dms/image/v2/D560BAQGnZJhgL74AaQ/company-logo_100_100/company-logo_100_100/0/1728905810134/dolat_capital_market_private_ltd_logo?e=1764806400&v=beta&t=kZbsN-oLqVmLvk8obIiGcfBOM3GCM9is0V_QfZDWkVE",
       "highlights": [
         "Led deployment of a secure on-premise RAG chatbot and LLM infrastructure, cutting internal support ticket resolution from 3 days to 1 day while ensuring complete enterprise data privacy",
