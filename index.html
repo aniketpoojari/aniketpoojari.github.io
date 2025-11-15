@@ -1184,6 +1184,7 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#blogs">Blogs</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#timeline">Timeline</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                 </ul>
@@ -1296,6 +1297,23 @@
         </div>
     </section>
 
+    <!-- Achievements Section -->
+    <section id="achievements" class="blogs">
+        <div class="section-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="container">
+            <h2 class="section-title">Achievements</h2>
+            <div class="blogs-grid" id="achievementsGrid">
+                <!-- Achievements will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonials -->
     <section id="testimonials" class="testimonials">
         <div class="section-shapes">
@@ -1355,6 +1373,7 @@
             renderSkills();
             renderProjects();
             renderBlogs();
+            renderAchievements();
             renderCombinedTimeline();
             renderTestimonials();
         }
@@ -1446,6 +1465,25 @@
                 `;
 
                 blogsGrid.appendChild(blogDiv);
+            });
+        }
+
+        function renderAchievements() {
+            const achievementsGrid = document.getElementById('achievementsGrid');
+            if (!achievementsGrid) return;
+            achievementsGrid.innerHTML = '';
+
+            // Use the achievements array from data.json
+            (portfolioData.achievements || []).forEach(item => {
+                const achDiv = document.createElement('div');
+                achDiv.className = 'blog-card fade-in';
+                achDiv.innerHTML = `
+                    <div class="blog-content">
+                        <h3 class="blog-title">${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                `;
+                achievementsGrid.appendChild(achDiv);
             });
         }
 
