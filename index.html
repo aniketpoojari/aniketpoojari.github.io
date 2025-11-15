@@ -375,6 +375,11 @@
             box-shadow: var(--shadow-lg);
             transition: transform 0.3s ease;
             opacity: 0.7;  /* Reduced from 0.9 */
+            display: none;  /* Hidden by default, shown when loaded */
+        }
+
+        .profile-image.loaded {
+            display: block;
         }
 
         .profile-image:hover {
@@ -1199,10 +1204,9 @@
         <div class="container">
             <div class="hero-about-content">
                 <div class="hero-text">
-                    <h1>Machine Learning Engineer</h1>
-                    <p class="subtitle">Transforming Data into Intelligence</p>
-                    <p>I'm Aniket Poojari, a passionate Machine Learning Engineer with a Master's in Computer Science specializing in AI. With expertise in Machine Learning, Generative AI, and MLOps, I thrive in collaborative environments where I can tackle challenging problems using cutting-edge technologies.</p>
-                    <p>I'm always eager to connect with fellow tech enthusiasts and explore new opportunities in AI and ML—let's collaborate and build something extraordinary together!</p>
+                    <h1 id="heroName"></h1>
+                    <p class="subtitle" id="heroTitle"></p>
+                    <div id="heroBioContainer"></div>
                     <div class="cta-buttons">
                         <a href="#projects" class="btn btn-primary">
                             <i class="fas fa-rocket"></i>
@@ -1218,7 +1222,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://avatars.githubusercontent.com/u/37501997?v=4" alt="Aniket Poojari" class="profile-image">
+                    <img id="profileImg" alt="Profile Picture" class="profile-image">
                 </div>
             </div>
         </div>
@@ -1332,6 +1336,20 @@
 
         function renderContent() {
             if (!portfolioData) return;
+
+            // Render hero section with personal data
+            document.getElementById('heroName').textContent = portfolioData.personal.name;
+            document.getElementById('heroTitle').textContent = portfolioData.personal.title;
+            
+            // Render bio paragraphs
+            const bioContainer = document.getElementById('heroBioContainer');
+            bioContainer.innerHTML = portfolioData.personal.bio.map(text => `<p>${text}</p>`).join('');
+            
+            // Render profile image
+            const profileImg = document.getElementById('profileImg');
+            profileImg.src = portfolioData.personal.profileImage;
+            profileImg.alt = portfolioData.personal.name;
+            profileImg.classList.add('loaded');
 
             renderSocialLinks();
             renderSkills();
