@@ -2,10 +2,11 @@
   "personal": {
     "name": "Aniket Poojari",
     "title": "Machine Learning Engineer",
-    "subtitle": "Transforming Data into Intelligence",
+    "subtitle": "Building Intelligent Systems that Scale from Research to Production",
     "bio": [
-      "I'm Aniket Poojari, a passionate Machine Learning Engineer with a Master's in Computer Science specializing in AI. With expertise in Machine Learning, Generative AI, and MLOps, I thrive in collaborative environments where I can tackle challenging problems using cutting-edge technologies.",
-      "I'm always eager to connect with fellow tech enthusiasts and explore new opportunities in AI and ML—let's collaborate and build something extraordinary together!"
+      "Machine Learning Engineer with 2+ years of experience deploying scalable AI systems across fintech, edtech, and academia. I specialize in bridging the gap between cutting-edge research and production-ready solutions—from building secure on-premise RAG chatbots that cut support time by 67%, to designing distributed ML pipelines that process gigabytes of financial data.",
+      "My expertise spans the full ML lifecycle: from training diffusion models and fine-tuning LLMs with LoRA/PEFT, to architecting agentic AI workflows and deploying enterprise systems with Docker, Kubernetes, and CI/CD. Whether it's optimizing small language models for 40% cost reduction or building multi-modal RAG systems, I focus on creating AI solutions that deliver measurable business impact.",
+      "Currently seeking full-time ML Engineer opportunities where I can leverage my experience in LLMs, MLOps, and production AI systems to solve complex real-world problems. Let's connect and build something extraordinary together!"
     ],
     "profileImage": "https://media.licdn.com/dms/image/v2/D4E03AQHKNClzvjzyRQ/profile-displayphoto-crop_800_800/B4EZjD_VvMGwAI-/0/1755634818419?e=1764806400&v=beta&t=GuLxgI3Cm_Qz7LTyembtGrjixajhi_UHvL4Ly7ufaRg"
   },
@@ -343,7 +344,35 @@
       "readTime": "11 min read"
     }
   ],
-  "experience": [
+   "experience": [
+    {
+      "position": "Machine Learning Engineer",
+      "company": "Kritova USA",
+      "location": "Remote",
+      "startDate": "Mar 2025",
+      "endDate": "Present",
+      "startYear": "2025",
+      "endYear": "Present",
+      "logo": "https://media.licdn.com/dms/image/v2/D560BAQGnZJhgL74AaQ/company-logo_100_100/company-logo_100_100/0/1728905810134/dolat_capital_market_private_ltd_logo?e=1764806400&v=beta&t=kZbsN-oLqVmLvk8obIiGcfBOM3GCM9is0V_QfZDWkVE",
+      "highlights": [
+        "Led deployment of a secure on-premise RAG chatbot and LLM infrastructure, cutting internal support ticket resolution from 3 days to 1 day while ensuring complete enterprise data privacy",
+        "Designed efficient small language models with 12% higher accuracy on CPU than standard LLMs, reducing infrastructure costs by 40% and inference latency by 35%"
+      ]
+    },
+    {
+      "position": "Graduate Teaching Assistant",
+      "company": "Oregon State University",
+      "location": "Corvallis, OR",
+      "startDate": "Mar 2023",
+      "endDate": "Dec 2024",
+      "startYear": "2023",
+      "endYear": "2024",
+      "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQEtLpPkfugtXg/company-logo_100_100/company-logo_100_100/0/1631354574889?e=1764806400&v=beta&t=jtohKYU5jusvtX0RQNNW4h3O3pRMSC7EGYrWwU1TH8A",
+      "highlights": [
+        "Supported ML and Cloud Computing courses by building and maintaining PyTorch/Scikit-learn lab environments on GCP and Colab for 300+ students, ensuring smooth execution of experiments",
+        "Refactored and standardized 15+ lab notebooks with version control and reproducible pipelines, streamlining grading and reducing student runtime errors by 35%"
+      ]
+    },
     {
       "position": "Software Developer",
       "company": "Dolat Capital",
@@ -354,15 +383,15 @@
       "endYear": "2022",
       "logo": "https://media.licdn.com/dms/image/v2/D560BAQGnZJhgL74AaQ/company-logo_100_100/company-logo_100_100/0/1728905810134/dolat_capital_market_private_ltd_logo?e=1764806400&v=beta&t=kZbsN-oLqVmLvk8obIiGcfBOM3GCM9is0V_QfZDWkVE",
       "highlights": [
-        "Designed and deployed end-to-end ML pipelines for block trade allocation and financial time series forecasting, increasing operational efficiency by 15%",
-        "Automated post-trade data cleaning and reconciliation using XGBoost, reducing manual intervention by 30%",
-        "Analyzed large-scale stock datasets with pandas and Matplotlib to enhance trading environment alignment by 50%",
-        "Streamlined data workflows by integrating PostgreSQL, accelerating the ML lifecycle by 75%"
+        "Built ML pipelines for block-trade allocation and forecasting, cutting allocation error rates by 15% and improving forecast accuracy by 20%",
+        "Automated data infrastructure using Docker and PostgreSQL, increasing data retrieval speed by 75% and reducing system downtime by 30%",
+        "Leveraged Apache Spark to analyze gigabytes of trading data, detecting discrepancies and boosting strategy testing accuracy by 50%",
+        "Implemented automated trade-cleansing workflows (Random Forest, XGBoost), cutting manual workload by 30% and enhancing model reliability by 25%"
       ]
     },
     {
-      "position": "AI Intern",
-      "company": "COCO by DHFL",
+      "position": "Artificial Intelligence Intern",
+      "company": "DHFL",
       "location": "Mumbai, India",
       "startDate": "Jun 2019",
       "endDate": "Aug 2019",
@@ -370,9 +399,8 @@
       "endYear": "2019",
       "logo": "https://media.licdn.com/dms/image/v2/C560BAQE-UVyPs32cRg/company-logo_100_100/company-logo_100_100/0/1636448423327/dhfl_logo?e=1764806400&v=beta&t=rZGiiEPYrwOlxXOE9KbpB8-ETmGRjOMYnNvJio-jqz4",
       "highlights": [
-        "Retrained Mask R-CNN in TensorFlow for car damage detection, achieving 90% IoU",
-        "Developed Django-based web platform for automated insurance claim processing",
-        "Improved approval efficiency by 60% and reduced operational costs"
+        "Automated vehicle damage detection in insurance claims by training a Mask R-CNN model, raising detection accuracy by 18% and cutting manual claim processing by 45%",
+        "Integrated ML workflows into the Django-based claims system, reducing overall claim processing time by 35%"
       ]
     }
   ],
