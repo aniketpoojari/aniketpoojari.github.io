@@ -721,11 +721,26 @@
             transform: scale(1.2);
         }
 
-        .timeline-item:nth-child(even) {
-            left: 50%;
+        .timeline-item.experience {
+            left: 0;
+            width: 50%;
+            padding-right: 60px;
+            padding-left: 10px;
         }
 
-        .timeline-item:nth-child(even)::after {
+        .timeline-item.experience::after {
+            right: -10px;
+            left: auto;
+        }
+
+        .timeline-item.education {
+            left: 50%;
+            width: 50%;
+            padding-left: 60px;
+            padding-right: 10px;
+        }
+
+        .timeline-item.education::after {
             left: -10px;
         }
 
@@ -1547,7 +1562,7 @@
 
             combinedItems.forEach((item, index) => {
                 const timelineItem = document.createElement('div');
-                timelineItem.className = 'timeline-item fade-in';
+                timelineItem.className = `timeline-item fade-in ${item.type.toLowerCase()}`;
                 
                 const descriptionHTML = item.highlights ? 
                     item.highlights.map(desc => `<li>${desc}</li>`).join('') :
