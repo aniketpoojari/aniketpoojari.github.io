@@ -543,12 +543,6 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.18);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-front,
-        .project-card:hover .project-back {
-            box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.2);
         }
 
         .project-front {
@@ -564,6 +558,11 @@
             justify-content: center;
             padding: 2rem;
             background: linear-gradient(135deg, rgba(72, 61, 139, 0.08), rgba(106, 90, 205, 0.06));
+        }
+
+        .project-card:hover .project-front,
+        .project-card:hover .project-back {
+            box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.2);
         }
 
         .project-image {
