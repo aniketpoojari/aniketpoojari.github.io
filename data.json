@@ -3,13 +3,16 @@
     "name": "Aniket Poojari",
     "title": "Machine Learning Engineer",
     "subtitle": "Building Intelligent Systems that Scale from Research to Production",
+    "location": "Corvallis, OR",
+    "phone": "458-272-7291",
     "bio": [
-      "Machine Learning Engineer with 2+ years turning AI research into production systems. I've built distributed ML pipelines for financial analytics that improved forecasting accuracy by 20%, automated trading workflows reducing manual workload by 30%, and trained diffusion models on AWS SageMaker with 68% cost savings. From fine-tuning LLMs with LoRA to building multi-modal RAG systems, I specialize in bridging cutting-edge ML with scalable, production-ready solutions."
+      "2+ years of experience as a Machine Learning Engineer across fintech, EdTech, and academia, bridging research and production through scalable AI systems, infrastructure automation, and full-stack ML deployment. Built distributed training pipelines for text-to-image diffusion models (UNet, CLIP, VAE) using DeepSpeed on AWS SageMaker, achieving 3× training speedup through multi-GPU parallelization. Engineered production pipelines for financial analytics at a trading firm, improving forecasting accuracy by 20% and cutting allocation errors by 15%, while reducing manual workload by 30%. Led deployment of fully on-premise RAG chatbot reducing support ticket resolution from 3 days to 1 day."
     ],
-    "profileImage": "https://media.licdn.com/dms/image/v2/D4E03AQHKNClzvjzyRQ/profile-displayphoto-crop_800_800/B4EZjD_VvMGwAI-/0/1755634818419?e=1764806400&v=beta&t=GuLxgI3Cm_Qz7LTyembtGrjixajhi_UHvL4Ly7ufaRg"
+    "profileImage": "https://media.licdn.com/dms/image/v2/D4E03AQHKNClzvjzyRQ/profile-displayphoto-crop_800_800/B4EZjD_VvMGwAI-/0/1755634818419?e=1764806400&v=beta&t=GuLxgI3Cm_Qz7LTyembtGrjixajhi_UHvL4Ly7ufaRg",
+    "website": "https://aniketpoojari.github.io/"
   },
   "contact": {
-    "email": "aniketp2009@gmail.com",
+    "email": "aniket.c.poojari@gmail.com",
     "socialLinks": [
       {
         "platform": "LinkedIn",
@@ -17,18 +20,18 @@
         "icon": "fab fa-linkedin-in"
       },
       {
-        "platform": "GitHub", 
+        "platform": "GitHub",
         "url": "https://github.com/aniketpoojari",
         "icon": "fab fa-github"
       },
       {
         "platform": "Medium",
-        "url": "https://medium.com/@aniketp2009", 
+        "url": "https://medium.com/@aniketp2009",
         "icon": "fab fa-medium-m"
       },
       {
         "platform": "Email",
-        "url": "mailto:aniketp2009@gmail.com",
+        "url": "mailto:aniket.c.poojari@gmail.com",
         "icon": "fas fa-envelope"
       }
     ]
@@ -38,24 +41,20 @@
       {
         "title": "Machine Learning & AI",
         "items": [
-          { "name": "Machine Learning", "icon": "devicon-python-plain" },
           { "name": "LLM", "icon": "devicon-amazonwebservices-plain" },
-          { "name": "Generative AI", "icon": "devicon-tensorflow-plain" },
           { "name": "RAG", "icon": "devicon-google-plain" },
-          { "name": "Transformers", "icon": "devicon-pytorch-plain" },
+          { "name": "Generative AI", "icon": "devicon-tensorflow-plain" },
+          { "name": "Agentic AI", "icon": "devicon-googlecloud-plain" },
           { "name": "NLP", "icon": "devicon-numpy-plain" },
           { "name": "Computer Vision", "icon": "devicon-opencv-plain" },
-          { "name": "MLOps", "icon": "devicon-docker-plain" },
-          { "name": "A/B Testing", "icon": "devicon-jupyter-plain" },
-          { "name": "Agentic AI", "icon": "devicon-googlecloud-plain" },
           { "name": "Diffusion Models", "icon": "devicon-tensorflow-plain" },
+          { "name": "LoRA", "icon": "devicon-python-plain" },
+          { "name": "PEFT", "icon": "devicon-python-plain" },
+          { "name": "Transformers", "icon": "devicon-pytorch-plain" },
+          { "name": "CLIP", "icon": "devicon-tensorflow-plain" },
+          { "name": "VAE", "icon": "devicon-tensorflow-plain" },
           { "name": "Time Series Forecasting", "icon": "devicon-python-plain" },
-          { "name": "Hypothesis Testing", "icon": "devicon-jupyter-plain" },
-          { "name": "ETL Pipelines", "icon": "devicon-apachespark-plain" },
-          { "name": "Feature Engineering", "icon": "devicon-pandas-plain" },
-          { "name": "Dimensionality Reduction", "icon": "devicon-numpy-plain" },
-          { "name": "Regression", "icon": "devicon-python-plain" },
-          { "name": "Clustering", "icon": "devicon-python-plain" }
+          { "name": "Mask R-CNN", "icon": "devicon-opencv-plain" }
         ]
       },
       {
@@ -63,20 +62,16 @@
         "items": [
           { "name": "PyTorch", "icon": "devicon-pytorch-plain" },
           { "name": "TensorFlow", "icon": "devicon-tensorflow-plain" },
-          { "name": "Scikit-learn", "icon": "devicon-pandas-plain" },
-          { "name": "NumPy", "icon": "devicon-numpy-plain" },
-          { "name": "Pandas", "icon": "devicon-pandas-plain" },
           { "name": "Hugging Face", "icon": "devicon-githubactions-plain" },
           { "name": "LangChain", "icon": "devicon-chainlink-plain" },
-          { "name": "ONNX", "icon": "devicon-python-plain" },
-          { "name": "Dask", "icon": "devicon-apachespark-plain" },
-          { "name": "Seaborn", "icon": "devicon-matplotlib-plain" },
-          { "name": "Matplotlib", "icon": "devicon-matplotlib-plain" },
-          { "name": "PEFT", "icon": "devicon-python-plain" },
-          { "name": "DeepSpeed", "icon": "devicon-python-plain" },
           { "name": "LangGraph", "icon": "devicon-graphql-plain" },
-          { "name": "LangSmith", "icon": "devicon-graphql-plain" },
-          { "name": "Pydantic", "icon": "devicon-python-plain" }
+          { "name": "Scikit-learn", "icon": "devicon-pandas-plain" },
+          { "name": "Pandas", "icon": "devicon-pandas-plain" },
+          { "name": "NumPy", "icon": "devicon-numpy-plain" },
+          { "name": "Apache Spark", "icon": "devicon-apachespark-plain" },
+          { "name": "XGBoost", "icon": "devicon-python-plain" },
+          { "name": "DeepSpeed", "icon": "devicon-python-plain" },
+          { "name": "MNE-Python", "icon": "devicon-python-plain" }
         ]
       },
       {
@@ -84,53 +79,41 @@
         "items": [
           { "name": "AWS", "icon": "devicon-amazonwebservices-plain" },
           { "name": "Docker", "icon": "devicon-docker-plain" },
-          { "name": "MLflow", "icon": "devicon-azurepipelines-plain" },
-          { "name": "Streamlit", "icon": "devicon-flask-plain" },
+          { "name": "Kubernetes", "icon": "devicon-kubernetes-plain" },
+          { "name": "Apache Airflow", "icon": "devicon-apache-plain" },
           { "name": "FastAPI", "icon": "devicon-python-plain" },
+          { "name": "Flask", "icon": "devicon-flask-plain" },
+          { "name": "Streamlit", "icon": "devicon-flask-plain" },
+          { "name": "GitHub Actions", "icon": "devicon-githubactions-plain" },
           { "name": "CI/CD", "icon": "devicon-githubactions-plain" },
-          { "name": "Groq", "icon": "devicon-googlecloud-plain" },
-          { "name": "ChromaDB", "icon": "devicon-redis-plain" },
-          { "name": "DVC", "icon": "devicon-git-plain" },
-          { "name": "S3", "icon": "devicon-amazons3-plain" },
-          { "name": "ECR", "icon": "devicon-amazonwebservices-plain" },
-          { "name": "Sagemaker", "icon": "devicon-amazonwebservices-plain" },
-          { "name": "IAM", "icon": "devicon-kubernetes-plain" },
-          { "name": "Airflow", "icon": "devicon-apache-plain" }
+          { "name": "MLflow", "icon": "devicon-azurepipelines-plain" },
+          { "name": "DVC", "icon": "devicon-git-plain" }
         ]
       },
       {
         "title": "Programming & Databases",
         "items": [
           { "name": "Python", "icon": "devicon-python-plain" },
-          { "name": "C++", "icon": "devicon-cplusplus-plain" },
           { "name": "Java", "icon": "devicon-java-plain" },
           { "name": "SQL", "icon": "devicon-mysql-plain" },
+          { "name": "Bash", "icon": "devicon-bash-plain" },
+          { "name": "TypeScript", "icon": "devicon-typescript-plain" },
+          { "name": "JavaScript", "icon": "devicon-javascript-plain" },
           { "name": "PostgreSQL", "icon": "devicon-postgresql-plain" },
           { "name": "MongoDB", "icon": "devicon-mongodb-plain" },
-          { "name": "Bash", "icon": "devicon-bash-plain" }
-        ]
-      },
-      {
-        "title": "Web Development",
-        "items": [
-          { "name": "HTML", "icon": "devicon-html5-plain" },
-          { "name": "CSS", "icon": "devicon-css3-plain" },
-          { "name": "Javascript", "icon": "devicon-javascript-plain" },
-          { "name": "Node.js", "icon": "devicon-nodejs-plain" },
-          { "name": "Django", "icon": "devicon-django-plain" },
-          { "name": "Flask", "icon": "devicon-flask-plain" },
-          { "name": "REST", "icon": "devicon-spring-plain" }
+          { "name": "ChromaDB", "icon": "devicon-redis-plain" },
+          { "name": "S3", "icon": "devicon-amazons3-plain" }
         ]
       },
       {
         "title": "Tools & Others",
         "items": [
-          { "name": "Linux", "icon": "devicon-linux-plain" },
-          { "name": "Vim", "icon": "devicon-vim-plain" },
           { "name": "Git", "icon": "devicon-git-plain" },
-          { "name": "Dagshub", "icon": "devicon-githubactions-plain" },
-          { "name": "Tableau", "icon": "devicon-tableau-plain" },
-          { "name": "PySpark", "icon": "devicon-apachespark-plain" }
+          { "name": "Linux", "icon": "devicon-linux-plain" },
+          { "name": "Node.js", "icon": "devicon-nodejs-plain" },
+          { "name": "Express", "icon": "devicon-express-original" },
+          { "name": "React", "icon": "devicon-react-plain" },
+          { "name": "Redux", "icon": "devicon-redux-plain" }
         ]
       }
     ]
@@ -138,35 +121,35 @@
   "projects": [
     {
       "title": "Agentic AI Research Assistant",
-      "description": "An agentic research assistant that uses LangGraph for dynamic tool calling with LLMs to answer research questions.",
+      "description": "Architected an autonomous multi-agent research system using LangGraph, reducing complex research workflows from hours to minutes through automated web search, summarization, fact-checking, and citation management tools. Achieved 99.9% response quality and a 100% test pass rate across LangSmith-guided evaluations with flawless trajectory execution in 6-step workflows. Deployed a dual-interface architecture (FastAPI backend, Streamlit frontend) with a Docker + GitHub Actions CI/CD pipeline, ensuring zero-downtime deployment to Hugging Face Spaces.",
       "image": "https://cdn.hashnode.com/res/hashnode/image/upload/v1727695448677/0e3ce539-1997-43ef-8e3c-648893855349.jpeg?auto=compress,format&format=webp",
       "githubUrl": "https://github.com/aniketpoojari/Agentic-AI-Research-Assistant",
-      "technologies": ["Python", "LangGraph", "LLM", "RAG"],
+      "technologies": ["Python", "LangGraph", "LangSmith", "FastAPI", "Streamlit", "Docker", "GitHub Actions"],
       "featured": true
     },
     {
       "title": "BiLoRA: Dual Adapter Fine-Tuning",
-      "description": "A Streamlit app that uses two fine tuned LLM adapters for code generation and docstring generation.",
+      "description": "Fine-tuned Phi-3 Mini 4K model on code generation and docstring generation tasks using LoRA, PEFT, and 4-bit BitsAndBytes quantization, reducing inference latency by 30% and GPU memory usage by 75% enabling consumer-grade GPU deployment. Developed a dual-adapter architecture, enabling instant task switching in deployed apps without model reloads, and significantly improving user responsiveness over traditional single-adapter or reload workflows.",
       "image": "https://a.storyblok.com/f/139616/1200x800/b050784413/thumbnail.webp/m/767x0/filters:quality(100):format(webp)",
       "githubUrl": "https://github.com/aniketpoojari/Fine-Tuning-LLM",
-      "technologies": ["Python", "LoRA", "LLM", "Streamlit"],
+      "technologies": ["Python", "LoRA", "PEFT", "BitsAndBytes", "Streamlit"],
       "featured": true
     },
     {
       "title": "Multi-Modal RAG QA System",
-      "description": "An LLM-powered web app that extracts, analyzes, and enables Q&A on text, tables, and images from PDFs and websites using RAG",
+      "description": "Built a production Flask-LangChain-ChromaDB pipeline integrated with Groq's Llama 4 Scout multimodal LLM, enabling automated semantic search and Q&A across PDFs and websites that reduced document analysis time by 70%. Engineered a dual-layer RAG architecture that vectorizes LLM-generated descriptions of tables and images for semantic search while preserving original data (base64 images, structured tables) in metadata, enabling context-aware retrieval and accurate cross-format querying, boosting multi-modal query accuracy by 30% compared to text-only workflows.",
       "image": "https://www.cq-partners.com/images/chat.jpg",
       "githubUrl": "https://github.com/aniketpoojari/OmniDoc-QA-LLM-RAG",
-      "technologies": ["Python", "RAG", "Multi-modal", "LLM"],
+      "technologies": ["Python", "Flask", "LangChain", "ChromaDB", "Groq", "RAG"],
       "featured": true
     },
     {
-      "title": "Text-to-Image using Diffusion from Scratch",
-      "description": "Trained a diffusion model with UNet, VAE, and CLIP embeddings for high-quality image generation. Optimized training on AWS SageMaker with spot instances, reducing costs by 68%.",
+      "title": "Text-to-Image Diffusion Model (From Scratch)",
+      "description": "Built a distributed training pipeline for a diffusion model involving UNet (Denoising), CLIP (Text Embedding), and VAE (Compression) using DeepSpeed on AWS SageMaker, achieving 3× training speedup on 8K image-caption pairs through efficient multi-GPU parallelization and mixed-precision training. Orchestrated automated training workflow with Apache Airflow and MLflow (DagsHub), implementing reproducible pipeline execution with automated model versioning, experiment tracking, and loss metric monitoring.",
       "image": "https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/3M5XD62SD5GPRCNHFNQBYLJHWU.jpg",
       "githubUrl": "https://github.com/aniketpoojari/Text-To-Image-Diffusion",
-      "technologies": ["Python", "Diffusion Models", "AWS SageMaker"],
-      "featured": false
+      "technologies": ["Python", "UNet", "CLIP", "VAE", "DeepSpeed", "AWS SageMaker", "Apache Airflow", "MLflow"],
+      "featured": true
     },
     {
       "title": "Text Summarization GPT from Scratch",
@@ -177,11 +160,11 @@
       "featured": false
     },
     {
-      "title": "Image Depth Map Prediction",
-      "description": "Developed a depth estimation model using Vision Transformer, achieving 19 cm RMSE and 15% improvement in complex environments.",
+      "title": "Monocular Depth Estimation",
+      "description": "Designed a Vision Transformer (ViT) encoder with a convolutional decoder for single-image depth prediction, enabling accurate depth maps for 3D reconstruction and autonomous navigation. Implemented a fully reproducible PyTorch + DVC + MLflow training workflow on the Cityscapes dataset, achieving production-ready depth estimation with an average 19 cm error (RMSE).",
       "image": "https://production-media.paperswithcode.com/thumbnails/task/task-0000000603-3510e464.jpg",
       "githubUrl": "https://github.com/aniketpoojari/Monocular-Depth-Estimation",
-      "technologies": ["Python", "Vision Transformers", "Computer Vision"],
+      "technologies": ["Python", "Vision Transformer", "PyTorch", "DVC", "MLflow"],
       "featured": false
     },
     {
@@ -344,17 +327,31 @@
   ],
    "experience": [
     {
+      "position": "Software Engineer (Volunteer)",
+      "company": "FutureTech Foundation",
+      "location": "Remote, USA",
+      "startDate": "Feb 2025",
+      "endDate": "Present",
+      "startYear": "2025",
+      "endYear": "2026",
+      "logo": "https://media.licdn.com/dms/image/v2/D560BAQGnZJhgL74AaQ/company-logo_100_100/company-logo_100_100/0/1728905810134/dolat_capital_market_private_ltd_logo?e=1764806400&v=beta&t=kZbsN-oLqVmLvk8obIiGcfBOM3GCM9is0V_QfZDWkVE",
+      "highlights": [
+        "Built a Python pipeline to clean and transform brainwave recordings into features and trained machine learning models to predict which movement a person is imagining (left hand, right hand, foot, tongue) from EEG signals",
+        "Developed reusable Python tools to load, standardize, and label brainwave data from OpenBCI headsets and public datasets, creating training/evaluation datasets and iterating on baseline classifiers to improve imagined-movement detection accuracy"
+      ]
+    },
+    {
       "position": "Machine Learning Engineer",
-      "company": "Kritova USA",
-      "location": "Remote",
+      "company": "Kritova",
+      "location": "Remote, USA",
       "startDate": "Mar 2025",
       "endDate": "Present",
       "startYear": "2025",
       "endYear": "2026",
       "logo": "https://media.licdn.com/dms/image/v2/D560BAQGnZJhgL74AaQ/company-logo_100_100/company-logo_100_100/0/1728905810134/dolat_capital_market_private_ltd_logo?e=1764806400&v=beta&t=kZbsN-oLqVmLvk8obIiGcfBOM3GCM9is0V_QfZDWkVE",
       "highlights": [
-        "Led deployment of a secure on-premise RAG chatbot and LLM infrastructure, cutting internal support ticket resolution from 3 days to 1 day while ensuring complete enterprise data privacy",
-        "Designed efficient small language models with 12% higher accuracy on CPU than standard LLMs, reducing infrastructure costs by 40% and inference latency by 35%"
+        "Led deployment of a secure on-premise RAG chatbot and LLM infrastructure, reducing internal support ticket resolution time from 3 days to 1 day while ensuring complete enterprise data privacy",
+        "Engineered a scalable full-stack MOOC platform using a TypeScript monorepo with 4 microservices; built secure REST APIs (Express, MongoDB, S3) and modern React frontends (Redux Toolkit, TanStack Query), enabling course delivery, progress tracking, threaded comments, and automated certificate generation via Puppeteer"
       ]
     },
     {
@@ -405,13 +402,13 @@
   "education": [
     {
       "degree": "Master of Science in Computer Science",
-      "specialization": "Minor in Artificial Intelligence",
+      "specialization": "AI minor",
       "institution": "Oregon State University",
-      "location": "Corvallis, OR",
-      "year": "Sep 2022 - Mar 2025",
+      "location": "USA",
+      "year": "Mar 2025",
       "startYear": "2022",
       "endYear": "2025",
-      "gpa": "3.77/4.0",
+      "gpa": "3.77/4.00",
       "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQEtLpPkfugtXg/company-logo_100_100/company-logo_100_100/0/1631354574889?e=1764806400&v=beta&t=jtohKYU5jusvtX0RQNNW4h3O3pRMSC7EGYrWwU1TH8A",
       "description": [
         "Graduate Teaching Assistant for 300+ students in Applied Machine Learning, Cloud Application Development, Web Development, Mobile Software Development, and Open Source Software courses",
@@ -421,10 +418,11 @@
     {
       "degree": "Bachelor of Engineering in Information Technology",
       "institution": "University of Mumbai",
-      "location": "Mumbai, India",
-      "year": "Aug 2016 - Nov 2020",
+      "location": "India",
+      "year": "Nov 2020",
       "startYear": "2016",
       "endYear": "2020",
+      "gpa": "7.22/10.00",
       "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQFfYevcaYPy6A/company-logo_100_100/company-logo_100_100/0/1630612004940/fr_conceicao_rodrigues_college_of_engineering_logo?e=1764806400&v=beta&t=AsOsTHXghINtEqbp3fv06B4elL8eiYDhkNNO-_EGWvc",
       "description": [
         "Relevant Courses: Data Structures and Algorithms, Database Management, Big Data Analytics",
@@ -434,12 +432,12 @@
   ],
   "achievements": [
     {
-      "title": "Smart India Hackathon 2019",
-      "description": "Led a 5-member team to develop a smart research content management platform for PD Hinduja Hospital, reducing research proposal-to-approval time by 60% and enhancing process efficiency."
+      "title": "Smart India Hackathon 2019 Runner-Up",
+      "description": "Selected as top 2 finalist team. Led development of Smart Research Content Management System designed at P.D. Hinduja Hospital Research Center for automating PhD/MSc student project workflows."
     },
     {
-      "title": "IEEE Paper Publication",
-      "description": "Led the development of a computer vision interface enabling control via hand gestures and voice using TensorFlow and OpenCV, improving user interaction by 40%, resulting in an IEEE paper publication in March 2019."
+      "title": "IEEE Publication",
+      "description": "\"Human Computer Interaction using Hand Gestures and Voice,\" IEEE Xplore, 2019 | 255 full-text views, 3 citations – Proposed multimodal gesture-voice interface using computer vision for device-free assistive technology applications."
     }
   ],
   "testimonials": [
