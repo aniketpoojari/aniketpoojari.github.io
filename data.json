@@ -6,7 +6,9 @@
     "location": "Corvallis, OR",
     "phone": "458-272-7291",
     "bio": [
-      "2+ years of experience as a Machine Learning Engineer across fintech, EdTech, and academia, bridging research and production through scalable AI systems, infrastructure automation, and full-stack ML deployment. Built distributed training pipelines for text-to-image diffusion models (UNet, CLIP, VAE) using DeepSpeed on AWS SageMaker, achieving 3× training speedup through multi-GPU parallelization. Engineered production pipelines for financial analytics at a trading firm, improving forecasting accuracy by 20% and cutting allocation errors by 15%, while reducing manual workload by 30%. Led deployment of fully on-premise RAG chatbot reducing support ticket resolution from 3 days to 1 day."
+      "Machine Learning Engineer with 2+ years bridging AI research and production systems across fintech, EdTech, and academia. Specialized in building scalable ML infrastructure, distributed training pipelines, and full-stack deployment.",
+      "Built production-grade diffusion models from scratch using UNet, CLIP, and VAE architectures. Orchestrated distributed training with DeepSpeed on AWS SageMaker, achieving 3× speedup through multi-GPU parallelization and automated MLflow pipelines.",
+      "Delivered measurable business impact through ML solutions. Improved financial forecasting accuracy by 20% and reduced allocation errors by 15% at a trading firm. Deployed enterprise RAG systems that cut support ticket resolution time from 3 days to 1 day while maintaining complete data privacy."
     ],
     "profileImage": "https://media.licdn.com/dms/image/v2/D4E03AQHKNClzvjzyRQ/profile-displayphoto-crop_800_800/B4EZjD_VvMGwAI-/0/1755634818419?e=1764806400&v=beta&t=GuLxgI3Cm_Qz7LTyembtGrjixajhi_UHvL4Ly7ufaRg",
     "website": "https://aniketpoojari.github.io/"
