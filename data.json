@@ -6,7 +6,11 @@
     "location": "Corvallis, OR",
     "phone": "458-272-7291",
     "bio": [
-      "ML Engineer who ships. Built distributed training pipelines achieving 3× speedup on AWS SageMaker. Deployed production systems improving forecasts by 20% and cutting support resolution from 3 days to 1 day. From diffusion models to enterprise RAG—I turn AI research into scalable solutions that deliver measurable impact."
+      "2+ years as a Machine Learning Engineer across fintech, EdTech, and academia.",
+      "Built distributed training pipelines achieving 3× speedup on AWS SageMaker with multi-GPU parallelization.",
+      "Improved financial forecasting accuracy by 20% and reduced allocation errors by 15%.",
+      "Deployed enterprise RAG systems cutting support ticket resolution from 3 days to 1 day.",
+      "Shipped production diffusion models, agentic AI systems, and full-stack ML platforms that scale."
     ],
     "profileImage": "https://media.licdn.com/dms/image/v2/D4E03AQHKNClzvjzyRQ/profile-displayphoto-crop_800_800/B4EZjD_VvMGwAI-/0/1755634818419?e=1764806400&v=beta&t=GuLxgI3Cm_Qz7LTyembtGrjixajhi_UHvL4Ly7ufaRg",
     "website": "https://aniketpoojari.github.io/"
