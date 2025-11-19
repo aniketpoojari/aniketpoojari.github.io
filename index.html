@@ -2473,16 +2473,24 @@
 
             function animate() {
                 ctx.clearRect(0, 0, width, height);
-                // Draw particles
+                // Draw particles with glow effect
                 particles.forEach(p => {
                     p.x += p.vx;
                     p.y += p.vy;
                     if (p.x < 0 || p.x > width) p.vx *= -1;
                     if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                    // Add glow effect
+                    ctx.shadowBlur = 20;
+                    ctx.shadowColor = 'rgba(37, 99, 235, 0.8)';
+
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
                     ctx.fillStyle = 'rgba(37, 99, 235, 0.7)';
                     ctx.fill();
+
+                    // Reset shadow for lines
+                    ctx.shadowBlur = 0;
                 });
                 // Draw connecting lines for close particles
                 for (let i = 0; i < particleCount; i++) {
