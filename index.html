@@ -2456,7 +2456,7 @@
             resize();
 
             let particles = [];
-            const particleCount = 100; // increased from 50 for greater density
+            const particleCount = 50; // optimized for performance
 
             // Fun color schemes matching other sections
             const colorSchemes = [
@@ -2487,52 +2487,39 @@
             function animate() {
                 ctx.clearRect(0, 0, width, height);
 
-                // Set blend mode for more vibrant colors
-                ctx.globalCompositeOperation = 'screen';
-
-                // Draw particles with glow effect
+                // Draw particles with optimized glow effect
                 particles.forEach(p => {
                     p.x += p.vx;
                     p.y += p.vy;
                     if (p.x < 0 || p.x > width) p.vx *= -1;
                     if (p.y < 0 || p.y > height) p.vy *= -1;
 
-                    // Add stronger glow effect with individual colors
-                    ctx.shadowBlur = 30;
+                    // Lighter glow for better performance
+                    ctx.shadowBlur = 15;
                     ctx.shadowColor = p.color.glow;
 
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
                     ctx.fillStyle = p.color.fill;
                     ctx.fill();
-
-                    // Reset shadow for lines
-                    ctx.shadowBlur = 0;
                 });
 
-                // Reset blend mode for connecting lines
-                ctx.globalCompositeOperation = 'source-over';
-                // Draw connecting lines for close particles with subtle glow
+                // Reset shadow for lines
+                ctx.shadowBlur = 0;
+
+                // Draw connecting lines with simpler rendering
                 for (let i = 0; i < particleCount; i++) {
                     for (let j = i + 1; j < particleCount; j++) {
                         let dx = particles[i].x - particles[j].x;
                         let dy = particles[i].y - particles[j].y;
                         let dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 120) { // increased threshold from 100 for denser connections
-                            // Use gradient for connecting lines
-                            const gradient = ctx.createLinearGradient(
-                                particles[i].x, particles[i].y,
-                                particles[j].x, particles[j].y
-                            );
-                            const opacity = (1 - dist / 120) * 0.4;
-                            gradient.addColorStop(0, particles[i].color.fill.replace(/[\d\.]+\)$/g, opacity + ')'));
-                            gradient.addColorStop(1, particles[j].color.fill.replace(/[\d\.]+\)$/g, opacity + ')'));
-
+                        if (dist < 100) { // reduced threshold for better performance
+                            const opacity = (1 - dist / 100) * 0.3;
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = gradient;
-                            ctx.lineWidth = 1.5;
+                            ctx.strokeStyle = `rgba(100, 150, 255, ${opacity})`;
+                            ctx.lineWidth = 1;
                             ctx.stroke();
                         }
                     }
