@@ -772,80 +772,33 @@
             bottom: 2rem;
         }
 
-        /* Experience & Education Section - Card Based */
-        .timeline-section {
+        /* Experience Section */
+        .experience-section {
             padding: 4rem 0;
             background: var(--card-bg);
         }
 
-        .timeline-section h2 {
+        .experience-section h2 {
             margin-bottom: 2.5rem;
         }
 
-        /* Tab Navigation */
-        .journey-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
+        /* Education Section */
+        .education-section {
+            padding: 4rem 0;
+            background: var(--bg-color);
         }
 
-        .journey-tab {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.875rem 2rem;
-            background: transparent;
-            border: 2px solid var(--border-color);
-            border-radius: 3rem;
-            color: var(--text-color);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.02em;
+        .education-section h2 {
+            margin-bottom: 2.5rem;
         }
 
-        .journey-tab i {
-            font-size: 1.1rem;
-        }
-
-        .journey-tab:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .journey-tab.active {
+        /* Section title with icon */
+        .section-title i {
+            margin-right: 0.75rem;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-color: transparent;
-            color: white;
-            box-shadow: 0 8px 20px rgba(72, 61, 139, 0.3);
-        }
-
-        /* Tab Panels */
-        .journey-content {
-            position: relative;
-        }
-
-        .journey-panel {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .journey-panel.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* Journey Grid */
@@ -1255,16 +1208,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .journey-tabs {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            .journey-tab {
-                width: 100%;
-                justify-content: center;
-            }
-
             .projects-grid,
             .blogs-grid {
                 grid-template-columns: 1fr;
@@ -1431,7 +1374,8 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#blogs">Blogs</a></li>
-                    <li><a href="#timeline">Timeline</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
                     <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                 </ul>
@@ -1527,8 +1471,8 @@
         </div>
     </section>
 
-    <!-- Experience & Education Section -->
-    <section id="timeline" class="timeline-section">
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
         <div class="section-shapes">
             <div class="shape"></div>
             <div class="shape"></div>
@@ -1537,33 +1481,32 @@
             <div class="shape"></div>
         </div>
         <div class="container">
-            <h2 class="section-title">Experience & Education</h2>
-
-            <!-- Tab Navigation -->
-            <div class="journey-tabs">
-                <button class="journey-tab active" data-tab="experience">
-                    <i class="fas fa-briefcase"></i>
-                    Experience
-                </button>
-                <button class="journey-tab" data-tab="education">
-                    <i class="fas fa-graduation-cap"></i>
-                    Education
-                </button>
+            <h2 class="section-title">
+                <i class="fas fa-briefcase"></i>
+                Experience
+            </h2>
+            <div class="journey-grid" id="experienceGrid">
+                <!-- Experience cards will be loaded dynamically -->
             </div>
+        </div>
+    </section>
 
-            <!-- Tab Content -->
-            <div class="journey-content">
-                <div class="journey-panel active" id="experience-panel">
-                    <div class="journey-grid" id="experienceGrid">
-                        <!-- Experience cards will be loaded dynamically -->
-                    </div>
-                </div>
-
-                <div class="journey-panel" id="education-panel">
-                    <div class="journey-grid" id="educationGrid">
-                        <!-- Education cards will be loaded dynamically -->
-                    </div>
-                </div>
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+        <div class="section-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-graduation-cap"></i>
+                Education
+            </h2>
+            <div class="journey-grid" id="educationGrid">
+                <!-- Education cards will be loaded dynamically -->
             </div>
         </div>
     </section>
@@ -1647,7 +1590,6 @@
             renderAchievements();
             renderExperience();
             renderEducation();
-            initJourneyTabs();
             renderTestimonials();
         }
 
@@ -1849,25 +1791,6 @@
                 `;
 
                 educationGrid.appendChild(card);
-            });
-        }
-
-        function initJourneyTabs() {
-            const tabs = document.querySelectorAll('.journey-tab');
-            const panels = document.querySelectorAll('.journey-panel');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const targetTab = tab.getAttribute('data-tab');
-
-                    // Remove active class from all tabs and panels
-                    tabs.forEach(t => t.classList.remove('active'));
-                    panels.forEach(p => p.classList.remove('active'));
-
-                    // Add active class to clicked tab and corresponding panel
-                    tab.classList.add('active');
-                    document.getElementById(`${targetTab}-panel`).classList.add('active');
-                });
             });
         }
 
