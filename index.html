@@ -1698,10 +1698,9 @@
                     return bEnd - aEnd;
                 });
 
-            // Group overlapping items into rows
-            const usedEdu = new Set();
+            // For each experience, find ALL overlapping educations (including partial)
+            const usedExpWithEdu = new Set();
 
-            // For each experience, find all overlapping educations
             experiences.forEach(exp => {
                 const row = document.createElement('div');
                 row.className = 'timeline-row';
@@ -1711,13 +1710,11 @@
                 const expItem = createTimelineItem(exp, expDuration);
                 row.appendChild(expItem);
 
-                // Find overlapping education
+                // Find any overlapping education (allow duplicates)
                 let foundEdu = null;
-                let foundEduIdx = -1;
-                educations.forEach((edu, eduIdx) => {
-                    if (!usedEdu.has(eduIdx) && doOverlap(exp, edu)) {
+                educations.forEach(edu => {
+                    if (doOverlap(exp, edu)) {
                         foundEdu = edu;
-                        foundEduIdx = eduIdx;
                         return;
                     }
                 });
@@ -1727,15 +1724,15 @@
                     const eduDuration = getDuration(foundEdu);
                     const eduItem = createTimelineItem(foundEdu, eduDuration);
                     row.appendChild(eduItem);
-                    usedEdu.add(foundEduIdx);
+                    usedExpWithEdu.add(foundEdu);
                 }
 
                 timelineContainer.appendChild(row);
             });
 
-            // Add remaining education items that weren't paired
-            educations.forEach((edu, eduIdx) => {
-                if (usedEdu.has(eduIdx)) return;
+            // Add education items that never overlapped with any experience
+            educations.forEach(edu => {
+                if (usedExpWithEdu.has(edu)) return;
 
                 const row = document.createElement('div');
                 row.className = 'timeline-row';
