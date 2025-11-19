@@ -1747,50 +1747,56 @@
             const timelineContainer = document.getElementById('combinedTimeline');
             timelineContainer.innerHTML = '';
 
-            // Helper to get year from item
-            function getYear(item, isEnd = false) {
-                if (isEnd) {
-                    if (item.endDate === "Present" || item.endDate === "present") {
-                        return new Date().getFullYear();
-                    }
-                    return parseInt(item.endYear) || parseInt(item.year?.split(' ')[2]) || new Date().getFullYear();
+            // Parse date string to decimal year (e.g., "Mar 2025" -> 2025.167)
+            function parseDate(dateStr) {
+                if (!dateStr || dateStr === "Present" || dateStr === "present") {
+                    const now = new Date();
+                    return now.getFullYear() + (now.getMonth() + 1) / 12;
                 }
-                return parseInt(item.startYear) || 0;
+
+                const months = {
+                    'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+                    'Jul': 7, 'Aug': 8, 'Sep': 9, 'Sept': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12
+                };
+
+                const parts = dateStr.trim().split(' ');
+                if (parts.length === 2) {
+                    const month = months[parts[0]] || 1;
+                    const year = parseInt(parts[1]);
+                    return year + (month - 0.5) / 12; // Use middle of month
+                }
+
+                return parseInt(dateStr) || 0;
             }
 
             // Helper to check overlap
             function doOverlap(item1, item2) {
-                const start1 = getYear(item1, false);
-                const end1 = getYear(item1, true);
-                const start2 = getYear(item2, false);
-                const end2 = getYear(item2, true);
-                return (start1 <= end2 && start2 <= end1);
+                return (item1.startDecimal <= item2.endDecimal && item2.startDecimal <= item1.endDecimal);
             }
 
-            // Prepare data
+            // Prepare data with decimal dates
             const experiences = portfolioData.experience.map(item => ({
                 ...item,
                 type: 'Experience',
-                startYear: getYear(item, false),
-                endYear: getYear(item, true)
-            })).sort((a, b) => a.startYear - b.startYear);
+                startDecimal: parseDate(item.startDate),
+                endDecimal: parseDate(item.endDate)
+            })).sort((a, b) => a.startDecimal - b.startDecimal);
 
             const educations = portfolioData.education.map(item => ({
                 ...item,
                 type: 'Education',
-                startYear: getYear(item, false),
-                endYear: getYear(item, true)
-            })).sort((a, b) => a.startYear - b.startYear);
+                startDecimal: parseDate(item.startDate),
+                endDecimal: parseDate(item.endDate)
+            })).sort((a, b) => a.startDecimal - b.startDecimal);
 
-            // Find min and max years for scaling
+            // Find min and max for scaling
             const allItems = [...experiences, ...educations];
-            const minYear = Math.min(...allItems.map(item => item.startYear));
-            const maxYear = Math.max(...allItems.map(item => item.endYear));
-            const yearRange = maxYear - minYear;
-            const pixelsPerYear = 120; // Pixels per year for scaling
-            const totalHeight = yearRange * pixelsPerYear;
+            const minDecimal = Math.min(...allItems.map(item => item.startDecimal));
+            const maxDecimal = Math.max(...allItems.map(item => item.endDecimal));
+            const range = maxDecimal - minDecimal;
+            const pixelsPerYear = 120;
+            const totalHeight = range * pixelsPerYear;
 
-            // Set timeline height
             timelineContainer.style.minHeight = totalHeight + 'px';
 
             // Detect overlaps within experiences
@@ -1815,32 +1821,32 @@
 
             // Render experiences
             experiences.forEach(item => {
-                const element = createTimelineItem(item, minYear, maxYear, pixelsPerYear);
+                const element = createTimelineItem(item, minDecimal, maxDecimal, pixelsPerYear);
                 timelineContainer.appendChild(element);
             });
 
             // Render educations
             educations.forEach(item => {
-                const element = createTimelineItem(item, minYear, maxYear, pixelsPerYear);
+                const element = createTimelineItem(item, minDecimal, maxDecimal, pixelsPerYear);
                 timelineContainer.appendChild(element);
             });
 
-            function createTimelineItem(item, minYear, maxYear, pixelsPerYear) {
+            function createTimelineItem(item, minDecimal, maxDecimal, pixelsPerYear) {
                 const timelineItem = document.createElement('div');
                 timelineItem.className = `timeline-item fade-in ${item.type.toLowerCase()}`;
 
-                // Calculate position and height based on dates
-                const duration = item.endYear - item.startYear;
-                const topPosition = (maxYear - item.endYear) * pixelsPerYear;
-                const height = Math.max(duration * pixelsPerYear, 100); // Minimum 100px
+                // Calculate position and height based on decimal dates
+                const duration = item.endDecimal - item.startDecimal;
+                const topPosition = (maxDecimal - item.endDecimal) * pixelsPerYear;
+                const height = Math.max(duration * pixelsPerYear, 100);
 
                 timelineItem.style.top = topPosition + 'px';
                 timelineItem.style.height = height + 'px';
 
-                // Handle overlaps with horizontal offset
+                // Handle overlaps - side by side for experiences
                 if (item.offsetLevel > 0) {
-                    const offsetPercent = item.offsetLevel * 10; // 10% offset per level
-                    const widthPercent = 42 - (item.offsetLevel * 5); // Reduce width
+                    const offsetPercent = item.offsetLevel * 12;
+                    const widthPercent = 42 - (item.offsetLevel * 6);
                     timelineItem.style.width = widthPercent + '%';
 
                     if (item.type === 'Experience') {
@@ -1854,7 +1860,11 @@
                     item.highlights.map(desc => `<li>${desc}</li>`).join('') :
                     item.description?.map(desc => `<li>${desc}</li>`).join('') || '';
 
-                const durationText = `${item.startDate} - ${item.endDate}`;
+                // Education shows only end date, Experience shows range
+                const durationText = item.type === 'Education'
+                    ? item.year || item.endDate
+                    : `${item.startDate} - ${item.endDate}`;
+
                 const title = item.type === 'Experience' ? item.position : item.degree;
                 const organization = item.type === 'Experience' ? item.company : item.institution;
 
