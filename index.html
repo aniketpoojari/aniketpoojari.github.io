@@ -1688,35 +1688,50 @@
             const timelineContainer = document.getElementById('combinedTimeline');
             timelineContainer.innerHTML = '';
 
-            // Combine and sort experience and education by date
-            const combinedItems = [
-                ...portfolioData.experience.map(item => ({...item, type: 'Experience'})),
-                ...portfolioData.education.map(item => ({...item, type: 'Education'}))
-            ].sort((a, b) => {
-                // Sort by end year (most recent first)
-                const aYear = parseInt(a.endYear) || parseInt(a.year) || 0;
-                const bYear = parseInt(b.endYear) || parseInt(b.year) || 0;
-                return bYear - aYear;
+            // Separate experiences and education
+            const experiences = portfolioData.experience.map(item => ({...item, type: 'Experience'}));
+            const education = portfolioData.education.map(item => ({...item, type: 'Education'}));
+
+            // Combine all items and sort by time period
+            const allItems = [...experiences, ...education].sort((a, b) => {
+                // Get start and end years
+                const aStart = parseInt(a.startYear) || 0;
+                const bStart = parseInt(b.startYear) || 0;
+                const aEnd = parseInt(a.endYear) || parseInt(a.year?.split(' ')[2]) || 9999;
+                const bEnd = parseInt(b.endYear) || parseInt(b.year?.split(' ')[2]) || 9999;
+
+                // Sort by end year first (most recent first)
+                if (aEnd !== bEnd) return bEnd - aEnd;
+
+                // If end years are same, sort by start year (most recent first)
+                if (aStart !== bStart) return bStart - aStart;
+
+                // If same time period, education comes after experience
+                if (a.type === 'Experience' && b.type === 'Education') return -1;
+                if (a.type === 'Education' && b.type === 'Experience') return 1;
+
+                return 0;
             });
 
-            combinedItems.forEach((item, index) => {
+            // Render items ensuring experience on left, education on right
+            allItems.forEach((item, index) => {
                 const timelineItem = document.createElement('div');
                 timelineItem.className = `timeline-item fade-in ${item.type.toLowerCase()}`;
-                
-                const descriptionHTML = item.highlights ? 
+
+                const descriptionHTML = item.highlights ?
                     item.highlights.map(desc => `<li>${desc}</li>`).join('') :
                     item.description.map(desc => `<li>${desc}</li>`).join('');
 
-                const duration = item.type === 'Experience' ? 
-                    `${item.startDate} - ${item.endDate}` : 
+                const duration = item.type === 'Experience' ?
+                    `${item.startDate} - ${item.endDate}` :
                     item.year;
 
-                const title = item.type === 'Experience' ? 
-                    item.position : 
+                const title = item.type === 'Experience' ?
+                    item.position :
                     item.degree;
 
-                const organization = item.type === 'Experience' ? 
-                    item.company : 
+                const organization = item.type === 'Experience' ?
+                    item.company :
                     item.institution;
 
                 timelineItem.innerHTML = `
