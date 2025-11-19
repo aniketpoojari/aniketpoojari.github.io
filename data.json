@@ -297,14 +297,14 @@
       "image": "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*ZFMhOhRKTzaGjKGuYoOhIg.jpeg",
       "url": "https://medium.com/@aniketp2009/text-to-image-using-diffusion-model-with-aws-sagemaker-distributed-training-67519a2d2c9e",
       "publishDate": "2024-03-15",
-      "readTime": "8 min read"
+      "readTime": "12 min read"
     },
     {
       "title": "Let's build a Text Summarization GPT from Scratch",
       "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*4ZHxuTM30A8XNOrfLI2Dug.png",
       "url": "https://medium.com/@aniketp2009/lets-build-a-text-summarization-gpt-from-scratch-with-local-aws-sagemaker-training-jobs-training-41f87af9b299",
       "publishDate": "2024-02-20",
-      "readTime": "12 min read"
+      "readTime": "36 min read"
     },
     {
       "title": "Single-Camera Depth Estimation Using Vision Transformers",
@@ -318,14 +318,14 @@
       "image": "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*JP7_fkV2smzCPkuEXBkazg.png",
       "url": "https://medium.com/@aniketp2009/image-denoising-using-variational-autoencoders-e2cda0c336d2",
       "publishDate": "2023-12-15",
-      "readTime": "9 min read"
+      "readTime": "7 min read"
     },
     {
       "title": "Data Shift in Machine Learning: Understanding, Detecting, and Addressing Challenges",
       "image": "https://miro.medium.com/v2/resize:fit:2000/format:webp/1*SL_Mb5vTQjs0MTfrz_DFCg.jpeg",
       "url": "https://medium.com/@aniketp2009/data-shift-in-machine-learning-understanding-detecting-and-addressing-challenges-41069eef4a21",
       "publishDate": "2023-11-20",
-      "readTime": "11 min read"
+      "readTime": "5 min read"
     }
   ],
    "experience": [
