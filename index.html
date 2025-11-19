@@ -772,226 +772,230 @@
             bottom: 2rem;
         }
 
-        /* Combined Timeline Section */
+        /* Experience & Education Section - Card Based */
         .timeline-section {
-            padding: 3rem 0;
+            padding: 4rem 0;
             background: var(--card-bg);
         }
 
         .timeline-section h2 {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
         }
 
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 0;
-            min-height: 800px;
+        /* Tab Navigation */
+        .journey-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-            z-index: 0;
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            position: absolute;
-            width: 42%;
+        .journey-tab {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            background: transparent;
+            border: 2px solid var(--border-color);
+            border-radius: 3rem;
+            color: var(--text-color);
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            z-index: 1;
+            letter-spacing: 0.02em;
         }
 
-        .timeline-item:hover {
-            z-index: 10;
+        .journey-tab i {
+            font-size: 1.1rem;
         }
 
-        .timeline-item.experience {
-            right: 52%;
-            text-align: right;
+        .journey-tab:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
         }
 
-        .timeline-item.education {
-            left: 52%;
-            text-align: left;
+        .journey-tab.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 8px 20px rgba(72, 61, 139, 0.3);
         }
 
-        .timeline-content {
-            padding: 1.25rem;
-            background: linear-gradient(135deg, rgba(72, 61, 139, 0.06), rgba(106, 90, 205, 0.03));
+        /* Tab Panels */
+        .journey-content {
+            position: relative;
+        }
+
+        .journey-panel {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .journey-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Journey Grid */
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Journey Card */
+        .journey-card {
+            background: linear-gradient(135deg, rgba(72, 61, 139, 0.04), rgba(106, 90, 205, 0.02));
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1.5px solid rgba(72, 61, 139, 0.15);
-            border-radius: 1rem;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+            border-radius: 1.25rem;
+            padding: 2rem;
             transition: all 0.3s ease;
+            cursor: pointer;
             position: relative;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            overflow: hidden;
         }
 
-        .timeline-item:hover .timeline-content {
-            box-shadow: 0 15px 40px rgba(72, 61, 139, 0.25);
-            transform: scale(1.02);
-            border-color: var(--primary-color);
-            background: linear-gradient(135deg, rgba(72, 61, 139, 0.1), rgba(106, 90, 205, 0.05));
-        }
-
-        [data-theme="dark"] .timeline-content {
+        [data-theme="dark"] .journey-card {
             background: rgba(31, 41, 55, 0.15);
             border: 1.5px solid rgba(255, 255, 255, 0.08);
         }
 
-        [data-theme="dark"] .timeline-item:hover .timeline-content {
-            background: rgba(31, 41, 55, 0.25);
+        .journey-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(72, 61, 139, 0.25);
             border-color: var(--primary-color);
         }
 
-        .timeline-header {
+        [data-theme="dark"] .journey-card:hover {
+            background: rgba(31, 41, 55, 0.25);
+        }
+
+        .journey-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .journey-card:hover::before {
+            opacity: 1;
+        }
+
+        .journey-card-header {
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
         }
 
-        .timeline-item.experience .timeline-header {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-image {
-            width: 50px;
-            height: 50px;
-            border-radius: 0.5rem;
+        .journey-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 0.75rem;
             object-fit: cover;
             border: 2px solid var(--primary-color);
             flex-shrink: 0;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
         }
 
-        .timeline-info {
+        .journey-logo:hover {
+            opacity: 1;
+        }
+
+        .journey-info {
             flex: 1;
             min-width: 0;
         }
 
-        .timeline-title {
-            font-size: 1.05rem;
+        .journey-title {
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-color);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
             line-height: 1.3;
         }
 
-        .timeline-company {
+        .journey-company {
             color: var(--primary-color);
             font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .timeline-duration {
+        .journey-company i {
+            font-size: 0.875rem;
+        }
+
+        .journey-duration {
             color: var(--text-light);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .timeline-type {
-            position: absolute;
-            top: 0.75rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 0.3rem 0.75rem;
-            border-radius: 1.5rem;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+        .journey-duration i {
+            font-size: 0.875rem;
         }
 
-        .timeline-item.experience .timeline-type {
-            left: 0.75rem;
+        .journey-details {
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border-color);
         }
 
-        .timeline-item.education .timeline-type {
-            right: 0.75rem;
-        }
-
-        .timeline-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, opacity 0.4s ease;
-            opacity: 0;
-        }
-
-        .timeline-item:hover .timeline-details {
-            max-height: 600px;
-            opacity: 1;
-            margin-top: 0.5rem;
-        }
-
-        .timeline-details ul {
+        .journey-details ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .timeline-details li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.25rem;
+        .journey-details li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
             position: relative;
             color: var(--text-light);
-            line-height: 1.6;
-            font-size: 0.9rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
-        .timeline-item.experience .timeline-details li {
-            padding-left: 0;
-            padding-right: 1.25rem;
-        }
-
-        .timeline-details li::before {
+        .journey-details li::before {
             content: '▸';
             color: var(--primary-color);
             position: absolute;
-            font-weight: bold;
-        }
-
-        .timeline-item.education .timeline-details li::before {
             left: 0;
+            font-weight: bold;
+            font-size: 1rem;
         }
 
-        .timeline-item.experience .timeline-details li::before {
-            right: 0;
-            left: auto;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            background: var(--primary-color);
-            border: 3px solid var(--card-bg);
-            border-radius: 50%;
-            z-index: 5;
-            box-shadow: 0 0 0 4px rgba(72, 61, 139, 0.15);
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .timeline-item.experience .timeline-dot {
-            right: -7px;
-        }
-
-        .timeline-item.education .timeline-dot {
-            left: -7px;
+        .journey-details li:last-child {
+            margin-bottom: 0;
         }
 
         /* Testimonials */
@@ -1235,48 +1239,18 @@
                 font-size: 2.5rem;
             }
 
-            .timeline::before {
-                left: 30px;
+            .journey-grid {
+                grid-template-columns: 1fr;
             }
 
-            .timeline-item {
-                width: calc(100% - 60px) !important;
-                left: 60px !important;
-                right: auto !important;
-                text-align: left !important;
+            .journey-tabs {
+                flex-direction: column;
+                gap: 0.75rem;
             }
 
-            .timeline-item.experience {
-                right: auto !important;
-                text-align: left !important;
-            }
-
-            .timeline-item.experience .timeline-header {
-                flex-direction: row !important;
-            }
-
-            .timeline-item.experience .timeline-details li {
-                padding-left: 1.25rem !important;
-                padding-right: 0 !important;
-            }
-
-            .timeline-item.experience .timeline-details li::before {
-                left: 0 !important;
-                right: auto !important;
-            }
-
-            .timeline-item.experience .timeline-type {
-                left: auto !important;
-                right: 0.75rem;
-            }
-
-            .timeline-item.experience .timeline-dot {
-                left: -7px;
-                right: auto;
-            }
-
-            .timeline-item.education .timeline-dot {
-                left: -7px;
+            .journey-tab {
+                width: 100%;
+                justify-content: center;
             }
 
             .projects-grid,
@@ -1541,7 +1515,7 @@
         </div>
     </section>
 
-    <!-- Combined Timeline Section -->
+    <!-- Experience & Education Section -->
     <section id="timeline" class="timeline-section">
         <div class="section-shapes">
             <div class="shape"></div>
@@ -1551,9 +1525,33 @@
             <div class="shape"></div>
         </div>
         <div class="container">
-            <h2 class="section-title">Professional Journey</h2>
-            <div class="timeline" id="combinedTimeline">
-                <!-- Combined timeline will be loaded dynamically -->
+            <h2 class="section-title">Experience & Education</h2>
+
+            <!-- Tab Navigation -->
+            <div class="journey-tabs">
+                <button class="journey-tab active" data-tab="experience">
+                    <i class="fas fa-briefcase"></i>
+                    Experience
+                </button>
+                <button class="journey-tab" data-tab="education">
+                    <i class="fas fa-graduation-cap"></i>
+                    Education
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="journey-content">
+                <div class="journey-panel active" id="experience-panel">
+                    <div class="journey-grid" id="experienceGrid">
+                        <!-- Experience cards will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <div class="journey-panel" id="education-panel">
+                    <div class="journey-grid" id="educationGrid">
+                        <!-- Education cards will be loaded dynamically -->
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1635,7 +1633,9 @@
             renderProjects();
             renderBlogs();
             renderAchievements();
-            renderCombinedTimeline();
+            renderExperience();
+            renderEducation();
+            initJourneyTabs();
             renderTestimonials();
         }
 
@@ -1743,146 +1743,120 @@
             });
         }
 
-        function renderCombinedTimeline() {
-            const timelineContainer = document.getElementById('combinedTimeline');
-            timelineContainer.innerHTML = '';
+        function renderExperience() {
+            const experienceGrid = document.getElementById('experienceGrid');
+            if (!experienceGrid) return;
+            experienceGrid.innerHTML = '';
 
-            // Parse date string to decimal year (e.g., "Mar 2025" -> 2025.167)
-            function parseDate(dateStr) {
-                if (!dateStr || dateStr === "Present" || dateStr === "present") {
-                    const now = new Date();
-                    return now.getFullYear() + (now.getMonth() + 1) / 12;
-                }
-
-                const months = {
-                    'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
-                    'Jul': 7, 'Aug': 8, 'Sep': 9, 'Sept': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12
+            // Sort by most recent first
+            const sortedExperience = [...portfolioData.experience].sort((a, b) => {
+                const getYear = (date) => {
+                    if (date === 'Present') return 9999;
+                    return parseInt(date.split(' ')[1]) || 0;
                 };
-
-                const parts = dateStr.trim().split(' ');
-                if (parts.length === 2) {
-                    const month = months[parts[0]] || 1;
-                    const year = parseInt(parts[1]);
-                    return year + (month - 0.5) / 12; // Use middle of month
-                }
-
-                return parseInt(dateStr) || 0;
-            }
-
-            // Helper to check overlap
-            function doOverlap(item1, item2) {
-                return (item1.startDecimal <= item2.endDecimal && item2.startDecimal <= item1.endDecimal);
-            }
-
-            // Prepare data with decimal dates
-            const experiences = portfolioData.experience.map(item => ({
-                ...item,
-                type: 'Experience',
-                startDecimal: parseDate(item.startDate),
-                endDecimal: parseDate(item.endDate)
-            })).sort((a, b) => a.startDecimal - b.startDecimal);
-
-            const educations = portfolioData.education.map(item => ({
-                ...item,
-                type: 'Education',
-                startDecimal: parseDate(item.startDate),
-                endDecimal: parseDate(item.endDate)
-            })).sort((a, b) => a.startDecimal - b.startDecimal);
-
-            // Find min and max for scaling
-            const allItems = [...experiences, ...educations];
-            const minDecimal = Math.min(...allItems.map(item => item.startDecimal));
-            const maxDecimal = Math.max(...allItems.map(item => item.endDecimal));
-            const range = maxDecimal - minDecimal;
-            const pixelsPerYear = 120;
-            const totalHeight = range * pixelsPerYear;
-
-            timelineContainer.style.minHeight = totalHeight + 'px';
-
-            // Detect overlaps within experiences - stack vertically
-            experiences.forEach((exp, i) => {
-                exp.verticalOffset = 0;
-                for (let j = 0; j < i; j++) {
-                    if (doOverlap(exp, experiences[j])) {
-                        exp.verticalOffset = experiences[j].verticalOffset + 1;
-                    }
-                }
+                return getYear(b.endDate) - getYear(a.endDate);
             });
 
-            // Detect overlaps within educations - stack vertically
-            educations.forEach((edu, i) => {
-                edu.verticalOffset = 0;
-                for (let j = 0; j < i; j++) {
-                    if (doOverlap(edu, educations[j])) {
-                        edu.verticalOffset = educations[j].verticalOffset + 1;
-                    }
-                }
-            });
+            sortedExperience.forEach(exp => {
+                const card = document.createElement('div');
+                card.className = 'journey-card fade-in';
 
-            // Render experiences
-            experiences.forEach(item => {
-                const element = createTimelineItem(item, minDecimal, maxDecimal, pixelsPerYear);
-                timelineContainer.appendChild(element);
-            });
+                const highlightsHTML = exp.highlights
+                    ? exp.highlights.map(h => `<li>${h}</li>`).join('')
+                    : '';
 
-            // Render educations
-            educations.forEach(item => {
-                const element = createTimelineItem(item, minDecimal, maxDecimal, pixelsPerYear);
-                timelineContainer.appendChild(element);
-            });
-
-            function createTimelineItem(item, minDecimal, maxDecimal, pixelsPerYear) {
-                const timelineItem = document.createElement('div');
-                timelineItem.className = `timeline-item fade-in ${item.type.toLowerCase()}`;
-
-                // Calculate position and height based on decimal dates
-                const duration = item.endDecimal - item.startDecimal;
-                let topPosition = (maxDecimal - item.endDecimal) * pixelsPerYear;
-                const height = Math.max(duration * pixelsPerYear, 100);
-
-                // Handle overlaps - stack vertically
-                if (item.verticalOffset > 0) {
-                    // Shift down slightly for each level of overlap
-                    topPosition += item.verticalOffset * 15; // 15px shift per level
-                }
-
-                timelineItem.style.top = topPosition + 'px';
-                timelineItem.style.height = height + 'px';
-
-                const descriptionHTML = item.highlights ?
-                    item.highlights.map(desc => `<li>${desc}</li>`).join('') :
-                    item.description?.map(desc => `<li>${desc}</li>`).join('') || '';
-
-                // Education shows only end date, Experience shows range
-                const durationText = item.type === 'Education'
-                    ? item.year || item.endDate
-                    : `${item.startDate} - ${item.endDate}`;
-
-                const title = item.type === 'Experience' ? item.position : item.degree;
-                const organization = item.type === 'Experience' ? item.company : item.institution;
-
-                timelineItem.innerHTML = `
-                    <div class="timeline-content">
-                        <div class="timeline-type">${item.type}</div>
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-header">
-                            <img src="${item.logo}" alt="${organization}" class="timeline-image">
-                            <div class="timeline-info">
-                                <div class="timeline-title">${title}</div>
-                                <div class="timeline-company">${organization}</div>
-                                <div class="timeline-duration">${durationText}</div>
+                card.innerHTML = `
+                    <div class="journey-card-header">
+                        <img src="${exp.logo}" alt="${exp.company}" class="journey-logo">
+                        <div class="journey-info">
+                            <h3 class="journey-title">${exp.position}</h3>
+                            <div class="journey-company">
+                                <i class="fas fa-building"></i>
+                                ${exp.company}
+                            </div>
+                            <div class="journey-duration">
+                                <i class="fas fa-calendar-alt"></i>
+                                ${exp.startDate} - ${exp.endDate}
                             </div>
                         </div>
-                        <div class="timeline-details">
+                    </div>
+                    <div class="journey-details">
+                        <ul>
+                            ${highlightsHTML}
+                        </ul>
+                    </div>
+                `;
+
+                experienceGrid.appendChild(card);
+            });
+        }
+
+        function renderEducation() {
+            const educationGrid = document.getElementById('educationGrid');
+            if (!educationGrid) return;
+            educationGrid.innerHTML = '';
+
+            // Sort by most recent first
+            const sortedEducation = [...portfolioData.education].sort((a, b) => {
+                const getYear = (date) => parseInt(date.split(' ')[1]) || parseInt(date) || 0;
+                return getYear(b.endDate || b.year) - getYear(a.endDate || a.year);
+            });
+
+            sortedEducation.forEach(edu => {
+                const card = document.createElement('div');
+                card.className = 'journey-card fade-in';
+
+                const descriptionHTML = edu.description
+                    ? edu.description.map(d => `<li>${d}</li>`).join('')
+                    : '';
+
+                const duration = edu.year || `${edu.startDate} - ${edu.endDate}`;
+
+                card.innerHTML = `
+                    <div class="journey-card-header">
+                        <img src="${edu.logo}" alt="${edu.institution}" class="journey-logo">
+                        <div class="journey-info">
+                            <h3 class="journey-title">${edu.degree}</h3>
+                            <div class="journey-company">
+                                <i class="fas fa-university"></i>
+                                ${edu.institution}
+                            </div>
+                            <div class="journey-duration">
+                                <i class="fas fa-calendar-alt"></i>
+                                ${duration}
+                            </div>
+                        </div>
+                    </div>
+                    ${descriptionHTML ? `
+                        <div class="journey-details">
                             <ul>
                                 ${descriptionHTML}
                             </ul>
                         </div>
-                    </div>
+                    ` : ''}
                 `;
 
-                return timelineItem;
-            }
+                educationGrid.appendChild(card);
+            });
+        }
+
+        function initJourneyTabs() {
+            const tabs = document.querySelectorAll('.journey-tab');
+            const panels = document.querySelectorAll('.journey-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetTab = tab.getAttribute('data-tab');
+
+                    // Remove active class from all tabs and panels
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding panel
+                    tab.classList.add('active');
+                    document.getElementById(`${targetTab}-panel`).classList.add('active');
+                });
+            });
         }
 
         function renderTestimonials() {
