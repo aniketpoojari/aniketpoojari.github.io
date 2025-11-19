@@ -1698,50 +1698,33 @@
                     return bEnd - aEnd;
                 });
 
-            // Group overlapping items into rows
-            const usedExp = new Set();
-            const usedEdu = new Set();
+            // Combine all items and sort by end year
+            const allItems = [...experiences, ...educations].sort((a, b) => {
+                const aEnd = (a.endDate === "Present" || a.endDate === "present")
+                    ? new Date().getFullYear()
+                    : parseInt(a.endYear) || parseInt(a.year?.split(' ')[2]) || 0;
+                const bEnd = (b.endDate === "Present" || b.endDate === "present")
+                    ? new Date().getFullYear()
+                    : parseInt(b.endYear) || parseInt(b.year?.split(' ')[2]) || 0;
 
-            experiences.forEach((exp, expIdx) => {
-                if (usedExp.has(expIdx)) return;
+                // Sort by end year (most recent first)
+                if (bEnd !== aEnd) return bEnd - aEnd;
 
-                const row = document.createElement('div');
-                row.className = 'timeline-row';
-
-                // Find matching education
-                let matchingEdu = null;
-                let matchingEduIdx = -1;
-                educations.forEach((edu, eduIdx) => {
-                    if (!usedEdu.has(eduIdx) && doOverlap(exp, edu)) {
-                        matchingEdu = edu;
-                        matchingEduIdx = eduIdx;
-                    }
-                });
-
-                const expDuration = getDuration(exp);
-                const expItem = createTimelineItem(exp, expDuration);
-                row.appendChild(expItem);
-                usedExp.add(expIdx);
-
-                if (matchingEdu) {
-                    const eduDuration = getDuration(matchingEdu);
-                    const eduItem = createTimelineItem(matchingEdu, eduDuration);
-                    row.appendChild(eduItem);
-                    usedEdu.add(matchingEduIdx);
-                }
-
-                timelineContainer.appendChild(row);
+                // If same end year, sort by start year (most recent first)
+                const aStart = parseInt(a.startYear) || 0;
+                const bStart = parseInt(b.startYear) || 0;
+                return bStart - aStart;
             });
 
-            // Add remaining education items
-            educations.forEach((edu, eduIdx) => {
-                if (usedEdu.has(eduIdx)) return;
-
+            // Render items in chronological order
+            allItems.forEach(item => {
                 const row = document.createElement('div');
                 row.className = 'timeline-row';
-                const eduDuration = getDuration(edu);
-                const eduItem = createTimelineItem(edu, eduDuration);
-                row.appendChild(eduItem);
+
+                const duration = getDuration(item);
+                const timelineItem = createTimelineItem(item, duration);
+                row.appendChild(timelineItem);
+
                 timelineContainer.appendChild(row);
             });
 
@@ -1753,15 +1736,15 @@
                     item.highlights.map(desc => `<li>${desc}</li>`).join('') :
                     item.description?.map(desc => `<li>${desc}</li>`).join('') || '';
 
-                const durationText = (item.startDate && item.endDate) ?
+                const durationText = item.type === 'Experience' ?
                     `${item.startDate} - ${item.endDate}` :
                     item.year;
 
                 const title = item.type === 'Experience' ? item.position : item.degree;
                 const organization = item.type === 'Experience' ? item.company : item.institution;
 
-                // Calculate min-height based on duration (50px per year, min 100px, max 300px)
-                const minHeight = Math.min(Math.max(duration * 50, 100), 300);
+                // Calculate min-height based on duration (80px per year, min 120px)
+                const minHeight = Math.max(duration * 80, 120);
 
                 timelineItem.innerHTML = `
                     <div class="timeline-content" style="min-height: ${minHeight}px;">
