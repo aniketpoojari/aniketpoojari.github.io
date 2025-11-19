@@ -1698,32 +1698,51 @@
                     return bEnd - aEnd;
                 });
 
-            // Combine all items and sort by end year
-            const allItems = [...experiences, ...educations].sort((a, b) => {
-                const aEnd = (a.endDate === "Present" || a.endDate === "present")
-                    ? new Date().getFullYear()
-                    : parseInt(a.endYear) || parseInt(a.year?.split(' ')[2]) || 0;
-                const bEnd = (b.endDate === "Present" || b.endDate === "present")
-                    ? new Date().getFullYear()
-                    : parseInt(b.endYear) || parseInt(b.year?.split(' ')[2]) || 0;
+            // Group overlapping items into rows
+            const usedEdu = new Set();
 
-                // Sort by end year (most recent first)
-                if (bEnd !== aEnd) return bEnd - aEnd;
-
-                // If same end year, sort by start year (most recent first)
-                const aStart = parseInt(a.startYear) || 0;
-                const bStart = parseInt(b.startYear) || 0;
-                return bStart - aStart;
-            });
-
-            // Render items in chronological order
-            allItems.forEach(item => {
+            // For each experience, find all overlapping educations
+            experiences.forEach(exp => {
                 const row = document.createElement('div');
                 row.className = 'timeline-row';
 
-                const duration = getDuration(item);
-                const timelineItem = createTimelineItem(item, duration);
-                row.appendChild(timelineItem);
+                // Add experience on left
+                const expDuration = getDuration(exp);
+                const expItem = createTimelineItem(exp, expDuration);
+                row.appendChild(expItem);
+
+                // Find overlapping education
+                let foundEdu = null;
+                let foundEduIdx = -1;
+                educations.forEach((edu, eduIdx) => {
+                    if (!usedEdu.has(eduIdx) && doOverlap(exp, edu)) {
+                        foundEdu = edu;
+                        foundEduIdx = eduIdx;
+                        return;
+                    }
+                });
+
+                // Add education on right if found
+                if (foundEdu) {
+                    const eduDuration = getDuration(foundEdu);
+                    const eduItem = createTimelineItem(foundEdu, eduDuration);
+                    row.appendChild(eduItem);
+                    usedEdu.add(foundEduIdx);
+                }
+
+                timelineContainer.appendChild(row);
+            });
+
+            // Add remaining education items that weren't paired
+            educations.forEach((edu, eduIdx) => {
+                if (usedEdu.has(eduIdx)) return;
+
+                const row = document.createElement('div');
+                row.className = 'timeline-row';
+
+                const eduDuration = getDuration(edu);
+                const eduItem = createTimelineItem(edu, eduDuration);
+                row.appendChild(eduItem);
 
                 timelineContainer.appendChild(row);
             });
