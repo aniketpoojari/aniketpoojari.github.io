@@ -800,76 +800,55 @@
         }
 
         .timeline-item {
-            padding: 10px 30px;
+            padding: 0;
             position: relative;
-            background: linear-gradient(135deg, rgba(72, 61, 139, 0.04), rgba(106, 90, 205, 0.02));
-            border-radius: 1rem;
-            border: 1px solid rgba(72, 61, 139, 0.1);
-            width: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
+        }
+
+
+        .timeline-row {
+            display: flex;
+            gap: 3rem;
             margin-bottom: 1rem;
-        }
-
-        .timeline-item:hover {
-            box-shadow: 0 15px 35px rgba(72, 61, 139, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: var(--bg-color);
-            border: 4px solid var(--primary-color);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover::after {
-            background-color: var(--primary-color);
-            transform: scale(1.2);
-            box-shadow: 0 0 0 8px rgba(72, 61, 139, 0.1);
+            position: relative;
         }
 
         .timeline-item.experience {
-            left: 0;
-            width: 50%;
-            padding-right: 60px;
-            padding-left: 10px;
-        }
-
-        .timeline-item.experience::after {
-            right: -10px;
-            left: auto;
+            flex: 1;
+            margin-left: auto;
+            text-align: right;
         }
 
         .timeline-item.education {
-            left: 50%;
-            width: 50%;
-            padding-left: 60px;
-            padding-right: 10px;
+            flex: 1;
+            margin-right: auto;
         }
 
-        .timeline-item.education::after {
-            left: -10px;
+        .timeline-item.experience .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-item.education .timeline-content {
+            margin-right: auto;
         }
 
         .timeline-content {
             padding: 1rem;
             padding-right: 5rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(72, 61, 139, 0.04), rgba(106, 90, 205, 0.02));
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(72, 61, 139, 0.1);
             border-radius: 0.75rem;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
             transition: all 0.3s ease;
             position: relative;
+        }
+
+        .timeline-item:hover .timeline-content {
+            box-shadow: 0 15px 35px rgba(72, 61, 139, 0.15);
+            transform: translateY(-5px);
         }
 
         [data-theme="dark"] .timeline-content {
@@ -1688,61 +1667,106 @@
             const timelineContainer = document.getElementById('combinedTimeline');
             timelineContainer.innerHTML = '';
 
-            // Separate experiences and education
-            const experiences = portfolioData.experience.map(item => ({...item, type: 'Experience'}));
-            const education = portfolioData.education.map(item => ({...item, type: 'Education'}));
+            // Helper function to calculate duration in years
+            function getDuration(item) {
+                const start = parseInt(item.startYear) || 0;
+                const end = parseInt(item.endYear) || parseInt(item.year?.split(' ')[2]) || new Date().getFullYear();
+                return Math.max(end - start, 0.5); // Minimum 0.5 years
+            }
 
-            // Combine all items and sort by time period
-            const allItems = [...experiences, ...education].sort((a, b) => {
-                // Get start and end years
-                const aStart = parseInt(a.startYear) || 0;
-                const bStart = parseInt(b.startYear) || 0;
-                const aEnd = parseInt(a.endYear) || parseInt(a.year?.split(' ')[2]) || 9999;
-                const bEnd = parseInt(b.endYear) || parseInt(b.year?.split(' ')[2]) || 9999;
+            // Helper function to check if two items overlap
+            function doOverlap(item1, item2) {
+                const start1 = parseInt(item1.startYear) || 0;
+                const end1 = parseInt(item1.endYear) || parseInt(item1.year?.split(' ')[2]) || 9999;
+                const start2 = parseInt(item2.startYear) || 0;
+                const end2 = parseInt(item2.endYear) || parseInt(item2.year?.split(' ')[2]) || 9999;
+                return (start1 <= end2 && start2 <= end1);
+            }
 
-                // Sort by end year first (most recent first)
-                if (aEnd !== bEnd) return bEnd - aEnd;
+            // Separate and sort items
+            const experiences = portfolioData.experience.map(item => ({...item, type: 'Experience'}))
+                .sort((a, b) => (parseInt(b.endYear) || 9999) - (parseInt(a.endYear) || 9999));
+            const educations = portfolioData.education.map(item => ({...item, type: 'Education'}))
+                .sort((a, b) => {
+                    const aYear = parseInt(a.year?.split(' ')[2]) || 0;
+                    const bYear = parseInt(b.year?.split(' ')[2]) || 0;
+                    return bYear - aYear;
+                });
 
-                // If end years are same, sort by start year (most recent first)
-                if (aStart !== bStart) return bStart - aStart;
+            // Group overlapping items into rows
+            const usedExp = new Set();
+            const usedEdu = new Set();
 
-                // If same time period, education comes after experience
-                if (a.type === 'Experience' && b.type === 'Education') return -1;
-                if (a.type === 'Education' && b.type === 'Experience') return 1;
+            experiences.forEach((exp, expIdx) => {
+                if (usedExp.has(expIdx)) return;
 
-                return 0;
+                const row = document.createElement('div');
+                row.className = 'timeline-row';
+
+                // Find matching education
+                let matchingEdu = null;
+                let matchingEduIdx = -1;
+                educations.forEach((edu, eduIdx) => {
+                    if (!usedEdu.has(eduIdx) && doOverlap(exp, edu)) {
+                        matchingEdu = edu;
+                        matchingEduIdx = eduIdx;
+                    }
+                });
+
+                const expDuration = getDuration(exp);
+                const expItem = createTimelineItem(exp, expDuration);
+                row.appendChild(expItem);
+                usedExp.add(expIdx);
+
+                if (matchingEdu) {
+                    const eduDuration = getDuration(matchingEdu);
+                    const eduItem = createTimelineItem(matchingEdu, eduDuration);
+                    row.appendChild(eduItem);
+                    usedEdu.add(matchingEduIdx);
+                }
+
+                timelineContainer.appendChild(row);
             });
 
-            // Render items ensuring experience on left, education on right
-            allItems.forEach((item, index) => {
+            // Add remaining education items
+            educations.forEach((edu, eduIdx) => {
+                if (usedEdu.has(eduIdx)) return;
+
+                const row = document.createElement('div');
+                row.className = 'timeline-row';
+                const eduDuration = getDuration(edu);
+                const eduItem = createTimelineItem(edu, eduDuration);
+                row.appendChild(eduItem);
+                timelineContainer.appendChild(row);
+            });
+
+            function createTimelineItem(item, duration) {
                 const timelineItem = document.createElement('div');
                 timelineItem.className = `timeline-item fade-in ${item.type.toLowerCase()}`;
 
                 const descriptionHTML = item.highlights ?
                     item.highlights.map(desc => `<li>${desc}</li>`).join('') :
-                    item.description.map(desc => `<li>${desc}</li>`).join('');
+                    item.description?.map(desc => `<li>${desc}</li>`).join('') || '';
 
-                const duration = item.type === 'Experience' ?
+                const durationText = item.type === 'Experience' ?
                     `${item.startDate} - ${item.endDate}` :
                     item.year;
 
-                const title = item.type === 'Experience' ?
-                    item.position :
-                    item.degree;
+                const title = item.type === 'Experience' ? item.position : item.degree;
+                const organization = item.type === 'Experience' ? item.company : item.institution;
 
-                const organization = item.type === 'Experience' ?
-                    item.company :
-                    item.institution;
+                // Calculate min-height based on duration (50px per year, min 100px, max 300px)
+                const minHeight = Math.min(Math.max(duration * 50, 100), 300);
 
                 timelineItem.innerHTML = `
-                    <div class="timeline-content">
+                    <div class="timeline-content" style="min-height: ${minHeight}px;">
                         <div class="timeline-type">${item.type}</div>
                         <div class="timeline-header">
                             <img src="${item.logo}" alt="${organization}" class="timeline-image">
                             <div>
                                 <div class="timeline-title">${title}</div>
                                 <div class="timeline-company">${organization}</div>
-                                <div class="timeline-duration">${duration}</div>
+                                <div class="timeline-duration">${durationText}</div>
                             </div>
                         </div>
                         <div class="timeline-details">
@@ -1753,8 +1777,8 @@
                     </div>
                 `;
 
-                timelineContainer.appendChild(timelineItem);
-            });
+                return timelineItem;
+            }
         }
 
         function renderTestimonials() {
