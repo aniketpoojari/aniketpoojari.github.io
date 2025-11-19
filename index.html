@@ -1799,22 +1799,22 @@
 
             timelineContainer.style.minHeight = totalHeight + 'px';
 
-            // Detect overlaps within experiences
+            // Detect overlaps within experiences - stack vertically
             experiences.forEach((exp, i) => {
-                exp.offsetLevel = 0;
+                exp.verticalOffset = 0;
                 for (let j = 0; j < i; j++) {
                     if (doOverlap(exp, experiences[j])) {
-                        exp.offsetLevel = Math.max(exp.offsetLevel, experiences[j].offsetLevel + 1);
+                        exp.verticalOffset = experiences[j].verticalOffset + 1;
                     }
                 }
             });
 
-            // Detect overlaps within educations
+            // Detect overlaps within educations - stack vertically
             educations.forEach((edu, i) => {
-                edu.offsetLevel = 0;
+                edu.verticalOffset = 0;
                 for (let j = 0; j < i; j++) {
                     if (doOverlap(edu, educations[j])) {
-                        edu.offsetLevel = Math.max(edu.offsetLevel, educations[j].offsetLevel + 1);
+                        edu.verticalOffset = educations[j].verticalOffset + 1;
                     }
                 }
             });
@@ -1837,24 +1837,17 @@
 
                 // Calculate position and height based on decimal dates
                 const duration = item.endDecimal - item.startDecimal;
-                const topPosition = (maxDecimal - item.endDecimal) * pixelsPerYear;
+                let topPosition = (maxDecimal - item.endDecimal) * pixelsPerYear;
                 const height = Math.max(duration * pixelsPerYear, 100);
+
+                // Handle overlaps - stack vertically
+                if (item.verticalOffset > 0) {
+                    // Shift down slightly for each level of overlap
+                    topPosition += item.verticalOffset * 15; // 15px shift per level
+                }
 
                 timelineItem.style.top = topPosition + 'px';
                 timelineItem.style.height = height + 'px';
-
-                // Handle overlaps - side by side for experiences
-                if (item.offsetLevel > 0) {
-                    const offsetPercent = item.offsetLevel * 12;
-                    const widthPercent = 42 - (item.offsetLevel * 6);
-                    timelineItem.style.width = widthPercent + '%';
-
-                    if (item.type === 'Experience') {
-                        timelineItem.style.right = (52 + offsetPercent) + '%';
-                    } else {
-                        timelineItem.style.left = (52 + offsetPercent) + '%';
-                    }
-                }
 
                 const descriptionHTML = item.highlights ?
                     item.highlights.map(desc => `<li>${desc}</li>`).join('') :
