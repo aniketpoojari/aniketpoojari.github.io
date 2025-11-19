@@ -562,11 +562,13 @@
             object-fit: cover;
             opacity: 0.9;
             transition: all 0.3s ease;
+            filter: blur(0px);
         }
 
         .project-card:hover .project-image {
-            opacity: 0.3;
+            opacity: 0.2;
             transform: scale(1.05);
+            filter: blur(8px);
         }
 
         .project-title {
@@ -584,11 +586,8 @@
         }
 
         .project-card:hover .project-title {
-            bottom: 50%;
-            transform: translateY(50%);
-            background: none;
-            color: var(--text-color);
-            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
         .project-description {
