@@ -1126,7 +1126,6 @@
         /* Skills section shapes - Bright Cyan/Turquoise */
         .skills .section-shapes .shape {
             background: linear-gradient(135deg, #00d2ff, #3a7bd5);
-            opacity: 0.5;
             filter: none;
         }
         .skills .shape:nth-child(1) { width: 120px; height: 120px; top: 5%; left: 10%; animation-delay: 0s; border-radius: 50%; }
@@ -1138,7 +1137,6 @@
         /* Projects section shapes - Bright Blue/Purple */
         .projects .section-shapes .shape {
             background: linear-gradient(135deg, #4facfe, #00f2fe);
-            opacity: 0.5;
             filter: none;
             border-radius: 20%;
         }
@@ -1151,7 +1149,6 @@
         /* Blogs section shapes - Bright Orange/Coral */
         .blogs .section-shapes .shape {
             background: linear-gradient(135deg, #fa709a, #fee140);
-            opacity: 0.5;
             filter: none;
             border-radius: 50%;
         }
@@ -1164,7 +1161,6 @@
         /* Timeline section shapes - Bright Purple/Violet */
         .timeline-section .section-shapes .shape {
             background: linear-gradient(-45deg, #a18cd1, #fbc2eb);
-            opacity: 0.5;
             filter: none;
             border-radius: 20%;
         }
@@ -1177,7 +1173,6 @@
         /* Experience section shapes - Bright Indigo/Purple */
         .experience-section .section-shapes .shape {
             background: linear-gradient(135deg, #a8edea, #fed6e3);
-            opacity: 0.5;
             filter: none;
             border-radius: 30%;
         }
@@ -1190,7 +1185,6 @@
         /* Education section shapes - Bright Pink/Magenta (KEPT AS USER LIKES IT) */
         .education-section .section-shapes .shape {
             background: linear-gradient(-45deg, #f093fb, #f5576c);
-            opacity: 0.5;
             filter: none;
             border-radius: 50%;
         }
@@ -1203,7 +1197,6 @@
         /* Achievements section shapes - Bright Yellow/Gold */
         .achievements-section .section-shapes .shape {
             background: linear-gradient(135deg, #ffd89b, #19547b);
-            opacity: 0.5;
             filter: none;
             border-radius: 20%;
         }
@@ -1216,7 +1209,6 @@
         /* Testimonials section shapes - Bright Green/Teal */
         .testimonials .section-shapes .shape {
             background: linear-gradient(180deg, #43e97b, #38f9d7);
-            opacity: 0.5;
             filter: none;
             border-radius: 50%;
         }
@@ -1233,15 +1225,27 @@
             filter: brightness(1.4);
         }
 
+        /* Light theme - subtle background shapes */
+        :root .section-shapes .shape,
+        [data-theme="light"] .section-shapes .shape {
+            opacity: 0.15 !important;
+            mix-blend-mode: normal;
+        }
+
+        :root .section-shapes .shape:hover,
+        [data-theme="light"] .section-shapes .shape:hover {
+            opacity: 0.25 !important;
+        }
+
         /* Dark theme enhancements */
         [data-theme="dark"] .section-shapes .shape {
-            opacity: 0.5;
+            opacity: 0.5 !important;
             box-shadow: 0 0 100px rgba(59, 130, 246, 0.5);
             mix-blend-mode: screen;
         }
 
         [data-theme="dark"] .section-shapes .shape:hover {
-            opacity: 0.7;
+            opacity: 0.7 !important;
         }
 
         /* Animation keyframes */
