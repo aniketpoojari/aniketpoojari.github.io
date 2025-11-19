@@ -1333,6 +1333,8 @@
             /* Container adjustments */
             .container {
                 padding: 0 1.25rem;
+                max-width: 100%;
+                overflow-x: hidden;
             }
 
             /* Navigation */
@@ -1346,14 +1348,27 @@
 
             .nav-container {
                 padding: 1rem 0;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
             }
 
             .logo {
                 font-size: 1.25rem;
+                flex: 1;
+            }
+
+            .theme-toggle,
+            .mobile-menu {
+                flex-shrink: 0;
+                min-width: 44px;
+                min-height: 44px;
             }
 
             /* Hero Section */
             .hero-about {
+                height: auto !important;
+                max-height: none !important;
                 min-height: auto;
                 padding: 5rem 0 3rem !important;
             }
@@ -1378,16 +1393,33 @@
                 align-items: center;
             }
 
+            .hero-text {
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+
             .hero-text h1 {
                 font-size: 1.75rem !important;
                 line-height: 1.3;
                 margin-bottom: 0.75rem;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
             }
 
             .hero-text .subtitle {
                 font-size: 1rem !important;
                 line-height: 1.5;
                 margin-bottom: 1rem;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+
+            .hero-text p {
+                font-size: 0.9rem !important;
+                line-height: 1.7;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                max-width: 100%;
             }
 
             .tagline {
@@ -1427,16 +1459,21 @@
                 margin: 0 auto 1rem;
             }
 
-            .social-links {
+            .social-links,
+            .social-links-hero {
                 justify-content: center;
-                gap: 1.25rem;
+                gap: 1rem;
                 margin-top: 1.5rem;
+                flex-wrap: wrap;
             }
 
-            .social-links a {
-                font-size: 1.5rem;
+            .social-links a,
+            .social-link-hero {
+                font-size: 1.25rem;
                 width: 45px;
                 height: 45px;
+                min-width: 45px;
+                min-height: 45px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
