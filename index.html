@@ -412,7 +412,7 @@
         .skills h2 {
             margin-bottom: 2rem;
         }
-        .skills, .projects, .blogs, .timeline-section, .testimonials {
+        .skills, .projects, .blogs, .timeline-section, .testimonials, .experience-section, .education-section, .achievements-section {
             position: relative;
             overflow: hidden;
         }
@@ -1174,6 +1174,45 @@
         .timeline-section .shape:nth-child(4) { width: 130px; height: 130px; top: 70%; left: 30%; animation-delay: -4s; }
         .timeline-section .shape:nth-child(5) { width: 110px; height: 110px; bottom: 10%; left: 10%; animation-delay: -5s; }
 
+        /* Experience section shapes */
+        .experience-section .section-shapes .shape {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            opacity: 0.5;
+            filter: none;
+            border-radius: 30%;
+        }
+        .experience-section .shape:nth-child(1) { width: 120px; height: 120px; top: 10%; left: 10%; animation-delay: -1s; }
+        .experience-section .shape:nth-child(2) { width: 100px; height: 100px; top: 50%; right: 15%; animation-delay: -3s; }
+        .experience-section .shape:nth-child(3) { width: 90px; height: 90px; bottom: 20%; left: 30%; animation-delay: -4s; }
+        .experience-section .shape:nth-child(4) { width: 110px; height: 110px; top: 30%; right: 25%; animation-delay: -2s; }
+        .experience-section .shape:nth-child(5) { width: 130px; height: 130px; bottom: 15%; right: 10%; animation-delay: -5s; }
+
+        /* Education section shapes */
+        .education-section .section-shapes .shape {
+            background: linear-gradient(-45deg, #f093fb, #f5576c);
+            opacity: 0.5;
+            filter: none;
+            border-radius: 50%;
+        }
+        .education-section .shape:nth-child(1) { width: 110px; height: 110px; top: 15%; right: 10%; animation-delay: -2s; }
+        .education-section .shape:nth-child(2) { width: 95px; height: 95px; top: 45%; left: 12%; animation-delay: -3s; }
+        .education-section .shape:nth-child(3) { width: 105px; height: 105px; bottom: 25%; right: 18%; animation-delay: -1s; }
+        .education-section .shape:nth-child(4) { width: 120px; height: 120px; top: 65%; left: 35%; animation-delay: -4s; }
+        .education-section .shape:nth-child(5) { width: 100px; height: 100px; bottom: 10%; left: 8%; animation-delay: -5s; }
+
+        /* Achievements section shapes */
+        .achievements-section .section-shapes .shape {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            opacity: 0.5;
+            filter: none;
+            border-radius: 20%;
+        }
+        .achievements-section .shape:nth-child(1) { width: 115px; height: 115px; top: 12%; left: 12%; animation-delay: -1s; }
+        .achievements-section .shape:nth-child(2) { width: 105px; height: 105px; top: 48%; right: 14%; animation-delay: -3s; }
+        .achievements-section .shape:nth-child(3) { width: 125px; height: 125px; bottom: 18%; left: 28%; animation-delay: -4s; }
+        .achievements-section .shape:nth-child(4) { width: 95px; height: 95px; top: 35%; right: 22%; animation-delay: -2s; }
+        .achievements-section .shape:nth-child(5) { width: 110px; height: 110px; bottom: 12%; right: 12%; animation-delay: -5s; }
+
         /* Testimonials section shapes */
         .testimonials .section-shapes .shape {
             background: linear-gradient(180deg, #614385, #516395);
@@ -1423,17 +1462,21 @@
 
         .achievement-content h3 {
             margin: 0 0 0.75rem 0;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-color);
-            line-height: 1.3;
+            line-height: 1.4;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .achievement-content p {
             margin: 0;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-light);
             line-height: 1.6;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         /* Image opacity styles */
