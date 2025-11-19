@@ -2513,8 +2513,8 @@
                         let dx = particles[i].x - particles[j].x;
                         let dy = particles[i].y - particles[j].y;
                         let dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 100) { // reduced threshold for better performance
-                            const opacity = (1 - dist / 100) * 0.3;
+                        if (dist < 150) { // increased for more visible connections
+                            const opacity = (1 - dist / 150) * 0.4;
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
