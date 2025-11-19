@@ -803,9 +803,9 @@
 
         /* Journey Grid */
         .journey-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-            gap: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -857,15 +857,15 @@
 
         .journey-card-header {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 1.25rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0;
         }
 
         .journey-logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 0.75rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 0.5rem;
             object-fit: cover;
             border: 2px solid var(--primary-color);
             flex-shrink: 0;
@@ -880,24 +880,39 @@
         .journey-info {
             flex: 1;
             min-width: 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .journey-title-company {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex: 1;
+            min-width: 0;
         }
 
         .journey-title {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-color);
-            margin-bottom: 0.5rem;
+            margin: 0;
             line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .journey-company {
             color: var(--primary-color);
             font-weight: 600;
             font-size: 1rem;
-            margin-bottom: 0.5rem;
+            margin: 0;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            white-space: nowrap;
         }
 
         .journey-company i {
@@ -911,6 +926,8 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .journey-duration i {
@@ -1205,7 +1222,33 @@
             }
 
             .journey-grid {
-                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .journey-card-header {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .journey-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .journey-title-company {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .journey-title,
+            .journey-company {
+                white-space: normal;
+            }
+
+            .journey-duration {
+                width: 100%;
             }
 
             .projects-grid,
@@ -1723,10 +1766,13 @@
                     <div class="journey-card-header">
                         <img src="${exp.logo}" alt="${exp.company}" class="journey-logo">
                         <div class="journey-info">
-                            <h3 class="journey-title">${exp.position}</h3>
-                            <div class="journey-company">
-                                <i class="fas fa-building"></i>
-                                ${exp.company}
+                            <div class="journey-title-company">
+                                <h3 class="journey-title">${exp.position}</h3>
+                                <span style="color: var(--text-light);">•</span>
+                                <div class="journey-company">
+                                    <i class="fas fa-building"></i>
+                                    ${exp.company}
+                                </div>
                             </div>
                             <div class="journey-duration">
                                 <i class="fas fa-calendar-alt"></i>
@@ -1770,10 +1816,13 @@
                     <div class="journey-card-header">
                         <img src="${edu.logo}" alt="${edu.institution}" class="journey-logo">
                         <div class="journey-info">
-                            <h3 class="journey-title">${edu.degree}</h3>
-                            <div class="journey-company">
-                                <i class="fas fa-university"></i>
-                                ${edu.institution}
+                            <div class="journey-title-company">
+                                <h3 class="journey-title">${edu.degree}</h3>
+                                <span style="color: var(--text-light);">•</span>
+                                <div class="journey-company">
+                                    <i class="fas fa-university"></i>
+                                    ${edu.institution}
+                                </div>
                             </div>
                             <div class="journey-duration">
                                 <i class="fas fa-calendar-alt"></i>
