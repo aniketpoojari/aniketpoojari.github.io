@@ -1698,8 +1698,8 @@
                     return bEnd - aEnd;
                 });
 
-            // For each experience, find ALL overlapping educations (including partial)
-            const usedExpWithEdu = new Set();
+            // Pair each education with ONE overlapping experience
+            const usedEdu = new Set();
 
             experiences.forEach(exp => {
                 const row = document.createElement('div');
@@ -1710,11 +1710,13 @@
                 const expItem = createTimelineItem(exp, expDuration);
                 row.appendChild(expItem);
 
-                // Find any overlapping education (allow duplicates)
+                // Find overlapping education (only use each education once)
                 let foundEdu = null;
-                educations.forEach(edu => {
-                    if (doOverlap(exp, edu)) {
+                let foundEduIdx = -1;
+                educations.forEach((edu, eduIdx) => {
+                    if (!usedEdu.has(eduIdx) && doOverlap(exp, edu)) {
                         foundEdu = edu;
+                        foundEduIdx = eduIdx;
                         return;
                     }
                 });
@@ -1724,15 +1726,15 @@
                     const eduDuration = getDuration(foundEdu);
                     const eduItem = createTimelineItem(foundEdu, eduDuration);
                     row.appendChild(eduItem);
-                    usedExpWithEdu.add(foundEdu);
+                    usedEdu.add(foundEduIdx);
                 }
 
                 timelineContainer.appendChild(row);
             });
 
-            // Add education items that never overlapped with any experience
-            educations.forEach(edu => {
-                if (usedExpWithEdu.has(edu)) return;
+            // Add education items that weren't paired
+            educations.forEach((edu, eduIdx) => {
+                if (usedEdu.has(eduIdx)) return;
 
                 const row = document.createElement('div');
                 row.className = 'timeline-row';
