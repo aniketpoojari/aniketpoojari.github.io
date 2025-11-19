@@ -2457,15 +2457,28 @@
 
             let particles = [];
             const particleCount = 100; // increased from 50 for greater density
+
+            // Fun color schemes matching other sections
+            const colorSchemes = [
+                { fill: 'rgba(0, 210, 255, 0.8)', glow: 'rgba(0, 210, 255, 0.9)' },      // Cyan
+                { fill: 'rgba(79, 172, 254, 0.8)', glow: 'rgba(79, 172, 254, 0.9)' },    // Bright Blue
+                { fill: 'rgba(250, 112, 154, 0.8)', glow: 'rgba(250, 112, 154, 0.9)' },  // Pink
+                { fill: 'rgba(161, 140, 209, 0.8)', glow: 'rgba(161, 140, 209, 0.9)' },  // Purple
+                { fill: 'rgba(67, 233, 123, 0.8)', glow: 'rgba(67, 233, 123, 0.9)' },    // Green
+                { fill: 'rgba(254, 214, 155, 0.8)', glow: 'rgba(254, 214, 155, 0.9)' }   // Yellow/Gold
+            ];
+
             function initParticles() {
                 particles = [];
                 for (let i = 0; i < particleCount; i++) {
+                    const colorScheme = colorSchemes[Math.floor(Math.random() * colorSchemes.length)];
                     particles.push({
                         x: Math.random() * width,
                         y: Math.random() * height,
                         vx: (Math.random() - 0.5) * 2,
                         vy: (Math.random() - 0.5) * 2,
-                        size: Math.random() * 3 + 2
+                        size: Math.random() * 4 + 2,
+                        color: colorScheme
                     });
                 }
             }
@@ -2473,6 +2486,10 @@
 
             function animate() {
                 ctx.clearRect(0, 0, width, height);
+
+                // Set blend mode for more vibrant colors
+                ctx.globalCompositeOperation = 'screen';
+
                 // Draw particles with glow effect
                 particles.forEach(p => {
                     p.x += p.vx;
@@ -2480,30 +2497,42 @@
                     if (p.x < 0 || p.x > width) p.vx *= -1;
                     if (p.y < 0 || p.y > height) p.vy *= -1;
 
-                    // Add glow effect
-                    ctx.shadowBlur = 20;
-                    ctx.shadowColor = 'rgba(37, 99, 235, 0.8)';
+                    // Add stronger glow effect with individual colors
+                    ctx.shadowBlur = 30;
+                    ctx.shadowColor = p.color.glow;
 
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
-                    ctx.fillStyle = 'rgba(37, 99, 235, 0.7)';
+                    ctx.fillStyle = p.color.fill;
                     ctx.fill();
 
                     // Reset shadow for lines
                     ctx.shadowBlur = 0;
                 });
-                // Draw connecting lines for close particles
+
+                // Reset blend mode for connecting lines
+                ctx.globalCompositeOperation = 'source-over';
+                // Draw connecting lines for close particles with subtle glow
                 for (let i = 0; i < particleCount; i++) {
                     for (let j = i + 1; j < particleCount; j++) {
                         let dx = particles[i].x - particles[j].x;
                         let dy = particles[i].y - particles[j].y;
                         let dist = Math.sqrt(dx * dx + dy * dy);
                         if (dist < 120) { // increased threshold from 100 for denser connections
+                            // Use gradient for connecting lines
+                            const gradient = ctx.createLinearGradient(
+                                particles[i].x, particles[i].y,
+                                particles[j].x, particles[j].y
+                            );
+                            const opacity = (1 - dist / 120) * 0.4;
+                            gradient.addColorStop(0, particles[i].color.fill.replace(/[\d\.]+\)$/g, opacity + ')'));
+                            gradient.addColorStop(1, particles[j].color.fill.replace(/[\d\.]+\)$/g, opacity + ')'));
+
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = 'rgba(37, 99, 235,' + (1 - dist / 120) + ')';
-                            ctx.lineWidth = 1;
+                            ctx.strokeStyle = gradient;
+                            ctx.lineWidth = 1.5;
                             ctx.stroke();
                         }
                     }
