@@ -787,53 +787,25 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            min-height: 800px;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            width: 3px;
+            width: 4px;
             background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -1.5px;
+            margin-left: -2px;
             z-index: 0;
-        }
-
-        .timeline-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            position: relative;
-            min-height: 120px;
-            align-items: start;
-        }
-
-        .timeline-column {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .timeline-column.left {
-            justify-content: flex-start;
-            align-items: flex-end;
-            text-align: right;
-        }
-
-        .timeline-column.right {
-            justify-content: flex-start;
-            align-items: flex-start;
-            text-align: left;
+            border-radius: 2px;
         }
 
         .timeline-item {
-            width: 100%;
-            max-width: 520px;
+            position: absolute;
+            width: 42%;
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 1;
@@ -841,6 +813,16 @@
 
         .timeline-item:hover {
             z-index: 10;
+        }
+
+        .timeline-item.experience {
+            right: 52%;
+            text-align: right;
+        }
+
+        .timeline-item.education {
+            left: 52%;
+            text-align: left;
         }
 
         .timeline-content {
@@ -853,11 +835,14 @@
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
             transition: all 0.3s ease;
             position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .timeline-item:hover .timeline-content {
             box-shadow: 0 15px 40px rgba(72, 61, 139, 0.25);
-            transform: translateY(-3px);
+            transform: scale(1.02);
             border-color: var(--primary-color);
             background: linear-gradient(135deg, rgba(72, 61, 139, 0.1), rgba(106, 90, 205, 0.05));
         }
@@ -879,9 +864,8 @@
             margin-bottom: 0.75rem;
         }
 
-        .timeline-column.left .timeline-header {
+        .timeline-item.experience .timeline-header {
             flex-direction: row-reverse;
-            text-align: right;
         }
 
         .timeline-image {
@@ -932,11 +916,11 @@
             text-transform: uppercase;
         }
 
-        .timeline-column.left .timeline-type {
+        .timeline-item.experience .timeline-type {
             left: 0.75rem;
         }
 
-        .timeline-column.right .timeline-type {
+        .timeline-item.education .timeline-type {
             right: 0.75rem;
         }
 
@@ -968,26 +952,46 @@
             font-size: 0.9rem;
         }
 
+        .timeline-item.experience .timeline-details li {
+            padding-left: 0;
+            padding-right: 1.25rem;
+        }
+
         .timeline-details li::before {
             content: '▸';
             color: var(--primary-color);
             position: absolute;
-            left: 0;
             font-weight: bold;
         }
 
-        .timeline-connector {
+        .timeline-item.education .timeline-details li::before {
+            left: 0;
+        }
+
+        .timeline-item.experience .timeline-details li::before {
+            right: 0;
+            left: auto;
+        }
+
+        .timeline-dot {
             position: absolute;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             background: var(--primary-color);
             border: 3px solid var(--card-bg);
             border-radius: 50%;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
             z-index: 5;
-            box-shadow: 0 0 0 4px rgba(72, 61, 139, 0.1);
+            box-shadow: 0 0 0 4px rgba(72, 61, 139, 0.15);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item.experience .timeline-dot {
+            right: -7px;
+        }
+
+        .timeline-item.education .timeline-dot {
+            left: -7px;
         }
 
         /* Testimonials */
@@ -1232,33 +1236,47 @@
             }
 
             .timeline::before {
-                left: 20px;
+                left: 30px;
             }
 
-            .timeline-row {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding-left: 50px;
-            }
-
-            .timeline-column {
-                align-items: flex-start !important;
+            .timeline-item {
+                width: calc(100% - 60px) !important;
+                left: 60px !important;
+                right: auto !important;
                 text-align: left !important;
             }
 
-            .timeline-column.left .timeline-header {
+            .timeline-item.experience {
+                right: auto !important;
+                text-align: left !important;
+            }
+
+            .timeline-item.experience .timeline-header {
                 flex-direction: row !important;
-                text-align: left !important;
             }
 
-            .timeline-column.left .timeline-type {
+            .timeline-item.experience .timeline-details li {
+                padding-left: 1.25rem !important;
+                padding-right: 0 !important;
+            }
+
+            .timeline-item.experience .timeline-details li::before {
+                left: 0 !important;
+                right: auto !important;
+            }
+
+            .timeline-item.experience .timeline-type {
                 left: auto !important;
-                right: 0.75rem !important;
+                right: 0.75rem;
             }
 
-            .timeline-connector {
-                left: 20px;
-                transform: translateY(-50%);
+            .timeline-item.experience .timeline-dot {
+                left: -7px;
+                right: auto;
+            }
+
+            .timeline-item.education .timeline-dot {
+                left: -7px;
             }
 
             .projects-grid,
@@ -1755,89 +1773,82 @@
                 type: 'Experience',
                 startYear: getYear(item, false),
                 endYear: getYear(item, true)
-            })).sort((a, b) => b.endYear - a.endYear || b.startYear - a.startYear);
+            })).sort((a, b) => a.startYear - b.startYear);
 
             const educations = portfolioData.education.map(item => ({
                 ...item,
                 type: 'Education',
                 startYear: getYear(item, false),
                 endYear: getYear(item, true)
-            })).sort((a, b) => b.endYear - a.endYear || b.startYear - a.startYear);
+            })).sort((a, b) => a.startYear - b.startYear);
 
-            // Group items into rows based on overlaps
-            const rows = [];
-            const allItems = [...experiences, ...educations].sort((a, b) => b.endYear - a.endYear || b.startYear - a.startYear);
+            // Find min and max years for scaling
+            const allItems = [...experiences, ...educations];
+            const minYear = Math.min(...allItems.map(item => item.startYear));
+            const maxYear = Math.max(...allItems.map(item => item.endYear));
+            const yearRange = maxYear - minYear;
+            const pixelsPerYear = 120; // Pixels per year for scaling
+            const totalHeight = yearRange * pixelsPerYear;
 
-            allItems.forEach(item => {
-                // Find if this item overlaps with any existing row
-                let placed = false;
-                for (let row of rows) {
-                    const rowItems = [...(row.left || []), ...(row.right || [])];
-                    const overlapsWithRow = rowItems.some(existing => doOverlap(item, existing));
+            // Set timeline height
+            timelineContainer.style.minHeight = totalHeight + 'px';
 
-                    if (overlapsWithRow) {
-                        // Place in appropriate column
-                        if (item.type === 'Experience') {
-                            if (!row.left) row.left = [];
-                            row.left.push(item);
-                        } else {
-                            if (!row.right) row.right = [];
-                            row.right.push(item);
-                        }
-                        placed = true;
-                        break;
+            // Detect overlaps within experiences
+            experiences.forEach((exp, i) => {
+                exp.offsetLevel = 0;
+                for (let j = 0; j < i; j++) {
+                    if (doOverlap(exp, experiences[j])) {
+                        exp.offsetLevel = Math.max(exp.offsetLevel, experiences[j].offsetLevel + 1);
                     }
-                }
-
-                // If not placed, create new row
-                if (!placed) {
-                    const newRow = {};
-                    if (item.type === 'Experience') {
-                        newRow.left = [item];
-                    } else {
-                        newRow.right = [item];
-                    }
-                    rows.push(newRow);
                 }
             });
 
-            // Render rows
-            rows.forEach(row => {
-                const rowDiv = document.createElement('div');
-                rowDiv.className = 'timeline-row';
-
-                // Left column (experiences)
-                const leftCol = document.createElement('div');
-                leftCol.className = 'timeline-column left';
-                if (row.left) {
-                    row.left.forEach(item => {
-                        leftCol.appendChild(createTimelineItem(item));
-                    });
+            // Detect overlaps within educations
+            educations.forEach((edu, i) => {
+                edu.offsetLevel = 0;
+                for (let j = 0; j < i; j++) {
+                    if (doOverlap(edu, educations[j])) {
+                        edu.offsetLevel = Math.max(edu.offsetLevel, educations[j].offsetLevel + 1);
+                    }
                 }
-
-                // Right column (education)
-                const rightCol = document.createElement('div');
-                rightCol.className = 'timeline-column right';
-                if (row.right) {
-                    row.right.forEach(item => {
-                        rightCol.appendChild(createTimelineItem(item));
-                    });
-                }
-
-                rowDiv.appendChild(leftCol);
-                rowDiv.appendChild(rightCol);
-
-                // Add connector dot
-                const connector = document.createElement('div');
-                connector.className = 'timeline-connector';
-                rowDiv.appendChild(connector);
-
-                timelineContainer.appendChild(rowDiv);
             });
 
-            function createTimelineItem(item) {
+            // Render experiences
+            experiences.forEach(item => {
+                const element = createTimelineItem(item, minYear, maxYear, pixelsPerYear);
+                timelineContainer.appendChild(element);
+            });
+
+            // Render educations
+            educations.forEach(item => {
+                const element = createTimelineItem(item, minYear, maxYear, pixelsPerYear);
+                timelineContainer.appendChild(element);
+            });
+
+            function createTimelineItem(item, minYear, maxYear, pixelsPerYear) {
                 const timelineItem = document.createElement('div');
-                timelineItem.className = 'timeline-item fade-in';
+                timelineItem.className = `timeline-item fade-in ${item.type.toLowerCase()}`;
+
+                // Calculate position and height based on dates
+                const duration = item.endYear - item.startYear;
+                const topPosition = (maxYear - item.endYear) * pixelsPerYear;
+                const height = Math.max(duration * pixelsPerYear, 100); // Minimum 100px
+
+                timelineItem.style.top = topPosition + 'px';
+                timelineItem.style.height = height + 'px';
+
+                // Handle overlaps with horizontal offset
+                if (item.offsetLevel > 0) {
+                    const offsetPercent = item.offsetLevel * 10; // 10% offset per level
+                    const widthPercent = 42 - (item.offsetLevel * 5); // Reduce width
+                    timelineItem.style.width = widthPercent + '%';
+
+                    if (item.type === 'Experience') {
+                        timelineItem.style.right = (52 + offsetPercent) + '%';
+                    } else {
+                        timelineItem.style.left = (52 + offsetPercent) + '%';
+                    }
+                }
 
                 const descriptionHTML = item.highlights ?
                     item.highlights.map(desc => `<li>${desc}</li>`).join('') :
@@ -1850,6 +1861,7 @@
                 timelineItem.innerHTML = `
                     <div class="timeline-content">
                         <div class="timeline-type">${item.type}</div>
+                        <div class="timeline-dot"></div>
                         <div class="timeline-header">
                             <img src="${item.logo}" alt="${organization}" class="timeline-image">
                             <div class="timeline-info">
