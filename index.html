@@ -1677,11 +1677,7 @@
             const experiences = portfolioData.experience.map(item => ({...item, type: 'Experience'}))
                 .sort((a, b) => (parseInt(b.endYear) || 9999) - (parseInt(a.endYear) || 9999));
             const educations = portfolioData.education.map(item => ({...item, type: 'Education'}))
-                .sort((a, b) => {
-                    const aYear = parseInt(a.year?.split(' ')[2]) || 0;
-                    const bYear = parseInt(b.year?.split(' ')[2]) || 0;
-                    return bYear - aYear;
-                });
+                .sort((a, b) => (parseInt(b.endYear) || 9999) - (parseInt(a.endYear) || 9999));
 
             // Group overlapping items into rows
             const usedExp = new Set();
