@@ -1272,8 +1272,14 @@
             z-index: 0;
         }
 
-        /* Responsive Design */
+        /* Mobile-First Responsive Design */
         @media (max-width: 768px) {
+            /* Container adjustments */
+            .container {
+                padding: 0 1.25rem;
+            }
+
+            /* Navigation */
             .nav-links {
                 display: none;
             }
@@ -1282,29 +1288,96 @@
                 display: block;
             }
 
+            .nav-container {
+                padding: 1rem 0;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            /* Hero Section */
+            .hero {
+                min-height: auto;
+                padding: 8rem 0 4rem;
+            }
+
             .hero-about-content {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 2rem;
+                gap: 2.5rem;
             }
 
             .hero-text h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                line-height: 1.2;
             }
 
-            .journey-grid {
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .bio-text {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
                 gap: 1rem;
+            }
+
+            .cta-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 0.875rem 1.5rem;
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto;
+            }
+
+            /* Section spacing */
+            section {
+                padding: 3rem 0 !important;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+                margin-bottom: 2rem;
+            }
+
+            /* Journey Cards (Experience/Education) */
+            .journey-grid {
+                gap: 1.25rem;
+            }
+
+            .journey-card {
+                padding: 1.5rem;
             }
 
             .journey-card-header {
-                flex-wrap: wrap;
+                flex-direction: column;
+                align-items: flex-start;
                 gap: 1rem;
+            }
+
+            .journey-logo {
+                width: 45px;
+                height: 45px;
             }
 
             .journey-info {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0.5rem;
+                gap: 0.75rem;
+                width: 100%;
             }
 
             .journey-title-company {
@@ -1313,40 +1386,134 @@
                 gap: 0.5rem;
             }
 
-            .journey-title,
+            .journey-title {
+                font-size: 1rem;
+                white-space: normal;
+            }
+
             .journey-company {
+                font-size: 0.9rem;
                 white-space: normal;
             }
 
             .journey-duration {
                 width: 100%;
+                font-size: 0.85rem;
             }
 
+            .journey-details li {
+                font-size: 0.875rem;
+            }
+
+            /* Projects Grid */
             .projects-grid,
             .blogs-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
+            .project-card,
+            .blog-card {
+                height: 280px;
+            }
+
+            /* Skills Grid */
             .skills-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
-            .testimonials-grid,
+            .skill-card {
+                padding: 1.25rem;
+            }
+
+            .skill-name {
+                font-size: 1rem;
+            }
+
+            /* Achievements Grid */
             .achievements-grid {
                 grid-template-columns: 1fr;
+                gap: 1.25rem;
             }
 
             .achievement-card {
                 min-height: 180px;
-                padding: 2rem 1.5rem;
+                padding: 1.75rem 1.5rem;
             }
 
             .achievement-icon {
-                font-size: 3rem;
+                font-size: 2.75rem;
+                margin-bottom: 1.25rem;
             }
 
-            .floating-shape {
+            .achievement-content h3 {
+                font-size: 1.05rem;
+            }
+
+            .achievement-content p {
+                font-size: 0.875rem;
+            }
+
+            /* Testimonials Grid */
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .testimonial-card {
+                padding: 1.75rem;
+            }
+
+            .testimonial-text {
+                font-size: 0.9rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 2rem 0;
+                font-size: 0.875rem;
+            }
+
+            /* Hide floating shapes on mobile */
+            .floating-shape,
+            .section-shapes {
                 display: none;
+            }
+
+            /* Touch-friendly elements */
+            button,
+            a,
+            .skill-card,
+            .project-card,
+            .blog-card {
+                -webkit-tap-highlight-color: rgba(91, 79, 207, 0.2);
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .journey-card,
+            .achievement-card,
+            .testimonial-card {
+                padding: 1.25rem;
+            }
+
+            .cta-btn {
+                font-size: 0.9rem;
+                padding: 0.75rem 1.25rem;
             }
         }
 
