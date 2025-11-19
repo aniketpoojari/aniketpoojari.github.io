@@ -784,8 +784,10 @@
 
         .timeline {
             position: relative;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 2rem 0;
+            min-height: 800px;
         }
 
         .timeline::after {
@@ -800,27 +802,21 @@
             z-index: 0;
         }
 
-        .timeline-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            position: relative;
-            min-height: 100px;
-        }
-
         .timeline-item {
-            width: 48%;
-            position: relative;
+            position: absolute;
+            width: 45%;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .timeline-item.experience {
-            margin-right: auto;
+            left: 0;
+            right: auto;
         }
 
         .timeline-item.education {
-            margin-left: auto;
+            right: 0;
+            left: auto;
         }
 
         .timeline-content {
@@ -1698,52 +1694,55 @@
                     return bEnd - aEnd;
                 });
 
-            // Pair each education with ONE overlapping experience
-            const usedEdu = new Set();
+            // Combine all items and find the date range
+            const allItems = [...experiences, ...educations];
 
-            experiences.forEach(exp => {
-                const row = document.createElement('div');
-                row.className = 'timeline-row';
+            // Find min and max years
+            let minYear = Infinity;
+            let maxYear = -Infinity;
 
-                // Add experience on left
-                const expDuration = getDuration(exp);
-                const expItem = createTimelineItem(exp, expDuration);
-                row.appendChild(expItem);
+            allItems.forEach(item => {
+                const start = parseInt(item.startYear) || 0;
+                const end = (item.endDate === "Present" || item.endDate === "present")
+                    ? new Date().getFullYear()
+                    : parseInt(item.endYear) || parseInt(item.year?.split(' ')[2]) || 0;
 
-                // Find overlapping education (only use each education once)
-                let foundEdu = null;
-                let foundEduIdx = -1;
-                educations.forEach((edu, eduIdx) => {
-                    if (!usedEdu.has(eduIdx) && doOverlap(exp, edu)) {
-                        foundEdu = edu;
-                        foundEduIdx = eduIdx;
-                        return;
-                    }
-                });
-
-                // Add education on right if found
-                if (foundEdu) {
-                    const eduDuration = getDuration(foundEdu);
-                    const eduItem = createTimelineItem(foundEdu, eduDuration);
-                    row.appendChild(eduItem);
-                    usedEdu.add(foundEduIdx);
-                }
-
-                timelineContainer.appendChild(row);
+                if (start < minYear) minYear = start;
+                if (end > maxYear) maxYear = end;
             });
 
-            // Add education items that weren't paired
-            educations.forEach((edu, eduIdx) => {
-                if (usedEdu.has(eduIdx)) return;
+            const yearRange = maxYear - minYear;
+            const pixelsPerYear = 150; // Adjust for spacing
+            const totalHeight = yearRange * pixelsPerYear;
 
-                const row = document.createElement('div');
-                row.className = 'timeline-row';
+            // Set timeline height
+            timelineContainer.style.minHeight = totalHeight + 'px';
 
-                const eduDuration = getDuration(edu);
-                const eduItem = createTimelineItem(edu, eduDuration);
-                row.appendChild(eduItem);
+            // Position each item based on its dates
+            allItems.forEach(item => {
+                const start = parseInt(item.startYear) || 0;
+                const end = (item.endDate === "Present" || item.endDate === "present")
+                    ? new Date().getFullYear()
+                    : parseInt(item.endYear) || parseInt(item.year?.split(' ')[2]) || 0;
 
-                timelineContainer.appendChild(row);
+                const duration = Math.max(end - start, 0.5);
+
+                // Calculate position from top (card positioned at start year, extends to end year)
+                const topPosition = (maxYear - end) * pixelsPerYear; // Where the card's top edge is (at end year)
+                const height = duration * pixelsPerYear; // Height from start to end
+
+                const timelineItem = createTimelineItem(item, duration);
+                timelineItem.style.top = topPosition + 'px';
+                timelineItem.style.height = height + 'px';
+
+                // Remove the min-height from content, use full height
+                const content = timelineItem.querySelector('.timeline-content');
+                if (content) {
+                    content.style.minHeight = 'auto';
+                    content.style.height = '100%';
+                }
+
+                timelineContainer.appendChild(timelineItem);
             });
 
             function createTimelineItem(item, duration) {
@@ -1756,7 +1755,7 @@
 
                 const durationText = item.type === 'Experience' ?
                     `${item.startDate} - ${item.endDate}` :
-                    item.year;
+                    `${item.startDate} - ${item.endDate}`;
 
                 const title = item.type === 'Experience' ? item.position : item.degree;
                 const organization = item.type === 'Experience' ? item.company : item.institution;
