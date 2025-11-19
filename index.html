@@ -807,6 +807,11 @@
             width: 45%;
             cursor: pointer;
             transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .timeline-item:hover {
+            z-index: 10;
         }
 
         .timeline-item.experience {
@@ -833,8 +838,9 @@
         }
 
         .timeline-item:hover .timeline-content {
-            box-shadow: 0 15px 35px rgba(72, 61, 139, 0.15);
-            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(72, 61, 139, 0.25);
+            transform: translateY(-5px) scale(1.02);
+            border: 1px solid rgba(72, 61, 139, 0.2);
         }
 
         [data-theme="dark"] .timeline-content {
@@ -1677,7 +1683,7 @@
             }
 
             // Separate and sort items
-            const experiences = portfolioData.experience.map(item => ({...item, type: 'Experience'}))
+            const experiences = portfolioData.experience.map((item, idx) => ({...item, type: 'Experience', originalIndex: idx}))
                 .sort((a, b) => {
                     const aEnd = (a.endDate === "Present" || a.endDate === "present")
                         ? new Date().getFullYear()
@@ -1687,12 +1693,32 @@
                         : parseInt(b.endYear) || 0;
                     return bEnd - aEnd;
                 });
-            const educations = portfolioData.education.map(item => ({...item, type: 'Education'}))
+            const educations = portfolioData.education.map((item, idx) => ({...item, type: 'Education', originalIndex: idx}))
                 .sort((a, b) => {
                     const aEnd = parseInt(a.endYear) || parseInt(a.year?.split(' ')[2]) || 0;
                     const bEnd = parseInt(b.endYear) || parseInt(b.year?.split(' ')[2]) || 0;
                     return bEnd - aEnd;
                 });
+
+            // Detect overlaps within experiences and assign offsets
+            experiences.forEach((exp, i) => {
+                exp.offsetIndex = 0;
+                for (let j = 0; j < i; j++) {
+                    if (doOverlap(exp, experiences[j])) {
+                        exp.offsetIndex = (experiences[j].offsetIndex + 1) % 2; // Alternate between 0 and 1
+                    }
+                }
+            });
+
+            // Detect overlaps within education and assign offsets
+            educations.forEach((edu, i) => {
+                edu.offsetIndex = 0;
+                for (let j = 0; j < i; j++) {
+                    if (doOverlap(edu, educations[j])) {
+                        edu.offsetIndex = (educations[j].offsetIndex + 1) % 2; // Alternate between 0 and 1
+                    }
+                }
+            });
 
             // Combine all items and find the date range
             const allItems = [...experiences, ...educations];
@@ -1734,6 +1760,17 @@
                 const timelineItem = createTimelineItem(item, duration);
                 timelineItem.style.top = topPosition + 'px';
                 timelineItem.style.height = height + 'px';
+
+                // Apply horizontal offset for overlapping items
+                if (item.offsetIndex > 0) {
+                    const offsetPercent = item.offsetIndex * 15; // 15% offset
+                    if (item.type === 'Experience') {
+                        timelineItem.style.left = `${offsetPercent}%`;
+                    } else {
+                        timelineItem.style.right = `${offsetPercent}%`;
+                    }
+                    timelineItem.style.width = `${45 - offsetPercent}%`; // Adjust width
+                }
 
                 // Remove the min-height from content, use full height
                 const content = timelineItem.querySelector('.timeline-content');
