@@ -337,7 +337,7 @@
       "endDate": "Present",
       "startYear": "2025",
       "endYear": "2026",
-      "logo": "https://media.licdn.com/dms/image/v2/D560BAQGnZJhgL74AaQ/company-logo_100_100/company-logo_100_100/0/1728905810134/dolat_capital_market_private_ltd_logo?e=1764806400&v=beta&t=kZbsN-oLqVmLvk8obIiGcfBOM3GCM9is0V_QfZDWkVE",
+      "logo": "https://media.licdn.com/dms/image/v2/D4D0BAQGhMCSd5mkKAQ/company-logo_100_100/company-logo_100_100/0/1739292219890?e=1765411200&v=beta&t=33O5Lr9OiH8MdJQXnEU6zgvfYXwJpQGlSx1lQG5OxY0",
       "highlights": [
         "Built a Python pipeline to clean and transform brainwave recordings into features and trained machine learning models to predict which movement a person is imagining (left hand, right hand, foot, tongue) from EEG signals",
         "Developed reusable Python tools to load, standardize, and label brainwave data from OpenBCI headsets and public datasets, creating training/evaluation datasets and iterating on baseline classifiers to improve imagined-movement detection accuracy"
@@ -351,7 +351,7 @@
       "endDate": "Present",
       "startYear": "2025",
       "endYear": "2026",
-      "logo": "https://media.licdn.com/dms/image/v2/D560BAQGnZJhgL74AaQ/company-logo_100_100/company-logo_100_100/0/1728905810134/dolat_capital_market_private_ltd_logo?e=1764806400&v=beta&t=kZbsN-oLqVmLvk8obIiGcfBOM3GCM9is0V_QfZDWkVE",
+      "logo": "https://media.licdn.com/dms/image/v2/D560BAQH7iqAKZOH--g/company-logo_100_100/B56ZXZIBWsGQAU-/0/1743104514395/kritova_logo?e=1765411200&v=beta&t=9pR1iFCFA_2GjCn7sU0v1016sNZzuaRbRfA6nOqjsxA",
       "highlights": [
         "Led deployment of a secure on-premise RAG chatbot and LLM infrastructure, reducing internal support ticket resolution time from 3 days to 1 day while ensuring complete enterprise data privacy",
         "Engineered a scalable full-stack MOOC platform using a TypeScript monorepo with 4 microservices; built secure REST APIs (Express, MongoDB, S3) and modern React frontends (Redux Toolkit, TanStack Query), enabling course delivery, progress tracking, threaded comments, and automated certificate generation via Puppeteer"
