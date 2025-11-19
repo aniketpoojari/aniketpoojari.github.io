@@ -609,7 +609,29 @@
 
         .project-card:hover .project-description {
             opacity: 1;
-            transform: translateY(-50%);
+            transform: translateY(-60%);
+        }
+
+        .project-card-inner::after {
+            content: 'View on GitHub →';
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 1.25rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .project-card:hover .project-card-inner::after {
+            opacity: 1;
+            bottom: 2rem;
         }
 
         @media (max-width: 1200px) {
