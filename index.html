@@ -1660,24 +1660,43 @@
             // Helper function to calculate duration in years
             function getDuration(item) {
                 const start = parseInt(item.startYear) || 0;
-                const end = parseInt(item.endYear) || parseInt(item.year?.split(' ')[2]) || new Date().getFullYear();
+                // If endDate is "Present", use current year
+                const end = (item.endDate === "Present" || item.endDate === "present")
+                    ? new Date().getFullYear()
+                    : parseInt(item.endYear) || parseInt(item.year?.split(' ')[2]) || new Date().getFullYear();
                 return Math.max(end - start, 0.5); // Minimum 0.5 years
             }
 
             // Helper function to check if two items overlap
             function doOverlap(item1, item2) {
                 const start1 = parseInt(item1.startYear) || 0;
-                const end1 = parseInt(item1.endYear) || parseInt(item1.year?.split(' ')[2]) || 9999;
+                const end1 = (item1.endDate === "Present" || item1.endDate === "present")
+                    ? new Date().getFullYear()
+                    : parseInt(item1.endYear) || parseInt(item1.year?.split(' ')[2]) || 9999;
                 const start2 = parseInt(item2.startYear) || 0;
-                const end2 = parseInt(item2.endYear) || parseInt(item2.year?.split(' ')[2]) || 9999;
+                const end2 = (item2.endDate === "Present" || item2.endDate === "present")
+                    ? new Date().getFullYear()
+                    : parseInt(item2.endYear) || parseInt(item2.year?.split(' ')[2]) || 9999;
                 return (start1 <= end2 && start2 <= end1);
             }
 
             // Separate and sort items
             const experiences = portfolioData.experience.map(item => ({...item, type: 'Experience'}))
-                .sort((a, b) => (parseInt(b.endYear) || 9999) - (parseInt(a.endYear) || 9999));
+                .sort((a, b) => {
+                    const aEnd = (a.endDate === "Present" || a.endDate === "present")
+                        ? new Date().getFullYear()
+                        : parseInt(a.endYear) || 0;
+                    const bEnd = (b.endDate === "Present" || b.endDate === "present")
+                        ? new Date().getFullYear()
+                        : parseInt(b.endYear) || 0;
+                    return bEnd - aEnd;
+                });
             const educations = portfolioData.education.map(item => ({...item, type: 'Education'}))
-                .sort((a, b) => (parseInt(b.endYear) || 9999) - (parseInt(a.endYear) || 9999));
+                .sort((a, b) => {
+                    const aEnd = parseInt(a.endYear) || parseInt(a.year?.split(' ')[2]) || 0;
+                    const bEnd = parseInt(b.endYear) || parseInt(b.year?.split(' ')[2]) || 0;
+                    return bEnd - aEnd;
+                });
 
             // Group overlapping items into rows
             const usedExp = new Set();
