@@ -239,11 +239,11 @@
             cursor: pointer;
             padding: 0.5rem;
             z-index: 1001;
+            position: relative;
         }
 
-        .mobile-menu::before {
-            content: '\2630';
-            font-size: 1.75rem;
+        .mobile-menu i {
+            font-size: 1.5rem;
         }
 
         /* Mobile Navigation Overlay */
@@ -260,6 +260,7 @@
             padding: 5rem 2rem 2rem;
             gap: 1.5rem;
             animation: slideIn 0.3s ease;
+            overflow-y: auto;
         }
 
         [data-theme="dark"] .nav-links.mobile-open {
@@ -291,11 +292,7 @@
             font-size: 1.25rem;
             padding: 0.75rem;
             display: block;
-        }
-
-        .mobile-menu.active::before {
-            content: '\00d7';
-            font-size: 2.25rem;
+            font-weight: 600;
         }
 
         /* Hero + About Section with Social Links */
@@ -1356,78 +1353,93 @@
             }
 
             /* Hero Section */
-            .hero {
+            .hero-about {
                 min-height: auto;
-                padding: 6rem 0 3rem;
+                padding: 5rem 0 3rem !important;
             }
 
             .hero-about-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
                 text-align: center;
                 gap: 2rem;
-                padding: 1rem 0;
+                padding: 0;
             }
 
             .hero-text {
                 order: 2;
+                width: 100%;
             }
 
             .profile-container {
                 order: 1;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
             .hero-text h1 {
-                font-size: 1.875rem;
-                line-height: 1.2;
-                margin-bottom: 1rem;
+                font-size: 1.75rem !important;
+                line-height: 1.3;
+                margin-bottom: 0.75rem;
             }
 
-            .hero-text p {
-                font-size: 0.95rem;
-                line-height: 1.6;
+            .hero-text .subtitle {
+                font-size: 1rem !important;
+                line-height: 1.5;
+                margin-bottom: 1rem;
             }
 
             .tagline {
                 font-size: 0.95rem;
-                margin-bottom: 1.5rem;
+                margin-bottom: 1rem;
             }
 
             .bio-section {
                 margin-top: 1.5rem;
+                text-align: left;
             }
 
             .bio-text {
-                font-size: 0.9rem;
+                font-size: 0.9rem !important;
                 line-height: 1.7;
                 text-align: left;
             }
 
             .cta-buttons {
-                flex-direction: column;
+                flex-direction: column !important;
                 gap: 0.875rem;
                 margin-top: 1.5rem;
+                width: 100%;
             }
 
-            .cta-btn {
-                width: 100%;
+            .btn {
+                width: 100% !important;
                 justify-content: center;
-                padding: 0.875rem 1.5rem;
+                padding: 0.875rem 1.5rem !important;
                 font-size: 0.95rem;
+                text-align: center;
             }
 
             .profile-image {
-                width: 180px;
-                height: 180px;
-                margin: 0 auto 1.5rem;
+                width: 160px !important;
+                height: 160px !important;
+                margin: 0 auto 1rem;
             }
 
             .social-links {
                 justify-content: center;
-                gap: 1rem;
+                gap: 1.25rem;
+                margin-top: 1.5rem;
             }
 
             .social-links a {
-                font-size: 1.25rem;
+                font-size: 1.5rem;
+                width: 45px;
+                height: 45px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             /* Section spacing */
@@ -1594,8 +1606,21 @@
                 padding: 0 1rem;
             }
 
+            .hero-about {
+                padding: 4rem 0 2.5rem !important;
+            }
+
             .hero-text h1 {
-                font-size: 1.75rem;
+                font-size: 1.5rem !important;
+            }
+
+            .hero-text .subtitle {
+                font-size: 0.9rem !important;
+            }
+
+            .profile-image {
+                width: 140px !important;
+                height: 140px !important;
             }
 
             .section-title {
@@ -1608,9 +1633,15 @@
                 padding: 1.25rem;
             }
 
-            .cta-btn {
-                font-size: 0.9rem;
-                padding: 0.75rem 1.25rem;
+            .btn {
+                font-size: 0.875rem !important;
+                padding: 0.75rem 1.25rem !important;
+            }
+
+            .social-links a {
+                font-size: 1.25rem;
+                width: 40px;
+                height: 40px;
             }
         }
 
@@ -2300,19 +2331,32 @@
         const mobileMenuBtn = document.getElementById('mobileMenu');
         const navLinks = document.querySelector('.nav-links');
 
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenuBtn.classList.toggle('active');
-                navLinks.classList.toggle('mobile-open');
-                document.body.style.overflow = navLinks.classList.contains('mobile-open') ? 'hidden' : 'auto';
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = navLinks.classList.contains('mobile-open');
+                const icon = mobileMenuBtn.querySelector('i');
+
+                if (isOpen) {
+                    // Close menu
+                    navLinks.classList.remove('mobile-open');
+                    icon.className = 'fas fa-bars';
+                    document.body.style.overflow = 'auto';
+                } else {
+                    // Open menu
+                    navLinks.classList.add('mobile-open');
+                    icon.className = 'fas fa-times';
+                    document.body.style.overflow = 'hidden';
+                }
             });
 
             // Close mobile menu when clicking on a link
             const navLinkItems = navLinks.querySelectorAll('a');
             navLinkItems.forEach(link => {
                 link.addEventListener('click', () => {
-                    mobileMenuBtn.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
                     navLinks.classList.remove('mobile-open');
+                    icon.className = 'fas fa-bars';
                     document.body.style.overflow = 'auto';
                 });
             });
