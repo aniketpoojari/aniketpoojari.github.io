@@ -1753,7 +1753,7 @@
                     item.highlights.map(desc => `<li>${desc}</li>`).join('') :
                     item.description?.map(desc => `<li>${desc}</li>`).join('') || '';
 
-                const durationText = item.type === 'Experience' ?
+                const durationText = (item.startDate && item.endDate) ?
                     `${item.startDate} - ${item.endDate}` :
                     item.year;
 
