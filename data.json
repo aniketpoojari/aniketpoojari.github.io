@@ -293,6 +293,13 @@
   ],
   "blogs": [
     {
+      "title": "I Built a RAG System That Actually Understands Your Documents (Images, Tables, and All)",
+      "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*w3UlIMlt1x-LBrwOtqcsJA.png",
+      "url": "https://medium.com/@aniketp2009/i-built-a-rag-system-that-actually-understands-your-documents-images-tables-and-all-47ca2feaea39",
+      "publishDate": "2025-11-19",
+      "readTime": "7 min read"
+    },
+    {
       "title": "Text-To-Image using Diffusion model with AWS Sagemaker Distributed Training",
       "image": "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*ZFMhOhRKTzaGjKGuYoOhIg.jpeg",
       "url": "https://medium.com/@aniketp2009/text-to-image-using-diffusion-model-with-aws-sagemaker-distributed-training-67519a2d2c9e",
