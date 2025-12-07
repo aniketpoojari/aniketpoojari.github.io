@@ -165,7 +165,7 @@
     {
       "title": "Monocular Depth Estimation",
       "description": "Designed a Vision Transformer (ViT) encoder with a convolutional decoder for single-image depth prediction, enabling accurate depth maps for 3D reconstruction and autonomous navigation. Implemented a fully reproducible PyTorch + DVC + MLflow training workflow on the Cityscapes dataset, achieving production-ready depth estimation with an average 19 cm error (RMSE).",
-      "image": "https://production-media.paperswithcode.com/thumbnails/task/task-0000000603-3510e464.jpg",
+      "image": "https://research.nvidia.com/sites/default/files/styles/wide/public/publications/img_crop_down.png?itok=5I9XMWjT",
       "githubUrl": "https://github.com/aniketpoojari/Monocular-Depth-Estimation",
       "technologies": ["Python", "Vision Transformer", "PyTorch", "DVC", "MLflow"],
       "featured": false
