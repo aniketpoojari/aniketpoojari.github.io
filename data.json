@@ -344,7 +344,7 @@
       "endDate": "Present",
       "startYear": "2025",
       "endYear": "2026",
-      "logo": "https://media.licdn.com/dms/image/v2/D4D0BAQGhMCSd5mkKAQ/company-logo_100_100/company-logo_100_100/0/1739292219890?e=1765411200&v=beta&t=33O5Lr9OiH8MdJQXnEU6zgvfYXwJpQGlSx1lQG5OxY0",
+      "logo": "images/ftf_logo.jpg",
       "highlights": [
         "Built a Python pipeline to clean and transform brainwave recordings into features and trained machine learning models to predict which movement a person is imagining (left hand, right hand, foot, tongue) from EEG signals",
         "Developed reusable Python tools to load, standardize, and label brainwave data from OpenBCI headsets and public datasets, creating training/evaluation datasets and iterating on baseline classifiers to improve imagined-movement detection accuracy"
@@ -358,7 +358,7 @@
       "endDate": "Present",
       "startYear": "2025",
       "endYear": "2026",
-      "logo": "https://media.licdn.com/dms/image/v2/D560BAQH7iqAKZOH--g/company-logo_100_100/B56ZXZIBWsGQAU-/0/1743104514395/kritova_logo?e=1765411200&v=beta&t=9pR1iFCFA_2GjCn7sU0v1016sNZzuaRbRfA6nOqjsxA",
+      "logo": "images/kritova_logo.jpg",
       "highlights": [
         "Led deployment of a secure on-premise RAG chatbot and LLM infrastructure, reducing internal support ticket resolution time from 3 days to 1 day while ensuring complete enterprise data privacy",
         "Engineered a scalable full-stack MOOC platform using a TypeScript monorepo with 4 microservices; built secure REST APIs (Express, MongoDB, S3) and modern React frontends (Redux Toolkit, TanStack Query), enabling course delivery, progress tracking, threaded comments, and automated certificate generation via Puppeteer"
@@ -372,7 +372,7 @@
       "endDate": "Dec 2024",
       "startYear": "2023",
       "endYear": "2024",
-      "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQEtLpPkfugtXg/company-logo_100_100/company-logo_100_100/0/1631354574889?e=1764806400&v=beta&t=jtohKYU5jusvtX0RQNNW4h3O3pRMSC7EGYrWwU1TH8A",
+      "logo": "images/osu_logo.jpg",
       "highlights": [
         "Supported ML and Cloud Computing courses by building and maintaining PyTorch/Scikit-learn lab environments on GCP and Colab for 300+ students, ensuring smooth execution of experiments",
         "Refactored and standardized 15+ lab notebooks with version control and reproducible pipelines, streamlining grading and reducing student runtime errors by 35%"
@@ -386,7 +386,7 @@
       "endDate": "Apr 2022",
       "startYear": "2020",
       "endYear": "2022",
-      "logo": "https://media.licdn.com/dms/image/v2/D560BAQGnZJhgL74AaQ/company-logo_100_100/company-logo_100_100/0/1728905810134/dolat_capital_market_private_ltd_logo?e=1764806400&v=beta&t=kZbsN-oLqVmLvk8obIiGcfBOM3GCM9is0V_QfZDWkVE",
+      "logo": "images/dolat_logo.jpg",
       "highlights": [
         "Built ML pipelines for block-trade allocation and forecasting, cutting allocation error rates by 15% and improving forecast accuracy by 20%",
         "Automated data infrastructure using Docker and PostgreSQL, increasing data retrieval speed by 75% and reducing system downtime by 30%",
@@ -402,7 +402,7 @@
       "endDate": "Aug 2019",
       "startYear": "2019",
       "endYear": "2019",
-      "logo": "https://media.licdn.com/dms/image/v2/C560BAQE-UVyPs32cRg/company-logo_100_100/company-logo_100_100/0/1636448423327/dhfl_logo?e=1764806400&v=beta&t=rZGiiEPYrwOlxXOE9KbpB8-ETmGRjOMYnNvJio-jqz4",
+      "logo": "images/dhfl_logo.jpg",
       "highlights": [
         "Automated vehicle damage detection in insurance claims by training a Mask R-CNN model, raising detection accuracy by 18% and cutting manual claim processing by 45%",
         "Integrated ML workflows into the Django-based claims system, reducing overall claim processing time by 35%"
@@ -421,7 +421,7 @@
       "startYear": "2022",
       "endYear": "2025",
       "gpa": "3.77/4.00",
-      "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQEtLpPkfugtXg/company-logo_100_100/company-logo_100_100/0/1631354574889?e=1764806400&v=beta&t=jtohKYU5jusvtX0RQNNW4h3O3pRMSC7EGYrWwU1TH8A",
+      "logo": "images/osu_logo.jpg",
       "description": [
         "Graduate Teaching Assistant for 300+ students in Applied Machine Learning, Cloud Application Development, Web Development, Mobile Software Development, and Open Source Software courses",
         "Relevant Coursework: Deep Learning, Computer Vision, Algorithms, Machine Learning"
@@ -437,7 +437,7 @@
       "startYear": "2016",
       "endYear": "2020",
       "gpa": "7.22/10.00",
-      "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQFfYevcaYPy6A/company-logo_100_100/company-logo_100_100/0/1630612004940/fr_conceicao_rodrigues_college_of_engineering_logo?e=1764806400&v=beta&t=AsOsTHXghINtEqbp3fv06B4elL8eiYDhkNNO-_EGWvc",
+      "logo": "images/frcrce_logo.jpg",
       "description": [
         "Relevant Courses: Data Structures and Algorithms, Database Management, Big Data Analytics",
         "Computer Organization and Architecture, Operating Systems, Data Mining and Business Intelligence"
