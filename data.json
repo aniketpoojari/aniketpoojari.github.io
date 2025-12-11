@@ -293,6 +293,13 @@
   ],
   "blogs": [
     {
+      "title": "This AI Agent Does 3 Hours of Research in 8 Seconds (Here's How I Built It)",
+      "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*NI72jBoX9wIendlVW23-oA.png",
+      "url": "https://medium.com/@aniketp2009/this-ai-agent-does-3-hours-of-research-in-8-seconds-heres-how-i-built-it-fa6accfe17e4",
+      "publishDate": "2025-12-10",
+      "readTime": "4 min read"
+    },
+    {
       "title": "BiLoRA: How I Fine‑Tuned a Single LLM with Multi‑LoRA Adapters for Code, Docstrings, and Beyond",
       "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*u_9s7Yg2-f6k_jhuRJuU4Q.png",
       "url": "https://medium.com/@aniketp2009/bilora-how-i-fine-tuned-a-single-llm-with-multi-lora-adapters-for-code-docstrings-and-beyond-5bad39d9596b",
