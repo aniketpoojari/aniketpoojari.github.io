@@ -13,6 +13,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aniket Poojari - Machine Learning Engineer</title>
+    <meta name="description" content="Machine Learning Engineer specializing in diffusion models, LLMs, agentic automation, and scalable ML pipelines. View projects, blogs, and experience.">
+    <meta property="og:title" content="Aniket Poojari - Machine Learning Engineer">
+    <meta property="og:description" content="Building Intelligent Systems that Scale from Research to Production. Explore ML projects, technical blogs, and professional experience.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/profile.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Aniket Poojari - Machine Learning Engineer">
+    <meta name="twitter:description" content="Building Intelligent Systems that Scale from Research to Production.">
     <link rel="icon" type="image/jpeg" href="images/profile.jpg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -483,17 +491,6 @@
             overflow: hidden;
         }
         
-        /* Section shapes container */
-        .section-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
-
         /* Ensure section content stays above shapes */
         .container {
             position: relative;
@@ -530,18 +527,6 @@
             font-size: 0.95rem;
             color: var(--text-color);
             font-weight: 600;
-        }
-
-        [data-theme="dark"] .skill-category {
-            background: rgba(31, 41, 55, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            align-items: center;
         }
 
         [data-theme="dark"] .skill-category {
@@ -1883,6 +1868,14 @@
         <div class="floating-shape"></div>
     </div>
 
+    <noscript>
+        <style>
+            body { font-family: sans-serif; padding: 2rem; text-align: center; background: #E8E6E1; color: #2D3748; }
+        </style>
+        <h1>Aniket Poojari - Machine Learning Engineer</h1>
+        <p>This portfolio requires JavaScript to display content. Please enable JavaScript in your browser.</p>
+    </noscript>
+
     <!-- Navigation -->
     <nav>
         <div class="container">
@@ -1951,7 +1944,7 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid" id="projectsGrid">
-                <!-- Projects will be loaded dynamically -->
+                <p style="text-align:center;color:var(--text-light);grid-column:1/-1;">Loading projects...</p>
             </div>
         </div>
     </section>
@@ -2073,7 +2066,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Aniket Poojari. All rights reserved.</p>
+            <p>&copy; <span id="footerYear"></span> Aniket Poojari. All rights reserved.</p>
         </div>
     </footer>
 
@@ -2439,15 +2432,9 @@
 
         window.addEventListener('scroll', handleScrollAnimation);
 
-        // Mobile menu toggle (for future implementation)
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenu.addEventListener('click', () => {
-            // Add mobile menu functionality here
-            console.log('Mobile menu clicked');
-        });
-
         // Initialize the application
         document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('footerYear').textContent = new Date().getFullYear();
             loadData();
             handleScrollAnimation();
         });
@@ -2494,7 +2481,26 @@
             }
             initParticles();
 
+            let isHeroVisible = true;
+            let animationId = null;
+
+            const heroSection = document.getElementById('home');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    isHeroVisible = entry.isIntersecting;
+                    if (isHeroVisible && !animationId) {
+                        animate();
+                    }
+                });
+            }, { threshold: 0 });
+            observer.observe(heroSection);
+
             function animate() {
+                if (!isHeroVisible) {
+                    animationId = null;
+                    return;
+                }
+
                 ctx.clearRect(0, 0, width, height);
 
                 // Draw particles with optimized glow effect
@@ -2534,7 +2540,7 @@
                         }
                     }
                 }
-                requestAnimationFrame(animate);
+                animationId = requestAnimationFrame(animate);
             }
             animate();
         })();

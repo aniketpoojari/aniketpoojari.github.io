@@ -4,7 +4,6 @@
     "title": "Machine Learning Engineer",
     "subtitle": "Building Intelligent Systems that Scale from Research to Production",
     "location": "Corvallis, OR",
-    "phone": "458-272-7291",
     "bio": [
       "Machine Learning Engineer with 2+ years of hands on experience building high impact AI systems.",
       "Specialized in diffusion models, LLMs, agentic automation, and scalable ML pipelines.",
@@ -124,7 +123,7 @@
   "projects": [
     {
       "title": "Agentic AI Research Assistant",
-      "description": "Architected an autonomous multi-agent research system using LangGraph, reducing complex research workflows from hours to minutes through automated web search, summarization, fact-checking, and citation management tools. Achieved 99.9% response quality and a 100% test pass rate across LangSmith-guided evaluations with flawless trajectory execution in 6-step workflows. Deployed a dual-interface architecture (FastAPI backend, Streamlit frontend) with a Docker + GitHub Actions CI/CD pipeline, ensuring zero-downtime deployment to Hugging Face Spaces.",
+      "description": "An autonomous research agent with a self-reflection loop that achieves 1.0 faithfulness score, built using LangGraph,   FastAPI, and Groq, reducing LLM hallucinations by grounding responses in verified web evidence.",
       "image": "https://cdn.hashnode.com/res/hashnode/image/upload/v1727695448677/0e3ce539-1997-43ef-8e3c-648893855349.jpeg?auto=compress,format&format=webp",
       "githubUrl": "https://github.com/aniketpoojari/Agentic-AI-Research-Assistant",
       "technologies": ["Python", "LangGraph", "LangSmith", "FastAPI", "Streamlit", "Docker", "GitHub Actions"],
