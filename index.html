@@ -25,32 +25,1010 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* ... existing styles ... */
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563EB;
+            --secondary-color: #2563EB;
+            --accent-color: #3B82F6;
+            --text-color: #1a1a1a;
+            --text-light: #6b7280;
+            --bg-color: #ffffff;
+            --card-bg: #ffffff;
+            --section-bg: #f9fafb;
+            --border-color: #e5e7eb;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #60A5FA;
+            --secondary-color: #60A5FA;
+            --accent-color: #93C5FD;
+            --text-color: #e5e7eb;
+            --text-light: #9ca3af;
+            --bg-color: #0f0f0f;
+            --card-bg: #171717;
+            --section-bg: #0f0f0f;
+            --border-color: #262626;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Animated Background - hidden for clean design */
+        .animated-background {
+            display: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] nav {
+            background: rgba(15, 15, 15, 0.92);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu i {
+            font-size: 1.5rem;
+        }
+
+        /* Mobile Navigation Overlay */
+        .nav-links.mobile-open {
+            display: flex !important;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--card-bg);
+            z-index: 1000;
+            padding: 5rem 2rem 2rem;
+            gap: 1.5rem;
+            animation: slideIn 0.3s ease;
+            overflow-y: auto;
+        }
+
+        [data-theme="dark"] .nav-links.mobile-open {
+            background: var(--bg-color);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .nav-links.mobile-open li {
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .nav-links.mobile-open li:last-child {
+            border-bottom: none;
+        }
+
+        .nav-links.mobile-open a {
+            font-size: 1.25rem;
+            padding: 0.75rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        /* Hero + About Section with Social Links */
+        .hero-about {
+            padding: 5rem 0 2rem;
+            background: var(--bg-color);
+            height: 100vh;
+            max-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-color);
+        }
+
+        .social-links-hero {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .social-link-hero {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1.5px solid var(--text-light);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .social-link-hero:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            display: none;  /* Hidden by default, shown when loaded */
+            margin: 0 auto;
+        }
+
+        .profile-image.loaded {
+            display: block;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.02);
+            opacity: 1;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 3rem 0;
+            background: var(--card-bg);
+        }
+
+        .skills h2 {
+            margin-bottom: 2rem;
+        }
+        .skills, .projects, .blogs, .timeline-section, .testimonials, .experience-section, .education-section, .achievements-section {
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .skill-category {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 0.75rem;
+            transition: all 0.25s ease;
+        }
+
+        .skill-category h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .skill-category {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            align-items: center;
+        }
+
+        .skill-tag {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: linear-gradient(135deg, rgba(72, 61, 139, 0.05), rgba(106, 90, 205, 0.05));
+            border: 1.5px solid var(--primary-color);
+            padding: 0.45rem 0.9rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, rgba(72, 61, 139, 0.12), rgba(106, 90, 205, 0.12));
+            transform: translateY(-1px);
+        }
+
+        .skill-tag i {
+            font-size: 0.85rem;
+        }
+
+        /* Skill Category Context */
+        .skill-context {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            margin: -0.25rem 0 0.5rem;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        /* Projects Section - Compact Design */
+        .projects {
+            padding: 4rem 0;
+            background: var(--card-bg);
+        }
+
+        .projects h2 {
+            margin-bottom: 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-card-inner {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 0 0 0.5rem 0;
+            line-height: 1.3;
+        }
+
+        .project-description {
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: var(--text-light);
+            margin: 0 0 0.75rem 0;
+            flex: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+
+        .project-tech-tag {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            background: var(--section-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.15rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+        [data-theme="dark"] .project-tech-tag {
+            background: var(--card-bg);
+        }
+
+        .project-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+        /* Project Section Sub-headers */
+        .projects-section-label {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin: 2.5rem 0 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        /* Show More Toggle Button */
+        .show-more-btn {
+            display: block;
+            margin: 2rem auto 0;
+            padding: 0.75rem 2rem;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .show-more-btn:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(91, 79, 207, 0.3);
+        }
+
+        /* Other projects hidden by default - higher specificity to beat .projects-grid */
+        .projects-grid.other-projects-grid {
+            display: none !important;
+        }
+
+        .projects-grid.other-projects-grid.visible {
+            display: grid !important;
+        }
+
+        /* Blogs Section - Compact Design */
+        .blogs {
+            padding: 4rem 0;
+            background: var(--bg-color);
+        }
+
+        .blogs h2 {
+            margin-bottom: 2rem;
+        }
+
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .blog-card {
+            position: relative;
+            height: 280px;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(31, 38, 135, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .blog-link {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: block;
+            text-decoration: none;
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            filter: blur(0px);
+        }
+
+        .blog-card:hover .blog-image {
+            opacity: 0.15;
+            transform: scale(1.02);
+            filter: blur(4px);
+        }
+
+        .blog-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            transition: all 0.3s ease;
+            line-height: 1.3;
+        }
+
+        .blog-card:hover .blog-title {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .blog-content {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            margin: 0;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: var(--text-color);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-40%);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .blog-card:hover .blog-content {
+            opacity: 1;
+            transform: translateY(-60%);
+        }
+
+        .blog-link::after {
+            content: 'Read Article →';
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 1.25rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .blog-card:hover .blog-link::after {
+            opacity: 1;
+            bottom: 2rem;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            padding: 4rem 0;
+            background: var(--bg-color);
+        }
+
+        .experience-section h2 {
+            margin-bottom: 2.5rem;
+        }
+
+        /* Education Section */
+        .education-section {
+            padding: 4rem 0;
+            background: var(--bg-color);
+        }
+
+        .education-section h2 {
+            margin-bottom: 2.5rem;
+        }
+
+        /* Section title with icon */
+        .section-title i {
+            margin-right: 0.75rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Journey Grid */
+        .journey-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Journey Card */
+        .journey-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .journey-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(72, 61, 139, 0.12);
+            border-color: var(--primary-color);
+        }
+
+        .journey-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .journey-card:hover::before {
+            opacity: 1;
+        }
+
+        .journey-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 0;
+        }
+
+        .journey-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 0.5rem;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .journey-info {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .journey-title-company {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .journey-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .journey-company {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .journey-company i {
+            font-size: 0.875rem;
+        }
+
+        .journey-duration {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .journey-duration i {
+            font-size: 0.875rem;
+        }
+
+        .journey-details {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease, padding-top 0.4s ease;
+            margin-top: 0;
+            padding-top: 0;
+            border-top: 1px solid transparent;
+        }
+
+        .journey-card:hover .journey-details {
+            max-height: 600px;
+            opacity: 1;
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top-color: var(--border-color);
+        }
+
+        .journey-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .journey-details li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .journey-details li::before {
+            content: '▸';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .journey-details li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 4rem 0;
+            background: var(--card-bg);
+        }
+
+        .testimonials h2 {
+            margin-bottom: 2.5rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--primary-color);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 8px 20px rgba(72, 61, 139, 0.12);
+            transform: translateY(-3px);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 4rem;
+            color: var(--primary-color);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+        }
+
+        .author-info h4 {
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 2.5rem 0;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            letter-spacing: 0.01em;
+            font-weight: 400;
+        }
+
+        /* Section shapes - hidden for clean professional design */
+        .section-shapes {
+            display: none;
+        }
+
         /* Animation Canvas Styling */
         #mlAnimation {
-            display: block; /* Enable display */
+            display: block;
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0; /* Behind content */
+            z-index: 0;
             opacity: 0.6;
-            pointer-events: none; /* Let clicks pass through */
-        }
-        
-        .hero-about {
-            position: relative;
-            z-index: 1;
-            background: transparent; /* Allow canvas to show */
-            overflow: hidden; /* Contain the canvas */
-        }
-
-        /* Ensure content sits above canvas */
-        .hero-about .container {
-            position: relative;
-            z-index: 2;
+            pointer-events: none;
         }
 
         [data-theme="dark"] #mlAnimation {
@@ -91,27 +1069,195 @@
             transform: translateY(-5px);
             box-shadow: 0 6px 16px rgba(0,0,0,0.2);
         }
+
+        /* Mobile-First Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.25rem;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-container {
+                padding: 1rem 0;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+                flex: 1;
+            }
+
+            .theme-toggle,
+            .mobile-menu {
+                flex-shrink: 0;
+                min-width: 44px;
+                min-height: 44px;
+            }
+
+            .hero-about {
+                height: auto !important;
+                max-height: none !important;
+                min-height: auto;
+                padding: 5rem 0 3rem !important;
+            }
+
+            .hero-about-content {
+                grid-template-columns: 1fr !important;
+                text-align: center;
+                gap: 2rem;
+                padding: 0;
+            }
+
+            .hero-text {
+                order: 2;
+                width: 100%;
+            }
+
+            .hero-text h1 {
+                font-size: 1.75rem !important;
+                line-height: 1.3;
+                margin-bottom: 0.75rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1rem !important;
+            }
+
+            .cta-buttons {
+                flex-direction: column !important;
+                gap: 0.875rem;
+                margin-top: 1.5rem;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100% !important;
+                justify-content: center;
+            }
+
+            .profile-image {
+                width: 160px !important;
+                height: 160px !important;
+                margin: 0 auto 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Achievements Section */
+        .achievements-section {
+            padding: 4rem 0;
+            background: var(--card-bg);
+        }
+
+        .achievements-section h2 {
+            margin-bottom: 2.5rem;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .achievement-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(72, 61, 139, 0.12);
+            border-color: var(--primary-color);
+        }
+
+        .achievement-card:hover::before {
+            opacity: 1;
+        }
+
+        .achievement-icon {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .achievement-content {
+            width: 100%;
+        }
+
+        .achievement-content h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        .achievement-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
     </style>
 </head>
 <body>
-    <!-- Animated Background Shapes -->
-    <div class="animated-background">
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-    </div>
-
-    <noscript>
-        <style>
-            body { font-family: sans-serif; padding: 2rem; text-align: center; background: #E8E6E1; color: #2D3748; }
-        </style>
-        <h1>Aniket Poojari - Machine Learning Engineer</h1>
-        <p>This portfolio requires JavaScript to display content. Please enable JavaScript in your browser.</p>
-    </noscript>
-
     <!-- Navigation -->
     <nav>
         <div class="container">
@@ -137,9 +1283,8 @@
         </div>
     </nav>
 
-    <!-- Hero + About Section with Social Links -->
+    <!-- Hero Section -->
     <section id="home" class="hero-about">
-        <!-- ML Animation Canvas -->
         <canvas id="mlAnimation"></canvas>
         <div class="container">
             <div class="hero-about-content">
@@ -157,9 +1302,7 @@
                             Get In Touch
                         </a>
                     </div>
-                    <div class="social-links-hero" id="socialLinksHero">
-                        <!-- Social links will be loaded dynamically -->
-                    </div>
+                    <div class="social-links-hero" id="socialLinksHero"></div>
                 </div>
                 <div class="hero-image">
                     <img id="profileImg" alt="Profile Picture" class="profile-image">
@@ -170,13 +1313,6 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
-        <div class="section-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
         <div class="container">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid" id="projectsGrid">
@@ -187,115 +1323,49 @@
 
     <!-- Experience Section -->
     <section id="experience" class="experience-section">
-        <div class="section-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
         <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-briefcase"></i>
-                Experience
-            </h2>
-            <div class="journey-grid" id="experienceGrid">
-                <!-- Experience cards will be loaded dynamically -->
-            </div>
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Experience</h2>
+            <div class="journey-grid" id="experienceGrid"></div>
         </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="skills">
-        <div class="section-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
         <div class="container">
             <h2 class="section-title">Skills & Expertise</h2>
-            <div class="skills-grid" id="skillsGrid">
-                <!-- Skills will be loaded dynamically -->
-            </div>
+            <div class="skills-grid" id="skillsGrid"></div>
         </div>
     </section>
 
     <!-- Education Section -->
     <section id="education" class="education-section">
-        <div class="section-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
         <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-graduation-cap"></i>
-                Education
-            </h2>
-            <div class="journey-grid" id="educationGrid">
-                <!-- Education cards will be loaded dynamically -->
-            </div>
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="journey-grid" id="educationGrid"></div>
         </div>
     </section>
 
     <!-- Achievements Section -->
     <section id="achievements" class="achievements-section">
-        <div class="section-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
         <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-trophy"></i>
-                Achievements
-            </h2>
-            <div class="achievements-grid" id="achievementsGrid">
-                <!-- Achievements will be loaded dynamically -->
-            </div>
+            <h2 class="section-title"><i class="fas fa-trophy"></i> Achievements</h2>
+            <div class="achievements-grid" id="achievementsGrid"></div>
         </div>
     </section>
 
     <!-- Blogs Section -->
     <section id="blogs" class="blogs">
-        <div class="section-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
         <div class="container">
             <h2 class="section-title">Latest Blogs</h2>
-            <div class="blogs-grid" id="blogsGrid">
-                <!-- Blogs will be loaded dynamically -->
-            </div>
+            <div class="blogs-grid" id="blogsGrid"></div>
         </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
-        <div class="section-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
         <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-quote-left"></i>
-                What People Say
-            </h2>
-            <div class="testimonials-grid" id="testimonialsGrid">
-                <!-- Testimonials will be loaded dynamically -->
-            </div>
+            <h2 class="section-title"><i class="fas fa-quote-left"></i> What People Say</h2>
+            <div class="testimonials-grid" id="testimonialsGrid"></div>
         </div>
     </section>
 
@@ -317,105 +1387,62 @@
             constructor(canvasId) {
                 this.canvas = document.getElementById(canvasId);
                 if (!this.canvas) return;
-                
                 this.ctx = this.canvas.getContext('2d');
                 this.particles = [];
-                this.particleCount = 50; // Adjust for density
+                this.particleCount = 50;
                 this.connectionDistance = 150;
-                this.mouse = { x: null, y: null };
-                
                 this.resize();
                 this.init();
-                
                 window.addEventListener('resize', () => this.resize());
-                // Add mouse interaction if desired, currently passive
-                /*
-                this.canvas.addEventListener('mousemove', (e) => {
-                    const rect = this.canvas.getBoundingClientRect();
-                    this.mouse.x = e.clientX - rect.left;
-                    this.mouse.y = e.clientY - rect.top;
-                });
-                */
-               
                 this.animate();
             }
-
             resize() {
                 this.canvas.width = this.canvas.parentElement.offsetWidth;
                 this.canvas.height = this.canvas.parentElement.offsetHeight;
-                this.init(); // Re-initialize particles on resize
+                this.init();
             }
-
             init() {
                 this.particles = [];
                 for (let i = 0; i < this.particleCount; i++) {
                     this.particles.push({
                         x: Math.random() * this.canvas.width,
                         y: Math.random() * this.canvas.height,
-                        vx: (Math.random() - 0.5) * 1.5, // Velocity
+                        vx: (Math.random() - 0.5) * 1.5,
                         vy: (Math.random() - 0.5) * 1.5,
                         size: Math.random() * 2 + 1
                     });
                 }
             }
-
             animate() {
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                
-                // Get current theme color for particles
-                const style = getComputedStyle(document.body);
-                const primaryColor = style.getPropertyValue('--primary-color').trim() || '#2563EB';
                 const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                
-                // Particle color logic
                 const particleColor = isDark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(37, 99, 235, 0.4)';
                 const lineColor = isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(37, 99, 235, 0.1)';
-
-                // Update and draw particles
                 this.particles.forEach((p, index) => {
-                    p.x += p.vx;
-                    p.y += p.vy;
-
-                    // Bounce off edges
+                    p.x += p.vx; p.y += p.vy;
                     if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
                     if (p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
-
-                    // Draw particle
                     this.ctx.beginPath();
                     this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                     this.ctx.fillStyle = particleColor;
                     this.ctx.fill();
-
-                    // Connect particles
                     for (let j = index + 1; j < this.particles.length; j++) {
                         const p2 = this.particles[j];
-                        const dx = p.x - p2.x;
-                        const dy = p.y - p2.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-
-                        if (distance < this.connectionDistance) {
+                        const dx = p.x - p2.x; const dy = p.y - p2.y;
+                        const dist = Math.sqrt(dx*dx + dy*dy);
+                        if (dist < this.connectionDistance) {
                             this.ctx.beginPath();
                             this.ctx.strokeStyle = lineColor;
-                            this.ctx.lineWidth = 1 - distance / this.connectionDistance;
-                            this.ctx.moveTo(p.x, p.y);
-                            this.ctx.lineTo(p2.x, p2.y);
+                            this.ctx.lineWidth = 1 - dist/this.connectionDistance;
+                            this.ctx.moveTo(p.x, p.y); this.ctx.lineTo(p2.x, p2.y);
                             this.ctx.stroke();
                         }
                     }
                 });
-
                 requestAnimationFrame(() => this.animate());
             }
         }
 
-        // Initialize Animation
-        document.addEventListener('DOMContentLoaded', () => {
-            new NeuralNetworkAnimation('mlAnimation');
-        });
-
-        // --- Existing Code ---
-
-        // Load data from JSON file
         let portfolioData = null;
 
         async function loadData() {
@@ -430,437 +1457,187 @@
 
         function renderContent() {
             if (!portfolioData) return;
-
-            // Render hero section with personal data
             document.getElementById('heroName').textContent = portfolioData.personal.name;
             document.getElementById('heroTitle').textContent = portfolioData.personal.subtitle || portfolioData.personal.title;
-
-            // Render bio paragraphs
-            const bioContainer = document.getElementById('heroBioContainer');
-            bioContainer.innerHTML = portfolioData.personal.bio.map(text => `<p>${text}</p>`).join('');
-            
-            // Render profile image
+            document.getElementById('heroBioContainer').innerHTML = portfolioData.personal.bio.map(text => `<p>${text}</p>`).join('');
             const profileImg = document.getElementById('profileImg');
             profileImg.src = portfolioData.personal.profileImage;
-            profileImg.alt = portfolioData.personal.name;
             profileImg.classList.add('loaded');
-
-            renderSocialLinks();
-            renderSkills();
-            renderProjects();
-            renderBlogs();
-            renderAchievements();
-            renderExperience();
-            renderEducation();
-            renderTestimonials();
+            renderSocialLinks(); renderSkills(); renderProjects(); renderBlogs();
+            renderAchievements(); renderExperience(); renderEducation(); renderTestimonials();
         }
 
         function renderSocialLinks() {
-            const socialLinksContainer = document.getElementById('socialLinksHero');
-            socialLinksContainer.innerHTML = '';
-
-            portfolioData.contact.socialLinks.forEach(link => {
-                const socialLink = document.createElement('a');
-                socialLink.href = link.url;
-                socialLink.className = 'social-link-hero';
-                socialLink.target = '_blank';
-                socialLink.innerHTML = `<i class="${link.icon}"></i>`;
-                socialLink.setAttribute('aria-label', link.platform);
-                socialLinksContainer.appendChild(socialLink);
-            });
+            const container = document.getElementById('socialLinksHero');
+            container.innerHTML = portfolioData.contact.socialLinks.map(link => 
+                `<a href="${link.url}" class="social-link-hero" target="_blank" aria-label="${link.platform}"><i class="${link.icon}"></i></a>`
+            ).join('');
         }
 
         function renderSkills() {
-            const skillsGrid = document.getElementById('skillsGrid');
-            skillsGrid.innerHTML = '';
-
-            portfolioData.skills.categories.forEach(category => {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'skill-category fade-in';
-                
-                const skillsHTML = category.items.map(skill => 
-                    `<div class="skill-tag">
-                        <i class="${skill.icon}"></i>
-                        <span>${skill.name}</span>
-                    </div>`
-                ).join('');
-
-                const contextHTML = category.context ? `<p class="skill-context">${category.context}</p>` : '';
-                categoryDiv.innerHTML = `
+            const grid = document.getElementById('skillsGrid');
+            grid.innerHTML = portfolioData.skills.categories.map(category => `
+                <div class="skill-category fade-in">
                     <h3>${category.title}</h3>
-                    ${contextHTML}
+                    ${category.context ? `<p class="skill-context">${category.context}</p>` : ''}
                     <div class="skills-list">
-                        ${skillsHTML}
+                        ${category.items.map(skill => `<div class="skill-tag"><i class="${skill.icon}"></i><span>${skill.name}</span></div>`).join('')}
                     </div>
-                `;
-
-                skillsGrid.appendChild(categoryDiv);
-            });
+                </div>
+            `).join('');
         }
 
         function renderProjects() {
-            const projectsGrid = document.getElementById('projectsGrid');
-            projectsGrid.innerHTML = '';
-
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = '';
             const featured = portfolioData.projects.filter(p => p.featured);
             const secondary = portfolioData.projects.filter(p => !p.featured && p.tier === 'secondary');
             const other = portfolioData.projects.filter(p => !p.featured && p.tier === 'other');
 
-            function createProjectCard(project) {
-                const projectDiv = document.createElement('div');
-                projectDiv.className = 'project-card fade-in';
-
-                const oneLiner = project.description.split('.')[0] + '.';
-                const metricsHTML = project.keyMetrics
-                    ? `<div class="project-metrics">${project.keyMetrics.map(m => `<span class="metric-badge">${m}</span>`).join('')}</div>`
-                    : '';
-
-                // Metrics go on .project-card (outside the <a>) so they don't break the link
-                projectDiv.innerHTML = `
-                    ${metricsHTML}
-                    <a href="${project.githubUrl}" class="project-card-inner" target="_blank">
-                        <img src="${project.image}" alt="${project.title}" class="project-image" loading="lazy">
-                        <h3 class="project-title">${project.title}</h3>
-                        <p class="project-description">${oneLiner}</p>
+            function createCard(p) {
+                return `<div class="project-card fade-in">
+                    ${p.keyMetrics ? `<div class="project-metrics">${p.keyMetrics.map(m => `<span class="metric-badge">${m}</span>`).join('')}</div>` : ''}
+                    <a href="${p.githubUrl}" class="project-card-inner" target="_blank">
+                        <img src="${p.image}" alt="${p.title}" class="project-image" loading="lazy">
+                        <h3 class="project-title">${p.title}</h3>
+                        <p class="project-description">${p.description.split('.')[0]}.</p>
                     </a>
-                `;
-                return projectDiv;
+                </div>`;
             }
 
-            // Render featured projects into the main grid
-            featured.forEach(project => {
-                projectsGrid.appendChild(createProjectCard(project));
-            });
-
-            const container = projectsGrid.parentElement;
-
-            // Render secondary projects with their own label and grid
+            grid.innerHTML = featured.map(createCard).join('');
+            const container = grid.parentElement;
             if (secondary.length > 0) {
-                const label = document.createElement('h3');
-                label.className = 'projects-section-label';
-                label.textContent = 'More Projects';
+                const label = document.createElement('h3'); label.className = 'projects-section-label'; label.textContent = 'More Projects';
                 container.appendChild(label);
-
-                const secondaryGrid = document.createElement('div');
-                secondaryGrid.className = 'projects-grid';
-                secondary.forEach(project => {
-                    secondaryGrid.appendChild(createProjectCard(project));
-                });
-                container.appendChild(secondaryGrid);
+                const secGrid = document.createElement('div'); secGrid.className = 'projects-grid';
+                secGrid.innerHTML = secondary.map(createCard).join('');
+                container.appendChild(secGrid);
             }
-
-            // Render other projects behind a toggle
             if (other.length > 0) {
-                const toggleBtn = document.createElement('button');
-                toggleBtn.className = 'show-more-btn';
-                toggleBtn.textContent = `Show ${other.length} More Projects`;
-
-                const otherGrid = document.createElement('div');
-                otherGrid.className = 'projects-grid other-projects-grid';
-                otherGrid.id = 'otherProjectsGrid';
-                other.forEach(project => {
-                    otherGrid.appendChild(createProjectCard(project));
-                });
-
-                toggleBtn.addEventListener('click', () => {
+                const btn = document.createElement('button'); btn.className = 'show-more-btn'; btn.textContent = `Show ${other.length} More Projects`;
+                const otherGrid = document.createElement('div'); otherGrid.className = 'projects-grid other-projects-grid';
+                otherGrid.innerHTML = other.map(createCard).join('');
+                btn.onclick = () => {
                     otherGrid.classList.toggle('visible');
-                    toggleBtn.textContent = otherGrid.classList.contains('visible')
-                        ? 'Show Less'
-                        : `Show ${other.length} More Projects`;
-                    if (otherGrid.classList.contains('visible')) {
-                        handleScrollAnimation();
-                    }
-                });
-
-                container.appendChild(toggleBtn);
-                container.appendChild(otherGrid);
+                    btn.textContent = otherGrid.classList.contains('visible') ? 'Show Less' : `Show ${other.length} More Projects`;
+                    handleScrollAnimation();
+                };
+                container.appendChild(btn); container.appendChild(otherGrid);
             }
         }
 
         function renderBlogs() {
-            const blogsGrid = document.getElementById('blogsGrid');
-            blogsGrid.innerHTML = '';
-
-            portfolioData.blogs.forEach(blog => {
-                const blogDiv = document.createElement('div');
-                blogDiv.className = 'blog-card fade-in';
-
-                blogDiv.innerHTML = `
+            document.getElementById('blogsGrid').innerHTML = portfolioData.blogs.map(blog => `
+                <div class="blog-card fade-in">
                     <a href="${blog.url}" class="blog-link" target="_blank">
                         <img src="${blog.image}" alt="${blog.title}" class="blog-image" loading="lazy">
                         <h3 class="blog-title">${blog.title}</h3>
                         <div class="blog-content">${blog.readTime || 'Published ' + blog.publishDate}</div>
                     </a>
-                `;
-
-                blogsGrid.appendChild(blogDiv);
-            });
+                </div>
+            `).join('');
         }
 
         function renderAchievements() {
-            const achievementsGrid = document.getElementById('achievementsGrid');
-            if (!achievementsGrid) return;
-            achievementsGrid.innerHTML = '';
-
-            // Use the achievements array from data.json
-            (portfolioData.achievements || []).forEach(item => {
-                const achDiv = document.createElement('div');
-                achDiv.className = 'achievement-card fade-in';
-                achDiv.innerHTML = `
-                    <div class="achievement-icon"><i class="fas fa-trophy" aria-hidden="true"></i></div>
-                    <div class="achievement-content">
-                        <h3>${item.title}</h3>
-                        <p>${item.description}</p>
-                    </div>
-                `;
-                achievementsGrid.appendChild(achDiv);
-            });
+            document.getElementById('achievementsGrid').innerHTML = (portfolioData.achievements || []).map(item => `
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="achievement-content"><h3>${item.title}</h3><p>${item.description}</p></div>
+                </div>
+            `).join('');
         }
 
         function renderExperience() {
-            const experienceGrid = document.getElementById('experienceGrid');
-            if (!experienceGrid) return;
-            experienceGrid.innerHTML = '';
-
-            // Sort by most recent first
-            const sortedExperience = [...portfolioData.experience].sort((a, b) => {
-                const getYear = (date) => {
-                    if (date === 'Present') return 9999;
-                    return parseInt(date.split(' ')[1]) || 0;
-                };
-                return getYear(b.endDate) - getYear(a.endDate);
-            });
-
-            sortedExperience.forEach(exp => {
-                const card = document.createElement('div');
-                card.className = 'journey-card fade-in';
-
-                const highlightsHTML = exp.highlights
-                    ? exp.highlights.map(h => `<li>${h}</li>`).join('')
-                    : '';
-
-                card.innerHTML = `
+            const expGrid = document.getElementById('experienceGrid');
+            const sorted = [...portfolioData.experience].sort((a,b) => (b.endDate === 'Present' ? 9999 : parseInt(b.endDate.split(' ')[1])) - (a.endDate === 'Present' ? 9999 : parseInt(a.endDate.split(' ')[1])));
+            expGrid.innerHTML = sorted.map(exp => `
+                <div class="journey-card fade-in">
                     <div class="journey-card-header">
                         <img src="${exp.logo}" alt="${exp.company}" class="journey-logo">
                         <div class="journey-info">
                             <div class="journey-title-company">
                                 <h3 class="journey-title">${exp.position}</h3>
                                 <span style="color: var(--text-light);">•</span>
-                                <div class="journey-company">
-                                    <i class="fas fa-building"></i>
-                                    ${exp.company}
-                                </div>
+                                <div class="journey-company"><i class="fas fa-building"></i> ${exp.company}</div>
                             </div>
-                            <div class="journey-duration">
-                                <i class="fas fa-calendar-alt"></i>
-                                ${exp.startDate} - ${exp.endDate}
-                            </div>
+                            <div class="journey-duration"><i class="fas fa-calendar-alt"></i> ${exp.startDate} - ${exp.endDate}</div>
                         </div>
                     </div>
-                    <div class="journey-details">
-                        <ul>
-                            ${highlightsHTML}
-                        </ul>
-                    </div>
-                `;
-
-                experienceGrid.appendChild(card);
-            });
+                    <div class="journey-details"><ul>${(exp.highlights || []).map(h => `<li>${h}</li>`).join('')}</ul></div>
+                </div>
+            `).join('');
         }
 
         function renderEducation() {
-            const educationGrid = document.getElementById('educationGrid');
-            if (!educationGrid) return;
-            educationGrid.innerHTML = '';
-
-            // Sort by most recent first
-            const sortedEducation = [...portfolioData.education].sort((a, b) => {
-                const getYear = (date) => parseInt(date.split(' ')[1]) || parseInt(date) || 0;
-                return getYear(b.endDate || b.year) - getYear(a.endDate || a.year);
-            });
-
-            sortedEducation.forEach(edu => {
-                const card = document.createElement('div');
-                card.className = 'journey-card fade-in';
-
-                const descriptionHTML = edu.description
-                    ? edu.description.map(d => `<li>${d}</li>`).join('')
-                    : '';
-
-                const duration = edu.year || `${edu.startDate} - ${edu.endDate}`;
-
-                card.innerHTML = `
+            document.getElementById('educationGrid').innerHTML = portfolioData.education.map(edu => `
+                <div class="journey-card fade-in">
                     <div class="journey-card-header">
                         <img src="${edu.logo}" alt="${edu.institution}" class="journey-logo">
                         <div class="journey-info">
                             <div class="journey-title-company">
                                 <h3 class="journey-title">${edu.degree}</h3>
                                 <span style="color: var(--text-light);">•</span>
-                                <div class="journey-company">
-                                    <i class="fas fa-university"></i>
-                                    ${edu.institution}
-                                </div>
+                                <div class="journey-company"><i class="fas fa-university"></i> ${edu.institution}</div>
                             </div>
-                            <div class="journey-duration">
-                                <i class="fas fa-calendar-alt"></i>
-                                ${duration}
-                            </div>
+                            <div class="journey-duration"><i class="fas fa-calendar-alt"></i> ${edu.year || `${edu.startDate} - ${edu.endDate}`}</div>
                         </div>
                     </div>
-                    ${descriptionHTML ? `
-                        <div class="journey-details">
-                            <ul>
-                                ${descriptionHTML}
-                            </ul>
-                        </div>
-                    ` : ''}
-                `;
-
-                educationGrid.appendChild(card);
-            });
+                    <div class="journey-details"><ul>${(edu.description || []).map(d => `<li>${d}</li>`).join('')}</ul></div>
+                </div>
+            `).join('');
         }
 
         function renderTestimonials() {
-            const testimonialsGrid = document.getElementById('testimonialsGrid');
-            testimonialsGrid.innerHTML = '';
-
-            portfolioData.testimonials.forEach(testimonial => {
-                const testimonialDiv = document.createElement('div');
-                testimonialDiv.className = 'testimonial-card fade-in';
-                
-                testimonialDiv.innerHTML = `
-                    <p class="testimonial-text">"${testimonial.content}"</p>
+            document.getElementById('testimonialsGrid').innerHTML = portfolioData.testimonials.map(t => `
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"${t.content}"</p>
                     <div class="testimonial-author">
-                        <img src="${testimonial.image}" alt="${testimonial.name}" class="author-image">
-                        <div class="author-info">
-                            <h4>${testimonial.name}</h4>
-                            <p>${testimonial.position} at ${testimonial.company}</p>
-                        </div>
+                        <img src="${t.image}" alt="${t.name}" class="author-image">
+                        <div class="author-info"><h4>${t.name}</h4><p>${t.position} at ${t.company}</p></div>
                     </div>
-                `;
-
-                testimonialsGrid.appendChild(testimonialDiv);
-            });
+                </div>
+            `).join('');
         }
 
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-
-        function setTheme(theme) {
-            body.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            
-            const icon = themeToggle.querySelector('i');
-            if (theme === 'dark') {
-                icon.className = 'fas fa-sun';
-            } else {
-                icon.className = 'fas fa-moon';
-            }
-        }
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            setTheme(newTheme);
-        });
-
-        // Initialize theme
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        setTheme(savedTheme);
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenu');
-        const navLinks = document.querySelector('.nav-links');
-
-        if (mobileMenuBtn && navLinks) {
-            mobileMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = navLinks.classList.contains('mobile-open');
-                const icon = mobileMenuBtn.querySelector('i');
-
-                if (isOpen) {
-                    // Close menu
-                    navLinks.classList.remove('mobile-open');
-                    icon.className = 'fas fa-bars';
-                    document.body.style.overflow = 'auto';
-                } else {
-                    // Open menu
-                    navLinks.classList.add('mobile-open');
-                    icon.className = 'fas fa-times';
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-
-            // Close mobile menu when clicking on a link
-            const navLinkItems = navLinks.querySelectorAll('a');
-            navLinkItems.forEach(link => {
-                link.addEventListener('click', () => {
-                    const icon = mobileMenuBtn.querySelector('i');
-                    navLinks.classList.remove('mobile-open');
-                    icon.className = 'fas fa-bars';
-                    document.body.style.overflow = 'auto';
-                });
-            });
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Fade in animation on scroll
         function handleScrollAnimation() {
-            const elements = document.querySelectorAll('.fade-in');
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
+            document.querySelectorAll('.fade-in').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 150) el.classList.add('visible');
             });
         }
 
-        window.addEventListener('scroll', handleScrollAnimation);
-
-        // Initialize the application
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('footerYear').textContent = new Date().getFullYear();
-
-            // Scroll to Top Button Logic
+            new NeuralNetworkAnimation('mlAnimation');
             const scrollTopBtn = document.getElementById('scrollTopBtn');
-            if (scrollTopBtn) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 300) {
-                        scrollTopBtn.classList.add('visible');
-                    } else {
-                        scrollTopBtn.classList.remove('visible');
-                    }
-                });
+            window.addEventListener('scroll', () => {
+                scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+                handleScrollAnimation();
+            });
+            scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            const themeToggle = document.getElementById('themeToggle');
+            const setTheme = (theme) => {
+                document.body.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                themeToggle.querySelector('i').className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            };
+            themeToggle.onclick = () => setTheme(document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+            setTheme(localStorage.getItem('theme') || 'dark');
 
-                scrollTopBtn.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
+            const mobileBtn = document.getElementById('mobileMenu');
+            const navLinks = document.querySelector('.nav-links');
+            mobileBtn.onclick = () => {
+                navLinks.classList.toggle('mobile-open');
+                mobileBtn.querySelector('i').className = navLinks.classList.contains('mobile-open') ? 'fas fa-times' : 'fas fa-bars';
+            };
+            navLinks.querySelectorAll('a').forEach(a => a.onclick = () => {
+                navLinks.classList.remove('mobile-open');
+                mobileBtn.querySelector('i').className = 'fas fa-bars';
+            });
 
             loadData();
-            handleScrollAnimation();
         });
-
     </script>
 </body>
 </html>
