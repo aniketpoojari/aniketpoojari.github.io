@@ -566,84 +566,6 @@
             font-size: 0.85rem;
         }
 
-        /* Project Key Metrics */
-        .project-metrics {
-            position: absolute;
-            top: 0.75rem;
-            left: 0.75rem;
-            right: 0.75rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.35rem;
-            z-index: 2;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-metrics {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .metric-badge {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 0.25rem 0.6rem;
-            border-radius: 2rem;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            white-space: nowrap;
-            box-shadow: 0 2px 8px rgba(91, 79, 207, 0.4);
-        }
-
-        /* Project Section Headers */
-        .projects-section-label {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-light);
-            margin: 2.5rem 0 1.25rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .projects-section-label:first-of-type {
-            margin-top: 0;
-        }
-
-        /* Show More Toggle */
-        .show-more-btn {
-            display: block;
-            margin: 2rem auto 0;
-            padding: 0.75rem 2rem;
-            background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            border-radius: 2rem;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.02em;
-        }
-
-        .show-more-btn:hover {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-color: transparent;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(91, 79, 207, 0.3);
-        }
-
-        .other-projects-grid {
-            display: none;
-        }
-
-        .other-projects-grid.visible {
-            display: grid;
-        }
-
         /* Skill Category Context */
         .skill-context {
             font-size: 0.78rem;
@@ -788,6 +710,82 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* Project Key Metrics - on the card itself, outside <a> */
+        .project-metrics {
+            position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            right: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            z-index: 3;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover .project-metrics {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .metric-badge {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.25rem 0.6rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(91, 79, 207, 0.4);
+        }
+
+        /* Project Section Sub-headers */
+        .projects-section-label {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin: 2.5rem 0 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        /* Show More Toggle Button */
+        .show-more-btn {
+            display: block;
+            margin: 2rem auto 0;
+            padding: 0.75rem 2rem;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .show-more-btn:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(91, 79, 207, 0.3);
+        }
+
+        /* Other projects hidden by default - higher specificity to beat .projects-grid */
+        .projects-grid.other-projects-grid {
+            display: none !important;
+        }
+
+        .projects-grid.other-projects-grid.visible {
+            display: grid !important;
         }
 
         /* Blogs Section - Compact Design */
@@ -2258,10 +2256,11 @@
                     ? `<div class="project-metrics">${project.keyMetrics.map(m => `<span class="metric-badge">${m}</span>`).join('')}</div>`
                     : '';
 
+                // Metrics go on .project-card (outside the <a>) so they don't break the link
                 projectDiv.innerHTML = `
+                    ${metricsHTML}
                     <a href="${project.githubUrl}" class="project-card-inner" target="_blank">
                         <img src="${project.image}" alt="${project.title}" class="project-image" loading="lazy">
-                        ${metricsHTML}
                         <h3 class="project-title">${project.title}</h3>
                         <p class="project-description">${oneLiner}</p>
                     </a>
@@ -2269,26 +2268,34 @@
                 return projectDiv;
             }
 
-            // Render featured projects
+            // Render featured projects into the main grid
             featured.forEach(project => {
                 projectsGrid.appendChild(createProjectCard(project));
             });
 
-            // Render secondary projects with label
+            const container = projectsGrid.parentElement;
+
+            // Render secondary projects with their own label and grid
             if (secondary.length > 0) {
                 const label = document.createElement('h3');
                 label.className = 'projects-section-label';
-                label.style.gridColumn = '1 / -1';
                 label.textContent = 'More Projects';
-                projectsGrid.appendChild(label);
+                container.appendChild(label);
 
+                const secondaryGrid = document.createElement('div');
+                secondaryGrid.className = 'projects-grid';
                 secondary.forEach(project => {
-                    projectsGrid.appendChild(createProjectCard(project));
+                    secondaryGrid.appendChild(createProjectCard(project));
                 });
+                container.appendChild(secondaryGrid);
             }
 
-            // Render other projects behind toggle
+            // Render other projects behind a toggle
             if (other.length > 0) {
+                const toggleBtn = document.createElement('button');
+                toggleBtn.className = 'show-more-btn';
+                toggleBtn.textContent = `Show ${other.length} More Projects`;
+
                 const otherGrid = document.createElement('div');
                 otherGrid.className = 'projects-grid other-projects-grid';
                 otherGrid.id = 'otherProjectsGrid';
@@ -2296,22 +2303,16 @@
                     otherGrid.appendChild(createProjectCard(project));
                 });
 
-                const toggleBtn = document.createElement('button');
-                toggleBtn.className = 'show-more-btn';
-                toggleBtn.textContent = `Show ${other.length} More Projects`;
                 toggleBtn.addEventListener('click', () => {
-                    const grid = document.getElementById('otherProjectsGrid');
-                    grid.classList.toggle('visible');
-                    toggleBtn.textContent = grid.classList.contains('visible')
+                    otherGrid.classList.toggle('visible');
+                    toggleBtn.textContent = otherGrid.classList.contains('visible')
                         ? 'Show Less'
                         : `Show ${other.length} More Projects`;
-                    // Trigger fade-in for newly visible cards
-                    if (grid.classList.contains('visible')) {
+                    if (otherGrid.classList.contains('visible')) {
                         handleScrollAnimation();
                     }
                 });
 
-                const container = projectsGrid.parentElement;
                 container.appendChild(toggleBtn);
                 container.appendChild(otherGrid);
             }
