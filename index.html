@@ -73,94 +73,9 @@
             padding: 0 1rem;
         }
 
-        /* Animated Background Shapes */
+        /* Animated Background - hidden for clean design */
         .animated-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .floating-shape {
-            position: absolute;
-            opacity: 0.1;
-            animation: float 20s infinite linear;
-        }
-
-        .floating-shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 50%;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .floating-shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-            border-radius: 20px;
-            top: 60%;
-            left: 80%;
-            animation-delay: -5s;
-        }
-
-        .floating-shape:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            border-radius: 50%;
-            top: 80%;
-            left: 20%;
-            animation-delay: -10s;
-        }
-
-        .floating-shape:nth-child(4) {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 30px;
-            top: 10%;
-            left: 70%;
-            animation-delay: -15s;
-        }
-
-        .floating-shape:nth-child(5) {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-            border-radius: 50%;
-            top: 40%;
-            left: 5%;
-            animation-delay: -8s;
-        }
-
-        .floating-shape:nth-child(6) {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            border-radius: 15px;
-            top: 70%;
-            left: 90%;
-            animation-delay: -12s;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-            100% {
-                transform: translateY(0px) rotate(360deg);
-            }
+            display: none;
         }
 
         /* Navigation */
@@ -316,13 +231,12 @@
         /* Hero + About Section with Social Links */
         .hero-about {
             padding: 5rem 0 2rem;
-            background: linear-gradient(135deg, var(--bg-color) 0%, var(--card-bg) 100%);
+            background: var(--bg-color);
             height: 100vh;
             max-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
-            overflow: hidden;
         }
 
         .hero-about-content {
@@ -388,8 +302,8 @@
 
         .btn-primary:hover {
             background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(72, 61, 139, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(72, 61, 139, 0.2);
         }
 
         .btn-secondary {
@@ -401,8 +315,8 @@
         .btn-secondary:hover {
             background: var(--primary-color);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(72, 61, 139, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(72, 61, 139, 0.2);
         }
 
         .social-links-hero {
@@ -412,39 +326,24 @@
         }
 
         .social-link-hero {
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
+            background: transparent;
+            border: 1.5px solid var(--text-light);
+            color: var(--text-color);
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            font-size: 1.1rem;
-        }
-
-        .social-link-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .social-link-hero:hover::before {
-            left: 100%;
+            font-size: 1rem;
         }
 
         .social-link-hero:hover {
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
         }
 
         .hero-image {
@@ -459,10 +358,9 @@
             height: 280px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid var(--primary-color);
-            box-shadow: 0 15px 35px rgba(72, 61, 139, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0.95;
+            border: 3px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
             display: none;  /* Hidden by default, shown when loaded */
             margin: 0 auto;
         }
@@ -472,9 +370,8 @@
         }
 
         .profile-image:hover {
-            transform: scale(1.08);
+            transform: scale(1.02);
             opacity: 1;
-            box-shadow: 0 25px 50px rgba(72, 61, 139, 0.3);
         }
 
         /* Skills Section */
@@ -488,13 +385,6 @@
         }
         .skills, .projects, .blogs, .timeline-section, .testimonials, .experience-section, .education-section, .achievements-section {
             position: relative;
-            overflow: hidden;
-        }
-        
-        /* Ensure section content stays above shapes */
-        .container {
-            position: relative;
-            z-index: 1;
         }
 
         .section-title {
@@ -512,13 +402,10 @@
         }
 
         .skill-category {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
             border-radius: 0.75rem;
             padding: 0.75rem;
-            box-shadow: 0 6px 20px 0 rgba(31, 38, 135, 0.08);
             transition: all 0.25s ease;
         }
 
@@ -530,8 +417,8 @@
         }
 
         [data-theme="dark"] .skill-category {
-            background: rgba(31, 41, 55, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
         }
 
         .skills-list {
@@ -555,11 +442,8 @@
         }
 
         .skill-tag:hover {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(72, 61, 139, 0.2);
-            border-color: transparent;
+            background: linear-gradient(135deg, rgba(72, 61, 139, 0.12), rgba(106, 90, 205, 0.12));
+            transform: translateY(-1px);
         }
 
         .skill-tag i {
@@ -594,18 +478,18 @@
         .project-card {
             position: relative;
             height: 280px;
-            border-radius: 1rem;
+            border-radius: 0.75rem;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s ease;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            border: 1.5px solid rgba(72, 61, 139, 0.15);
-            box-shadow: 0 8px 25px rgba(31, 38, 135, 0.1);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
         }
 
         .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(31, 38, 135, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(31, 38, 135, 0.15);
+            border-color: var(--primary-color);
         }
 
         .project-card-inner {
@@ -626,9 +510,9 @@
         }
 
         .project-card:hover .project-image {
-            opacity: 0.2;
-            transform: scale(1.05);
-            filter: blur(8px);
+            opacity: 0.15;
+            transform: scale(1.02);
+            filter: blur(4px);
         }
 
         .project-title {
@@ -807,18 +691,18 @@
         .blog-card {
             position: relative;
             height: 280px;
-            border-radius: 1rem;
+            border-radius: 0.75rem;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s ease;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            border: 1.5px solid rgba(72, 61, 139, 0.15);
-            box-shadow: 0 8px 25px rgba(31, 38, 135, 0.1);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
         }
 
         .blog-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(31, 38, 135, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(31, 38, 135, 0.15);
+            border-color: var(--primary-color);
         }
 
         .blog-link {
@@ -839,9 +723,9 @@
         }
 
         .blog-card:hover .blog-image {
-            opacity: 0.2;
-            transform: scale(1.05);
-            filter: blur(8px);
+            opacity: 0.15;
+            transform: scale(1.02);
+            filter: blur(4px);
         }
 
         .blog-title {
@@ -948,11 +832,9 @@
 
         /* Journey Card */
         .journey-card {
-            background: linear-gradient(135deg, rgba(72, 61, 139, 0.04), rgba(106, 90, 205, 0.02));
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1.5px solid rgba(72, 61, 139, 0.15);
-            border-radius: 1.25rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
             padding: 2rem;
             transition: all 0.3s ease;
             cursor: pointer;
@@ -960,19 +842,10 @@
             overflow: hidden;
         }
 
-        [data-theme="dark"] .journey-card {
-            background: rgba(31, 41, 55, 0.15);
-            border: 1.5px solid rgba(255, 255, 255, 0.08);
-        }
-
         .journey-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(72, 61, 139, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(72, 61, 139, 0.12);
             border-color: var(--primary-color);
-        }
-
-        [data-theme="dark"] .journey-card:hover {
-            background: rgba(31, 41, 55, 0.25);
         }
 
         .journey-card::before {
@@ -1003,14 +876,8 @@
             height: 50px;
             border-radius: 0.5rem;
             object-fit: cover;
-            border: 2px solid var(--primary-color);
+            border: 1px solid var(--border-color);
             flex-shrink: 0;
-            opacity: 0.9;
-            transition: opacity 0.3s ease;
-        }
-
-        .journey-logo:hover {
-            opacity: 1;
         }
 
         .journey-info {
@@ -1135,33 +1002,19 @@
         }
 
         .testimonial-card {
-            background: linear-gradient(135deg, rgba(72, 61, 139, 0.04), rgba(106, 90, 205, 0.02));
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1.5px solid rgba(72, 61, 139, 0.15);
-            border-left: 4px solid var(--primary-color);
-            border-radius: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--primary-color);
+            border-radius: 0.75rem;
             padding: 2rem;
-            box-shadow: 0 8px 25px rgba(72, 61, 139, 0.1);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        [data-theme="dark"] .testimonial-card {
-            background: rgba(31, 41, 55, 0.15);
-            border: 1.5px solid rgba(255, 255, 255, 0.08);
-            border-left: 4px solid var(--primary-color);
-        }
-
         .testimonial-card:hover {
-            box-shadow: 0 15px 40px rgba(72, 61, 139, 0.25);
-            transform: translateY(-5px);
-            border-left-width: 6px;
-        }
-
-        [data-theme="dark"] .testimonial-card:hover {
-            background: rgba(31, 41, 55, 0.25);
+            box-shadow: 0 8px 20px rgba(72, 61, 139, 0.12);
+            transform: translateY(-3px);
         }
 
         .testimonial-card::before {
@@ -1199,13 +1052,7 @@
             height: 50px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--primary-color);
-            opacity: 0.9;
-            transition: opacity 0.3s ease;
-        }
-
-        .author-image:hover {
-            opacity: 1;
+            border: 1px solid var(--border-color);
         }
 
         .author-info h4 {
@@ -1222,190 +1069,27 @@
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-top: 2px solid rgba(72, 61, 139, 0.3);
-            padding: 3rem 0;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 2.5rem 0;
             text-align: center;
-            color: white;
+            color: var(--text-light);
         }
 
         footer p {
-            font-size: 1.05rem;
+            font-size: 0.9rem;
             letter-spacing: 0.01em;
-            font-weight: 500;
+            font-weight: 400;
         }
 
-        /* Section-specific animated backgrounds */
+        /* Section shapes - hidden for clean professional design */
         .section-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 0;
+            display: none;
         }
 
-        /* Update section shapes container */
-        .section-shapes .shape {
-            position: absolute;
-            opacity: 0.4;
-            box-shadow: 0 0 80px rgba(37, 99, 246, 0.4);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            z-index: 0;
-            border-radius: 30%;
-            mix-blend-mode: screen; /* Add blend mode for better visibility */
-        }
-
-        /* Skills section shapes - Bright Cyan/Turquoise */
-        .skills .section-shapes .shape {
-            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
-            filter: none;
-        }
-        .skills .shape:nth-child(1) { width: 120px; height: 120px; top: 5%; left: 10%; animation-delay: 0s; border-radius: 50%; }
-        .skills .shape:nth-child(2) { width: 100px; height: 100px; top: 60%; left: 80%; animation-delay: -2s; border-radius: 30%; }
-        .skills .shape:nth-child(3) { width: 90px; height: 90px; bottom: 20%; left: 40%; animation-delay: -4s; border-radius: 50%; }
-        .skills .shape:nth-child(4) { width: 130px; height: 130px; top: 40%; right: 15%; animation-delay: -3s; border-radius: 20%; }
-        .skills .shape:nth-child(5) { width: 110px; height: 110px; bottom: 10%; right: 25%; animation-delay: -5s; border-radius: 50%; }
-
-        /* Projects section shapes - Bright Blue/Purple */
-        .projects .section-shapes .shape {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            filter: none;
-            border-radius: 20%;
-        }
-        .projects .shape:nth-child(1) { width: 120px; height: 120px; top: 15%; left: 15%; animation-delay: 0s; }
-        .projects .shape:nth-child(2) { width: 100px; height: 100px; top: 50%; right: 10%; animation-delay: -3s; }
-        .projects .shape:nth-child(3) { width: 90px; height: 90px; bottom: 25%; left: 30%; animation-delay: -5s; }
-        .projects .shape:nth-child(4) { width: 140px; height: 140px; top: 30%; left: 50%; animation-delay: -2s; }
-        .projects .shape:nth-child(5) { width: 110px; height: 110px; bottom: 30%; right: 15%; animation-delay: -4s; }
-
-        /* Blogs section shapes - Bright Orange/Coral */
-        .blogs .section-shapes .shape {
-            background: linear-gradient(135deg, #fa709a, #fee140);
-            filter: none;
-            border-radius: 50%;
-        }
-        .blogs .shape:nth-child(1) { width: 100px; height: 100px; top: 20%; left: 10%; animation-delay: -1s; }
-        .blogs .shape:nth-child(2) { width: 90px; height: 90px; top: 40%; right: 20%; animation-delay: -3s; }
-        .blogs .shape:nth-child(3) { width: 110px; height: 110px; bottom: 15%; left: 25%; animation-delay: -4s; }
-        .blogs .shape:nth-child(4) { width: 80px; height: 80px; top: 60%; left: 40%; animation-delay: -2s; }
-        .blogs .shape:nth-child(5) { width: 120px; height: 120px; bottom: 20%; right: 20%; animation-delay: -5s; }
-
-        /* Timeline section shapes - Bright Purple/Violet */
-        .timeline-section .section-shapes .shape {
-            background: linear-gradient(-45deg, #a18cd1, #fbc2eb);
-            filter: none;
-            border-radius: 20%;
-        }
-        .timeline-section .shape:nth-child(1) { width: 120px; height: 120px; top: 10%; right: 10%; animation-delay: -2s; }
-        .timeline-section .shape:nth-child(2) { width: 100px; height: 100px; top: 40%; left: 15%; animation-delay: -3s; }
-        .timeline-section .shape:nth-child(3) { width: 90px; height: 90px; bottom: 25%; right: 20%; animation-delay: -1s; }
-        .timeline-section .shape:nth-child(4) { width: 130px; height: 130px; top: 70%; left: 30%; animation-delay: -4s; }
-        .timeline-section .shape:nth-child(5) { width: 110px; height: 110px; bottom: 10%; left: 10%; animation-delay: -5s; }
-
-        /* Experience section shapes - Bright Indigo/Purple */
-        .experience-section .section-shapes .shape {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            filter: none;
-            border-radius: 30%;
-        }
-        .experience-section .shape:nth-child(1) { width: 120px; height: 120px; top: 10%; left: 10%; animation-delay: -1s; }
-        .experience-section .shape:nth-child(2) { width: 100px; height: 100px; top: 50%; right: 15%; animation-delay: -3s; }
-        .experience-section .shape:nth-child(3) { width: 90px; height: 90px; bottom: 20%; left: 30%; animation-delay: -4s; }
-        .experience-section .shape:nth-child(4) { width: 110px; height: 110px; top: 30%; right: 25%; animation-delay: -2s; }
-        .experience-section .shape:nth-child(5) { width: 130px; height: 130px; bottom: 15%; right: 10%; animation-delay: -5s; }
-
-        /* Education section shapes - Bright Pink/Magenta (KEPT AS USER LIKES IT) */
-        .education-section .section-shapes .shape {
-            background: linear-gradient(-45deg, #f093fb, #f5576c);
-            filter: none;
-            border-radius: 50%;
-        }
-        .education-section .shape:nth-child(1) { width: 110px; height: 110px; top: 15%; right: 10%; animation-delay: -2s; }
-        .education-section .shape:nth-child(2) { width: 95px; height: 95px; top: 45%; left: 12%; animation-delay: -3s; }
-        .education-section .shape:nth-child(3) { width: 105px; height: 105px; bottom: 25%; right: 18%; animation-delay: -1s; }
-        .education-section .shape:nth-child(4) { width: 120px; height: 120px; top: 65%; left: 35%; animation-delay: -4s; }
-        .education-section .shape:nth-child(5) { width: 100px; height: 100px; bottom: 10%; left: 8%; animation-delay: -5s; }
-
-        /* Achievements section shapes - Bright Yellow/Gold */
-        .achievements-section .section-shapes .shape {
-            background: linear-gradient(135deg, #ffd89b, #19547b);
-            filter: none;
-            border-radius: 20%;
-        }
-        .achievements-section .shape:nth-child(1) { width: 115px; height: 115px; top: 12%; left: 12%; animation-delay: -1s; }
-        .achievements-section .shape:nth-child(2) { width: 105px; height: 105px; top: 48%; right: 14%; animation-delay: -3s; }
-        .achievements-section .shape:nth-child(3) { width: 125px; height: 125px; bottom: 18%; left: 28%; animation-delay: -4s; }
-        .achievements-section .shape:nth-child(4) { width: 95px; height: 95px; top: 35%; right: 22%; animation-delay: -2s; }
-        .achievements-section .shape:nth-child(5) { width: 110px; height: 110px; bottom: 12%; right: 12%; animation-delay: -5s; }
-
-        /* Testimonials section shapes - Bright Green/Teal */
-        .testimonials .section-shapes .shape {
-            background: linear-gradient(180deg, #43e97b, #38f9d7);
-            filter: none;
-            border-radius: 50%;
-        }
-        .testimonials .shape:nth-child(1) { width: 110px; height: 110px; top: 15%; left: 15%; animation-delay: -2s; }
-        .testimonials .shape:nth-child(2) { width: 100px; height: 100px; top: 50%; right: 15%; animation-delay: -3s; }
-        .testimonials .shape:nth-child(3) { width: 120px; height: 120px; bottom: 20%; left: 25%; animation-delay: -1s; }
-        .testimonials .shape:nth-child(4) { width: 90px; height: 90px; top: 30%; right: 20%; animation-delay: -4s; }
-        .testimonials .shape:nth-child(5) { width: 100px; height: 100px; bottom: 15%; right: 15%; animation-delay: -5s; }
-
-        /* Enhanced hover effects */
-        .section-shapes .shape:hover {
-            opacity: 0.6;
-            transform: scale(1.1);
-            filter: brightness(1.4);
-        }
-
-        /* Light theme - brighter background shapes */
-        :root .section-shapes .shape,
-        [data-theme="light"] .section-shapes .shape {
-            opacity: 0.35 !important;
-            mix-blend-mode: normal;
-        }
-
-        :root .section-shapes .shape:hover,
-        [data-theme="light"] .section-shapes .shape:hover {
-            opacity: 0.5 !important;
-        }
-
-        /* Dark theme enhancements */
-        [data-theme="dark"] .section-shapes .shape {
-            opacity: 0.5 !important;
-            box-shadow: 0 0 100px rgba(59, 130, 246, 0.5);
-            mix-blend-mode: screen;
-        }
-
-        [data-theme="dark"] .section-shapes .shape:hover {
-            opacity: 0.7 !important;
-        }
-
-        /* Animation keyframes */
-        @keyframes floatAnimation {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(20px, -20px) rotate(5deg); }
-            50% { transform: translate(40px, 0) rotate(10deg); }
-            75% { transform: translate(20px, 20px) rotate(5deg); }
-        }
-
-        /* Apply animation to all shapes */
-        .section-shapes .shape {
-            animation: floatAnimation 20s infinite ease-in-out;
-        }
-
-        /* New animation canvas style for hero section */
+        /* Hero canvas - hidden */
         #mlAnimation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            display: none;
         }
 
         /* Mobile-First Responsive Design */
@@ -1691,22 +1375,6 @@
                 font-size: 0.875rem;
             }
 
-            /* Reduce floating shapes on mobile for performance */
-            .floating-shape {
-                display: none;
-            }
-
-            /* Keep section shapes visible but smaller */
-            .section-shapes .shape {
-                width: 60px !important;
-                height: 60px !important;
-                opacity: 0.2 !important;
-            }
-
-            [data-theme="dark"] .section-shapes .shape {
-                opacity: 0.3 !important;
-            }
-
             /* Touch-friendly elements */
             button,
             a,
@@ -1813,13 +1481,10 @@
         }
 
         .achievement-card {
-            background: linear-gradient(135deg, rgba(72, 61, 139, 0.04), rgba(106, 90, 205, 0.02));
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1.5px solid rgba(72, 61, 139, 0.15);
-            border-radius: 1.25rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
             padding: 2.5rem 2rem;
-            box-shadow: 0 8px 25px rgba(72, 61, 139, 0.1);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -1829,11 +1494,6 @@
             align-items: center;
             justify-content: center;
             min-height: 220px;
-        }
-
-        [data-theme="dark"] .achievement-card {
-            background: rgba(31, 41, 55, 0.15);
-            border: 1.5px solid rgba(255, 255, 255, 0.08);
         }
 
         .achievement-card::before {
@@ -1849,17 +1509,13 @@
         }
 
         .achievement-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(72, 61, 139, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(72, 61, 139, 0.12);
             border-color: var(--primary-color);
         }
 
         .achievement-card:hover::before {
             opacity: 1;
-        }
-
-        [data-theme="dark"] .achievement-card:hover {
-            background: rgba(31, 41, 55, 0.25);
         }
 
         .achievement-icon {
@@ -1895,51 +1551,6 @@
             overflow-wrap: break-word;
         }
 
-        /* Image opacity styles */
-    .profile-image {
-        opacity: 0.95;
-        transition: opacity 0.3s ease;
-    }
-
-    .profile-image:hover {
-        opacity: 1;
-    }
-
-    .project-image {
-        opacity: 0.9;
-        transition: opacity 0.3s ease;
-    }
-
-    .project-image:hover {
-        opacity: 1;
-    }
-
-    .blog-image {
-        opacity: 0.9;
-        transition: opacity 0.3s ease;
-    }
-
-    .blog-image:hover {
-        opacity: 1;
-    }
-
-    .timeline-image {
-        opacity: 0.9;
-        transition: opacity 0.3s ease;
-    }
-
-    .timeline-image:hover {
-        opacity: 1;
-    }
-
-    .author-image {
-        opacity: 0.9;
-        transition: opacity 0.3s ease;
-    }
-
-    .author-image:hover {
-        opacity: 1;
-    }
     </style>
 </head>
 <body>
@@ -2582,111 +2193,6 @@
             handleScrollAnimation();
         });
 
-        // New ML Animation script for hero section
-        (function() {
-            const canvas = document.getElementById('mlAnimation');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            let width, height;
-            function resize() {
-                width = canvas.width = canvas.offsetWidth;
-                height = canvas.height = canvas.offsetHeight;
-            }
-            window.addEventListener('resize', resize);
-            resize();
-
-            let particles = [];
-            const particleCount = 50; // optimized for performance
-
-            // Fun color schemes matching other sections
-            const colorSchemes = [
-                { fill: 'rgba(0, 210, 255, 0.8)', glow: 'rgba(0, 210, 255, 0.9)' },      // Cyan
-                { fill: 'rgba(79, 172, 254, 0.8)', glow: 'rgba(79, 172, 254, 0.9)' },    // Bright Blue
-                { fill: 'rgba(250, 112, 154, 0.8)', glow: 'rgba(250, 112, 154, 0.9)' },  // Pink
-                { fill: 'rgba(161, 140, 209, 0.8)', glow: 'rgba(161, 140, 209, 0.9)' },  // Purple
-                { fill: 'rgba(67, 233, 123, 0.8)', glow: 'rgba(67, 233, 123, 0.9)' },    // Green
-                { fill: 'rgba(254, 214, 155, 0.8)', glow: 'rgba(254, 214, 155, 0.9)' }   // Yellow/Gold
-            ];
-
-            function initParticles() {
-                particles = [];
-                for (let i = 0; i < particleCount; i++) {
-                    const colorScheme = colorSchemes[Math.floor(Math.random() * colorSchemes.length)];
-                    particles.push({
-                        x: Math.random() * width,
-                        y: Math.random() * height,
-                        vx: (Math.random() - 0.5) * 2,
-                        vy: (Math.random() - 0.5) * 2,
-                        size: Math.random() * 4 + 2,
-                        color: colorScheme
-                    });
-                }
-            }
-            initParticles();
-
-            let isHeroVisible = true;
-            let animationId = null;
-
-            const heroSection = document.getElementById('home');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    isHeroVisible = entry.isIntersecting;
-                    if (isHeroVisible && !animationId) {
-                        animate();
-                    }
-                });
-            }, { threshold: 0 });
-            observer.observe(heroSection);
-
-            function animate() {
-                if (!isHeroVisible) {
-                    animationId = null;
-                    return;
-                }
-
-                ctx.clearRect(0, 0, width, height);
-
-                // Draw particles with optimized glow effect
-                particles.forEach(p => {
-                    p.x += p.vx;
-                    p.y += p.vy;
-                    if (p.x < 0 || p.x > width) p.vx *= -1;
-                    if (p.y < 0 || p.y > height) p.vy *= -1;
-
-                    // Lighter glow for better performance
-                    ctx.shadowBlur = 15;
-                    ctx.shadowColor = p.color.glow;
-
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
-                    ctx.fillStyle = p.color.fill;
-                    ctx.fill();
-                });
-
-                // Reset shadow for lines
-                ctx.shadowBlur = 0;
-
-                // Draw connecting lines with simpler rendering
-                for (let i = 0; i < particleCount; i++) {
-                    for (let j = i + 1; j < particleCount; j++) {
-                        let dx = particles[i].x - particles[j].x;
-                        let dy = particles[i].y - particles[j].y;
-                        let dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 150) { // increased for more visible connections
-                            const opacity = (1 - dist / 150) * 0.4;
-                            ctx.beginPath();
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = `rgba(100, 150, 255, ${opacity})`;
-                            ctx.lineWidth = 1;
-                            ctx.stroke();
-                        }
-                    }
-                }
-                animationId = requestAnimationFrame(animate);
-            }
-            animate();
-        })();
     </script>
 </body>
 </html>
