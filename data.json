@@ -123,7 +123,7 @@
   "projects": [
     {
       "title": "Agentic AI Research Assistant",
-      "description": "An autonomous research agent with a self-reflection loop that achieves 1.0 faithfulness score, built using LangGraph,   FastAPI, and Groq, reducing LLM hallucinations by grounding responses in verified web evidence.",
+      "description": "An autonomous research agent with a self-reflection loop that achieves 1.0 faithfulness score, built using LangGraph, FastAPI, and Groq, reducing LLM hallucinations by grounding responses in verified web evidence.",
       "image": "https://cdn.hashnode.com/res/hashnode/image/upload/v1727695448677/0e3ce539-1997-43ef-8e3c-648893855349.jpeg?auto=compress,format&format=webp",
       "githubUrl": "https://github.com/aniketpoojari/Agentic-AI-Research-Assistant",
       "technologies": ["Python", "LangGraph", "LangSmith", "FastAPI", "Streamlit", "Docker", "GitHub Actions"],
