@@ -137,7 +137,7 @@
     },
     {
       "title": "BiLoRA: Dual Adapter Fine-Tuning",
-      "description": "Multi-task fine-tuning system using LoRA adapters on Microsoft Phi-3-mini-4k-instruct. Trains separate LoRA adapters for code generation (MBPP dataset) and docstring generation (Google Code X-Glue dataset) with 4-bit BitsAndBytes quantization and gradient checkpointing. Enables instant task switching at millisecond speeds without model reloads, deployed via Streamlit with a DVC-orchestrated reproducible pipeline.",
+      "description": "Built an end-to-end MLOps system for dual-adapter LoRA fine-tuning on Phi-3, with DVC pipelines, automated benchmarking quality gates, CI/CD deployment to HF Spaces, and a human-in-the-loop feedback loop for continuous improvement.",
       "image": "https://a.storyblok.com/f/139616/1200x800/b050784413/thumbnail.webp/m/767x0/filters:quality(100):format(webp)",
       "githubUrl": "https://github.com/aniketpoojari/Fine-Tuning-LLM",
       "technologies": ["Python", "LoRA", "PEFT", "BitsAndBytes", "Streamlit", "DVC"],
