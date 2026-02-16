@@ -146,7 +146,7 @@
     },
     {
       "title": "Multi-Modal RAG QA System",
-      "description": "Production Flask-LangChain-ChromaDB pipeline integrated with Groq's Llama 4 Scout multimodal LLM. Extracts text, tables, and images from PDFs and websites, then vectorizes LLM-generated descriptions for semantic search while preserving original data (base64 images, structured tables) in metadata. This dual-layer RAG architecture enables context-aware retrieval across formats, boosting multi-modal query accuracy by 30% compared to text-only workflows.",
+      "description": "Multi-modal RAG system with PDF/website ingestion, comparative query detection, inline metrics, and feedback tracking deployed on HuggingFace Spaces.",
       "image": "https://www.cq-partners.com/images/chat.jpg",
       "githubUrl": "https://github.com/aniketpoojari/OmniDoc-QA-LLM-RAG",
       "technologies": ["Python", "Flask", "LangChain", "ChromaDB", "Groq", "HuggingFace Embeddings"],
