@@ -363,6 +363,32 @@
         .social-icon { color: var(--text-light); font-size: 1.25rem; transition: color 0.2s; }
         .social-icon:hover { color: var(--primary); }
 
+        /* Blog Cards */
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
+        .blog-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+        .blog-card:hover { transform: translateY(-6px); border-color: var(--primary); box-shadow: var(--shadow-lg); }
+        .blog-img-wrapper { height: 180px; overflow: hidden; }
+        .blog-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .blog-card:hover .blog-img { transform: scale(1.05); }
+        .blog-info { padding: 1.25rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+        .blog-meta { display: flex; gap: 1rem; font-size: 0.75rem; font-family: var(--font-mono); color: var(--primary); margin-bottom: 0.75rem; }
+        .blog-title { font-size: 1rem; font-weight: 700; line-height: 1.4; flex: 1; }
+        .blog-read-link { margin-top: 1rem; font-size: 0.8rem; font-weight: 600; color: var(--primary); }
+
+        /* Achievements minimal grid */
+        .minimal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .minimal-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; }
+
         /* Scroll Top */
         .scroll-top-btn {
             position: fixed; bottom: 2rem; right: 2rem; background: var(--primary); color: white;
@@ -393,7 +419,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#achievements">Awards</a></li>
-                <li><a href="#blogs">Writing</a></li>
+                <li><a href="#blogs">Blog</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
             </ul>
             <div class="nav-actions">
@@ -475,9 +501,9 @@
     <section id="blogs" style="background: var(--surface);">
         <div class="container">
             <div class="section-header">
-                <h2>Technical Writing</h2>
+                <h2>Blog</h2>
             </div>
-            <div class="minimal-grid" id="blogsGrid"></div>
+            <div class="blog-grid" id="blogsGrid"></div>
         </div>
     </section>
 
@@ -665,11 +691,19 @@
 
             // Blogs
             document.getElementById('blogsGrid').innerHTML = data.blogs.map(b => `
-                <div class="minimal-card fade-in">
-                    <div style="font-size:0.8rem; color:var(--primary); font-family:var(--font-mono); margin-bottom:0.5rem;">${b.publishDate}</div>
-                    <h3>${b.title}</h3>
-                    <a href="${b.url}" target="_blank" class="project-link" style="margin-top:1rem;">Read Article →</a>
-                </div>
+                <a href="${b.url}" target="_blank" class="blog-card fade-in">
+                    <div class="blog-img-wrapper">
+                        <img src="${b.image}" class="blog-img" alt="${b.title}">
+                    </div>
+                    <div class="blog-info">
+                        <div class="blog-meta">
+                            <span>${b.publishDate}</span>
+                            <span>${b.readTime}</span>
+                        </div>
+                        <h3 class="blog-title">${b.title}</h3>
+                        <span class="blog-read-link">Read on Medium →</span>
+                    </div>
+                </a>
             `).join('');
 
             // Testimonials
