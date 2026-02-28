@@ -1,13 +1,13 @@
 {
   "personal": {
     "name": "Aniket Poojari",
-    "title": "Machine Learning Engineer",
-    "subtitle": "Distributed Training Pipelines | Autonomous AI Agents | Production LLM Systems",
-    "location": "Corvallis, OR",
+    "title": "AI/ML Engineer",
+    "subtitle": "Agentic AI Systems | LLM Applications (RAG, Fine-Tuning, Guardrails) | Scalable MLOps Pipelines",
+    "location": "Tampa, FL",
     "bio": [
-      "Machine Learning Engineer with 2+ years of hands-on experience building high-impact AI systems.",
-      "Specialized in diffusion models, LLMs, agentic automation, and scalable ML pipelines.",
-      "Built distributed multi-GPU training systems and autonomous research agents that cut hours of work into seconds.",
+      "AI/ML Engineer with 3+ years of experience building Agentic AI systems, LLM applications, and scalable MLOps pipelines.",
+      "Delivered measurable impact: 66% faster support resolution via RAG chatbot, 3x distributed training speedup on SageMaker, 40% LLM cost reduction through model routing.",
+      "Specialized in MCP, Guardrails, Red-Teaming, Fine-Tuning (LoRA/PEFT), and distributed training with DeepSpeed.",
       "Focused on shipping production-ready AI that is fast, reliable, and impossible to ignore."
     ],
     "profileImage": "images/profile.jpg",
@@ -56,6 +56,9 @@
           { "name": "Transformers", "icon": "devicon-pytorch-plain" },
           { "name": "CLIP", "icon": "devicon-tensorflow-plain" },
           { "name": "VAE", "icon": "devicon-tensorflow-plain" },
+          { "name": "MCP", "icon": "devicon-python-plain" },
+          { "name": "Red-Teaming", "icon": "devicon-python-plain" },
+          { "name": "Guardrails", "icon": "devicon-python-plain" },
           { "name": "Time Series Forecasting", "icon": "devicon-python-plain" },
           { "name": "Mask R-CNN", "icon": "devicon-opencv-plain" }
         ]
@@ -75,6 +78,8 @@
           { "name": "Apache Spark", "icon": "devicon-apachespark-plain" },
           { "name": "XGBoost", "icon": "devicon-python-plain" },
           { "name": "DeepSpeed", "icon": "devicon-python-plain" },
+          { "name": "ONNX", "icon": "devicon-python-plain" },
+          { "name": "TensorRT", "icon": "devicon-python-plain" },
           { "name": "MNE-Python", "icon": "devicon-python-plain" }
         ]
       },
@@ -92,7 +97,8 @@
           { "name": "GitHub Actions", "icon": "devicon-githubactions-plain" },
           { "name": "CI/CD", "icon": "devicon-githubactions-plain" },
           { "name": "MLflow", "icon": "devicon-azurepipelines-plain" },
-          { "name": "DVC", "icon": "devicon-git-plain" }
+          { "name": "DVC", "icon": "devicon-git-plain" },
+          { "name": "LangSmith", "icon": "devicon-python-plain" }
         ]
       },
       {
@@ -126,6 +132,25 @@
     ]
   },
   "projects": [
+    {
+      "title": "Enterprise AI Assistant with MCP",
+      "description": "An agentic NL-to-SQL assistant using Model Context Protocol (MCP) with 3 registered tools (query, chart, report), achieving 100% agent routing accuracy and 80% SQL accuracy. Features multi-layer Input/Output Guardrails blocking 99.5% of adversarial inputs (prompt injection, PII filtering, SQL injection prevention, output data masking). Includes per-request token analytics and cost-tracking service that identified 25% cost-saving opportunities through model caching.",
+      "image": "https://miro.medium.com/v2/resize:fit:1200/1*NI72jBoX9wIendlVW23-oA.png",
+      "githubUrl": "https://github.com/aniketpoojari/Enterprise-AI-Assistant-MCP",
+      "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/Enterprise-AI-Assistant-MCP",
+      "technologies": ["Python", "LangGraph", "FastMCP", "Groq", "Streamlit", "FastAPI", "SQLite", "GitHub Actions"],
+      "keyMetrics": ["100% Agent Routing Accuracy", "99.5% Adversarial Input Blocked", "25% Cost Reduction via Model Caching"],
+      "featured": true
+    },
+    {
+      "title": "LLM Evaluation & Red-Teaming Platform",
+      "description": "Full-stack platform to red-team LLMs with 216 adversarial attacks across 6 categories (Injection, PII, Jailbreak, Bias, Hallucination, Harmful Content). Implements statistical A/B testing using paired t-tests and bootstrap CI, providing 95% confidence intervals and effect sizes for model comparisons. Reduced evaluation latency by 60% through parallel batch processing and SSE-based real-time progress streaming. Built with React frontend and FastAPI backend with SQLite (9 tables) for comprehensive observability.",
+      "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*u_9s7Yg2-f6k_jhuRJuU4Q.png",
+      "githubUrl": "https://github.com/aniketpoojari/LLM-Eval-Platform",
+      "technologies": ["React", "FastAPI", "SciPy", "Groq", "SQLite", "TailwindCSS", "Recharts"],
+      "keyMetrics": ["216 Adversarial Attacks", "Statistical A/B Testing (95% CI)", "60% Faster Evaluation"],
+      "featured": true
+    },
     {
       "title": "Agentic AI Research Assistant",
       "description": "An autonomous research agent with a self-reflection loop built using LangGraph, FastAPI, and Groq. The system operates through a cyclical Generate-Critique-Refine workflow — producing responses from Tavily/DuckDuckGo web search, assessing every claim against retrieved evidence, and re-searching when confidence falls below 0.7. Includes a comparative benchmarking suite (agent vs. baseline LLM) and Ragas-based evaluation measuring faithfulness, relevancy, context precision, and recall — achieving a 1.0 faithfulness score by grounding all responses in verified web evidence.",
@@ -161,16 +186,6 @@
       "technologies": ["Python", "UNet", "CLIP", "VAE", "DeepSpeed", "AWS SageMaker", "Apache Airflow", "MLflow"],
       "keyMetrics": ["3x Training Speedup", "Multi-GPU Distributed", "8K Image-Caption Pairs"],
       "featured": true
-    },
-    {
-      "title": "Text Summarization GPT from Scratch",
-      "description": "Custom 125M-parameter GPT model pretrained and fine-tuned on the XSum dataset using teacher forcing. Two-phase training pipeline (pretraining then finetuning) with 128-token context window, orchestrated via DVC with MLflow experiment tracking. Achieved ROUGE-L score of 0.54 on validation. Deployable via Streamlit and Docker with AWS SageMaker integration.",
-      "image": "https://cse.engin.umich.edu/wp-content/uploads/sites/2/2021/03/summarization-featured.jpg",
-      "githubUrl": "https://github.com/aniketpoojari/Text-Summarization-GPT",
-      "technologies": ["Python", "Transformers", "MLflow", "DVC", "Streamlit", "Docker", "AWS SageMaker"],
-      "keyMetrics": ["125M Parameters", "0.54 ROUGE-L", "Teacher Forcing"],
-      "featured": false,
-      "tier": "secondary"
     },
     {
       "title": "Monocular Depth Estimation",
@@ -230,24 +245,6 @@
       "tier": "other"
     },
     {
-      "title": "Sentiment Analysis of Tweets",
-      "description": "Sentiment analysis on airline-related tweets using an LSTM model in PyTorch.",
-      "image": "https://store-images.microsoft.com/image/apps.57874.9007199266244427.12d00104-ac5d-4406-ad7b-66f678d54e19.e9fa7d2a-16a1-437c-bbd5-cf0e4e2d2c70",
-      "githubUrl": "https://github.com/aniketpoojari/Sentiment-Analysis",
-      "technologies": ["Python", "LSTM", "PyTorch", "NLP"],
-      "featured": false,
-      "tier": "other"
-    },
-    {
-      "title": "Emergency Vehicle Sound Classification",
-      "description": "Sound classification system using LSTM on spectrogram features with TensorFlow to distinguish between emergency and non-emergency vehicles.",
-      "image": "https://tcsupfitting.com/wp-content/uploads/2021/09/emergency-vehicles-responding-picture-id1081167218-1024x675.jpg",
-      "githubUrl": "https://github.com/aniketpoojari/Emergency-VS-Non-Emergency-Vehicle-Sound-Classification",
-      "technologies": ["Python", "LSTM", "TensorFlow"],
-      "featured": false,
-      "tier": "other"
-    },
-    {
       "title": "Texture Generation (DC-GAN)",
       "description": "Designed and implemented a DC-GAN to generate realistic textures from scratch.",
       "image": "https://upload.wikimedia.org/wikipedia/commons/3/33/Tiling_procedural_textures.jpg",
@@ -275,15 +272,6 @@
       "tier": "other"
     },
     {
-      "title": "Movie Recommendation System",
-      "description": "Hybrid recommendation system combining content-based and collaborative filtering approaches.",
-      "image": "https://miro.medium.com/v2/resize:fit:1200/0*x0ccl7G6JeCCSG07.jpg",
-      "githubUrl": "https://github.com/aniketpoojari/Movie-Recommendation",
-      "technologies": ["Python", "Recommendation Systems"],
-      "featured": false,
-      "tier": "other"
-    },
-    {
       "title": "Cricket Shot Classification",
       "description": "Keypoint R-CNN (pretrained on COCO) extracts body keypoints, which train a neural network for classifying cricket shot poses.",
       "image": "https://editor.analyticsvidhya.com/uploads/28415download5.png",
@@ -293,29 +281,12 @@
       "tier": "other"
     },
     {
-      "title": "Subway Surfers CNN",
-      "description": "CNN model in PyTorch to autonomously play the Subway Surfers game.",
-      "image": "https://play-lh.googleusercontent.com/QEoJugUCq1p-vCykwRarLRJlL6a6F2zjYFuT6YCGMvlPSiiJegs8p7_zDsucA-_YtQ=w526-h296-rw",
-      "githubUrl": "https://github.com/aniketpoojari/Subway-Surfers-CNN",
-      "technologies": ["Python", "CNN", "PyTorch"],
-      "featured": false,
-      "tier": "other"
-    },
-    {
-      "title": "Insomnia Chatbot",
-      "description": "AI-powered chatbot with an intent-based model to interact with users and execute commands.",
-      "image": "https://sleepreviewmag.com/wp-content/uploads/2023/08/chatbots-sleep-1280x640.jpg",
-      "githubUrl": "https://github.com/aniketpoojari/Insomnia-Chatbot",
-      "technologies": ["Python", "Chatbot", "NLP"],
-      "featured": false,
-      "tier": "other"
-    },
-    {
-      "title": "2048 Using Speech Commands",
-      "description": "CNN model in PyTorch to interpret live voice inputs as commands for controlling the 2048 game.",
-      "image": "https://imgs.crazygames.com/games/2048/cover_16x9-1707828856995.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
-      "githubUrl": "https://github.com/aniketpoojari/2048-Using-Speech-Command-Identification",
-      "technologies": ["Python", "CNN", "PyTorch", "Speech Recognition"],
+      "title": "Text Summarization GPT from Scratch",
+      "description": "Custom 125M-parameter GPT model pretrained and fine-tuned on the XSum dataset using teacher forcing. Two-phase training pipeline with 128-token context window, orchestrated via DVC with MLflow experiment tracking. Achieved ROUGE-L score of 0.54 on validation.",
+      "image": "https://cse.engin.umich.edu/wp-content/uploads/sites/2/2021/03/summarization-featured.jpg",
+      "githubUrl": "https://github.com/aniketpoojari/Text-Summarization-GPT",
+      "technologies": ["Python", "Transformers", "MLflow", "DVC", "Streamlit", "Docker"],
+      "keyMetrics": ["125M Parameters", "0.54 ROUGE-L", "Teacher Forcing"],
       "featured": false,
       "tier": "other"
     }
@@ -380,11 +351,26 @@
   ],
    "experience": [
     {
+      "position": "Machine Learning Engineer",
+      "company": "Southern Wholesale of Florida LLC",
+      "location": "Tampa, FL",
+      "startDate": "Jan 2026",
+      "endDate": "Present",
+      "startYear": "2026",
+      "endYear": "2026",
+      "logo": "images/swf_logo.jpg",
+      "highlights": [
+        "Architecting predictive demand forecasting for 8,000+ SKUs using XGBoost and Time-Series analysis, targeting a 15% reduction in inventory carrying costs across regional distribution centers",
+        "Building high-volume data ingestion pipelines and SQL-based statistical models to automate 90% of manual restocking logic for multi-warehouse distribution",
+        "Developing a real-time supply chain dashboard with route clustering to optimize logistics efficiency by 20% and reduce regional shipping delays"
+      ]
+    },
+    {
       "position": "Software Engineer (Volunteer)",
       "company": "FutureTech Foundation",
       "location": "Remote, USA",
       "startDate": "Feb 2025",
-      "endDate": "Present",
+      "endDate": "Jan 2026",
       "startYear": "2025",
       "endYear": "2026",
       "logo": "images/ftf_logo.jpg",
