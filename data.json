@@ -156,6 +156,7 @@
       "description": "An autonomous research agent with a self-reflection loop built using LangGraph, FastAPI, and Groq. The system operates through a cyclical Generate-Critique-Refine workflow — producing responses from Tavily/DuckDuckGo web search, assessing every claim against retrieved evidence, and re-searching when confidence falls below 0.7. Includes a comparative benchmarking suite (agent vs. baseline LLM) and Ragas-based evaluation measuring faithfulness, relevancy, context precision, and recall — achieving a 1.0 faithfulness score by grounding all responses in verified web evidence.",
       "image": "https://cdn.hashnode.com/res/hashnode/image/upload/v1727695448677/0e3ce539-1997-43ef-8e3c-648893855349.jpeg?auto=compress,format&format=webp",
       "githubUrl": "https://github.com/aniketpoojari/Agentic-AI-Research-Assistant",
+      "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/research-assistant-5",
       "technologies": ["Python", "LangGraph", "LangSmith", "FastAPI", "Streamlit", "Groq", "Tavily", "Docker", "GitHub Actions"],
       "keyMetrics": ["1.0 Faithfulness Score", "Self-Reflecting Agent Loop", "Ragas Evaluation"],
       "featured": true
@@ -165,6 +166,7 @@
       "description": "End-to-end MLOps system fine-tuning Microsoft Phi-3-mini-4k-instruct (3.8B) with two specialized LoRA adapters — one targeting attention layers for code generation (MBPP), another targeting MLP layers for docstring generation (CodeXGLUE). Uses 4-bit NF4 quantization, DVC pipelines, a Groq LLM-as-judge benchmarking quality gate that blocks deployment on metric regression, CI/CD auto-deploy to HF Spaces, and a human-in-the-loop feedback loop storing user ratings to a HF Dataset for continuous retraining.",
       "image": "https://a.storyblok.com/f/139616/1200x800/b050784413/thumbnail.webp/m/767x0/filters:quality(100):format(webp)",
       "githubUrl": "https://github.com/aniketpoojari/Fine-Tuning-LLM",
+      "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/phi3-bilora-assistant",
       "technologies": ["Python", "LoRA", "PEFT", "BitsAndBytes", "Streamlit", "DVC", "Groq"],
       "keyMetrics": ["94.2% Code Gen Pass Rate", "Dual LoRA Adapters (Attention + MLP)", "Groq LLM-as-Judge Eval"],
       "featured": true
@@ -174,6 +176,7 @@
       "description": "Production-style RAG application that ingests PDFs (text + tables via PyMuPDF + Tabula) and websites (BeautifulSoup4), chunks and embeds content with all-MiniLM-L6-v2 into ChromaDB, and answers queries via Groq LLaMA 3.1. Detects cross-document comparative questions and balances retrieval across sources. Each response shows inline latency, chunks retrieved, and token usage. Thumbs-up/down feedback is stored in a HF Dataset, with a Streamlit monitoring dashboard visualizing latency trends, token costs, and retrieval quality.",
       "image": "https://www.cq-partners.com/images/chat.jpg",
       "githubUrl": "https://github.com/aniketpoojari/OmniDoc-QA-LLM-RAG",
+      "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/OmniDoc-QA-LLM-RAG",
       "technologies": ["Python", "Flask", "LangChain", "ChromaDB", "Groq", "HuggingFace Embeddings", "Docker", "GitHub Actions", "Streamlit"],
       "keyMetrics": ["Cross-Document Comparative Queries", "Inline Latency & Token Metrics", "Real-Time Monitoring Dashboard"],
       "featured": true
@@ -183,6 +186,7 @@
       "description": "Latent diffusion pipeline built from scratch with three core components: CLIP for text-to-embedding conversion, VAE for image compression/reconstruction, and a Cross-Attentional UNet for iterative denoising. Trained on 8K image-caption pairs using DeepSpeed distributed training on AWS SageMaker with mixed-precision optimization. Workflow orchestrated by Apache Airflow with MLflow on DagsHub for experiment tracking, model versioning, and loss monitoring.",
       "image": "https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/3M5XD62SD5GPRCNHFNQBYLJHWU.jpg",
       "githubUrl": "https://github.com/aniketpoojari/Text-To-Image-Diffusion",
+      "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/text-to-image-flowers",
       "technologies": ["Python", "UNet", "CLIP", "VAE", "DeepSpeed", "AWS SageMaker", "Apache Airflow", "MLflow"],
       "keyMetrics": ["3x Training Speedup", "Multi-GPU Distributed", "8K Image-Caption Pairs"],
       "featured": true
@@ -192,6 +196,7 @@
       "description": "DPT model (ViT-Base/16 encoder + convolutional fusion decoder) predicting metric depth from single RGB images on Cityscapes (max depth 80m). Trained with scale-invariant + gradient loss, differential learning rates (1e-5 ViT / 1e-4 decoder), AMP, cosine LR warmup, and early stopping. 6-stage DVC pipeline: preprocessing → training → evaluate → conditional model promotion (MLflow) → ONNX export → push to HF Hub. Gradio demo auto-deployed to HF Spaces via GitHub Actions using ONNX Runtime for CPU inference.",
       "image": "https://research.nvidia.com/sites/default/files/styles/wide/public/publications/img_crop_down.png?itok=5I9XMWjT",
       "githubUrl": "https://github.com/aniketpoojari/Monocular-Depth-Estimation",
+      "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/depth-estimation-demo",
       "technologies": ["Python", "Vision Transformer", "PyTorch", "DVC", "MLflow", "timm", "ONNX", "Gradio"],
       "keyMetrics": ["10.19m RMSE on Cityscapes", "76.47% Accuracy (δ<1.25)", "ONNX + HF Spaces Deployment"],
       "featured": false,
