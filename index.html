@@ -716,9 +716,12 @@
 
             // Recognition
             document.getElementById('achievementsGrid').innerHTML = (data.achievements || []).map(a => `
-                <div class="minimal-card fade-in">
-                    <h3 style="color:var(--primary);">${a.title}</h3>
-                    <p>${a.description}</p>
+                <div class="minimal-card fade-in" style="display:flex; gap:1.5rem; align-items:start;">
+                    ${a.image ? `<img src="${a.image}" alt="${a.title}" style="width:60px; height:60px; border-radius:12px; object-fit:cover; border:1px solid var(--border); flex-shrink:0;">` : ''}
+                    <div>
+                        <h3 style="color:var(--primary);">${a.title}</h3>
+                        <p>${a.description}</p>
+                    </div>
                 </div>
             `).join('');
 

@@ -481,11 +481,13 @@
   "achievements": [
     {
       "title": "Smart India Hackathon 2019 Runner-Up",
-      "description": "Selected as top 2 finalist team. Led development of Smart Research Content Management System designed at P.D. Hinduja Hospital Research Center for automating PhD/MSc student project workflows."
+      "description": "Selected as top 2 finalist team. Led development of Smart Research Content Management System designed at P.D. Hinduja Hospital Research Center for automating PhD/MSc student project workflows.",
+      "image": "images/sih_logo.png"
     },
     {
       "title": "IEEE Publication",
-      "description": "\"Human Computer Interaction using Hand Gestures and Voice,\" IEEE Xplore, 2019 | 255 full-text views, 3 citations – Proposed multimodal gesture-voice interface using computer vision for device-free assistive technology applications."
+      "description": "\"Human Computer Interaction using Hand Gestures and Voice,\" IEEE Xplore, 2019 | 255 full-text views, 3 citations – Proposed multimodal gesture-voice interface using computer vision for device-free assistive technology applications.",
+      "image": "images/ieee_logo.jpg"
     }
   ],
   "testimonials": [
