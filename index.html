@@ -296,6 +296,38 @@
             border-radius: 6px;
         }
 
+        .project-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .project-link:first-child {
+            background: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .project-link:first-child:hover {
+            border-color: var(--text);
+            background: var(--border);
+        }
+        .project-link:nth-child(2) {
+            background: var(--primary);
+            color: #fff;
+            border: 1px solid var(--primary);
+        }
+        .project-link:nth-child(2):hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
         .tier-label {
             font-size: 1.5rem;
             font-weight: 800;
