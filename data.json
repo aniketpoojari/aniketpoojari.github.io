@@ -363,7 +363,7 @@
       "endDate": "Present",
       "startYear": "2026",
       "endYear": "2026",
-      "logo": "images/swf_logo.jpg",
+      "logo": "images/swf_logo.png",
       "highlights": [
         "Architecting predictive demand forecasting for 8,000+ SKUs using XGBoost and Time-Series analysis, targeting a 15% reduction in inventory carrying costs across regional distribution centers",
         "Building high-volume data ingestion pipelines and SQL-based statistical models to automate 90% of manual restocking logic for multi-warehouse distribution",
