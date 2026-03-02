@@ -182,13 +182,13 @@
       "featured": true
     },
     {
-      "title": "Text-to-Image Diffusion Model (From Scratch)",
-      "description": "Latent diffusion pipeline built from scratch with three core components: CLIP for text-to-embedding conversion, VAE for image compression/reconstruction, and a Cross-Attentional UNet for iterative denoising. Trained on 8K image-caption pairs using DeepSpeed distributed training on AWS SageMaker with mixed-precision optimization. Workflow orchestrated by Apache Airflow with MLflow on DagsHub for experiment tracking, model versioning, and loss monitoring.",
-      "image": "https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/3M5XD62SD5GPRCNHFNQBYLJHWU.jpg",
+      "title": "Text-to-Image Generation with Diffusion Models",
+      "description": "An end-to-end latent diffusion pipeline — from data preparation and caption generation through distributed training on AWS SageMaker, experiment tracking with MLflow, model optimization (ONNX / TensorRT), to automated deployment. Features a custom UNet with cross-attention, a Stable Diffusion VAE for latent compression, and CLIP text conditioning. Achieved 3x training speedup using DeepSpeed ZeRO Stage 2 distributed training across multi-node GPU clusters.",
+      "image": "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*ZFMhOhRKTzaGjKGuYoOhIg.jpeg",
       "githubUrl": "https://github.com/aniketpoojari/Text-To-Image-Diffusion",
       "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/text-to-image-flowers",
-      "technologies": ["Python", "UNet", "CLIP", "VAE", "DeepSpeed", "AWS SageMaker", "Apache Airflow", "MLflow"],
-      "keyMetrics": ["3x Training Speedup", "Multi-GPU Distributed", "8K Image-Caption Pairs"],
+      "technologies": ["Python", "PyTorch", "AWS SageMaker", "DeepSpeed", "DVC", "MLflow", "ONNX", "TensorRT", "Streamlit"],
+      "keyMetrics": ["3x Training Speedup", "DeepSpeed Distributed", "ONNX Optimized"],
       "featured": true
     },
     {
