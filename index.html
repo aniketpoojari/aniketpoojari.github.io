@@ -251,6 +251,35 @@
             100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
         }
 
+        .hero-tagline {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+        }
+        .hero-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .hero-metric-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .hero-metric-badge::before {
+            content: '↑';
+            font-size: 0.7rem;
+        }
+
         /* Section Global */
         section { padding: 8rem 0; }
         .section-header { margin-bottom: 4rem; text-align: center; }
@@ -285,7 +314,19 @@
         }
         .project-info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
         .project-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; }
-        .project-desc { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.5rem; flex: 1; }
+        .project-desc { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.5rem; flex: 1; cursor: pointer; }
+        .project-desc.truncated {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .project-desc.truncated::after {
+            content: ' Read more';
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
         .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
         .tech-tag {
             font-size: 0.75rem;
@@ -343,8 +384,17 @@
         /* Skills Section */
         .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         .skill-group { background: var(--surface); padding: 2rem; border-radius: var(--radius); border: 1px solid var(--border); }
-        .skill-group h3 { font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--primary); font-weight: 700; }
-        .skill-list { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .skill-group h3 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-left: 0.75rem;
+            border-left: 3px solid var(--primary);
+        }
+        .skill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .skill-item {
             display: flex; align-items: center; gap: 0.6rem;
             background: var(--card-bg); padding: 0.5rem 1rem; border-radius: 10px; border: 1px solid var(--border);
@@ -352,6 +402,22 @@
         }
         .skill-item:hover { border-color: var(--primary); transform: translateY(-2px); }
         .skill-item i { font-size: 1.1rem; color: var(--primary); }
+        .skill-badge {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+        .skill-badge:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
 
         /* Timeline Card (Experience & Education) */
         .timeline { position: relative; max-width: 900px; margin: 0 auto; }
@@ -362,6 +428,19 @@
             border-radius: 50%; background: var(--primary); border: 3px solid var(--bg);
         }
         .timeline-date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; }
+        .current-badge {
+            display: inline-block;
+            margin-left: 0.6rem;
+            padding: 0.15rem 0.6rem;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
         .timeline-card {
             background: var(--card-bg); padding: 2rem; border-radius: var(--radius); border: 1px solid var(--border);
             box-shadow: var(--shadow); display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: start;
@@ -620,7 +699,7 @@
                     </div>
                     <div class="project-info">
                         <h3 class="project-title">${p.title}</h3>
-                        <p class="project-desc">${p.description}</p>
+                        <p class="project-desc truncated" onclick="this.classList.toggle('truncated')">${p.description}</p>
                         <div class="project-tech">
                             ${(p.technologies || []).slice(0, 5).map(t => `<span class="tech-tag">${t}</span>`).join('')}
                         </div>
@@ -633,9 +712,26 @@
             `;
         }
 
+        function formatDate(dateStr) {
+            const d = new Date(dateStr + 'T00:00:00');
+            return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
         function renderAll() {
             document.getElementById('heroName').textContent = data.personal.name;
-            document.getElementById('heroBioContainer').innerHTML = data.personal.bio.map(b => `<p>${b}</p>`).join('');
+            const tagline = data.personal.bio[0];
+            const metrics = [
+                "66% Faster Support Resolution",
+                "3x Distributed Training Speedup",
+                "94.2% Code Gen Pass@1",
+                "99.5% Adversarial Inputs Blocked"
+            ];
+            document.getElementById('heroBioContainer').innerHTML = `
+                <p class="hero-tagline">${tagline}</p>
+                <div class="hero-metrics">
+                    ${metrics.map(m => `<span class="hero-metric-badge">${m}</span>`).join('')}
+                </div>
+            `;
             document.getElementById('profileImg').src = data.personal.profileImage;
             
             const socials = data.contact.socialLinks.map(s => 
@@ -677,7 +773,10 @@
             // Experience
             document.getElementById('experienceTimeline').innerHTML = data.experience.map(e => `
                 <div class="timeline-item fade-in">
-                    <div class="timeline-date">${e.startDate} — ${e.endDate}</div>
+                    <div class="timeline-date">
+                        ${e.startDate} — ${e.endDate}
+                        ${e.endDate === 'Present' ? '<span class="current-badge">Current</span>' : ''}
+                    </div>
                     <div class="timeline-card">
                         <img src="${e.logo}" class="timeline-logo" alt="${e.company}">
                         <div>
@@ -694,7 +793,7 @@
                 <div class="skill-group fade-in">
                     <h3>${c.title}</h3>
                     <div class="skill-list">
-                        ${c.items.map(s => `<div class="skill-item"><i class="${s.icon}"></i><span>${s.name}</span></div>`).join('')}
+                        ${c.items.map(s => `<span class="skill-badge">${s.name}</span>`).join('')}
                     </div>
                 </div>
             `).join('');
@@ -733,7 +832,7 @@
                     </div>
                     <div class="blog-info">
                         <div class="blog-meta">
-                            <span>${b.publishDate}</span>
+                            <span>${formatDate(b.publishDate)}</span>
                             <span>${b.readTime}</span>
                         </div>
                         <h3 class="blog-title">${b.title}</h3>

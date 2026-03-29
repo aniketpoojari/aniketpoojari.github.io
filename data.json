@@ -2,13 +2,13 @@
   "personal": {
     "name": "Aniket Poojari",
     "title": "AI/ML Engineer",
-    "subtitle": "Agentic AI Systems | LLM Applications (RAG, Fine-Tuning, Guardrails) | Scalable MLOps Pipelines",
+    "subtitle": "Agentic AI Systems | LLM Fine-Tuning & Evaluation | Scalable MLOps Pipelines",
     "location": "Tampa, FL",
     "bio": [
-      "AI/ML Engineer with 3+ years of experience building Agentic AI systems, LLM applications, and scalable MLOps pipelines.",
-      "Delivered measurable impact: 66% faster support resolution via RAG chatbot, 3x distributed training speedup on SageMaker, 40% LLM cost reduction through model routing.",
-      "Specialized in MCP, Guardrails, Red-Teaming, Fine-Tuning (LoRA/PEFT), and distributed training with DeepSpeed.",
-      "Focused on shipping production-ready AI that is fast, reliable, and impossible to ignore."
+      "AI/ML Engineer with 3+ years of experience building production agentic AI systems, LLM fine-tuning pipelines, and scalable MLOps infrastructure.",
+      "Delivered measurable impact: 66% faster internal support resolution via on-premise RAG chatbot, 3x distributed training speedup on SageMaker with DeepSpeed ZeRO-2, 25% LLM cost reduction through token analytics and model caching, and 94.2% code generation Pass@1 via dual LoRA fine-tuning on Phi-3.",
+      "Specialized in MCP, multi-layer Guardrails, Red-Teaming (216 adversarial attack vectors), Fine-Tuning (LoRA/QLoRA/PEFT), and distributed training with DeepSpeed.",
+      "Focused on shipping production-ready AI that is fast, reliable, and rigorously evaluated \u2014 every deployment is gated on automated quality checks."
     ],
     "profileImage": "images/profile.jpg",
     "website": "https://aniketpoojari.github.io/"
@@ -44,89 +44,254 @@
         "title": "Machine Learning & AI",
         "context": "Built diffusion models, fine-tuned LLMs, and deployed agentic systems",
         "items": [
-          { "name": "LLM", "icon": "devicon-amazonwebservices-plain" },
-          { "name": "RAG", "icon": "devicon-google-plain" },
-          { "name": "Generative AI", "icon": "devicon-tensorflow-plain" },
-          { "name": "Agentic AI", "icon": "devicon-googlecloud-plain" },
-          { "name": "NLP", "icon": "devicon-numpy-plain" },
-          { "name": "Computer Vision", "icon": "devicon-opencv-plain" },
-          { "name": "Diffusion Models", "icon": "devicon-tensorflow-plain" },
-          { "name": "LoRA", "icon": "devicon-python-plain" },
-          { "name": "PEFT", "icon": "devicon-python-plain" },
-          { "name": "Transformers", "icon": "devicon-pytorch-plain" },
-          { "name": "CLIP", "icon": "devicon-tensorflow-plain" },
-          { "name": "VAE", "icon": "devicon-tensorflow-plain" },
-          { "name": "MCP", "icon": "devicon-python-plain" },
-          { "name": "Red-Teaming", "icon": "devicon-python-plain" },
-          { "name": "Guardrails", "icon": "devicon-python-plain" },
-          { "name": "Time Series Forecasting", "icon": "devicon-python-plain" },
-          { "name": "Mask R-CNN", "icon": "devicon-opencv-plain" }
+          {
+            "name": "LLM",
+            "icon": "devicon-amazonwebservices-plain"
+          },
+          {
+            "name": "RAG",
+            "icon": "devicon-google-plain"
+          },
+          {
+            "name": "Generative AI",
+            "icon": "devicon-tensorflow-plain"
+          },
+          {
+            "name": "Agentic AI",
+            "icon": "devicon-googlecloud-plain"
+          },
+          {
+            "name": "NLP",
+            "icon": "devicon-numpy-plain"
+          },
+          {
+            "name": "Computer Vision",
+            "icon": "devicon-opencv-plain"
+          },
+          {
+            "name": "Diffusion Models",
+            "icon": "devicon-tensorflow-plain"
+          },
+          {
+            "name": "LoRA",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "PEFT",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "Transformers",
+            "icon": "devicon-pytorch-plain"
+          },
+          {
+            "name": "CLIP",
+            "icon": "devicon-tensorflow-plain"
+          },
+          {
+            "name": "VAE",
+            "icon": "devicon-tensorflow-plain"
+          },
+          {
+            "name": "MCP",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "Red-Teaming",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "Guardrails",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "Time Series Forecasting",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "Mask R-CNN",
+            "icon": "devicon-opencv-plain"
+          }
         ]
       },
       {
         "title": "ML Frameworks & Libraries",
         "context": "Trained 125M-param models, multi-GPU pipelines with DeepSpeed",
         "items": [
-          { "name": "PyTorch", "icon": "devicon-pytorch-plain" },
-          { "name": "TensorFlow", "icon": "devicon-tensorflow-plain" },
-          { "name": "Hugging Face", "icon": "devicon-githubactions-plain" },
-          { "name": "LangChain", "icon": "devicon-chainlink-plain" },
-          { "name": "LangGraph", "icon": "devicon-graphql-plain" },
-          { "name": "Scikit-learn", "icon": "devicon-pandas-plain" },
-          { "name": "Pandas", "icon": "devicon-pandas-plain" },
-          { "name": "NumPy", "icon": "devicon-numpy-plain" },
-          { "name": "Apache Spark", "icon": "devicon-apachespark-plain" },
-          { "name": "XGBoost", "icon": "devicon-python-plain" },
-          { "name": "DeepSpeed", "icon": "devicon-python-plain" },
-          { "name": "ONNX", "icon": "devicon-python-plain" },
-          { "name": "TensorRT", "icon": "devicon-python-plain" },
-          { "name": "MNE-Python", "icon": "devicon-python-plain" }
+          {
+            "name": "PyTorch",
+            "icon": "devicon-pytorch-plain"
+          },
+          {
+            "name": "TensorFlow",
+            "icon": "devicon-tensorflow-plain"
+          },
+          {
+            "name": "Hugging Face",
+            "icon": "devicon-githubactions-plain"
+          },
+          {
+            "name": "LangChain",
+            "icon": "devicon-chainlink-plain"
+          },
+          {
+            "name": "LangGraph",
+            "icon": "devicon-graphql-plain"
+          },
+          {
+            "name": "Scikit-learn",
+            "icon": "devicon-pandas-plain"
+          },
+          {
+            "name": "Pandas",
+            "icon": "devicon-pandas-plain"
+          },
+          {
+            "name": "NumPy",
+            "icon": "devicon-numpy-plain"
+          },
+          {
+            "name": "Apache Spark",
+            "icon": "devicon-apachespark-plain"
+          },
+          {
+            "name": "XGBoost",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "DeepSpeed",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "ONNX",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "TensorRT",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "MNE-Python",
+            "icon": "devicon-python-plain"
+          }
         ]
       },
       {
         "title": "MLOps & Cloud",
-        "context": "Deployed on AWS SageMaker, orchestrated with Airflow & Docker",
+        "context": "Deployed on AWS SageMaker, orchestrated with DVC, Docker & GitHub Actions",
         "items": [
-          { "name": "AWS", "icon": "devicon-amazonwebservices-plain" },
-          { "name": "Docker", "icon": "devicon-docker-plain" },
-          { "name": "Kubernetes", "icon": "devicon-kubernetes-plain" },
-          { "name": "Apache Airflow", "icon": "devicon-apache-plain" },
-          { "name": "FastAPI", "icon": "devicon-python-plain" },
-          { "name": "Flask", "icon": "devicon-flask-plain" },
-          { "name": "Streamlit", "icon": "devicon-flask-plain" },
-          { "name": "GitHub Actions", "icon": "devicon-githubactions-plain" },
-          { "name": "CI/CD", "icon": "devicon-githubactions-plain" },
-          { "name": "MLflow", "icon": "devicon-azurepipelines-plain" },
-          { "name": "DVC", "icon": "devicon-git-plain" },
-          { "name": "LangSmith", "icon": "devicon-python-plain" }
+          {
+            "name": "AWS SageMaker",
+            "icon": "devicon-amazonwebservices-plain"
+          },
+          {
+            "name": "Docker",
+            "icon": "devicon-docker-plain"
+          },
+          {
+            "name": "Kubernetes",
+            "icon": "devicon-kubernetes-plain"
+          },
+          {
+            "name": "FastAPI",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "Flask",
+            "icon": "devicon-flask-plain"
+          },
+          {
+            "name": "Streamlit",
+            "icon": "devicon-flask-plain"
+          },
+          {
+            "name": "GitHub Actions",
+            "icon": "devicon-githubactions-plain"
+          },
+          {
+            "name": "CI/CD",
+            "icon": "devicon-githubactions-plain"
+          },
+          {
+            "name": "MLflow",
+            "icon": "devicon-azurepipelines-plain"
+          },
+          {
+            "name": "DVC",
+            "icon": "devicon-git-plain"
+          },
+          {
+            "name": "LangSmith",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "GCP",
+            "icon": "devicon-googlecloud-plain"
+          }
         ]
       },
       {
         "title": "Programming & Databases",
-        "context": "Python-first with full-stack TypeScript for MOOC platform",
+        "context": "Python-first with full-stack TypeScript for e-learning platform",
         "items": [
-          { "name": "Python", "icon": "devicon-python-plain" },
-          { "name": "Java", "icon": "devicon-java-plain" },
-          { "name": "SQL", "icon": "devicon-mysql-plain" },
-          { "name": "Bash", "icon": "devicon-bash-plain" },
-          { "name": "TypeScript", "icon": "devicon-typescript-plain" },
-          { "name": "JavaScript", "icon": "devicon-javascript-plain" },
-          { "name": "PostgreSQL", "icon": "devicon-postgresql-plain" },
-          { "name": "MongoDB", "icon": "devicon-mongodb-plain" },
-          { "name": "ChromaDB", "icon": "devicon-redis-plain" },
-          { "name": "S3", "icon": "devicon-amazons3-plain" }
+          {
+            "name": "Python",
+            "icon": "devicon-python-plain"
+          },
+          {
+            "name": "SQL",
+            "icon": "devicon-mysql-plain"
+          },
+          {
+            "name": "Bash",
+            "icon": "devicon-bash-plain"
+          },
+          {
+            "name": "TypeScript",
+            "icon": "devicon-typescript-plain"
+          },
+          {
+            "name": "JavaScript",
+            "icon": "devicon-javascript-plain"
+          },
+          {
+            "name": "PostgreSQL",
+            "icon": "devicon-postgresql-plain"
+          },
+          {
+            "name": "MongoDB",
+            "icon": "devicon-mongodb-plain"
+          },
+          {
+            "name": "ChromaDB",
+            "icon": "devicon-redis-plain"
+          },
+          {
+            "name": "S3",
+            "icon": "devicon-amazons3-plain"
+          }
         ]
       },
       {
         "title": "Tools & Others",
         "context": "Version control, Linux environments, frontend frameworks",
         "items": [
-          { "name": "Git", "icon": "devicon-git-plain" },
-          { "name": "Linux", "icon": "devicon-linux-plain" },
-          { "name": "Node.js", "icon": "devicon-nodejs-plain" },
-          { "name": "Express", "icon": "devicon-express-original" },
-          { "name": "React", "icon": "devicon-react-plain" },
-          { "name": "Redux", "icon": "devicon-redux-plain" }
+          {
+            "name": "Git",
+            "icon": "devicon-git-plain"
+          },
+          {
+            "name": "Linux",
+            "icon": "devicon-linux-plain"
+          },
+          {
+            "name": "React",
+            "icon": "devicon-react-plain"
+          },
+          {
+            "name": "Node.js",
+            "icon": "devicon-nodejs-plain"
+          }
         ]
       }
     ]
@@ -134,71 +299,165 @@
   "projects": [
     {
       "title": "Enterprise AI Assistant with MCP",
-      "description": "An agentic NL-to-SQL assistant using Model Context Protocol (MCP) with 3 registered tools (query, chart, report), achieving 100% agent routing accuracy and 80% SQL accuracy. Features multi-layer Input/Output Guardrails blocking 99.5% of adversarial inputs (prompt injection, PII filtering, SQL injection prevention, output data masking). Includes per-request token analytics and cost-tracking service that identified 25% cost-saving opportunities through model caching.",
+      "description": "An agentic NL-to-SQL assistant using Model Context Protocol (MCP) with 3 registered tools (query, chart, report), achieving 100% agent routing accuracy and 80% SQL accuracy. Features multi-layer Input/Output Guardrails blocking 99.5% of adversarial inputs (prompt injection, PII filtering, SQL injection prevention via sandboxed dry-runs, output data masking via LLM-as-a-judge). Includes per-request token analytics and model caching that identified 25% LLM cost reduction.",
       "image": "https://miro.medium.com/v2/resize:fit:1200/1*NI72jBoX9wIendlVW23-oA.png",
       "githubUrl": "https://github.com/aniketpoojari/Enterprise-AI-Assistant-MCP",
       "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/Enterprise-AI-Assistant-MCP",
-      "technologies": ["Python", "LangGraph", "FastMCP", "Groq", "Streamlit", "FastAPI", "SQLite", "GitHub Actions"],
-      "keyMetrics": ["100% Agent Routing Accuracy", "99.5% Adversarial Input Blocked", "25% Cost Reduction via Model Caching"],
+      "technologies": [
+        "Python",
+        "LangGraph",
+        "FastMCP",
+        "Groq",
+        "Streamlit",
+        "FastAPI",
+        "SQLite",
+        "GitHub Actions"
+      ],
+      "keyMetrics": [
+        "100% Agent Routing Accuracy",
+        "99.5% Adversarial Input Blocked",
+        "25% LLM Cost Reduction via Token Analytics"
+      ],
       "featured": true
     },
     {
       "title": "LLM Evaluation & Red-Teaming Platform",
-      "description": "Full-stack platform to red-team LLMs with 216 adversarial attacks across 6 categories (Injection, PII, Jailbreak, Bias, Hallucination, Harmful Content). Implements statistical A/B testing using paired t-tests and bootstrap CI, providing 95% confidence intervals and effect sizes for model comparisons. Reduced evaluation latency by 60% through parallel batch processing and SSE-based real-time progress streaming. Built with React frontend and FastAPI backend with SQLite (9 tables) for comprehensive observability.",
+      "description": "Full-stack platform to red-team LLMs with 216 adversarial attacks across 6 categories (Injection, PII, Jailbreak, Bias, Hallucination, Harmful Content). Implements statistical A/B testing using paired t-tests and bootstrap CI, providing 95% confidence intervals and effect sizes for evidence-based model comparisons \u2014 not just leaderboard rankings. Reduced evaluation latency by 60% through parallel batch processing and SSE-based real-time progress streaming to the React frontend.",
       "image": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*u_9s7Yg2-f6k_jhuRJuU4Q.png",
       "githubUrl": "https://github.com/aniketpoojari/LLM-Eval-Platform",
-      "technologies": ["React", "FastAPI", "SciPy", "Groq", "SQLite", "TailwindCSS", "Recharts"],
-      "keyMetrics": ["216 Adversarial Attacks", "Statistical A/B Testing (95% CI)", "60% Faster Evaluation"],
+      "technologies": [
+        "React",
+        "FastAPI",
+        "SciPy",
+        "Groq",
+        "SQLite",
+        "TailwindCSS",
+        "Recharts"
+      ],
+      "keyMetrics": [
+        "216 Adversarial Attack Vectors",
+        "Statistical A/B Testing (95% CI)",
+        "60% Faster Evaluation via SSE Streaming"
+      ],
       "featured": true
     },
     {
       "title": "Agentic AI Research Assistant",
-      "description": "An autonomous research agent with a self-reflection loop built using LangGraph, FastAPI, and Groq. The system operates through a cyclical Generate-Critique-Refine workflow — producing responses from Tavily/DuckDuckGo web search, assessing every claim against retrieved evidence, and re-searching when confidence falls below 0.7. Includes a comparative benchmarking suite (agent vs. baseline LLM) and Ragas-based evaluation measuring faithfulness, relevancy, context precision, and recall — achieving a 1.0 faithfulness score by grounding all responses in verified web evidence.",
+      "description": "An autonomous research agent with a self-reflection loop built using LangGraph, FastAPI, and Groq. Operates through a Generate-Critique-Refine workflow \u2014 producing responses from Tavily/DuckDuckGo web search, cross-referencing every claim against retrieved evidence, and re-searching when confidence falls below 0.7. Achieves 1.0 Faithfulness score on Ragas benchmark (50+ queries). Reduces research synthesis from 3+ hours to under 10 seconds. Full observability via LangSmith tracing every node transition, tool call, and self-reflection cycle.",
       "image": "https://cdn.hashnode.com/res/hashnode/image/upload/v1727695448677/0e3ce539-1997-43ef-8e3c-648893855349.jpeg?auto=compress,format&format=webp",
       "githubUrl": "https://github.com/aniketpoojari/Agentic-AI-Research-Assistant",
       "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/research-assistant-5",
-      "technologies": ["Python", "LangGraph", "LangSmith", "FastAPI", "Streamlit", "Groq", "Tavily", "Docker", "GitHub Actions"],
-      "keyMetrics": ["1.0 Faithfulness Score", "Self-Reflecting Agent Loop", "Ragas Evaluation"],
+      "technologies": [
+        "Python",
+        "LangGraph",
+        "LangSmith",
+        "FastAPI",
+        "Streamlit",
+        "Groq",
+        "Tavily",
+        "Docker",
+        "GitHub Actions"
+      ],
+      "keyMetrics": [
+        "1.0 Faithfulness Score (Ragas)",
+        "3 Hours \u2192 Under 10 Seconds",
+        "Self-Reflecting Agent Loop"
+      ],
       "featured": true
     },
     {
       "title": "BiLoRA: Dual Adapter Fine-Tuning",
-      "description": "End-to-end MLOps system fine-tuning Microsoft Phi-3-mini-4k-instruct (3.8B) with two specialized LoRA adapters — one targeting attention layers for code generation (MBPP), another targeting MLP layers for docstring generation (CodeXGLUE). Uses 4-bit NF4 quantization, DVC pipelines, a Groq LLM-as-judge benchmarking quality gate that blocks deployment on metric regression, CI/CD auto-deploy to HF Spaces, and a human-in-the-loop feedback loop storing user ratings to a HF Dataset for continuous retraining.",
+      "description": "End-to-end MLOps pipeline fine-tuning Microsoft Phi-3-Mini (3.8B) with two specialized LoRA adapters targeting separate model components \u2014 attention layers for code generation (MBPP), MLP layers for docstring generation (CodeXGLUE). Uses 4-bit NF4 QLoRA quantization via BitsAndBytes (75% VRAM reduction), a 6-stage DVC pipeline with LLM-as-judge quality gate blocking deployment on metric regression, CI/CD auto-deploy to HF Spaces, and dynamic adapter hot-swapping in the Streamlit UI to avoid maintaining multiple model instances in memory.",
       "image": "https://a.storyblok.com/f/139616/1200x800/b050784413/thumbnail.webp/m/767x0/filters:quality(100):format(webp)",
       "githubUrl": "https://github.com/aniketpoojari/Fine-Tuning-LLM",
       "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/phi3-bilora-assistant",
-      "technologies": ["Python", "LoRA", "PEFT", "BitsAndBytes", "Streamlit", "DVC", "Groq"],
-      "keyMetrics": ["94.2% Code Gen Pass Rate", "Dual LoRA Adapters (Attention + MLP)", "Groq LLM-as-Judge Eval"],
+      "technologies": [
+        "Python",
+        "PyTorch",
+        "LoRA",
+        "QLoRA",
+        "PEFT",
+        "BitsAndBytes",
+        "DVC",
+        "MLflow",
+        "Groq"
+      ],
+      "keyMetrics": [
+        "94.2% Code Gen Pass@1",
+        "75% VRAM Reduction via QLoRA",
+        "Zero Regressions \u2014 Automated Quality Gate"
+      ],
       "featured": true
     },
     {
       "title": "Multi-Modal RAG QA System",
-      "description": "Production-style RAG application that ingests PDFs (text + tables via PyMuPDF + Tabula) and websites (BeautifulSoup4), chunks and embeds content with all-MiniLM-L6-v2 into ChromaDB, and answers queries via Groq LLaMA 3.1. Detects cross-document comparative questions and balances retrieval across sources. Each response shows inline latency, chunks retrieved, and token usage. Thumbs-up/down feedback is stored in a HF Dataset, with a Streamlit monitoring dashboard visualizing latency trends, token costs, and retrieval quality.",
+      "description": "Production-style RAG application that ingests PDFs (text via PyMuPDF + tables via Tabula) and websites (BeautifulSoup4), chunks and embeds content with all-MiniLM-L6-v2 into ChromaDB, and answers queries via Groq LLaMA 3.1. Detects cross-document comparative questions and balances retrieval across sources. Each response shows inline latency, chunks retrieved, and token usage. Thumbs-up/down feedback stored in HF Dataset, with a Streamlit monitoring dashboard visualizing latency trends, token costs, and retrieval quality.",
       "image": "https://www.cq-partners.com/images/chat.jpg",
       "githubUrl": "https://github.com/aniketpoojari/OmniDoc-QA-LLM-RAG",
       "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/OmniDoc-QA-LLM-RAG",
-      "technologies": ["Python", "Flask", "LangChain", "ChromaDB", "Groq", "HuggingFace Embeddings", "Docker", "GitHub Actions", "Streamlit"],
-      "keyMetrics": ["Cross-Document Comparative Queries", "Inline Latency & Token Metrics", "Real-Time Monitoring Dashboard"],
+      "technologies": [
+        "Python",
+        "Flask",
+        "LangChain",
+        "ChromaDB",
+        "Groq",
+        "HuggingFace Embeddings",
+        "Docker",
+        "GitHub Actions",
+        "Streamlit"
+      ],
+      "keyMetrics": [
+        "Cross-Document Comparative Queries",
+        "Inline Latency & Token Metrics",
+        "Real-Time Monitoring Dashboard"
+      ],
       "featured": true
     },
     {
       "title": "Text-to-Image Generation with Diffusion Models",
-      "description": "An end-to-end latent diffusion pipeline — from data preparation and caption generation through distributed training on AWS SageMaker, experiment tracking with MLflow, model optimization (ONNX / TensorRT), to automated deployment. Features a custom UNet with cross-attention, a Stable Diffusion VAE for latent compression, and CLIP text conditioning. Achieved 3x training speedup using DeepSpeed ZeRO Stage 2 distributed training across multi-node GPU clusters.",
+      "description": "End-to-end latent diffusion pipeline \u2014 from data preparation and Florence-2 automated captioning through distributed training on AWS SageMaker (DeepSpeed ZeRO Stage 2), experiment tracking with MLflow, and inference optimization (ONNX / TensorRT, 4x throughput). Custom UNet with cross-attention, Stable Diffusion VAE for 8x latent compression, and CLIP text conditioning. Critical training bottleneck eliminated by precomputing CLIP embeddings and caching to S3 \u2014 achieving 100x data loading speedup enabling stable multi-node training.",
       "image": "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*ZFMhOhRKTzaGjKGuYoOhIg.jpeg",
       "githubUrl": "https://github.com/aniketpoojari/Text-To-Image-Diffusion",
       "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/text-to-image-flowers",
-      "technologies": ["Python", "PyTorch", "AWS SageMaker", "DeepSpeed", "DVC", "MLflow", "ONNX", "TensorRT", "Streamlit"],
-      "keyMetrics": ["3x Training Speedup", "DeepSpeed Distributed", "ONNX Optimized"],
+      "technologies": [
+        "Python",
+        "PyTorch",
+        "AWS SageMaker",
+        "DeepSpeed",
+        "DVC",
+        "MLflow",
+        "ONNX",
+        "TensorRT",
+        "Streamlit"
+      ],
+      "keyMetrics": [
+        "3x Training Speedup (DeepSpeed ZeRO-2)",
+        "4x Inference Throughput (ONNX/TensorRT)",
+        "100x Data Loading Speedup"
+      ],
       "featured": true
     },
     {
       "title": "Monocular Depth Estimation",
-      "description": "DPT model (ViT-Base/16 encoder + convolutional fusion decoder) predicting metric depth from single RGB images on Cityscapes (max depth 80m). Trained with scale-invariant + gradient loss, differential learning rates (1e-5 ViT / 1e-4 decoder), AMP, cosine LR warmup, and early stopping. 6-stage DVC pipeline: preprocessing → training → evaluate → conditional model promotion (MLflow) → ONNX export → push to HF Hub. Gradio demo auto-deployed to HF Spaces via GitHub Actions using ONNX Runtime for CPU inference.",
+      "description": "DPT model (ViT-Base/16 encoder + convolutional fusion decoder) predicting metric depth from single RGB images on Cityscapes (max depth 80m). Trained with scale-invariant + gradient loss, differential learning rates (1e-5 ViT / 1e-4 decoder), AMP, cosine LR warmup, and early stopping. 6-stage DVC pipeline: preprocessing \u2192 training \u2192 evaluate \u2192 conditional model promotion (MLflow) \u2192 ONNX export \u2192 push to HF Hub. Gradio demo auto-deployed to HF Spaces via GitHub Actions using ONNX Runtime for CPU inference.",
       "image": "https://research.nvidia.com/sites/default/files/styles/wide/public/publications/img_crop_down.png?itok=5I9XMWjT",
       "githubUrl": "https://github.com/aniketpoojari/Monocular-Depth-Estimation",
       "liveDemo": "https://huggingface.co/spaces/aniketp2009gmail/depth-estimation-demo",
-      "technologies": ["Python", "Vision Transformer", "PyTorch", "DVC", "MLflow", "timm", "ONNX", "Gradio"],
-      "keyMetrics": ["10.19m RMSE on Cityscapes", "76.47% Accuracy (δ<1.25)", "ONNX + HF Spaces Deployment"],
+      "technologies": [
+        "Python",
+        "Vision Transformer",
+        "PyTorch",
+        "DVC",
+        "MLflow",
+        "timm",
+        "ONNX",
+        "Gradio"
+      ],
+      "keyMetrics": [
+        "10.19m RMSE on Cityscapes",
+        "76.47% Accuracy (\u03b4<1.25)",
+        "ONNX + HF Spaces Deployment"
+      ],
       "featured": false,
       "tier": "secondary"
     },
@@ -207,8 +466,20 @@
       "description": "CNN-based stock price prediction system with dynamic indicator selection via XGBoost feature engineering. Fetches historical data from Yahoo Finance API, performs comprehensive EDA, and trains models tracked via MLflow with DVC pipeline orchestration.",
       "image": "https://5.imimg.com/data5/SELLER/Default/2023/8/338921287/JB/ZV/BY/2684188/ai-powered-trading-software-500x500.jpg",
       "githubUrl": "https://github.com/aniketpoojari/Stock-Price-Prediction",
-      "technologies": ["Python", "CNN", "XGBoost", "PyTorch", "MLflow", "DVC", "yfinance"],
-      "keyMetrics": ["CNN + XGBoost", "Dynamic Feature Selection", "MLflow Tracked"],
+      "technologies": [
+        "Python",
+        "CNN",
+        "XGBoost",
+        "PyTorch",
+        "MLflow",
+        "DVC",
+        "yfinance"
+      ],
+      "keyMetrics": [
+        "CNN + XGBoost",
+        "Dynamic Feature Selection",
+        "MLflow Tracked"
+      ],
       "featured": false,
       "tier": "secondary"
     },
@@ -217,8 +488,17 @@
       "description": "Semantic segmentation for lane detection in road images using pre-trained architectures from segmentation-models-pytorch. Custom LaneDataset class with horizontal flip augmentation, trained on 224x224 images normalized with ImageNet statistics. Achieves 80% IoU for autonomous driving lane detection.",
       "image": "https://miro.medium.com/v2/resize:fit:1200/1*no84Hvsekd6fSXeIKxAU2A.png",
       "githubUrl": "https://github.com/aniketpoojari/Lane-Segmentation",
-      "technologies": ["Python", "PyTorch", "segmentation-models-pytorch", "Computer Vision"],
-      "keyMetrics": ["80% IoU", "Semantic Segmentation", "Autonomous Driving"],
+      "technologies": [
+        "Python",
+        "PyTorch",
+        "segmentation-models-pytorch",
+        "Computer Vision"
+      ],
+      "keyMetrics": [
+        "80% IoU",
+        "Semantic Segmentation",
+        "Autonomous Driving"
+      ],
       "featured": false,
       "tier": "secondary"
     },
@@ -227,7 +507,12 @@
       "description": "A web app that detects vehicle damages for faster insurance claim approvals using Mask R-CNN for damage detection.",
       "image": "https://raw.githubusercontent.com/aniketpoojari/Motor-Self-Inspection/master/3.JPG",
       "githubUrl": "https://github.com/aniketpoojari/Motor-Self-Inspection",
-      "technologies": ["Python", "Mask R-CNN", "Computer Vision", "Web Development"],
+      "technologies": [
+        "Python",
+        "Mask R-CNN",
+        "Computer Vision",
+        "Web Development"
+      ],
       "featured": false,
       "tier": "other"
     },
@@ -236,7 +521,12 @@
       "description": "Variational autoencoder for image denoising, reconstructing clean images from noisy inputs.",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbTM261Wj76-LBTcVQxi7nDcbq2KAp0Jksyw&s",
       "githubUrl": "https://github.com/aniketpoojari/Image-Denoising",
-      "technologies": ["Python", "VAE", "Autoencoders", "Computer Vision"],
+      "technologies": [
+        "Python",
+        "VAE",
+        "Autoencoders",
+        "Computer Vision"
+      ],
       "featured": false,
       "tier": "other"
     },
@@ -245,7 +535,11 @@
       "description": "Prediction system estimating taxi trip durations in NYC using CatBoost with XGBoost-assisted feature selection.",
       "image": "https://media.licdn.com/dms/image/v2/C4D12AQE9AL2Z0yHhsA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1650520960468?e=2147483647&v=beta&t=kiKxMGf1GzcS0rI2d8Rru8K-RW-nrdzDezpgxtLlKOc",
       "githubUrl": "https://github.com/aniketpoojari/NYC-Taxi-Trip-Duration-Prediction",
-      "technologies": ["Python", "CatBoost", "XGBoost"],
+      "technologies": [
+        "Python",
+        "CatBoost",
+        "XGBoost"
+      ],
       "featured": false,
       "tier": "other"
     },
@@ -254,7 +548,11 @@
       "description": "Designed and implemented a DC-GAN to generate realistic textures from scratch.",
       "image": "https://upload.wikimedia.org/wikipedia/commons/3/33/Tiling_procedural_textures.jpg",
       "githubUrl": "https://github.com/aniketpoojari/Texture-Generation",
-      "technologies": ["Python", "DC-GAN", "Generative AI"],
+      "technologies": [
+        "Python",
+        "DC-GAN",
+        "Generative AI"
+      ],
       "featured": false,
       "tier": "other"
     },
@@ -263,7 +561,12 @@
       "description": "Encoder-decoder model with attention mechanism for Russian-to-English text translation.",
       "image": "https://www.pdfgear.com/chat-pdf/img/translate-pdf-russian-to-english-1.png",
       "githubUrl": "https://github.com/aniketpoojari/Translating-Text-From-Russian-To-English-With-Attention",
-      "technologies": ["Python", "Encoder-Decoder", "Attention Mechanism", "NLP"],
+      "technologies": [
+        "Python",
+        "Encoder-Decoder",
+        "Attention Mechanism",
+        "NLP"
+      ],
       "featured": false,
       "tier": "other"
     },
@@ -272,7 +575,11 @@
       "description": "Interactive system enabling computer control using hand gestures and voice commands. Published in IEEE Xplore.",
       "image": "https://media.licdn.com/dms/image/v2/D4D12AQEqDr2WmIDKrg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1690389776221?e=2147483647&v=beta&t=rmcw04M_gjDusRH6StfZZiLNDSnl1Wg0mNoTfg04DlE",
       "githubUrl": "https://github.com/aniketpoojari/Human-Computer-Interaction-Using-Hand-Gestures-and-Voice",
-      "technologies": ["Python", "Computer Vision", "Voice Recognition"],
+      "technologies": [
+        "Python",
+        "Computer Vision",
+        "Voice Recognition"
+      ],
       "featured": false,
       "tier": "other"
     },
@@ -281,7 +588,11 @@
       "description": "Keypoint R-CNN (pretrained on COCO) extracts body keypoints, which train a neural network for classifying cricket shot poses.",
       "image": "https://editor.analyticsvidhya.com/uploads/28415download5.png",
       "githubUrl": "https://github.com/aniketpoojari/Cricket-Shot-Classification",
-      "technologies": ["Python", "Keypoint R-CNN", "Computer Vision"],
+      "technologies": [
+        "Python",
+        "Keypoint R-CNN",
+        "Computer Vision"
+      ],
       "featured": false,
       "tier": "other"
     },
@@ -290,8 +601,19 @@
       "description": "Custom 125M-parameter GPT model pretrained and fine-tuned on the XSum dataset using teacher forcing. Two-phase training pipeline with 128-token context window, orchestrated via DVC with MLflow experiment tracking. Achieved ROUGE-L score of 0.54 on validation.",
       "image": "https://cse.engin.umich.edu/wp-content/uploads/sites/2/2021/03/summarization-featured.jpg",
       "githubUrl": "https://github.com/aniketpoojari/Text-Summarization-GPT",
-      "technologies": ["Python", "Transformers", "MLflow", "DVC", "Streamlit", "Docker"],
-      "keyMetrics": ["125M Parameters", "0.54 ROUGE-L", "Teacher Forcing"],
+      "technologies": [
+        "Python",
+        "Transformers",
+        "MLflow",
+        "DVC",
+        "Streamlit",
+        "Docker"
+      ],
+      "keyMetrics": [
+        "125M Parameters",
+        "0.54 ROUGE-L",
+        "Teacher Forcing"
+      ],
       "featured": false,
       "tier": "other"
     }
@@ -354,7 +676,7 @@
       "readTime": "5 min read"
     }
   ],
-   "experience": [
+  "experience": [
     {
       "position": "Machine Learning Engineer",
       "company": "Southern Wholesale of Florida LLC",
@@ -365,9 +687,25 @@
       "endYear": "2026",
       "logo": "images/swf_logo.png",
       "highlights": [
-        "Architecting predictive demand forecasting for 8,000+ SKUs using XGBoost and Time-Series analysis, targeting a 15% reduction in inventory carrying costs across regional distribution centers",
-        "Building high-volume data ingestion pipelines and SQL-based statistical models to automate 90% of manual restocking logic for multi-warehouse distribution",
-        "Developing a real-time supply chain dashboard with route clustering to optimize logistics efficiency by 20% and reduce regional shipping delays"
+        "Building demand forecasting models for 8,000+ SKUs across 3 regional distribution centers using XGBoost and ARIMA time-series analysis, targeting 35% reduction in weekly planning effort through automated restock recommendations.",
+        "Replaced 80% of manual spreadsheet-based procurement workflows by engineering automated data pipelines ingesting 200K+ daily transactions from 12 supplier sources into a centralized SQL feature store enabling ML-driven restocking decisions.",
+        "Building a real-time supply chain dashboard with route clustering, targeting 20% improvement in logistics efficiency and reduction in regional shipping delays across distribution centers."
+      ]
+    },
+    {
+      "position": "Machine Learning Engineer",
+      "company": "Kritova (EdTech Startup)",
+      "location": "Remote, USA",
+      "startDate": "Mar 2025",
+      "endDate": "Present",
+      "startYear": "2025",
+      "endYear": "2026",
+      "logo": "images/kritova_logo.jpg",
+      "highlights": [
+        "Reduced internal team support resolution time by 66% (3 days \u2192 1 day) by building a secure on-premise RAG chatbot for Kritova's internal use \u2014 an EdTech startup building online learning platforms \u2014 maintaining 100% data privacy compliance with zero data leaving the firewall.",
+        "Built a 4-microservice ML platform serving 300+ concurrent students on Kritova's e-learning platform, with automated data pipelines for course analytics and real-time performance tracking across 50+ learning modules.",
+        "Designed a multi-modal document ingestion pipeline (PyMuPDF for text extraction, Tabula for PDF table parsing) enabling cross-document comparative queries across course materials \u2014 previously impossible with keyword search alone.",
+        "Identified 25% LLM cost reduction by engineering per-request token analytics and a model caching layer tracking spend per query type across sessions."
       ]
     },
     {
@@ -380,22 +718,8 @@
       "endYear": "2026",
       "logo": "images/ftf_logo.jpg",
       "highlights": [
-        "Built a Python pipeline to clean and transform brainwave recordings into features and trained machine learning models to predict which movement a person is imagining (left hand, right hand, foot, tongue) from EEG signals",
-        "Developed reusable Python tools to load, standardize, and label brainwave data from OpenBCI headsets and public datasets, creating training/evaluation datasets and iterating on baseline classifiers to improve imagined-movement detection accuracy"
-      ]
-    },
-    {
-      "position": "Machine Learning Engineer",
-      "company": "Kritova",
-      "location": "Remote, USA",
-      "startDate": "Mar 2025",
-      "endDate": "Present",
-      "startYear": "2025",
-      "endYear": "2026",
-      "logo": "images/kritova_logo.jpg",
-      "highlights": [
-        "Led deployment of a secure on-premise RAG chatbot and LLM infrastructure, reducing internal support ticket resolution time from 3 days to 1 day while ensuring complete enterprise data privacy",
-        "Engineered a scalable full-stack MOOC platform using a TypeScript monorepo with 4 microservices; built secure REST APIs (Express, MongoDB, S3) and modern React frontends (Redux Toolkit, TanStack Query), enabling course delivery, progress tracking, threaded comments, and automated certificate generation via Puppeteer"
+        "Achieved 88% accuracy in movement intention prediction from EEG brain signals for mobility-impaired patients by building a Python deep learning pipeline (CNNs) across 3 public neurological datasets \u2014 enabling potential touchless device control for people with physical disabilities.",
+        "Reduced data preprocessing time by 50% by developing reusable standardization tools for OpenBCI headset data, enabling 3x faster experimentation across 12 signal processing configurations."
       ]
     },
     {
@@ -408,8 +732,8 @@
       "endYear": "2024",
       "logo": "images/osu_logo.jpg",
       "highlights": [
-        "Supported ML and Cloud Computing courses by building and maintaining PyTorch/Scikit-learn lab environments on GCP and Colab for 300+ students, ensuring smooth execution of experiments",
-        "Refactored and standardized 15+ lab notebooks with version control and reproducible pipelines, streamlining grading and reducing student runtime errors by 35%"
+        "Standardized 15+ PyTorch and Scikit-learn lab notebooks into reproducible ML pipelines for 300+ students across 5 courses, reducing setup failures \u2014 spanning GPU driver conflicts, Python version mismatches, dependency errors, and GCP/Colab access issues \u2014 by 35%.",
+        "Maintained 99% uptime for GPU-based ML training environments on GCP and Google Colab, supporting 10,000+ GPU compute hours across Deep Learning and Cloud Computing courses."
       ]
     },
     {
@@ -422,10 +746,10 @@
       "endYear": "2022",
       "logo": "images/dolat_logo.jpg",
       "highlights": [
-        "Built ML pipelines for block-trade allocation and forecasting, cutting allocation error rates by 15% and improving forecast accuracy by 20%",
-        "Automated data infrastructure using Docker and PostgreSQL, increasing data retrieval speed by 75% and reducing system downtime by 30%",
-        "Leveraged Apache Spark to analyze gigabytes of trading data, detecting discrepancies and boosting strategy testing accuracy by 50%",
-        "Implemented automated trade-cleansing workflows (Random Forest, XGBoost), cutting manual workload by 30% and enhancing model reliability by 25%"
+        "Improved block-trade allocation accuracy by 20% and reduced error rates by 15% using Random Forest and XGBoost models on high-frequency trading data.",
+        "Built Python/Bash automation for trade metrics (Sharpe ratio, PnL parsing), accelerating model evaluation cycles by 15x \u2014 reducing manual analysis from 1-2 hours to under 10 minutes per strategy.",
+        "Processed 50GB+ of daily trading logs using Apache Spark, detecting critical data discrepancies and boosting strategy testing accuracy by 50%.",
+        "Built automated trade-cleansing pipelines flagging anomalous entries in real-time, reducing manual review workload by 30% and improving downstream model reliability by 25%."
       ]
     },
     {
@@ -438,8 +762,8 @@
       "endYear": "2019",
       "logo": "images/dhfl_logo.jpg",
       "highlights": [
-        "Automated vehicle damage detection in insurance claims by training a Mask R-CNN model, raising detection accuracy by 18% and cutting manual claim processing by 45%",
-        "Integrated ML workflows into the Django-based claims system, reducing overall claim processing time by 35%"
+        "Automated vehicle damage detection in insurance claims by training a Mask R-CNN model, raising detection accuracy by 18% and cutting manual claim processing by 45%.",
+        "Integrated ML workflows into the Django-based claims system, reducing overall claim processing time by 35%."
       ]
     }
   ],
@@ -457,7 +781,7 @@
       "gpa": "3.77/4.00",
       "logo": "images/osu_logo.jpg",
       "description": [
-        "Graduate Teaching Assistant for 300+ students in Applied Machine Learning, Cloud Application Development, Web Development, Mobile Software Development, and Open Source Software courses",
+        "Graduate Teaching Assistant for 300+ students in Applied Machine Learning, Cloud Application Development, Web Development, Mobile Software Development, and Open Source Software courses.",
         "Relevant Coursework: Deep Learning, Computer Vision, Algorithms, Machine Learning"
       ]
     },
@@ -481,12 +805,12 @@
   "achievements": [
     {
       "title": "Smart India Hackathon 2019 Runner-Up",
-      "description": "Selected as top 2 finalist team. Led development of Smart Research Content Management System designed at P.D. Hinduja Hospital Research Center for automating PhD/MSc student project workflows.",
+      "description": "Selected as top 2 finalist team out of 200,000+ participants. Led development of Smart Research Content Management System designed at P.D. Hinduja Hospital Research Center for automating PhD/MSc student project workflows.",
       "image": "images/sih_logo.png"
     },
     {
       "title": "IEEE Publication",
-      "description": "\"Human Computer Interaction using Hand Gestures and Voice,\" IEEE Xplore, 2019 | 255 full-text views, 3 citations – Proposed multimodal gesture-voice interface using computer vision for device-free assistive technology applications.",
+      "description": "\"Human Computer Interaction using Hand Gestures and Voice,\" IEEE Xplore, 2019 | 255 full-text views, 3 citations \u2013 Proposed multimodal gesture-voice interface using computer vision for device-free assistive technology applications.",
       "image": "images/ieee_logo.jpg"
     }
   ],
