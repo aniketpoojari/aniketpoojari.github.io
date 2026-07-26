@@ -2,13 +2,13 @@
   "personal": {
     "name": "Aniket Poojari",
     "title": "AI/ML Engineer",
-    "subtitle": "Agentic AI Systems | LLM Fine-Tuning & Evaluation | Scalable MLOps Pipelines",
-    "location": "Tampa, FL",
+    "subtitle": "RAG & LLM Applications | Predictive Analytics | Enterprise MLOps",
+    "location": "Florida, USA",
     "bio": [
-      "AI/ML Engineer with 3+ years of experience building production agentic AI systems, LLM fine-tuning pipelines, and scalable MLOps infrastructure.",
-      "Delivered measurable impact: 66% faster internal support resolution via on-premise RAG chatbot, 3x distributed training speedup on SageMaker with DeepSpeed ZeRO-2, 25% LLM cost reduction through token analytics and model caching, and 94.2% code generation Pass@1 via dual LoRA fine-tuning on Phi-3.",
-      "Specialized in MCP, multi-layer Guardrails, Red-Teaming (216 adversarial attack vectors), Fine-Tuning (LoRA/QLoRA/PEFT), and distributed training with DeepSpeed.",
-      "Focused on shipping production-ready AI that is fast, reliable, and rigorously evaluated \u2014 every deployment is gated on automated quality checks."
+      "AI/ML Engineer with 4+ years of experience designing and deploying production-grade machine learning, Generative AI, and LLM-powered applications across retail, financial services, and supply chain domains.",
+      "Experienced in developing scalable AI platforms using Python, SQL, OpenAI APIs, RAG, Apache Spark, Airflow, MLflow, and AWS to deliver intelligent automation, predictive analytics, and enterprise knowledge discovery.",
+      "Skilled in building end-to-end ML pipelines, deploying cloud-native AI systems, implementing MLOps best practices, and monitoring model performance throughout the ML lifecycle.",
+      "Proven ability to collaborate with cross-functional teams to deliver secure, scalable AI solutions that solve complex business problems and drive measurable business outcomes."
     ],
     "profileImage": "images/profile.jpg",
     "website": "https://aniketpoojari.github.io/"
@@ -41,257 +41,79 @@
   "skills": {
     "categories": [
       {
-        "title": "Machine Learning & AI",
-        "context": "Built diffusion models, fine-tuned LLMs, and deployed agentic systems",
+        "title": "AI & Machine Learning",
+        "context": "RAG systems, LLM applications, and predictive modeling across production environments",
         "items": [
-          {
-            "name": "LLM",
-            "icon": "devicon-amazonwebservices-plain"
-          },
-          {
-            "name": "RAG",
-            "icon": "devicon-google-plain"
-          },
-          {
-            "name": "Generative AI",
-            "icon": "devicon-tensorflow-plain"
-          },
-          {
-            "name": "Agentic AI",
-            "icon": "devicon-googlecloud-plain"
-          },
-          {
-            "name": "NLP",
-            "icon": "devicon-numpy-plain"
-          },
-          {
-            "name": "Computer Vision",
-            "icon": "devicon-opencv-plain"
-          },
-          {
-            "name": "Diffusion Models",
-            "icon": "devicon-tensorflow-plain"
-          },
-          {
-            "name": "LoRA",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "PEFT",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "Transformers",
-            "icon": "devicon-pytorch-plain"
-          },
-          {
-            "name": "CLIP",
-            "icon": "devicon-tensorflow-plain"
-          },
-          {
-            "name": "VAE",
-            "icon": "devicon-tensorflow-plain"
-          },
-          {
-            "name": "MCP",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "Red-Teaming",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "Guardrails",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "Time Series Forecasting",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "Mask R-CNN",
-            "icon": "devicon-opencv-plain"
-          }
+          {"name": "Machine Learning", "icon": "devicon-python-plain"},
+          {"name": "Generative AI", "icon": "devicon-tensorflow-plain"},
+          {"name": "LLMs", "icon": "devicon-python-plain"},
+          {"name": "RAG", "icon": "devicon-google-plain"},
+          {"name": "OpenAI APIs", "icon": "devicon-python-plain"},
+          {"name": "AI Agents", "icon": "devicon-python-plain"},
+          {"name": "Prompt Engineering", "icon": "devicon-python-plain"},
+          {"name": "Function Calling", "icon": "devicon-python-plain"},
+          {"name": "Semantic Search", "icon": "devicon-python-plain"},
+          {"name": "Vector Databases", "icon": "devicon-redis-plain"},
+          {"name": "Predictive Modeling", "icon": "devicon-python-plain"},
+          {"name": "Time Series Forecasting", "icon": "devicon-python-plain"},
+          {"name": "Scikit-learn", "icon": "devicon-pandas-plain"},
+          {"name": "Feature Engineering", "icon": "devicon-python-plain"},
+          {"name": "Statistical Analysis", "icon": "devicon-numpy-plain"}
         ]
       },
       {
-        "title": "ML Frameworks & Libraries",
-        "context": "Trained 125M-param models, multi-GPU pipelines with DeepSpeed",
+        "title": "Data Engineering",
+        "context": "ETL pipelines processing millions of daily events",
         "items": [
-          {
-            "name": "PyTorch",
-            "icon": "devicon-pytorch-plain"
-          },
-          {
-            "name": "TensorFlow",
-            "icon": "devicon-tensorflow-plain"
-          },
-          {
-            "name": "Hugging Face",
-            "icon": "devicon-githubactions-plain"
-          },
-          {
-            "name": "LangChain",
-            "icon": "devicon-chainlink-plain"
-          },
-          {
-            "name": "LangGraph",
-            "icon": "devicon-graphql-plain"
-          },
-          {
-            "name": "Scikit-learn",
-            "icon": "devicon-pandas-plain"
-          },
-          {
-            "name": "Pandas",
-            "icon": "devicon-pandas-plain"
-          },
-          {
-            "name": "NumPy",
-            "icon": "devicon-numpy-plain"
-          },
-          {
-            "name": "Apache Spark",
-            "icon": "devicon-apachespark-plain"
-          },
-          {
-            "name": "XGBoost",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "DeepSpeed",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "ONNX",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "TensorRT",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "MNE-Python",
-            "icon": "devicon-python-plain"
-          }
+          {"name": "Apache Spark", "icon": "devicon-apachespark-plain"},
+          {"name": "Apache Airflow", "icon": "devicon-python-plain"},
+          {"name": "ETL Pipelines", "icon": "devicon-python-plain"},
+          {"name": "Data Preprocessing", "icon": "devicon-python-plain"},
+          {"name": "Data Validation", "icon": "devicon-python-plain"},
+          {"name": "Data Modeling", "icon": "devicon-mysql-plain"},
+          {"name": "Batch Data Processing", "icon": "devicon-python-plain"},
+          {"name": "Data Integration", "icon": "devicon-python-plain"}
         ]
       },
       {
-        "title": "MLOps & Cloud",
-        "context": "Deployed on AWS SageMaker, orchestrated with DVC, Docker & GitHub Actions",
+        "title": "MLOps & AI Operations",
+        "context": "End-to-end ML lifecycle management with observability and drift monitoring",
         "items": [
-          {
-            "name": "AWS SageMaker",
-            "icon": "devicon-amazonwebservices-plain"
-          },
-          {
-            "name": "Docker",
-            "icon": "devicon-docker-plain"
-          },
-          {
-            "name": "Kubernetes",
-            "icon": "devicon-kubernetes-plain"
-          },
-          {
-            "name": "FastAPI",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "Flask",
-            "icon": "devicon-flask-plain"
-          },
-          {
-            "name": "Streamlit",
-            "icon": "devicon-flask-plain"
-          },
-          {
-            "name": "GitHub Actions",
-            "icon": "devicon-githubactions-plain"
-          },
-          {
-            "name": "CI/CD",
-            "icon": "devicon-githubactions-plain"
-          },
-          {
-            "name": "MLflow",
-            "icon": "devicon-azurepipelines-plain"
-          },
-          {
-            "name": "DVC",
-            "icon": "devicon-git-plain"
-          },
-          {
-            "name": "LangSmith",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "GCP",
-            "icon": "devicon-googlecloud-plain"
-          }
+          {"name": "MLflow", "icon": "devicon-azurepipelines-plain"},
+          {"name": "Experiment Tracking", "icon": "devicon-python-plain"},
+          {"name": "Model Registry", "icon": "devicon-python-plain"},
+          {"name": "Model Monitoring", "icon": "devicon-python-plain"},
+          {"name": "Model Drift Monitoring", "icon": "devicon-python-plain"},
+          {"name": "CI/CD", "icon": "devicon-githubactions-plain"},
+          {"name": "Batch Inference", "icon": "devicon-python-plain"},
+          {"name": "AI Observability", "icon": "devicon-python-plain"},
+          {"name": "ML Pipeline Automation", "icon": "devicon-python-plain"},
+          {"name": "Model Versioning", "icon": "devicon-git-plain"}
+        ]
+      },
+      {
+        "title": "Cloud & Visualization",
+        "context": "AWS-native ML pipelines and executive dashboards",
+        "items": [
+          {"name": "AWS S3", "icon": "devicon-amazons3-plain"},
+          {"name": "Amazon CloudWatch", "icon": "devicon-amazonwebservices-plain"},
+          {"name": "Power BI", "icon": "devicon-python-plain"},
+          {"name": "Pandas", "icon": "devicon-pandas-plain"},
+          {"name": "Data Visualization", "icon": "devicon-python-plain"},
+          {"name": "Business Intelligence", "icon": "devicon-python-plain"}
         ]
       },
       {
         "title": "Programming & Databases",
-        "context": "Python-first with full-stack TypeScript for e-learning platform",
+        "context": "Python-first engineering with SQL and Bash automation",
         "items": [
-          {
-            "name": "Python",
-            "icon": "devicon-python-plain"
-          },
-          {
-            "name": "SQL",
-            "icon": "devicon-mysql-plain"
-          },
-          {
-            "name": "Bash",
-            "icon": "devicon-bash-plain"
-          },
-          {
-            "name": "TypeScript",
-            "icon": "devicon-typescript-plain"
-          },
-          {
-            "name": "JavaScript",
-            "icon": "devicon-javascript-plain"
-          },
-          {
-            "name": "PostgreSQL",
-            "icon": "devicon-postgresql-plain"
-          },
-          {
-            "name": "MongoDB",
-            "icon": "devicon-mongodb-plain"
-          },
-          {
-            "name": "ChromaDB",
-            "icon": "devicon-redis-plain"
-          },
-          {
-            "name": "S3",
-            "icon": "devicon-amazons3-plain"
-          }
-        ]
-      },
-      {
-        "title": "Tools & Others",
-        "context": "Version control, Linux environments, frontend frameworks",
-        "items": [
-          {
-            "name": "Git",
-            "icon": "devicon-git-plain"
-          },
-          {
-            "name": "Linux",
-            "icon": "devicon-linux-plain"
-          },
-          {
-            "name": "React",
-            "icon": "devicon-react-plain"
-          },
-          {
-            "name": "Node.js",
-            "icon": "devicon-nodejs-plain"
-          }
+          {"name": "Python", "icon": "devicon-python-plain"},
+          {"name": "SQL", "icon": "devicon-mysql-plain"},
+          {"name": "Bash", "icon": "devicon-bash-plain"},
+          {"name": "Query Optimization", "icon": "devicon-mysql-plain"},
+          {"name": "Git", "icon": "devicon-git-plain"},
+          {"name": "OOP", "icon": "devicon-python-plain"},
+          {"name": "Agile Development", "icon": "devicon-python-plain"}
         ]
       }
     ]
@@ -678,92 +500,57 @@
   ],
   "experience": [
     {
-      "position": "Machine Learning Engineer",
-      "company": "Southern Wholesale of Florida LLC",
-      "location": "Tampa, FL",
+      "position": "AI/ML Engineer",
+      "company": "Southern Wholesale",
+      "location": "USA",
       "startDate": "Jan 2026",
       "endDate": "Present",
       "startYear": "2026",
       "endYear": "2026",
       "logo": "images/swf_logo.png",
       "highlights": [
-        "Building demand forecasting models for 8,000+ SKUs across 3 regional distribution centers using XGBoost and ARIMA time-series analysis, targeting 35% reduction in weekly planning effort through automated restock recommendations.",
-        "Replaced 80% of manual spreadsheet-based procurement workflows by engineering automated data pipelines ingesting 200K+ daily transactions from 12 supplier sources into a centralized SQL feature store enabling ML-driven restocking decisions.",
-        "Building a real-time supply chain dashboard with route clustering, targeting 20% improvement in logistics efficiency and reduction in regional shipping delays across distribution centers."
+        "Architected enterprise-scale RAG applications using Python, OpenAI APIs, vector embeddings, AWS, and vector databases to provide warehouse operators, procurement teams, and inventory planners with context-aware access to supplier contracts, inventory policies, and operational documentation.",
+        "Developed AI-powered demand planning solutions by combining Scikit-learn forecasting models with LLM-assisted business reasoning, enabling planners to identify inventory risks, seasonal demand fluctuations, and replenishment opportunities while improving forecast accuracy by 22%.",
+        "Built inventory segmentation and anomaly detection models using Python, Scikit-learn, and SQL to classify slow-moving products, detect abnormal stock movement patterns, and improve replenishment decisions across multiple warehouse locations.",
+        "Implemented intelligent AI agents using OpenAI function calling and prompt engineering to automate inventory investigations, shipment exception analysis, supplier performance reviews, and operational reporting, reducing manual planning activities from several hours to less than 30 minutes.",
+        "Established enterprise MLOps practices through MLflow, automated model validation, experiment tracking, model versioning, and CI/CD pipelines, improving deployment consistency and reducing production deployment failures by 35%.",
+        "Built AI observability dashboards using Python, SQL, Power BI, and Amazon CloudWatch to monitor model drift, LLM response quality, inference latency, forecast accuracy (RMSE/MAE), and operational KPIs, enabling faster incident resolution and improved production reliability."
       ]
     },
     {
-      "position": "Machine Learning Engineer",
-      "company": "Kritova (EdTech Startup)",
-      "location": "Remote, USA",
-      "startDate": "Mar 2025",
-      "endDate": "Present",
-      "startYear": "2025",
-      "endYear": "2026",
-      "logo": "images/kritova_logo.jpg",
-      "highlights": [
-        "Reduced internal team support resolution time by 66% (3 days \u2192 1 day) by building a secure on-premise RAG chatbot for Kritova's internal use \u2014 an EdTech startup building online learning platforms \u2014 maintaining 100% data privacy compliance with zero data leaving the firewall.",
-        "Built a 4-microservice ML platform serving 300+ concurrent students on Kritova's e-learning platform, with automated data pipelines for course analytics and real-time performance tracking across 50+ learning modules.",
-        "Designed a multi-modal document ingestion pipeline (PyMuPDF for text extraction, Tabula for PDF table parsing) enabling cross-document comparative queries across course materials \u2014 previously impossible with keyword search alone.",
-        "Identified 25% LLM cost reduction by engineering per-request token analytics and a model caching layer tracking spend per query type across sessions."
-      ]
-    },
-    {
-      "position": "Software Engineer (Volunteer)",
-      "company": "FutureTech Foundation",
-      "location": "Remote, USA",
+      "position": "AI/ML Engineer",
+      "company": "PNC",
+      "location": "USA",
       "startDate": "Feb 2025",
-      "endDate": "Jan 2026",
+      "endDate": "Dec 2025",
       "startYear": "2025",
-      "endYear": "2026",
-      "logo": "images/ftf_logo.jpg",
+      "endYear": "2025",
+      "logo": "images/pnc_logo.png",
       "highlights": [
-        "Achieved 88% accuracy in movement intention prediction from EEG brain signals for mobility-impaired patients by building a Python deep learning pipeline (CNNs) across 3 public neurological datasets \u2014 enabling potential touchless device control for people with physical disabilities.",
-        "Reduced data preprocessing time by 50% by developing reusable standardization tools for OpenBCI headset data, enabling 3x faster experimentation across 12 signal processing configurations."
+        "Developed machine learning solutions using Python, SQL, and Scikit-learn to analyze financial transactions, market datasets, and historical trading activity, enabling quantitative analysts to improve investment research and predictive decision-making.",
+        "Engineered feature engineering pipelines for financial time-series data to support market forecasting models, portfolio analytics, and quantitative investment strategies across multiple asset classes.",
+        "Built enterprise semantic search platforms using OpenAI embeddings, RAG, and vector databases to provide investment teams with secure access to research reports, trading documentation, regulatory policies, and financial knowledge repositories.",
+        "Delivered LLM-powered research assistants using OpenAI APIs, prompt engineering, and function calling that generated contextual summaries of market activity, explained portfolio performance, and automated interpretation of complex financial datasets, reducing research effort by 15x.",
+        "Operationalized machine learning experimentation using MLflow for model evaluation, hyperparameter optimization, experiment tracking, and reproducible model development while improving model validation accuracy by 50%.",
+        "Designed executive dashboards using Python, SQL, and Power BI to monitor prediction quality, model utilization, portfolio performance, investment KPIs, and operational insights while partnering with quantitative researchers, software engineers, and compliance teams."
       ]
     },
     {
-      "position": "Graduate Teaching Assistant",
-      "company": "Oregon State University",
-      "location": "Corvallis, OR",
-      "startDate": "Mar 2023",
-      "endDate": "Dec 2024",
-      "startYear": "2023",
-      "endYear": "2024",
-      "logo": "images/osu_logo.jpg",
-      "highlights": [
-        "Standardized 15+ PyTorch and Scikit-learn lab notebooks into reproducible ML pipelines for 300+ students across 5 courses, reducing setup failures \u2014 spanning GPU driver conflicts, Python version mismatches, dependency errors, and GCP/Colab access issues \u2014 by 35%.",
-        "Maintained 99% uptime for GPU-based ML training environments on GCP and Google Colab, supporting 10,000+ GPU compute hours across Deep Learning and Cloud Computing courses."
-      ]
-    },
-    {
-      "position": "Software Developer",
-      "company": "Dolat Capital",
-      "location": "Mumbai, India",
-      "startDate": "Aug 2020",
-      "endDate": "Apr 2022",
-      "startYear": "2020",
-      "endYear": "2022",
-      "logo": "images/dolat_logo.jpg",
-      "highlights": [
-        "Improved block-trade allocation accuracy by 20% and reduced error rates by 15% using Random Forest and XGBoost models on high-frequency trading data.",
-        "Built Python/Bash automation for trade metrics (Sharpe ratio, PnL parsing), accelerating model evaluation cycles by 15x \u2014 reducing manual analysis from 1-2 hours to under 10 minutes per strategy.",
-        "Processed 50GB+ of daily trading logs using Apache Spark, detecting critical data discrepancies and boosting strategy testing accuracy by 50%.",
-        "Built automated trade-cleansing pipelines flagging anomalous entries in real-time, reducing manual review workload by 30% and improving downstream model reliability by 25%."
-      ]
-    },
-    {
-      "position": "Artificial Intelligence Intern",
-      "company": "DHFL",
-      "location": "Mumbai, India",
-      "startDate": "Jun 2019",
-      "endDate": "Aug 2019",
+      "position": "Data Engineer",
+      "company": "Flipkart",
+      "location": "India",
+      "startDate": "Sep 2019",
+      "endDate": "Aug 2022",
       "startYear": "2019",
-      "endYear": "2019",
-      "logo": "images/dhfl_logo.jpg",
+      "endYear": "2022",
+      "logo": "images/flipkart_logo.png",
       "highlights": [
-        "Automated vehicle damage detection in insurance claims by training a Mask R-CNN model, raising detection accuracy by 18% and cutting manual claim processing by 45%.",
-        "Integrated ML workflows into the Django-based claims system, reducing overall claim processing time by 35%."
+        "Developed scalable ETL pipelines using Python, SQL, Apache Spark, and Airflow to process over 10 million daily order, inventory, customer, and logistics events supporting marketplace analytics and downstream business intelligence applications.",
+        "Automated data quality validation frameworks to detect duplicate records, schema inconsistencies, and incomplete transaction data before warehouse ingestion, reducing production data issues by 40% and improving reporting accuracy.",
+        "Optimized distributed Spark transformation workloads and SQL queries handling pricing, inventory, fulfillment, and customer behavior datasets, reducing batch processing time by 30% while improving pipeline efficiency.",
+        "Designed reusable ingestion frameworks that consolidated seller, shipment, catalog, and customer event data into centralized analytical platforms, simplifying pipeline maintenance and enabling consistent enterprise reporting.",
+        "Implemented Apache Airflow workflow orchestration and operational monitoring to track pipeline execution, SLA compliance, data freshness, and processing health while enabling proactive resolution of production pipeline failures.",
+        "Collaborated with software engineers, product managers, and data analysts to deliver reliable data platforms supporting recommendation systems, pricing optimization, inventory planning, and customer analytics using Agile engineering practices."
       ]
     }
   ],
@@ -787,7 +574,7 @@
     },
     {
       "degree": "Bachelor of Engineering in Information Technology",
-      "institution": "University of Mumbai",
+      "institution": "Fr. Conceicao Rodrigues College of Engineering",
       "location": "India",
       "startDate": "Aug 2016",
       "endDate": "Nov 2020",
