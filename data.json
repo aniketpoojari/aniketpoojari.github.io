@@ -3,12 +3,12 @@
     "name": "Aniket Poojari",
     "title": "AI/ML Engineer",
     "subtitle": "RAG & LLM Applications | Predictive Analytics | Enterprise MLOps",
-    "location": "Florida, USA",
+    "location": "Tampa, FL",
     "bio": [
-      "AI/ML Engineer with 4+ years of experience designing and deploying production-grade machine learning, Generative AI, and LLM-powered applications across retail, financial services, and supply chain domains.",
-      "Experienced in developing scalable AI platforms using Python, SQL, OpenAI APIs, RAG, Apache Spark, Airflow, MLflow, and AWS to deliver intelligent automation, predictive analytics, and enterprise knowledge discovery.",
-      "Skilled in building end-to-end ML pipelines, deploying cloud-native AI systems, implementing MLOps best practices, and monitoring model performance throughout the ML lifecycle.",
-      "Proven ability to collaborate with cross-functional teams to deliver secure, scalable AI solutions that solve complex business problems and drive measurable business outcomes."
+      "AI/ML Engineer with 3+ years of experience developing production-grade machine learning, deep learning, and generative AI systems across payment fraud detection, quantitative finance, and enterprise AI applications.",
+      "Experienced in real-time inference, feature engineering, RAG, agentic AI, and MLOps using Python, PyTorch, XGBoost, Apache Spark, LangChain, LangGraph, and Kubernetes to deliver intelligent automation and measurable business outcomes.",
+      "Skilled in building end-to-end ML pipelines, optimizing real-time model-serving infrastructure, and monitoring model performance and drift throughout the production ML lifecycle.",
+      "Proven ability to collaborate with cross-functional teams — including quantitative researchers, software engineers, and risk teams — to deliver secure, scalable AI solutions that solve complex business problems."
     ],
     "profileImage": "images/profile.jpg",
     "website": "https://aniketpoojari.github.io/"
@@ -501,56 +501,51 @@
   "experience": [
     {
       "position": "AI/ML Engineer",
-      "company": "Southern Wholesale",
-      "location": "USA",
-      "startDate": "Jan 2026",
+      "company": "Stripe",
+      "location": "United States, Remote",
+      "startDate": "Mar 2025",
       "endDate": "Present",
-      "startYear": "2026",
-      "endYear": "2026",
-      "logo": "images/swf_logo.png",
-      "highlights": [
-        "Architected enterprise-scale RAG applications using Python, OpenAI APIs, vector embeddings, AWS, and vector databases to provide warehouse operators, procurement teams, and inventory planners with context-aware access to supplier contracts, inventory policies, and operational documentation.",
-        "Developed AI-powered demand planning solutions by combining Scikit-learn forecasting models with LLM-assisted business reasoning, enabling planners to identify inventory risks, seasonal demand fluctuations, and replenishment opportunities while improving forecast accuracy by 22%.",
-        "Built inventory segmentation and anomaly detection models using Python, Scikit-learn, and SQL to classify slow-moving products, detect abnormal stock movement patterns, and improve replenishment decisions across multiple warehouse locations.",
-        "Implemented intelligent AI agents using OpenAI function calling and prompt engineering to automate inventory investigations, shipment exception analysis, supplier performance reviews, and operational reporting, reducing manual planning activities from several hours to less than 30 minutes.",
-        "Established enterprise MLOps practices through MLflow, automated model validation, experiment tracking, model versioning, and CI/CD pipelines, improving deployment consistency and reducing production deployment failures by 35%.",
-        "Built AI observability dashboards using Python, SQL, Power BI, and Amazon CloudWatch to monitor model drift, LLM response quality, inference latency, forecast accuracy (RMSE/MAE), and operational KPIs, enabling faster incident resolution and improved production reliability."
-      ]
-    },
-    {
-      "position": "AI/ML Engineer",
-      "company": "PNC",
-      "location": "USA",
-      "startDate": "Feb 2025",
-      "endDate": "Dec 2025",
       "startYear": "2025",
       "endYear": "2025",
-      "logo": "images/pnc_logo.png",
+      "logo": "https://cdn.simpleicons.org/stripe/635BFF",
       "highlights": [
-        "Developed machine learning solutions using Python, SQL, and Scikit-learn to analyze financial transactions, market datasets, and historical trading activity, enabling quantitative analysts to improve investment research and predictive decision-making.",
-        "Engineered feature engineering pipelines for financial time-series data to support market forecasting models, portfolio analytics, and quantitative investment strategies across multiple asset classes.",
-        "Built enterprise semantic search platforms using OpenAI embeddings, RAG, and vector databases to provide investment teams with secure access to research reports, trading documentation, regulatory policies, and financial knowledge repositories.",
-        "Delivered LLM-powered research assistants using OpenAI APIs, prompt engineering, and function calling that generated contextual summaries of market activity, explained portfolio performance, and automated interpretation of complex financial datasets, reducing research effort by 15x.",
-        "Operationalized machine learning experimentation using MLflow for model evaluation, hyperparameter optimization, experiment tracking, and reproducible model development while improving model validation accuracy by 50%.",
-        "Designed executive dashboards using Python, SQL, and Power BI to monitor prediction quality, model utilization, portfolio performance, investment KPIs, and operational insights while partnering with quantitative researchers, software engineers, and compliance teams."
+        "Improved payment authorization and fraud detection performance by developing production machine learning models using Python, PyTorch, and gradient-boosted methods, reducing false declines by 18% while achieving 98% fraud recall through feature engineering, cost-sensitive learning, and model optimization.",
+        "Streamlined fraud investigation workflows by developing a Retrieval-Augmented Generation (RAG) system using LangChain, LLMs, and vector search, reducing investigation information-gathering time by 15% and accelerating access to historical fraud cases, transaction intelligence, and risk policies.",
+        "Enhanced real-time fraud detection for Stripe Radar by optimizing ML inference and model-serving pipelines using Python and PyTorch, achieving sub-100ms inference latency and improving transaction decision throughput by 10%, while leveraging Apache Spark for distributed transaction-data processing and feature preparation.",
+        "Enhanced real-time fraud-risk assessments by developing feature engineering and feature-serving pipelines using behavioral, device, transaction, and network-risk signals, improving feature freshness and consistency to support reliable payment authorization decisions.",
+        "Accelerated production ML model delivery from three weeks to five days by automating training, validation, and deployment workflows using Airflow, Docker, Kubernetes, Terraform, and CI/CD, enabling faster release of validated model improvements and more consistent deployments.",
+        "Strengthened production ML monitoring and reliability by implementing data validation, drift detection, shadow deployments, and A/B testing, enabling earlier detection of model degradation and safer rollout of fraud detection updates."
       ]
     },
     {
-      "position": "Data Engineer",
-      "company": "Flipkart",
-      "location": "India",
-      "startDate": "Sep 2019",
-      "endDate": "Aug 2022",
-      "startYear": "2019",
-      "endYear": "2022",
-      "logo": "images/flipkart_logo.png",
+      "position": "Graduate Teaching Assistant – Machine Learning & Cloud Computing",
+      "company": "Oregon State University",
+      "location": "Corvallis, OR",
+      "startDate": "Mar 2023",
+      "endDate": "Dec 2024",
+      "startYear": "2023",
+      "endYear": "2024",
+      "logo": "images/osu_logo.jpg",
       "highlights": [
-        "Developed scalable ETL pipelines using Python, SQL, Apache Spark, and Airflow to process over 10 million daily order, inventory, customer, and logistics events supporting marketplace analytics and downstream business intelligence applications.",
-        "Automated data quality validation frameworks to detect duplicate records, schema inconsistencies, and incomplete transaction data before warehouse ingestion, reducing production data issues by 40% and improving reporting accuracy.",
-        "Optimized distributed Spark transformation workloads and SQL queries handling pricing, inventory, fulfillment, and customer behavior datasets, reducing batch processing time by 30% while improving pipeline efficiency.",
-        "Designed reusable ingestion frameworks that consolidated seller, shipment, catalog, and customer event data into centralized analytical platforms, simplifying pipeline maintenance and enabling consistent enterprise reporting.",
-        "Implemented Apache Airflow workflow orchestration and operational monitoring to track pipeline execution, SLA compliance, data freshness, and processing health while enabling proactive resolution of production pipeline failures.",
-        "Collaborated with software engineers, product managers, and data analysts to deliver reliable data platforms supporting recommendation systems, pricing optimization, inventory planning, and customer analytics using Agile engineering practices."
+        "Developed and maintained 15+ reproducible machine learning and deep learning workflows using Python, PyTorch, and Scikit-learn, leveraging Google Cloud Platform (GCP) and Google Colab for GPU-enabled experimentation and contributing to a 35% reduction in environment setup failures.",
+        "Supported cloud computing and web application development coursework by troubleshooting application functionality, frontend/backend integration, and cloud development environments, helping students resolve technical challenges and complete hands-on assignments.",
+        "Mentored and provided technical guidance to 300+ students across machine learning, cloud computing, and programming courses, assisting with model development, debugging, performance optimization, and technical problem-solving."
+      ]
+    },
+    {
+      "position": "Software Developer – ML & Quant Systems",
+      "company": "Dolat Capital",
+      "location": "Mumbai, India",
+      "startDate": "Aug 2020",
+      "endDate": "Apr 2022",
+      "startYear": "2020",
+      "endYear": "2022",
+      "logo": "images/dolat_logo.jpg",
+      "highlights": [
+        "Improved trade allocation accuracy by 20% and reduced allocation errors by 15% by developing and optimizing machine learning models using Python, XGBoost, and Random Forest, enhancing the reliability of allocation decisions across high-frequency trading workflows.",
+        "Accelerated quantitative model evaluation by 15× through automation of data processing, model validation, and evaluation pipelines using Python and Bash, reducing repetitive manual effort and enabling faster experimentation with trading models.",
+        "Processed 50+ GB of high-frequency market data daily using Apache Spark, developing scalable data-processing workflows and validating live-versus-simulated trading behavior to support reliable quantitative analysis and model evaluation.",
+        "Strengthened production model reliability by collaborating with quantitative researchers and software engineers to troubleshoot data-quality issues, investigate model performance discrepancies, and improve validation consistency between simulated and live trading behavior."
       ]
     }
   ],
